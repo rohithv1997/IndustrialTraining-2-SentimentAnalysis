@@ -1,0 +1,194 @@
+body { margin:0px 0px; padding:0px; } 
+
+* { box-sizing: Border-box } 
+
+#container{
+	background-color:white;
+	position:absolute;
+	overflow:hidden;
+	border: 1px solid black;
+} 
+
+.sprite {
+	position:absolute;
+	background-repeat:no-repeat;
+}
+
+#c1 {
+	left:43px;
+	top:23px;
+	width:378px;
+	height:43px;
+	background-image:url(../img/c1.png);
+}
+
+#c2 {
+	left:43px;
+	top:24px;
+	width:294px;
+	height:47px;
+	background-image:url(../img/c2.png);
+}
+
+#c3 {
+	left:44px;
+	top:35px;
+	width:287px;
+	height:22px;
+	background-image:url(../img/c3.png);
+}
+
+#c4 {
+	left:42px;
+	top:24px;
+	width:219px;
+	height:48px;
+	background-image:url(../img/c4.png);
+}
+
+#c5 {
+	left:42px;
+	top:24px;
+	width:206px;
+	height:47px;
+	background-image:url(../img/c5.png);
+}
+
+#CTA {
+	left:521px;
+	top:28px;
+	width:101px;
+	height:28px;
+}
+
+#CTABG {
+	width:101px;
+	height:28px;
+	background-color:#01a982;
+}
+
+#CTA_Copy {
+	left:22px;
+	top:10px;
+	width:74px;
+	height:10px;
+	background-image:url(../img/cta_copy.png);
+}
+
+#cta_copy {
+	left:537px;
+	top:38px;
+	width:74px;
+	height:10px;
+	background-image:url(../img/cta_copy.png);
+}
+
+#cta_fpo {
+	left:522px;
+	top:29px;
+	width:102px;
+	height:29px;
+	background-image:url(../img/cta_fpo.png);
+}
+
+#ef {
+	left:-1px;
+	top:-1px;
+	width:728px;
+	height:90px;
+	background-image:url(../img/ef.png);
+}
+
+#replay {
+	left:714px;
+	top:76px;
+	width:10px;
+	height:11px;
+	cursor: pointer;
+	background-image:url(../img/replay.png);
+}
+
+#bg_holder {
+	left:0px;
+	top:0px;
+	width:728px;
+	height:90px;
+	/*background-image:url(../img/bg.png);*/
+}
+
+#Actor {
+	left:0px;
+	top:0px;
+	width:728px;
+	height:90px;
+	image-rendering: -moz-crisp-edges;         /* Firefox */
+	image-rendering:   -o-crisp-edges;         /* Opera */
+	image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+	image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    transform: translateZ(0);
+    filter: none; 
+    -webkit-filter: blur(0px); 
+    -moz-filter: blur(0px); 
+    -ms-filter: blur(0px);
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0');
+	background-image:url(../img/actor.png);
+}
+
+#actor {
+	left:0px;
+	top:0px;
+	width:728px;
+	height:90px;
+	background-image:url(../img/actor.png);
+}
+
+#background {
+	left:0px;
+	top:0px;
+	width:728px;
+	height:90px;
+	background-image:url(../img/background.png);
+}
+
+#dark {
+	left:0px;
+	top:0px;
+	width:322px;
+	height:300px;
+	background-image:url(../img/dark.png);
+}
+
+#rectangles1 {
+	left:492px;
+	top:80px;
+	width:123px;
+	height:10px;
+	background-image:url(../img/rectangles1.png);
+}
+
+#rectangles2 {
+	left:492px;
+	top:41px;
+	width:123px;
+	height:34px;
+	background-image:url(../img/rectangles2.png);
+}
+
+#rectangles3 {
+	left:492px;
+	top:2px;
+	width:123px;
+	height:34px;
+	background-image:url(../img/rectangles3.png);
+}
+
+#legal {
+	left:650px;
+	top:74px;
+	width:69px;
+	height:8px;
+	background-image:url(../img/legal.png);
+}

@@ -1,0 +1,209 @@
+//IIFE TO EXTRACT DIMENSION DATA
+var dimensions = (function(){
+        var str = document.querySelectorAll("[name='ad.size']")[0].getAttributeNode("content").value;
+        var widthMatch = /width\=(\d+)/.exec(str);
+        var heightMatch = /height\=(\d+)/.exec(str);
+        return {
+            width: parseInt(widthMatch[1]),
+            height: parseInt(heightMatch[1])
+        }
+})();
+
+var tl;
+var tl2;
+var stopWatch;
+
+//INITIALIZE
+function init(){
+    IDsToVars();
+
+    container.style.width = dimensions.width + 'px';
+    container.style.height = dimensions.height + 'px';
+    
+    //set timeline
+    tl = new TimelineLite();
+    tl2 = new TimelineLite();
+
+
+    addListeners();
+    
+    animate();
+    //playRectangles();
+}
+
+function addListeners(){
+    //replay functionality
+    /*
+    replay_button.addEventListener('mouseover',function(){
+        TweenLite.fromTo(replay_button, .5, {rotation:'-360'}, {overwrite:false, rotation:'0'});
+    })
+    replay_button.addEventListener('click',function(){
+            tl.restart();
+    })
+    */
+    replay.addEventListener('click',function(){
+            //hpeRect.innerHTML ="";
+            tl.restart();
+            tl2.restart();
+    })
+    CTA.addEventListener('mouseover',function(){
+        CTABG.style.backgroundColor="#ff8d6d";
+    })
+
+    CTA.addEventListener('mouseout', function(){
+        CTABG.removeAttribute("style");
+    })
+}
+
+// function playRectangles(){
+//     console.log ('hello');`
+//     var tl2 = new TimeLineLite();
+//     var myList = [rectangles1,rectangles2,rectangles3,rectangles4,rectangles5,rectangles6,rectangles7];
+
+//     //tl.staggerFrom(rectangles1,rectangles2,rectangles3,rectangles4,rectangles5,rectangles6,rectangles7, .5, {opacity:0}, 1);
+//        //tl.staggerFrom(chars, 4.5, {opacity:0, scale:0, ease:Circ.easeOut}, 0.2);
+//        tl2.staggerFrom(myList, 1, {cycle:{opacity:0}}, 0.5, 2);
+// }
+
+//ANIMATE
+function animate(){
+    stopWatch=new Date().getTime(); 
+
+
+    //timeline animation here
+    //tl.staggerFrom([rectangles1,rectangles2,rectangles3,rectangles4,rectangles5,rectangles6,rectangles7], .5, {opacity:0, ease: Power1.easeIn}, 1, 2.5) 
+    //use the set command to set the timing of the call
+    //.set(c1,{x:0},2)
+    //call parameters x, y, width, height, width, speed
+    //.call(hpRect, [50,125,193,57,12,1.5])
+
+    //{x:'-7%', y:'-11%'}
+
+
+    // var tl2 = new TimeLineLite();
+    // var myList = [rectangles1,rectangles2,rectangles3,rectangles4,rectangles5,rectangles6];
+    // tl2.staggerFrom(myList, 1, {opacity:0}, 1.5, 2.5);
+
+
+    tl
+    .set(c1,{opacity:0})
+    .set(background,{x:-115})
+    //.set(myList,{opacity:0}, 0) 
+    //.set([bg_holder,background], {xPercent:-9, yPercent:-9}) // bg image is 120% of landed bg, in psd enlarge canvas size 120% & export
+    // .to([bg_holder,background], 3, {scale:.85, rotationZ: 0.01, force3D:true, transformPerspective:1000, transformStyle:"preserve-3d"})
+    .to([background], 5, {x:-63, rotationZ: 0.01, force3D:true, transformPerspective:1000, transformStyle:"preserve-3d"})
+    .to(c1, .5,{opacity:1})
+    .to(c1, .5, {opacity:0},"+=2")
+    .from([c2], .5, {opacity:0})
+    .to([c2], .5, {opacity:0}, "+=2")
+    .from([c3], .5, {opacity:0})
+    .to([c3], .5, {opacity:0}, "+=2")
+    .from([CTA,replay,ef], .5, {opacity:0})
+    //.from([CTA,replay], .5, {opacity:0})
+    //.from(replay,.5,{opacity:0})
+    //put the rest of the animation here as to not interfere with the timing of the hpRect
+    
+    //playData1();
+    .call(returnTimer)
+    //playRectangles();
+}
+
+//repeats bg animation
+// function playRectangles(){
+//     TweenLite.staggerFrom([rectangles1,rectangles2,rectangles3,rectangles4,rectangles5,rectangles6,rectangles7], .5, {opacity:0, ease: Power1.easeIn}, 1);
+// } 
+
+/*function playData1(){
+    TweenLite.to(data2,.5,{opacity:0});
+    TweenLite.to(data1,1.25,{opacity:1,onComplete:playData2});
+} */
+
+/*function playData2(){
+    TweenLite.to(data1,.5,{opacity:0});
+    TweenLite.to(data2,.75,{opacity:1,onComplete:playData1});
+}*/
+
+function returnTimer(){
+    stopWatch=((new Date().getTime())-stopWatch)*.001;
+    console.log(stopWatch+" seconds");
+}
+
+function clickThrough(){
+    window.open(clicktag);
+}
+/*function hpRect(leftPos,topPos,w,h,thickness,speed,zOfBottom){
+    //container is size of banner
+    hpeRect.style.width = dimensions.width + 'px';
+    hpeRect.style.height = dimensions.height + 'px';
+
+    //set top
+    var top = document.createElement('div')
+    top.id = "rectTop";
+    top.style.left = leftPos + 'px';
+    top.style.top = topPos + 'px';
+    top.style.height = thickness + 'px';
+    
+    
+
+    var right = document.createElement('div')
+    right.id = "rectRight";
+    right.style.left = (leftPos + w - thickness) + 'px';
+    right.style.top = topPos + 'px';
+    right.style.width = thickness + 'px';
+    
+    
+
+    var bottom = document.createElement('div')
+    bottom.id = "rectBottom";
+    bottom.style.left = (leftPos + w) + 'px';
+    bottom.style.top = (topPos + h - thickness) + 'px';
+    bottom.style.height = thickness + 'px';
+    //z index of bottom defaults to 10 if none or 0 are specified
+    //bottom.style.zIndex = zOfBottom || 10;
+
+    var left = document.createElement('div')
+    left.id = "rectLeft";
+    left.style.left = leftPos + 'px';
+    left.style.top = (topPos + h) + 'px';
+    left.style.width = thickness + 'px';
+
+    //all sides array
+    var sides = [top,left,bottom,right];
+    //assign sprite class to all
+    sides.forEach(function(side){
+        side.className = "sprite";
+        side.style.backgroundColor = '#01a982'
+    })
+
+    hpeRect.appendChild(top)
+    hpeRect.appendChild(left)
+    hpeRect.appendChild(bottom)
+    hpeRect.appendChild(right)
+
+
+    
+
+
+
+    
+        
+    TweenLite.to(top,speed,{width:w,onComplete:function(){
+        TweenLite.to(right,speed,{height:h,onComplete:function(){
+            TweenLite.to(bottom,speed,{x:-w,width:w,onComplete:function(){
+                TweenLite.to(left,speed,{y:-h,height:h})
+            }})
+        }})
+    }})
+} */
+
+//SET IDs IN DOM TO GLOBAL VARIABLES
+function IDsToVars(){
+    var allElements = document.getElementsByTagName("*");
+    
+    for (var q = 0; q<allElements.length; q++){
+         var el = allElements[q];
+         if (el.id){
+            window[el.id]=document.getElementById(el.id);
+        }
+    }
+};

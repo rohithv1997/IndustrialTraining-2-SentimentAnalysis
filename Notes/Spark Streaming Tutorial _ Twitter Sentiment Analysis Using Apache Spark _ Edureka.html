@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<!-- saved from url=(0109)https://www.edureka.co/blog/spark-streaming/?utm_source=blog&utm_medium=left-menu&utm_campaign=spark-tutorial -->
+<html lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" class=" "><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="pingback" href="https://www.edureka.co/blog/xmlrpc.php">
+        
+<!-- This site is optimized with the Yoast SEO plugin v4.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Spark Streaming Tutorial | Twitter Sentiment Analysis Using Apache Spark | Edureka</title>
+<meta name="description" content="This Spark Streaming blog will introduce you to Spark Streaming, its features and components. It includes a Sentiment Analysis project using Twitter.">
+<meta name="robots" content="noodp">
+<meta name="keywords" content="spark streaming, apache spark, what is apache spark, sentiment analysis, twitter sentiment analysis">
+<link rel="canonical" href="https://www.edureka.co/blog/spark-streaming/">
+<link rel="publisher" href="https://plus.google.com/+edurekaIN">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark Streaming Tutorial | Twitter Sentiment Analysis Using Apache Spark | Edureka">
+<meta property="og:description" content="This Spark Streaming blog will introduce you to Spark Streaming, its features and components. It includes a Sentiment Analysis project using Twitter.">
+<meta property="og:url" content="https://www.edureka.co/blog/spark-streaming/">
+<meta property="og:site_name" content="Edureka Blog">
+<meta property="article:publisher" content="https://www.facebook.com/edurekaIN/">
+<meta property="article:author" content="www.facebook.com/sandeep.dayananda">
+<meta property="article:section" content="Apache Spark &amp; Scala">
+<meta property="article:published_time" content="2017-05-08T14:23:44+00:00">
+<meta property="fb:app_id" content="334689249900154">
+<meta property="og:image" content="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Tutorial-Edureka-1.png">
+<meta property="og:image:width" content="815">
+<meta property="og:image:height" content="476">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="This Spark Streaming blog will introduce you to Spark Streaming, its features and components. It includes a Sentiment Analysis project using Twitter.">
+<meta name="twitter:title" content="Spark Streaming Tutorial | Twitter Sentiment Analysis Using Apache Spark | Edureka">
+<meta name="twitter:site" content="@edurekaIN">
+<meta name="twitter:image" content="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Tutorial-Edureka-1.png">
+<meta name="twitter:creator" content="@edurekaIN">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://cdn.edureka.co/">
+<link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Edureka Blog » Spark Streaming Tutorial – Sentiment Analysis Using Apache Spark Comments Feed" href="https://www.edureka.co/blog/spark-streaming/feed/">
+		<script async="" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/analytics.js.download"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.edureka.co\/blog\/wp-includes\/js\/wp-emoji-release.min.js"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="download-button-shortcode-css-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/downloadbutton.css" type="text/css" media="all">
+<link rel="stylesheet" id="fancyquote-css-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/fancyquote.css" type="text/css" media="all">
+<link rel="stylesheet" id="sn-fontAwesome-css-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="sn-animate-css-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/animate.css" type="text/css" media="all">
+<link rel="stylesheet" id="dg-grid-css-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/dg-grid.css" type="text/css" media="all">
+<link rel="stylesheet" id="fvp-frontend-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/frontend.css" type="text/css" media="all">
+<link rel="stylesheet" id="mbpro-font-awesome-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/font-awesome.min(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-font-awesome-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/font-awesome.min(2).css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-0121-font-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/0121-font.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-bootstrap-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-blogmain-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/blogmain.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-nprogress-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/nprogress.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-blogdetail_newfont-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Newfonts-ico.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-customscrollbar-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/CustomScrollbar.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-owl.carousel-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/owl.carousel.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-blogdetailnew-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/blogdetailnew.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-0180-global-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/0180-global.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-bootstrap-formhelpers-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/bootstrap-formhelpers.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-0181-formValidation-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/0181-formValidation.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-0139-common-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/0139-common.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-dashboard-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/dashboard.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-header-2-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/header-2.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-signin-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/new-signin-signup.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-mfb-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/mfb.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-main_css-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp_dlmp_styles-css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/styles.css" type="text/css" media="all">
+<link rel="https://api.w.org/" href="https://www.edureka.co/blog/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.edureka.co/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://cdn.edureka.co/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://www.edureka.co/blog/?p=45056">
+<link rel="alternate" type="application/json+oembed" href="https://www.edureka.co/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.edureka.co%2Fblog%2Fspark-streaming%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.edureka.co/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.edureka.co%2Fblog%2Fspark-streaming%2F&amp;format=xml">
+	<style type="text/css">
+	.download-info .download-button {
+		background-image: url(https://cdn.edureka.co/blog/wp-content/plugins/download-monitor/page-addon/downloadbutton.gif);
+	}
+	.download-info .more-button {
+		background-image: url(https://cdn.edureka.co/blog/wp-content/plugins/download-monitor/page-addon/morebutton.gif);
+	}
+	</style>
+<style type="text/css">
+#author-bio-box {
+	float:left;
+	width: 99%;
+	background: #ffffff;
+	border: 1px solid #e8e8e8;
+	box-shadow: 5px 5px 2px #ddd;
+	padding: 5px;
+        margin-bottom: 10px;
+}
+#author-bio-box img {
+	float: left;
+	margin: 4px 10px 2px 4px;
+}
+#author-bio-box .author-name {
+	font-weight: bold;
+	margin-left: 2px;
+	font-size: 14px;
+}
+#author-bio-box p {
+	font-size: 13px;
+	line-height: 20px;
+        margin-left: 95px;
+        margin-top: 5px;
+}
+#author-bio-box thead th {
+	border: 0;
+}
+#author-bio-box tbody {
+	border: 0;
+}
+.bio-spacer { min-height:44px; padding: 1px; display: block; clear: both; border:1px;}
+.bio-socials {
+	border-top:1px solid #e8e8e8;
+	border-bottom:none;
+	border-left:none;
+	border-right:none;
+	width: 100%;
+	height: 32px;
+	clear: both;
+}
+</style><meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress.">
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="https://cdn.edureka.co/blog/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><link rel="stylesheet" type="text/css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/shThemeDefault.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<noscript>&lt;style type="text/css"&gt; .wpb_animate_when_almost_visible { opacity: 1; }&lt;/style&gt;</noscript>        <script>
+            var webURL = 'https://www.edureka.co/';
+            var imgURL = 'https://cdn.edureka.co/imgver.1465813195/img/';
+            var kmkey = 'c685629a1766aa24ed42e4bc8476e8789cd97477';
+            var GaTID = 'UA-33865789-1';
+            var GaUATID = 'UA-33865789-2';
+            var iscustomerGA = 'false';
+            var repcustomerGA = 'false';
+            var baildown = true;
+            var homepageloadbanner = true;
+            var prev_offer_code = '';
+
+        </script>
+        <!-- Google Analytics -->
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-33865789-2', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <!-- End Google Analytics -->
+        <!-- Google Code for Remarketing Tag -->
+        <!--------------------------------------------------
+        Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+        --------------------------------------------------->
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var google_conversion_id = 977137586;
+            var google_custom_params = window.google_tag_params;
+            var google_remarketing_only = true;
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/conversion.js.download"></script><script type="text/javascript" async="" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/embed.js.download"></script><script async="" type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/count.js.download"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(http://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style><link rel="stylesheet" type="text/css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/css"><link rel="stylesheet" type="text/css" href="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/css(1)"><script src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/count-data.js.download"></script><link rel="preload" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.c9fb5886900e696c8873ec5b4648f872.css"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.25f477667301252e7f88cc86f425074e.js"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.2d5add5824bdd553cbcfaa87bce7038b.js"><link rel="preload" as="script" href="https://disqus.com/next/config.js"></head><body class="post-template-default single single-post postid-45056 single-format-standard wpb-js-composer js-comp-ver-5.1.1 vc_responsive" id="margin-top-value"><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/saved_resource.html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+        <noscript>
+    &lt;div style="display:inline;"&gt;
+        &lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/977137586/?value=0&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+    &lt;/div&gt;
+    </noscript>
+
+
+
+    <div id="fb-root" class=" fb_reset"><script async="" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/all.js.download"></script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/XBwzv5Yrm_1.html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+    <script>
+
+            window.fbAsyncInit = function () {
+                FB.init({appId: '334689249900154', status: true, cookie: true,
+                    xfbml: true});
+            };
+            (function () {
+                var e = document.createElement('script');
+                e.async = true;
+                e.src = document.location.protocol +
+                        '//connect.facebook.net/en_US/all.js';
+                document.getElementById('fb-root').appendChild(e);
+            }());
+    </script>
+
+    <header id="header-II">
+        <section>
+            <nav style="" role="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-homepage">
+                <div class="container menubar-visibility edureka-blog-header">
+                    <div class="navbar-header">
+                        <a href="https://www.edureka.co/?utm_source=blog&amp;utm_medium=blog-edureka-logo" class="navbar-brand"> <img alt="edureka!" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/logo.png"> </a> 			
+                    </div>
+                    <!-- ddl starts--><form action="https://www.edureka.co/blog" class="main-search"><ul class="list-unstyled course-search-box-nav">
+                        <input type="hidden" class="searchinputbox" id="categoryinputbox" value="">
+                        <input type="hidden" class="searchinputbox" id="authorinputbox" value="">
+                        <li class="search-nav pull-left"><div class="dropdown  categories-filter-dropdown">
+    <a class="select_down dropdown-toggle search-drop menu-common catbtnblog catbtnblogmob btn" type="button" id="menu1" data-toggle="dropdown">
+        <i class="fa fa-bars"></i> Select Category
+    </a>
+    <ul class="dropdown-menu list-inline search-header-navigation dropdown-menu-scrollbar mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar" role="menu" aria-labelledby="menu1" style="overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" tabindex="0"><div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+        <li role="presentation" style="display: none;"><a role="menuitem" tabindex="0" href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#" data-slug="" class="category-selector">Select Category</a>
+                </li><li role="presentation" style="display: none;"><a role="menuitem" tabindex="1" href="https://www.edureka.co/blog/category/big-data-analytics" data-slug="big-data-analytics" class="category-selector">Big Data Analytics</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="2" href="https://www.edureka.co/blog/category/big-data-nosql" data-slug="big-data-nosql" class="category-selector">Big Data NoSQL</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="3" href="https://www.edureka.co/blog/category/business-intelligence" data-slug="business-intelligence" class="category-selector">Business Intelligence</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="4" href="https://www.edureka.co/blog/category/cloud-computing" data-slug="cloud-computing" class="category-selector">Cloud Computing</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="5" href="https://www.edureka.co/blog/category/finance" data-slug="finance" class="category-selector">Finance</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="6" href="https://www.edureka.co/blog/category/frameworks" data-slug="frameworks" class="category-selector">Frameworks</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="7" href="https://www.edureka.co/blog/category/ibm-bluemix" data-slug="ibm-bluemix" class="category-selector">IBM Bluemix</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="8" href="https://www.edureka.co/blog/category/marketing" data-slug="marketing" class="category-selector">Marketing</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="9" href="https://www.edureka.co/blog/category/mobile-development" data-slug="mobile-development" class="category-selector">Mobile Development</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="10" href="https://www.edureka.co/blog/category/operations" data-slug="operations" class="category-selector">Operations</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="11" href="https://www.edureka.co/blog/category/programming" data-slug="programming" class="category-selector">Programming</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="12" href="https://www.edureka.co/blog/category/project-management" data-slug="project-management" class="category-selector">Project Management</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="13" href="https://www.edureka.co/blog/category/success-story" data-slug="success-story" class="category-selector">Success Story</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="14" href="https://www.edureka.co/blog/category/systems-architecture" data-slug="systems-architecture" class="category-selector">Systems &amp; Architecture</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="15" href="https://www.edureka.co/blog/category/systems-engineering" data-slug="systems-engineering" class="category-selector">Systems Engineering</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="16" href="https://www.edureka.co/blog/category/testing" data-slug="testing" class="category-selector">Testing</a>
+                </li>      
+    </div></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></ul>
+</div>
+<span id="desktop-searchbox"><div id="remote" class="typeahead-container"><div class="typeahead-field">
+                        <span class="typeahead-query">
+                            <input type="text" maxlength="150" autocomplete="off" placeholder="Search edureka blogs" value="" name="s" data-value="" class="search_inp collapse searchinputbox">
+                        </span><span class="typeahead-button"><i class="fa fa-search search_ico submit-ico-button search-button-top"></i>
+                        <i style="display:none;" class="fa fa-circle-o-notch fa-spin search_ico autosearchload_top"></i>
+                        </span></div></div></span></li></ul></form><form action="https://www.edureka.co/blog" class="form-element-mobile">
+                    <div class="visible-sm visible-xs mobsearch" id="mobile-searchbox">
+                        <a data-toggle="collapse" id="mobile-search-icon" class="mobile-search-icon" href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#mobsearch" aria-expanded="false" aria-controls="mobsearch">
+                            <i class="fa fa-search search_ico visible-sm visible-xs"></i>
+                        </a><div class="collapse search-course" id="mobsearch" aria-expanded="false"><div>
+                    <div id="remote" class="typeahead-container result backdrop hint">
+                        <div class="typeahead-field"><span class="typeahead-query">
+                            <input maxlength="150" autocomplete="off" class="search_inp search_inp_mob" placeholder="Search edureka blogs" name="s" type="text" value="" data-value=""></span>
+                        <span class="typeahead-button">
+                        <i class="fa fa-search search_ico submit-ico-button search-button-top"></i>
+                        <i style="display:none;" class="fa fa-circle-o-notch fa-spin search_ico autosearchload_top"></i>
+                        </span></div></div></div></div></div></form><div class="loggedin-usernav-wrapper hide"><div aria-expanded="false" id="navbar" class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav home-login hidden-sm hidden-xs">
+                <li>
+                    <div class="dropdown menu-dropdown dropdownafterlogin">
+                        <a href="javascript:void(0);" class="dropdown-toggle withripple" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="false"> BROWSE COURSES <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+                            <li><a href="https://www.edureka.co/mycourses?utm_source=blog&amp;utm_medium=courses&amp;utm_term=my-courses">My Courses</a></li>
+                            <li class="ga-allcourses"><a href="https://www.edureka.co/all-courses?utm_source=blog&amp;utm_medium=courses&amp;utm_term=all-courses">All Courses</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="logged-in-customer hide"></li>
+                <li class="">
+                    <div class="dropdown user-dropdown">
+                        <a id="signin-logout" class="signin" href="https://www.edureka.co/blog/wp-login.php?action=logout&amp;_wpnonce=2a45f1f96e">Logout</a> 
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ul class="nav navbar-nav navbar-right profile pull-right">
+            <li class="dropdown userdrop hidden-lg hidden-md profile-pic-header">
+                <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">
+                    <img alt="" class="img30 user-image-icon" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/defaultpp2.png">     
+                </a>
+                <ul class="dropdown-menu user-menu profile-xs">
+                    <li><a href="https://www.edureka.co/mycourses?utm_source=blog&amp;utm_medium=courses&amp;utm_term=all-courses">My Courses</a></li>
+                    <li class="logged-in-customer hide"></li><li class="ga-allcourses"><a href="https://www.edureka.co/all-courses?utm_source=blog&amp;utm_medium=courses&amp;utm_term=all-courses">All Courses</a></li>
+                    <li> <a href="https://www.edureka.co/blog/wp-login.php?action=logout&amp;_wpnonce=2a45f1f96e" id="signin-logoutresp">Log Out</a> </li>
+                </ul>
+            </li>
+        </ul></div><div class="loggedout-usernav-wrapper"><a class="signin md-trigger" href="javascript:void(0)" data-modal="signin-modal" data-toggle="modal">Sign In</a><style>
+    .highlighterror input[type=text],
+    .highlighterror input[type=email],
+    .highlighterror input[type=password],
+    .highlighterror {
+        border-color: #ed1f24 !important;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+    }
+</style>
+<!--googleon: all-->
+<div class="md-modal md-effect-1 newsigninsignup" id="signin-modal">
+    <div class="md-content">
+        <span id="signin_signup_cancel" class="md-close onclicktab pull-right">X</span>
+
+        <ul class="nav nav-tabs">
+            <li class="Signinspace active"><a class="onclicktab" data-toggle="tab" href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#LogIn"><span>Log In</span></a></li>
+            <li class="SignUpspace "><a class="onclicktab" data-toggle="tab" href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#SignUp"><span>Sign Up</span></a></li>
+
+        </ul>
+        <div class="tab-content">
+            <div id="LogIn" class="tab-pane fade in active">
+                <div class="col-md-12 col-xs-12 signinformnew newsignclik">
+                    <form id="signinForm" novalidate="novalidate" class="fv-form fv-form-bootstrap"><button type="submit" class="fv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+                        <!--                        <form id="signinForm">-->
+                        <div class="alertnew" role="alert">
+                            <span id="signin_error_message" class="signin_formerror redalertnew" style="display: none;"><i class="fa fa-check-circle"></i>  Please enter a valid emailid</span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input id="inputName" type="email" class="form-control inputstyle emailnew inputNamesignup signinvalid" required="" autocomplete="off" placeholder="Email" name="data[User][email]" value="" onkeyup="checkdisable();" data-bv-field="data[User][email]"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][email]" style="display: none;"></i>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">Email is required</small><small class="help-block" data-bv-validator="regexp" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">The value is not a valid email address</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a valid email address</small></div>
+                        <div class="form-group has-feedback">
+                            <input type="password" id="pwd" class="form-control inputstyle passwordnew masked" required="" autocomplete="off" placeholder="Password" name="data[User][password]" value="" data-bv-field="data[User][password]"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][password]" style="display: none;"></i>
+                            <div class="verficacheckeye" id="eye">
+                                show
+                            </div>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][password]" data-bv-result="NOT_VALIDATED" style="display: none;">Password is required</small><small class="help-block" data-bv-validator="stringLength" data-bv-for="data[User][password]" data-bv-result="NOT_VALIDATED" style="display: none;">Password should be atleast 8 character</small></div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding text-left spaceafterbutton" style="margin-top: 9px;"><a id="Forgotnew" href="javascript:void(0)" class="btn btn-link pull-left forgetpass">Forgot Password?</a>
+
+                            <button type="submit" class="bluebtn pull-right defdisablesignin ga-signin disabled" id="signin-blog">Start Learning</button>
+                        </div>
+                    </form>
+                    <!--<div class="mobilealertnew green clearfix">
+                      <span class="greenalertnew visible-xs"><i class="fa fa-check-circle"></i>  Verification Code sent to er.creator@gmail.com</span>
+                    </div>-->
+                </div>
+
+                <div class="col-md-12 col-xs-12 signinformnew forgetpassnew">
+                    <form id="resetcode">
+                        <div id="successmssg" class="alertnew" role="alert">
+                            <span id="messages" class="greenalertnew hidden-xs"><i class="fa fa-check-circle"></i>  </span>
+                        </div>
+                        <div class="form-group">
+                            <input id="prefilledemail" type="email" disabled="disable" class="form-control inputstyle emailnew inputDisabled" required="" autocomplete="off" placeholder="Email">
+                            <input id="emailfield" type="hidden" class="form-control inputstyle" name="data[User][email]">
+
+                            <!--<div class="verficacheck"><a href="" id="editemail">change ?</a></div>-->
+                        </div>
+                        <div class="form-group">
+                            <input id="otpfield" type="text" class="form-control inputstyle emailnew verifycheck" required="" autocomplete="off" placeholder="Verification code" name="data[User][otpCode]">
+                            <input id="verificationfield" type="hidden" class="form-control inputstyle emailnew" required="" name="data[User][verification_code]">
+                            <div class="verficacheck verifycheck"><div id="resendcode" href="javascript:void(0);" style="cursor: pointer;">resend ?</div></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="pwd2" class="form-control inputstyle passwordnew masked" required="" autocomplete="off" min="8" placeholder="New Password" name="data[User][password]">
+                            <div class="verficacheckeye" id="eye2">
+                                show
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding text-left spaceafterbutton" style="margin-top: 9px;"><!--<a id="Backnew" href="#" class="btn btn-link pull-left forgetpass">Back</a>-->
+
+                            <button id="passresetbutton" type="submit" class="bluebtn pull-right">reset password</button>
+                        </div>
+                    </form>
+                    <div class="notestarreg verifycheck">
+                        * Can't find the email? Check your Spam folder or Promotions tab for an email from no-reply@edureka.co. Send us an email at <a href="mailto:support@edureka.co">support@edureka.co</a> or call us at +91 88808 62004
+                    </div>
+                </div>
+            </div>
+            <div id="SignUp" class="tab-pane fade  ">
+
+                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 text-center signinformnew signupformnew">
+
+                    <form id="signupForm" novalidate="novalidate" class="fv-form fv-form-bootstrap"><button type="submit" class="fv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+                        <div class="alertnew" role="alert">
+                            <span id="signup_error_message" class="signup_formerror redalertnew hidden-xs " style="display: none;"><i class="fa fa-exclamation-triangle"></i>  Please provide a valid input</span>
+                        </div>
+
+                        <div class="form-group has-feedback">
+                            <input value="/blog/" name="data[User][pageurl]" id="pageurl_signup" type="hidden">
+                            <div class="form-control-wrapper"><input id="signupname" class="form-control inputstyle empty" placeholder="Name*" required="" autocomplete="off" name="data[User][name]" type="text" data-bv-field="data[User][name]"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][name]" style="display: none;"></i></div>
+                            
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][name]" data-bv-result="NOT_VALIDATED" style="display: none;">Name is required.</small><small class="help-block" data-bv-validator="regexp" data-bv-for="data[User][name]" data-bv-result="NOT_VALIDATED" style="display: none;">Name is required.</small></div>
+
+                        <div class="form-group has-feedback">
+                            <div class="form-control-wrapper"><input id="signupemail" class="form-control inputstyle  empty" placeholder="Email*" required="" autocomplete="off" name="data[User][email]" type="email" data-bv-field="data[User][email]"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][email]" style="display: none;"></i></div>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">Email is required</small><small class="help-block" data-bv-validator="regexp" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">The value is not a valid email address</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a valid email address</small></div>
+                        <input style="display:none;" name="hiddenname" type="text">
+                        <input style="display:none;" name="hiddenpassword" type="password">
+                        <div class="form-group has-feedback">
+                            <div class="form-control-wrapper"><input data-bv-field="data[User][mobile]" id="mobnum" class="form-control inputstyle empty" placeholder="Mobile Number*" required="" name="data[User][mobile]" type="text"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][mobile]" style="display: none;"></i></div>
+
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][mobile]" data-bv-result="NOT_VALIDATED" style="display: none;">Mobile Number is required</small><small class="help-block" data-bv-validator="regexp" data-bv-for="data[User][mobile]" data-bv-result="NOT_VALIDATED" style="display: none;">The value is not a valid mobile number</small></div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-control-wrapper">
+                                <input id="pwd3" class="form-control inputstyle passwordnew masked empty" required="" autocomplete="off" placeholder="Password more than 8 characters*" name="data[User][password]" type="password" data-bv-field="data[User][password]"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][password]" style="display: none;"></i></div>
+                            <div class="verficacheckeye" id="eye3">show</div>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][password]" data-bv-result="NOT_VALIDATED" style="display: none;">Password is required</small><small class="help-block" data-bv-validator="stringLength" data-bv-for="data[User][password]" data-bv-result="NOT_VALIDATED" style="display: none;">Password should be atleast 8 character</small></div>
+                                                <p class="signupinfotext">
+                            By Signing up you agree to our <span><a class=" withripple" href="https://www.edureka.co/terms-and-conditions" target="_blank">T&amp;C</a></span> and <span>
+                                <a class=" withripple" href="https://www.edureka.co/privacy-policy" target="_blank">Privacy Policy</a></span>
+                        </p>
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 no-padding spaceafterbutton">
+                            <button type="submit" class="bluebtn pull-right defdisablesignup ga-signup disabled">Create an account</button>
+                        </div>
+
+                    </form>
+                    <!--<div class="mobilealertnew red clearfix">
+                      <span class="redalertnew visible-xs"><i class="fa fa-exclamation-triangle"></i>  Please provide a valid input</span>
+                    </div>-->
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="mobileredclass" class="mobilealertnew red clearfix" style="display:none;">
+        <span id="mobileredmsg" class="redalertnew visible-xs"><i class="fa fa-exclamation-triangle"></i>  Please provide a valid input    </span>
+    </div>
+    <div id="mobilegreenclass" class="mobilealertnew green clearfix" style="display:none;">
+        <span id="mobilegreenmsg" class="greenalertnew visible-xs"><i class="fa fa-check-circle"></i> </span>
+    </div>
+</div>
+<div class="md-overlay"></div>
+<section>
+    <!-- Modal -->
+    <div class="modal fade bs-example-modal-sm" id="capturemobile-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+
+                <div class="modal-header signup-header">
+                    <h4 class="modal-title color-white">
+                        <span class="pull-left">
+                            WELCOME <label id="capturemobile_user_name"></label>
+                        </span>
+                        <span class="pull-right">                           
+                        </span>
+                    </h4>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 linkedin-content">
+                            <h5 class="line-height23">It seems we don't have your phone number. Please share as it helps us to provide better customer service. Thank you!</h5>
+                            <form id="captureMobileForm" action="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial" method="post">
+                                <input type="hidden" name="data[User][email]" id="email_capturemobile">
+                                <input type="hidden" name="data[User][password]" id="password_capturemobile">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Mobile Number" required="" name="data[User][mobile]">
+                                </div>
+                                <!--                                <button type="button"  class="btn btn-primary btn-lg btn-block signin-login-btn continue-btn">Continue</button>-->
+                                <button type="button" id="btnCaptureMobile" class="btn btn-primary btn-lg btn-block signin-login-btn continue-btn" style="">Continue</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--googleon: all--><div class="navbar-collapse collapse navbar-right" id="navbar" aria-expanded="false">
+            <ul class="nav navbar-nav home-login hidden-sm hidden-xs"><!--
+                <li><a href="/instructors/add">For Instructors</a></li> -->
+                <li><a href="https://www.edureka.co/all-courses?utm_source=blog&amp;utm_medium=courses&amp;utm_term=all-courses">All Course</a></li>
+            </ul>
+        </div></div>                </div>
+            </nav>
+        </section>
+    </header>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+                <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12 left-menu"> 
+    <div class="row left-menu-row">
+<div class="side-menu"><nav class="navbar navbar-default" role="navigation">
+<div class="side-menu-container side-menu-blog"><button type="button" class="navbar-toggle navbar-tog-open-close side-body"><span class="fa fa-bars"></span></button><div class="side-nav-title"><h2>Spark Tutorial Series</h2></div><ul class="nav navbar-nav cus-nav-scroll dropdown-menu-scrollbar mCustomScrollbar _mCS_2 mCS-autoHide mCS_no_scrollbar" style="position: relative; overflow: visible;"><div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" tabindex="0"><div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+<li class="first-level "><a href="https://www.edureka.co/blog/spark-tutorial/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-streaming" data-currpage="spark-streaming">Spark Tutorial: Real Time Cluster Computing Framework</a>
+</li>
+<li class="first-level active"><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-streaming" class="active-link" data-currpage="spark-streaming">Spark Streaming Tutorial – Sentiment Analysis Using Apache Spark</a>
+</li>
+<li class="first-level "><a href="https://www.edureka.co/blog/spark-mllib/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-streaming" data-currpage="spark-streaming">Spark MLlib – Machine Learning Library Of Apache Spark</a>
+</li>
+<li class="first-level "><a href="https://www.edureka.co/blog/spark-sql-tutorial/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-streaming" data-currpage="spark-streaming">Spark SQL Tutorial – Understanding Spark SQL With Examples</a>
+</li>
+<li class="first-level "><a href="https://www.edureka.co/blog/spark-graphx/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-streaming" data-currpage="spark-streaming">Spark GraphX Tutorial – Graph Analytics In Apache Spark</a>
+</li>
+<li class="first-level "><a href="https://www.edureka.co/blog/interview-questions/top-apache-spark-interview-questions-2016/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-streaming" data-currpage="spark-streaming">Top Apache Spark Interview Questions You Should Prepare For In 2017</a>
+</li>
+</div></div><div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_2_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; height: 0px; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></ul></div></nav></div></div>
+</div>
+<!-- Right Panel ends -->
+                        <div class="col-lg-8 col-md-7 col-xs-12 col-sm-12 blogmobfull">
+                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 bread-herohead">
+    <div class="herohead">
+        <div class="">
+            <div class="row">
+                                <div class="">
+                    <h6 class="breadcrumb-section hidden-xs ">
+                        <a class="text-bold text-normal underline-remove brdcrumclrinac" href="https://www.edureka.co/blog">Home</a>
+                        <!--                        &nbsp;&nbsp;<i class="fa fa-chevron-right chevronblog chevron-level-0"></i>&nbsp;&nbsp;
+                        <a class="text-bold text-normal underline-remove brdcrumclrac reset-filters post-type-level" href="/blog">Blogs&nbsp;&nbsp;</a>-->
+                        <i class="fa fa-chevron-right chevronblog chevron-level-1 ">&nbsp;&nbsp;</i>
+                        <a class="text-bold text-normal underline-remove brdcrumclrac post-type-breadcrum reset-filters " href="https://www.edureka.co/blog">Blogs</a>
+                        &nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right chevronblog  cat-level-breadcrum"></i>&nbsp;&nbsp;
+                        <span class="text-bold text-normal underline-remove brdcrumclrac cat-level-breadcrum cat-level-breadcrum-title ">Big Data Analytics</span>&nbsp;
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>      
+<!-- Top Navigation to be sent in blog phase 2 starts-->
+
+<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mainnavigator">
+    <article class="navigatedetail col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+        <span class="blogall"><a href="https://www.edureka.co/blog//all"><i class="icon-Home_icon"></i></a></span>
+        <span class="bloghome"><a href="https://www.edureka.co/blog/">Blogs</a></span>
+        <span class="videohome"><a href="https://www.edureka.co/blog/videos">Videos</a></span>
+        <span class="interviewhome"><a href="https://www.edureka.co/blog/interview-questions">Interview Questions</a></span>
+    </article>
+</section>
+<!--Top Navigation to be sent in blog phase 2-->
+                            <section class="mainsecblog">
+                                <section class="blogmaincontainer">
+                                    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding topsection">
+    <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12 blogmainheading">
+        <h1 class="blogheading">
+            Spark Streaming Tutorial – Sentiment Analysis Using Apache Spark        </h1>
+        <span class="recommendedsec clearfix"><p>
+                                            </p>
+        </span>
+        <div class="top-sec-infodetail">
+            <span class="authorblog"><a href="https://www.edureka.co/blog/author/sandeepdedureka-co/" title="Posts by Sandeep Dayananda" rel="author">Sandeep Dayananda</a></span>
+            <span class="dateblog">May 8, 2017</span> 
+             
+<div class="maxcollection maxcollection-1" data-collection="1"><span class="mb-collection-item item-24" data-doc-id="24" data-popup="{&quot;width&quot;:400,&quot;height&quot;:300}"><a class="maxbutton-24 maxbutton maxbutton-circle-social-share-facebook" href="https://www.facebook.com/sharer.php?u=https://www.edureka.co/blog/spark-streaming/"><span class="mb-icon"><i class="fa fa-facebook"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-25" data-doc-id="25" data-popup="{&quot;width&quot;:550,&quot;height&quot;:420}"><a class="maxbutton-25 maxbutton maxbutton-circle-social-share-twitter" href="https://twitter.com/intent/tweet?url=https://www.edureka.co/blog/spark-streaming/"><span class="mb-icon"><i class="fa fa-twitter"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-26" data-doc-id="26" data-popup="{&quot;width&quot;:700,&quot;height&quot;:500}"><a class="maxbutton-26 maxbutton maxbutton-circle-social-share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.edureka.co/blog/spark-streaming/"><span class="mb-icon"><i class="fa fa-linkedin"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-27" data-doc-id="27" data-popup="{&quot;width&quot;:600,&quot;height&quot;:600}"><a class="maxbutton-27 maxbutton maxbutton-circle-social-share-google-plus" href="https://plus.google.com/share?url=https://www.edureka.co/blog/spark-streaming/"><span class="mb-icon"><i class="fa fa-google-plus"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span></div>        </div>
+    </article>
+    <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12 topimage">
+        <img class="blogimg" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Heroimage 1.jpg" alt="Spark Streaming Tutorial – Sentiment Analysis Using Apache Spark" title="Spark Streaming Tutorial – Sentiment Analysis Using Apache Spark">    </article>
+</section>                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12 no-padding hidden-sm hidden-xs share-leftnav">
+                                            <div class="nav-stacked-social affix" data-spy="affix" data-offset-top="350" data-offset-bottom="400">
+                                                <div class="maxcollection maxcollection-1" data-collection="1"><span class="mb-collection-item item-24" data-doc-id="24_1" data-popup="{&quot;width&quot;:400,&quot;height&quot;:300}"><a class="maxbutton-24 maxbutton maxbutton-circle-social-share-facebook" href="https://www.facebook.com/sharer.php?u=https://www.edureka.co/blog/spark-streaming/"><span class="mb-icon"><i class="fa fa-facebook"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-25" data-doc-id="25_1" data-popup="{&quot;width&quot;:550,&quot;height&quot;:420}"><a class="maxbutton-25 maxbutton maxbutton-circle-social-share-twitter" href="https://twitter.com/intent/tweet?url=https://www.edureka.co/blog/spark-streaming/"><span class="mb-icon"><i class="fa fa-twitter"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-26" data-doc-id="26_1" data-popup="{&quot;width&quot;:700,&quot;height&quot;:500}"><a class="maxbutton-26 maxbutton maxbutton-circle-social-share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.edureka.co/blog/spark-streaming/"><span class="mb-icon"><i class="fa fa-linkedin"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-27" data-doc-id="27_1" data-popup="{&quot;width&quot;:600,&quot;height&quot;:600}"><a class="maxbutton-27 maxbutton maxbutton-circle-social-share-google-plus" href="https://plus.google.com/share?url=https://www.edureka.co/blog/spark-streaming/"><span class="mb-icon"><i class="fa fa-google-plus"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span></div>                                            </div>
+                                        </div>
+                                        <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 no-padding">
+                                            <section class="col-md-12 col-lg-12 col-sm-12 col-xs-12 blogdetailsec">
+    <article class="col-md-9 col-lg-9 col-sm-9 col-xs-12 blogdescription"> 
+        <span class="AddtoBookmark"><a href="https://www.edureka.co/blog/spark-streaming/" data-title="Spark Streaming Tutorial – Sentiment Analysis Using Apache Spark">
+                <i class="icon-Add_to_bookmark"></i>
+                <span class="Bookmark-text"><span>Add to</span> Bookmark</span></a>
+        </span>
+
+            <div class="modal thispost-mail fade" id="emailpostpop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content centered">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span></button>
+                    <div class="Mailpost">
+                        <span class="icon"><i class="icon-Mail_this_post"></i></span>
+                        <span class="Mailthispost">Email this post</span>
+                        <form class="email-me-the-post" method="post" novalidate="novalidate">
+                            <div class="input-name  ">
+                                <input type="hidden" name="contentId" value="45056">
+                                <input type="text" name="name" class="required" required="" placeholder="Enter Your Name" autocomplete="false">
+                                <div class="error-name">
+                                    Please enter a valid input.
+                                </div>
+                            </div>
+                            <div class="input-email ">
+                                <input type="text" class="email required" required="" name="emails" placeholder="Enter Email ID’s ( Separated by commas )" autocomplete="false">
+                                <div class="error-email">
+                                    Please enter a valid email id or comma separated email id's.
+                                </div>
+                            </div>
+                            <button type="submit" class="Submit-mailpost">Submit</button>
+                        </form>
+                    </div>
+                    <div class="Mailpost-thankyou">
+                        <i class="icon-success"></i>
+                        <span class="Mailthispost">The post has been successfully mailed.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="EmailthisPost" data-toggle="modal" data-target="#emailpostpop">
+            <i class="icon-Mail_this_post"></i>
+            <span class="EmailthisPost-text">Email <span>this Post</span></span>
+        </span> 
+        <span class="viewsblogsec">
+            <span class="viewscount details-page-views-count"><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 831</span>
+        </span>
+        <span class="commentsblogsec">
+            <a href="https://www.edureka.co/blog/spark-streaming/#comments-wrapper" class="commentcount">
+                <span><i class="icon-comments"></i></span>
+            </a>&nbsp;&nbsp;
+            <a class="disqus-comment-count" data-disqus-url="https://www.edureka.co/blog/spark-streaming/" href="https://www.edureka.co/blog/spark-streaming/#disqus_thread">0 </a>
+        </span>
+    </article>
+            <article class="col-md-3 col-lg-3 col-sm-3 col-xs-12 related-blog hidden-sm hidden-xs">
+            <ul class="pager">
+                <li><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#" class="show-prev-in-series"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#" class="show-next-in-series"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            </ul>
+        </article>
+            <!-- <article class = "col-md-3 col-lg-3 col-sm-3 col-xs-12 downloadpdfblog">
+         <span class = "downloadpdf"></span>
+ </article> -->
+</section>                                            <section class="col-md-12 col-lg-12 col-sm-12 col-xs-12 blogcontentsec">
+                                                <article class="maincontentblog">
+                                                    <p class="contentblogdetail">
+                                                        </p><p style="text-align: justify;"><span style="font-size: 14px;"><span style="font-family: verdana, geneva, sans-serif;">Spark Streaming is an extension of the core Spark API that enables scalable, high-throughput, fault-tolerant stream processing of live data streams. Spark Streaming can be used to stream live data and processing can happen in real time.&nbsp;Spark Streaming’s ever-growing user base consists of household names like Uber, Netflix&nbsp;and Pinterest.</span></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">When it comes to Real Time Data Analytics, Spark Streaming provides a single platform to ingest data for fast and live processing in Apache Spark. Through this blog, I will introduce you to this new exciting domain of Spark Streaming and we will go through a complete use case, <em>Twitter Sentiment Analysis</em>&nbsp;using Spark Streaming.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The following are the topics that will be covered in this blog:</span></p>
+<ol style="text-align: justify;">
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#What_Is_Streaming">What is Streaming?</a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#Why_Spark_Streaming">Why Spark Streaming?</a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#Spark_Streaming_Overview">Spark Streaming Overview</a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#Spark_Streaming_Features">Spark Streaming Features</a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#Spark_Streaming_Fundamentals">Spark Streaming Fundamentals</a></span><br>
+<span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-size: 12px;">5.1&nbsp;</span><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#Streaming_Context">Streaming Context<br>
+</a></span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-size: 12px;">5.2</span>&nbsp;<a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#DStream">DStream<br>
+</a></span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-size: 12px;">5.3</span>&nbsp;<a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#Caching">Caching/ Persistence<br>
+</a></span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-size: 12px;">5.4</span>&nbsp;<a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#Accumulators_BroadcastVariables_Checkpoints">Accumulators, Broadcast Variables and Checkpoints</a><a name="What_Is_Streaming"></a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#Use_Case_Twitter_Sentiment_Analysis">Use Case – Twitter Sentiment Analysis</a></span></li>
+</ol>
+<h2 style="text-align: justify;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;">What is Streaming?</span></strong></h2>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Data Streaming is a technique for transferring data so that it can be processed as a steady and continuous stream. Streaming technologies are becoming increasingly important with the growth of the Internet.</span></p>
+<p style="text-align: center;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;"><img class="aligncenter size-full wp-image-45102" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/What-Is-Streaming-Spark-Streaming-Edureka-1.png" alt="What Is Streaming - Spark Streaming - Edureka" width="2048" height="672" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/What-Is-Streaming-Spark-Streaming-Edureka-1.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/What-Is-Streaming-Spark-Streaming-Edureka-1-150x49.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/What-Is-Streaming-Spark-Streaming-Edureka-1-300x98.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/What-Is-Streaming-Spark-Streaming-Edureka-1-768x252.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/What-Is-Streaming-Spark-Streaming-Edureka-1-528x173.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/What-Is-Streaming-Spark-Streaming-Edureka-1-549x180.png 549w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-size: 12px;"><a name="Why_Spark_Streaming"></a>Figure: </span></span></strong><span style="font-size: 12px;"><em><span style="font-family: verdana, geneva, sans-serif;">What is Streaming?</span></em></span></p>
+<h2 style="text-align: left;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;">Why Spark Streaming?</span></strong></h2>
+<p style="text-align: justify;"><span style="font-size: 14px;"><span style="font-family: verdana, geneva, sans-serif;">We can use Spark Streaming to stream real-time data from various sources like Twitter, Stock Market and Geographical Systems and perform powerful analytics to help businesses.&nbsp;</span></span></p>
+<p style="text-align: center;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;"><img class="aligncenter size-full wp-image-45104" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Spark-Streaming-Spark-Streaming-Edureka.png" alt="Spark Streaming - Spark Streaming - Edureka" width="2048" height="718" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Streaming-Edureka-150x53.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Streaming-Edureka-300x105.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Streaming-Edureka-768x269.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Streaming-Edureka-528x185.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Streaming-Edureka-513x180.png 513w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-size: 12px;"><a name="Spark_Streaming_Overview"></a>Figure: </span></span></strong><em><span style="font-family: verdana, geneva, sans-serif; font-size: 12px;">Why Spark Streaming?</span></em></p>
+<p style="text-align: center;"><a class="maxbutton-16 maxbutton maxbutton-enroll-yellow-big" target="_blank" href="https://www.edureka.co/apache-spark-scala-training?utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-streaming"><span class="mb-text">GET STARTED WITH SPARK</span></a></p>
+<h2 style="text-align: justify;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;">Spark Streaming Overview</span></strong></h2>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><em>Spark Streaming</em> is used for processing real-time streaming data. It is a useful addition to the core Spark API. Spark Streaming enables high-throughput and fault-tolerant stream processing of live data streams. </span></p>
+<p style="text-align: center;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><img class="aligncenter size-full wp-image-45109" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Spark-Streaming-Overview-Spark-Streaming-Edureka.png" alt="Spark Streaming Overview - Spark Streaming - Edureka" width="2048" height="244" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Overview-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Overview-Spark-Streaming-Edureka-150x18.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Overview-Spark-Streaming-Edureka-300x36.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Overview-Spark-Streaming-Edureka-768x91.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Overview-Spark-Streaming-Edureka-528x63.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Overview-Spark-Streaming-Edureka-590x70.png 590w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-size: 12px;"><strong>Figure:</strong> <em>Streams in Spark Streaming&nbsp;</em></span></span></p>
+<p><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">The fundamental stream unit is DStream <a name="Spark_Streaming_Features"></a>which is basically a series of RDDs to process the real-time data.</span></p>
+<h2 style="text-align: justify;"><strong><span style="font-size: 16px; font-family: verdana, geneva, sans-serif;">Spark Streaming Features</span></strong></h2>
+<ol>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Scaling: </strong>Spark Streaming can easily&nbsp;scale to hundreds of nodes.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Speed: </strong>It a</span>chieves low latency.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Fault Tolerance: </strong>Spark has the ability to e</span>fficiently recover from failures.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Integration:&nbsp;</strong></span>Spark integrates with batch and real-time processing.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Business Analysis: </strong>Spark Streaming is u</span>sed to track the behavior of customers which can be used in business analysis.</span></li>
+</ol>
+<p><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark Streaming Workflow </span></strong></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark Streaming workflow has four high-level stages. The first is to stream data from various sources. These sources can be streaming data sources like Akka, Kafka, Flume, AWS or Parquet for real-time streaming. The second type of sources includes HBase, MySQL, PostgreSQL, Elastic Search, Mongo DB and Cassandra for static/batch streaming. Once this happens, Spark can be used to perform Machine Learning on the data through its MLlib API. Further, Spark SQL is used to perform further operations on this data. Finally, the streaming output can be stored into various data storage systems like HBase, Cassandra, MemSQL, Kafka, Elastic Search, HDFS and local file system.</span></p>
+<p><img class="aligncenter size-full wp-image-45059" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Overview-Spark-Streaming-Edureka.png" alt="Overview - Spark Streaming - Edureka" width="2048" height="750" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Overview-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Overview-Spark-Streaming-Edureka-150x55.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Overview-Spark-Streaming-Edureka-300x110.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Overview-Spark-Streaming-Edureka-768x281.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Overview-Spark-Streaming-Edureka-528x193.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Overview-Spark-Streaming-Edureka-492x180.png 492w" sizes="(max-width: 2048px) 100vw, 2048px"></p>
+<p style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 12px;"><strong><a name="Spark_Streaming_Fundamentals"></a>Figure:</strong> <em>Overview Of Spark Streaming</em></span></p>
+<h2 style="text-align: left;"><strong><span style="font-size: 16px; font-family: verdana, geneva, sans-serif;">Spark Streaming Fundamentals</span></strong></h2>
+<ol>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Streaming Context</span></li>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">DStream</span></li>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><a name="Streaming_Context"></a>Caching</span></li>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Accumulators, Broadcast Variables and Checkpoints</span></li>
+</ol>
+<p><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;">Streaming Context</span></strong></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><em>Streaming Context</em> consumes a stream of data in Spark. It registers an <em>Input DStream</em> to produce a <em>Receiver</em> object.&nbsp;It is the main entry point for Spark functionality. Spark provides a number of default implementations of sources like Twitter, Akka Actor and ZeroMQ that are accessible from the context.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><img class="aligncenter size-full wp-image-45106" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Streaming-Context-Spark-Streaming-Edureka.png" alt="Streaming Context - Spark Streaming - Edureka" width="2048" height="438" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Streaming-Context-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Streaming-Context-Spark-Streaming-Edureka-150x32.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Streaming-Context-Spark-Streaming-Edureka-300x64.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Streaming-Context-Spark-Streaming-Edureka-768x164.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Streaming-Context-Spark-Streaming-Edureka-528x113.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Streaming-Context-Spark-Streaming-Edureka-590x126.png 590w" sizes="(max-width: 2048px) 100vw, 2048px"></span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">A StreamingContext object can be created from a SparkContext object. A SparkContext represents the connection to a Spark cluster and can be used to create RDDs, accumulators and broadcast variables on that cluster.<a name="DStream"></a></span></p>
+<div><div id="highlighter_721890" class="syntaxhighlighter  scala"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="scala keyword">import</code> <code class="scala plain">org.apache.spark.</code><code class="scala keyword">_</code></div><div class="line number2 index1 alt1"><code class="scala keyword">import</code> <code class="scala plain">org.apache.spark.streaming.</code><code class="scala keyword">_</code></div><div class="line number3 index2 alt2"><code class="scala keyword">var</code> <code class="scala plain">ssc </code><code class="scala keyword">=</code> <code class="scala keyword">new</code> <code class="scala plain">StreamingContext(sc,Seconds(</code><code class="scala value">1</code><code class="scala plain">))</code></div></div></td></tr></tbody></table></div></div>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;"><strong>DStream</strong></span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><em>Discretized Stream</em> (DStream) is the basic abstraction provided by Spark Streaming. It is a continuous stream of data.&nbsp;It is received from a data source or a processed data stream generated by transforming the input stream. </span></p>
+<p style="text-align: center;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><img class="aligncenter size-full wp-image-45110" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/DStream-Operation-Spark-Streaming-Edureka.png" alt="DStream Operation - Spark Streaming - Edureka" width="2500" height="553" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Operation-Spark-Streaming-Edureka.png 2500w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Operation-Spark-Streaming-Edureka-150x33.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Operation-Spark-Streaming-Edureka-300x66.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Operation-Spark-Streaming-Edureka-768x170.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Operation-Spark-Streaming-Edureka-528x117.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Operation-Spark-Streaming-Edureka-590x131.png 590w" sizes="(max-width: 2500px) 100vw, 2500px"><span style="font-size: 12px;"><strong>Figure:</strong> <em>Extracting words from an Input DStream</em></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Internally, a DStream is represented by a continuous series of RDDs and each RDD contains data from a certain interval.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Input DStreams:&nbsp;</strong><em>Input DStreams</em> are DStreams representing the stream of input data received from streaming sources.&nbsp;</span></p>
+<p style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><img class="aligncenter size-full wp-image-45112" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Input-DStream-Spark-Streaming-Edureka.png" alt="Input DStream - Spark Streaming - Edureka" width="2048" height="590" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Input-DStream-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Input-DStream-Spark-Streaming-Edureka-150x43.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Input-DStream-Spark-Streaming-Edureka-300x86.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Input-DStream-Spark-Streaming-Edureka-768x221.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Input-DStream-Spark-Streaming-Edureka-528x152.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Input-DStream-Spark-Streaming-Edureka-590x170.png 590w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-size: 12px;"><strong>Figure:</strong>&nbsp;<i>The Receiver sends data onto the Input DStream where each Batch contains RDDs </i></span></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Every input DStream is associated with a Receiver object which receives the data from a source and stores it in Spark’s memory for processing.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Transformations on DStreams:</strong></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Any operation applied on a DStream translates to operations on the underlying RDDs.&nbsp;Transformations allow the data from the input DStream to be modified similar to RDDs. DStreams support many of the transformations available on normal Spark RDDs.&nbsp;</span></p>
+<p style="text-align: center;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><strong><img class="aligncenter size-full wp-image-45117" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/DStream-Transformations-Spark-Streaming-Edureka.png" alt="DStream Transformations - Spark Streaming - Edureka" width="2048" height="583" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Transformations-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Transformations-Spark-Streaming-Edureka-150x43.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Transformations-Spark-Streaming-Edureka-300x85.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Transformations-Spark-Streaming-Edureka-768x219.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Transformations-Spark-Streaming-Edureka-528x150.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/DStream-Transformations-Spark-Streaming-Edureka-590x168.png 590w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-size: 12px;">Figure: </span></strong><span style="font-size: 12px;"><em>DStream Transformations</em></span></span></p>
+<p>&nbsp;<span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The following are some of the popular transformations on DStreams:</span></p>
+<table border="1" width="100%" cellspacing="1" cellpadding="1">
+<tbody>
+<tr style="height: 24px;">
+<td style="width: 20.3304%; text-align: center; height: 24px; padding: 8px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">map(<em>func</em>)</span></td>
+<td style="width: 149.67%; height: 24px; text-align: justify; padding: 8px;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">map(<i>func</i>) returns a new DStream by passing each element of the source DStream through a function&nbsp;<i>func.</i></span></td>
+</tr>
+<tr style="height: 48.3438px;">
+<td style="width: 20.3304%; text-align: center; height: 48.3438px; padding: 8px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">flatMap(<em>func</em>)</span></td>
+<td style="width: 149.67%; height: 48.3438px; text-align: justify; padding: 8px;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">flatMap(<i>func</i>) is similar to map(<i>func</i>) but each input item can be mapped to 0 or more output items and returns a new DStream by passing each source element through a function&nbsp;<i>func.</i></span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 20.3304%; text-align: center; height: 24px; padding: 8px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">filter(<em>func</em>)</span></td>
+<td style="width: 149.67%; height: 24px; text-align: justify; padding: 8px;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">filter(<i>func</i>) returns a new DStream by selecting only the records of the source DStream on which <i>func </i>returns true.</span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 20.3304%; text-align: center; height: 24px; padding: 8px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">reduce(<em>func</em>)</span></td>
+<td style="width: 149.67%; height: 24px; text-align: justify; padding: 8px;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">reduce(<i>func</i>) returns a new DStream of single-element RDDs by aggregating the elements in each RDD of the source DStream using a function <i>func</i>.</span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 20.3304%; text-align: center; height: 24px; padding: 8px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">groupBy(<em>func</em>)</span></td>
+<td style="width: 149.67%; height: 24px; text-align: justify; padding: 8px;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">groupBy(<i>func</i>) returns the new RDD which basically is made up with a key and corresponding list of items of that group.</span></td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: center;"><a class="maxbutton-16 maxbutton maxbutton-enroll-yellow-big" target="_blank" href="https://www.edureka.co/apache-spark-scala-training?utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-streaming"><span class="mb-text">LEARN SPARK FROM EXPERTS</span></a></p>
+<p><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><strong>Output DStreams:&nbsp;</strong></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Output operations allow DStream’s data to be pushed out to external systems like databases or file systems. Output operations trigger the actual execution of all the DStream transformations.</span></p>
+<p style="text-align: center;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;"><img class="aligncenter size-full wp-image-45113" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Output-Operations-Spark-Streaming-Edureka.png" alt="Output Operations - Spark Streaming - Edureka" width="2048" height="500" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Operations-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Operations-Spark-Streaming-Edureka-150x37.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Operations-Spark-Streaming-Edureka-300x73.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Operations-Spark-Streaming-Edureka-768x187.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Operations-Spark-Streaming-Edureka-528x129.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Operations-Spark-Streaming-Edureka-590x144.png 590w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-size: 12px;"><a name="Caching"></a>Figure: </span></span></strong><span style="font-size: 12px;"><em><span style="font-family: verdana, geneva, sans-serif;">Output Operations on DStreams</span></em></span></p>
+<p><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;">Caching</span></strong></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><em>DStreams</em> allow developers to cache/ persist the stream’s data in memory. This is useful if the data in the DStream will be computed multiple times. This can be done using the <em>persist()</em>&nbsp;method on a DStream. </span></p>
+<p style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><img class="aligncenter size-full wp-image-45137" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Caching-Spark-Streaming-Edureka.png" alt="Caching - Spark Streaming - Edureka" width="2048" height="447" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Caching-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Caching-Spark-Streaming-Edureka-150x33.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Caching-Spark-Streaming-Edureka-300x66.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Caching-Spark-Streaming-Edureka-768x168.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Caching-Spark-Streaming-Edureka-528x115.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Caching-Spark-Streaming-Edureka-590x129.png 590w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-size: 12px;"><strong>Figure:</strong> <em>Caching into 2 Nodes</em></span></span></p>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">For input streams that receive data over the network (such as Kafka, Flume, Sockets, etc.), <a name="Accumulators_BroadcastVariables_Checkpoints"></a>the default persistence level is set to replicate the data to two nodes for fault-tolerance.</span></p>
+<p><strong><span style="font-size: 16px; font-family: verdana, geneva, sans-serif;">Accumulators, Broadcast Variables and Checkpoints</span></strong></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Accumulators:</strong> <em>Accumulators</em> are variables that are only added through an associative and commutative operation. They are used to implement counters or sums. Tracking accumulators in the UI can be useful for understanding the progress of running stages. Spark natively supports numeric accumulators. We can create named or unnamed accumulators.</span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><strong>Broadcast Variables:</strong>&nbsp;<em>Broadcast variables</em> allow the programmer to keep a read-only variable cached on each machine rather than shipping a copy of it with tasks. They can be used to give every node a copy of a large input dataset in an efficient manner. Spark also attempts to distribute broadcast variables using efficient broadcast algorithms to reduce communication cost.</span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><strong>Checkpoints:</strong>&nbsp;<em>Checkpoints</em> are similar to checkpoints in gaming. They make it run 24/7 and make it resilient to failures unrelated to the application logic.</span></p>
+<p style="text-align: center;"><strong><span style="font-size: 16px; font-family: verdana, geneva, sans-serif;"><img class="aligncenter size-full wp-image-45136" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Checkpoints-Spark-Streaming-Edureka-1.png" alt="Checkpoints - Spark Streaming - Edureka" width="2048" height="512" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Checkpoints-Spark-Streaming-Edureka-1.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Checkpoints-Spark-Streaming-Edureka-1-150x37.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Checkpoints-Spark-Streaming-Edureka-1-300x75.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Checkpoints-Spark-Streaming-Edureka-1-768x192.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Checkpoints-Spark-Streaming-Edureka-1-528x132.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Checkpoints-Spark-Streaming-Edureka-1-590x147.png 590w" sizes="(max-width: 2048px) 100vw, 2048px"><br>
+<span style="font-size: 12px;"><a name="Use_Case_Twitter_Sentiment_Analysis"></a>Figure: </span></span></strong><em><span style="font-size: 12px; font-family: verdana, geneva, sans-serif;">Features of Checkpoints</span></em></p>
+<h2><strong><span style="font-size: 16px; font-family: verdana, geneva, sans-serif;">Use Case – Twitter Sentiment Analysis</span></strong></h2>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Now that we have understood the core concepts of Spark Streaming, let us solve a real-life problem using Spark Streaming.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Problem Statement:&nbsp;</strong>To design a Twitter Sentiment Analysis System where we populate&nbsp;real-time sentiments for crisis management, service adjusting and target marketing.</span></p>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Applications of Sentiment Analysis:</strong></span></p>
+<ul>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Predict the success of a movie</span></li>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Predict political campaign success</span></li>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Decide whether to invest in a certain company</span></li>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Targeted advertising</span></li>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Review products and services</span></li>
+</ul>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Spark Streaming Implementation:</strong></span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Find the Pseudo Code below:</span></p>
+<div><div id="highlighter_341798" class="syntaxhighlighter  scala"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div><div class="line number52 index51 alt1">52</div><div class="line number53 index52 alt2">53</div><div class="line number54 index53 alt1">54</div><div class="line number55 index54 alt2">55</div><div class="line number56 index55 alt1">56</div><div class="line number57 index56 alt2">57</div><div class="line number58 index57 alt1">58</div><div class="line number59 index58 alt2">59</div><div class="line number60 index59 alt1">60</div><div class="line number61 index60 alt2">61</div><div class="line number62 index61 alt1">62</div><div class="line number63 index62 alt2">63</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="scala comments">//Import the necessary packages into the Spark Program</code></div><div class="line number2 index1 alt1"><code class="scala keyword">import</code> <code class="scala plain">org.apache.spark.streaming.{Seconds, StreamingContext}</code></div><div class="line number3 index2 alt2"><code class="scala keyword">import</code> <code class="scala plain">org.apache.spark.SparkContext.</code><code class="scala keyword">_</code></div><div class="line number4 index3 alt1"><code class="scala plain">...</code></div><div class="line number5 index4 alt2"><code class="scala keyword">import</code> <code class="scala plain">java.io.File</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="scala keyword">object</code> <code class="scala plain">twitterSentiment {</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="scala keyword">def</code> <code class="scala plain">main(args</code><code class="scala keyword">:</code> <code class="scala plain">Array[String]) {</code></div><div class="line number10 index9 alt1"><code class="scala keyword">if</code> <code class="scala plain">(args.length &lt; </code><code class="scala value">4</code><code class="scala plain">) {</code></div><div class="line number11 index10 alt2"><code class="scala plain">System.err.println(</code><code class="scala string">"Usage: TwitterPopularTags &lt;consumer key&gt; &lt;consumer secret&gt; "</code> <code class="scala plain">+&nbsp;</code><code class="scala string">"&lt;access token&gt; &lt;access token secret&gt; [&lt;filters&gt;]"</code><code class="scala plain">)</code></div><div class="line number12 index11 alt1"><code class="scala plain">System.exit(</code><code class="scala value">1</code><code class="scala plain">)</code></div><div class="line number13 index12 alt2"><code class="scala plain">}</code></div><div class="line number14 index13 alt1">&nbsp;</div><div class="line number15 index14 alt2"><code class="scala plain">StreamingExamples.setStreamingLogLevels()</code></div><div class="line number16 index15 alt1"><code class="scala comments">//Passing our Twitter keys and tokens as arguments for authorization</code></div><div class="line number17 index16 alt2"><code class="scala keyword">val</code> <code class="scala plain">Array(consumerKey, consumerSecret, accessToken, accessTokenSecret) </code><code class="scala keyword">=</code> <code class="scala plain">args.take(</code><code class="scala value">4</code><code class="scala plain">)</code></div><div class="line number18 index17 alt1"><code class="scala keyword">val</code> <code class="scala plain">filters </code><code class="scala keyword">=</code> <code class="scala plain">args.takeRight(args.length - </code><code class="scala value">4</code><code class="scala plain">)</code></div><div class="line number19 index18 alt2">&nbsp;</div><div class="line number20 index19 alt1"><code class="scala comments">// Set the system properties so that Twitter4j library used by twitter stream</code></div><div class="line number21 index20 alt2"><code class="scala comments">// Use them to generate OAuth credentials</code></div><div class="line number22 index21 alt1"><code class="scala plain">System.setProperty(</code><code class="scala string">"twitter4j.oauth.consumerKey"</code><code class="scala plain">, consumerKey)</code></div><div class="line number23 index22 alt2"><code class="scala plain">...</code></div><div class="line number24 index23 alt1"><code class="scala plain">System.setProperty(</code><code class="scala string">"twitter4j.oauth.accessTokenSecret"</code><code class="scala plain">, accessTokenSecret)</code></div><div class="line number25 index24 alt2">&nbsp;</div><div class="line number26 index25 alt1"><code class="scala keyword">val</code> <code class="scala plain">sparkConf </code><code class="scala keyword">=</code> <code class="scala keyword">new</code> <code class="scala plain">SparkConf().setAppName(</code><code class="scala string">"twitterSentiment"</code><code class="scala plain">).setMaster(</code><code class="scala string">"local[2]"</code><code class="scala plain">)</code></div><div class="line number27 index26 alt2"><code class="scala keyword">val</code> <code class="scala plain">ssc </code><code class="scala keyword">=</code> <code class="scala keyword">new</code> <code class="scala plain">Streaming Context</code></div><div class="line number28 index27 alt1"><code class="scala keyword">val</code> <code class="scala plain">stream </code><code class="scala keyword">=</code> <code class="scala plain">TwitterUtils.createStream(ssc, None, filters)</code></div><div class="line number29 index28 alt2">&nbsp;</div><div class="line number30 index29 alt1"><code class="scala comments">//Input DStream transformation using flatMap</code></div><div class="line number31 index30 alt2"><code class="scala keyword">val</code> <code class="scala plain">tags </code><code class="scala keyword">=</code> <code class="scala plain">stream.flatMap { status </code><code class="scala keyword">=</code><code class="scala plain">&gt; Get Text From The Hashtags }</code></div><div class="line number32 index31 alt1">&nbsp;</div><div class="line number33 index32 alt2"><code class="scala comments">//RDD transformation using sortBy and then map function</code></div><div class="line number34 index33 alt1"><code class="scala plain">tags.countByValue()</code></div><div class="line number35 index34 alt2"><code class="scala plain">.foreachRDD { rdd </code><code class="scala keyword">=</code><code class="scala plain">&gt;</code></div><div class="line number36 index35 alt1"><code class="scala keyword">val</code> <code class="scala plain">now </code><code class="scala keyword">=</code> <code class="scala plain">Get current time of each Tweet</code></div><div class="line number37 index36 alt2"><code class="scala plain">rdd</code></div><div class="line number38 index37 alt1"><code class="scala plain">.sortBy(</code><code class="scala keyword">_</code><code class="scala plain">.</code><code class="scala keyword">_</code><code class="scala value">2</code><code class="scala plain">)</code></div><div class="line number39 index38 alt2"><code class="scala plain">.map(x </code><code class="scala keyword">=</code><code class="scala plain">&gt; (x, now))</code></div><div class="line number40 index39 alt1"><code class="scala comments">//Saving our output at ~/twitter/ directory</code></div><div class="line number41 index40 alt2"><code class="scala plain">.saveAsTextFile(s</code><code class="scala string">"~/twitter/$now"</code><code class="scala plain">)</code></div><div class="line number42 index41 alt1"><code class="scala plain">}</code></div><div class="line number43 index42 alt2">&nbsp;</div><div class="line number44 index43 alt1"><code class="scala comments">//DStream transformation using filter and map functions</code></div><div class="line number45 index44 alt2"><code class="scala keyword">val</code> <code class="scala plain">tweets </code><code class="scala keyword">=</code> <code class="scala plain">stream.filter {t </code><code class="scala keyword">=</code><code class="scala plain">&gt;</code></div><div class="line number46 index45 alt1"><code class="scala keyword">val</code> <code class="scala plain">tags </code><code class="scala keyword">=</code> <code class="scala plain">t. Split On Spaces .filter(</code><code class="scala keyword">_</code><code class="scala plain">.startsWith(</code><code class="scala string">"#"</code><code class="scala plain">)). Convert To Lower Case</code></div><div class="line number47 index46 alt2"><code class="scala plain">tags.exists { x </code><code class="scala keyword">=</code><code class="scala plain">&gt; </code><code class="scala keyword">true</code> <code class="scala plain">}</code></div><div class="line number48 index47 alt1"><code class="scala plain">}</code></div><div class="line number49 index48 alt2">&nbsp;</div><div class="line number50 index49 alt1"><code class="scala keyword">val</code> <code class="scala plain">data </code><code class="scala keyword">=</code> <code class="scala plain">tweets.map { status </code><code class="scala keyword">=</code><code class="scala plain">&gt;</code></div><div class="line number51 index50 alt2"><code class="scala keyword">val</code> <code class="scala plain">sentiment </code><code class="scala keyword">=</code> <code class="scala plain">SentimentAnalysisUtils.detectSentiment(status.getText)</code></div><div class="line number52 index51 alt1"><code class="scala keyword">val</code> <code class="scala plain">tagss </code><code class="scala keyword">=</code> <code class="scala plain">status.getHashtagEntities.map(</code><code class="scala keyword">_</code><code class="scala plain">.getText.toLowerCase)</code></div><div class="line number53 index52 alt2"><code class="scala plain">(status.getText, sentiment.toString, tagss.toString())</code></div><div class="line number54 index53 alt1"><code class="scala plain">}</code></div><div class="line number55 index54 alt2">&nbsp;</div><div class="line number56 index55 alt1"><code class="scala plain">data.print()</code></div><div class="line number57 index56 alt2"><code class="scala comments">//Saving our output at ~/ with filenames starting like twitters</code></div><div class="line number58 index57 alt1"><code class="scala plain">data.saveAsTextFiles(</code><code class="scala string">"~/twitters"</code><code class="scala plain">,</code><code class="scala string">"20000"</code><code class="scala plain">)</code></div><div class="line number59 index58 alt2">&nbsp;</div><div class="line number60 index59 alt1"><code class="scala plain">ssc.start()</code></div><div class="line number61 index60 alt2"><code class="scala plain">ssc.awaitTermination()</code></div><div class="line number62 index61 alt1"><code class="scala spaces">&nbsp;</code><code class="scala plain">}</code></div><div class="line number63 index62 alt2"><code class="scala plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><em>Click here to <a href="https://goo.gl/asFpOF" target="_blank">get the&nbsp;full source code</a> of&nbsp;</em><em>Twitter Sentiment Analysis using Spark Streaming.</em></span></p>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Results:</strong></span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">The following are the results that are displayed in the Eclipse IDE while running the Twitter Sentiment Streaming program.</span></p>
+<p><img class="aligncenter size-full wp-image-45070" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Eclipse-Output-Spark-Streaming-Edureka.png" alt="Eclipse Output - Spark Streaming - Edureka" width="2048" height="757" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Eclipse-Output-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Eclipse-Output-Spark-Streaming-Edureka-150x55.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Eclipse-Output-Spark-Streaming-Edureka-300x111.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Eclipse-Output-Spark-Streaming-Edureka-768x284.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Eclipse-Output-Spark-Streaming-Edureka-528x195.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Eclipse-Output-Spark-Streaming-Edureka-487x180.png 487w" sizes="(max-width: 2048px) 100vw, 2048px"></p>
+<p style="text-align: center;"><span style="font-size: 12px; font-family: verdana, geneva, sans-serif;"><strong>Figure:</strong> <em>Sentiment Analysis Output in Eclipse IDE</em></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">As we can see in the screenshot, all the tweets are categorized into Positive, Neutral and Negative according to the sentiment of the contents of the tweets.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The output of the Sentiments of the Tweets is stored into folders and files according to the time they were created. This output can be stored on the local file system or HDFS as necessary. The output directory looks like this:</span></p>
+<p style="text-align: center;"><img class="aligncenter size-full wp-image-45075" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Output-Directory-Spark-Streaming-Edureka.png" alt="Output Directory - Spark Streaming - Edureka" width="2048" height="731" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Directory-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Directory-Spark-Streaming-Edureka-150x54.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Directory-Spark-Streaming-Edureka-300x107.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Directory-Spark-Streaming-Edureka-768x274.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Directory-Spark-Streaming-Edureka-528x188.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Directory-Spark-Streaming-Edureka-505x180.png 505w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-family: verdana, geneva, sans-serif; font-size: 12px;"><strong>Figure:</strong> <em>Output folders inside our ‘twitter’ project folder</em></span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Here, inside the twitter directory, we can find the usernames of the Twitter users along with the timestamp for every tweet as shown below:</span></p>
+<p style="text-align: center;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><img class="aligncenter size-full wp-image-45077" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Output-Usernames-Spark-Streaming-Edureka.png" alt="Output Usernames - Spark Streaming - Edureka" width="2048" height="723" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Usernames-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Usernames-Spark-Streaming-Edureka-150x53.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Usernames-Spark-Streaming-Edureka-300x106.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Usernames-Spark-Streaming-Edureka-768x271.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Usernames-Spark-Streaming-Edureka-528x186.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Usernames-Spark-Streaming-Edureka-510x180.png 510w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-size: 12px;"><strong>Figure:</strong> <em>Output file containing Twitter usernames with timestamp</em></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Now that we have got the Twitter usernames and timestamp, let us look at the Sentiments and tweets stored in the main directory. Here, every tweet is followed by the sentiment emotion. This Sentiment that is stored is further used for analyzing a vast multitude of insights by companies.</span></p>
+<p style="text-align: center;"><img class="aligncenter size-full wp-image-45078" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Output-Tweets-Sentiments-Spark-Streaming-Edureka.png" alt="Output Tweets &amp; Sentiments - Spark Streaming - Edureka" width="2048" height="723" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Tweets-Sentiments-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Tweets-Sentiments-Spark-Streaming-Edureka-150x53.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Tweets-Sentiments-Spark-Streaming-Edureka-300x106.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Tweets-Sentiments-Spark-Streaming-Edureka-768x271.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Tweets-Sentiments-Spark-Streaming-Edureka-528x186.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Output-Tweets-Sentiments-Spark-Streaming-Edureka-510x180.png 510w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-size: 12px; font-family: verdana, geneva, sans-serif;"><strong>Figure: </strong><em>Output file containing tweets with sentiments</em></span></p>
+<p style="text-align: left;"><strong><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Tweaking Code:</span></strong></p>
+<p style="text-align: left;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Now, let us modify our code a little to get sentiments for specific hashtags (topics). Currently, Donald Trump, the President of the United States is trending across news channels and online social media. Let us look at the sentiments associated with the keyword ‘<em><strong>Trump</strong></em>‘.&nbsp;</span></p>
+<p style="text-align: center;"><img class="aligncenter size-full wp-image-45082" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Donald-Trump-Sentiments-Spark-Streaming-Edureka.png" alt="Donald Trump Sentiments - Spark Streaming - Edureka" width="2048" height="697" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Donald-Trump-Sentiments-Spark-Streaming-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Donald-Trump-Sentiments-Spark-Streaming-Edureka-150x51.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Donald-Trump-Sentiments-Spark-Streaming-Edureka-300x102.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Donald-Trump-Sentiments-Spark-Streaming-Edureka-768x261.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Donald-Trump-Sentiments-Spark-Streaming-Edureka-528x180.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Donald-Trump-Sentiments-Spark-Streaming-Edureka-529x180.png 529w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-family: verdana, geneva, sans-serif; font-size: 12px;"><strong>Figure:</strong>&nbsp;<i>Performing Sentiment Analysis on Tweets with ‘Trump’ Keyword</i></span></p>
+<p style="text-align: center;"><a class="maxbutton-22 maxbutton maxbutton-certification-blue-big" target="_blank" href="https://goo.gl/asFpOF?utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-streaming-get-full-source-code"><span class="mb-text">GET FULL SOURCE CODE</span></a></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Moving Ahead:</strong></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">As we have seen from our Sentiment Analysis demonstration, we can extract sentiments of particular topics just like we did for ‘Trump’. Similarly,&nbsp;Sentiment Analytics can be used in crisis management, service adjusting and target marketing by companies around the world.&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Companies using Spark Streaming for Sentiment Analysis have applied the same approach to achieve the following:</span></p>
+<ol>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Enhancing the customer experience</span></li>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Gaining competitive advantage</span></li>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Gaining Business Intelligence</span></li>
+<li style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Revitalizing a losing brand</span></li>
+</ol>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">With this, we have come to the end of this <em>Spark Streaming Tutorial </em>blog. By now, you must have acquired a sound understanding of what Spark Streaming&nbsp;is. The Twitter Sentiment Analysis use case&nbsp;will give you the required confidence to work on any future projects you encounter in Spark Streaming and Apache Spark. Practice is the key to mastering any subject and I hope this blog has created enough interest in you to explore further on Apache Spark.</span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><em>We recommend the following Spark Streaming YouTube Tutorial&nbsp;from Edureka to begin with:</em></span></p>
+<div>
+<div>
+<h2 style="text-align: center;"><strong><span style="font-size: 16px; font-family: verdana, geneva, sans-serif;">Spark Streaming | Twitter Sentiment Analysis Example | Edureka</span></strong></h2>
+<div id="schema-videoobject" class="video-container"><iframe src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/uD_q4Rm4i2Q.html" width="640" height="360" frameborder="0" allowfullscreen="allowfullscreen" data-mce-fragment="1"></iframe></div>
+</div>
+</div>
+<p style="text-align: justify;">
+</p><p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><em>This video series on Spark Tutorial provide a complete background into the components along with Real-Life use cases such as <a href="https://www.youtube.com/watch?v=uD_q4Rm4i2Q&amp;amp;amp;amp;amp;amp;list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank">Twitter Sentiment Analysis</a>, <a href="https://www.youtube.com/watch?v=zeDUx_Jf154&amp;amp;amp;amp;amp;amp;list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank">NBA Game Prediction Analysis</a>, <a href="https://www.youtube.com/watch?v=9mELEARcxJo&amp;amp;amp;amp;amp;amp;list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank">Earthquake Detection System</a>,&nbsp;<a href="https://www.youtube.com/watch?v=BQlgZaKvfac&amp;amp;amp;amp;amp;amp;list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank">Flight Data Analytics</a> and <a href="https://www.youtube.com/watch?v=qX1kYJ6h7j8&amp;amp;amp;amp;amp;amp;list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank">Movie Recommendation Systems</a>.&nbsp;We&nbsp;have personally designed the use cases so as to provide an all round expertise to anyone running the code.&nbsp;</em></span></p>
+<p style="text-align: center;"><a class="maxbutton-16 maxbutton maxbutton-enroll-yellow-big" target="_blank" href="https://www.edureka.co/apache-spark-scala-training?utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-streaming"><span class="mb-text">GET SPARK CERTIFIED TODAY</span></a></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><i>Got a question for us? Please mention it in the comments section and we will get back to you at the earliest.&nbsp;</i></span><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;"><i>If you wish to learn Spark and build a career in domain of Spark and build expertise to perform large-scale Data Processing using RDD, Spark Streaming, SparkSQL, MLlib, GraphX and Scala with Real Life use-cases, check out our interactive, live online&nbsp;</i><em><a href="https://goo.gl/q1cRj4" target="_blank">Apache Spark Certification Training</a> here,&nbsp;</em><i>that comes with 24*7 support to guide you throughout your learning period.</i></span></p>
+                                                    <p></p>
+                                                </article>
+                                                <article class="maincontentblog">
+                                                    <p class="contentblogdetail">
+                                                        </p><div id="author-bio-box"><img alt="" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/cdbfe9d2d198794e0996fab7d94e8758" srcset="https://secure.gravatar.com/avatar/cdbfe9d2d198794e0996fab7d94e8758?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80"><span class="author-name">About Sandeep Dayananda (<a href="https://www.edureka.co/blog/author/sandeepdedureka-co/">6 Posts</a>)</span><p>Sandeep Dayananda is a Research Analyst at Edureka. He has expertise in Big Data technologies like Hadoop &amp; Spark, DevOps and Business Intelligence tools. He is passionate in bringing out creative solutions to existing business problems.</p><div class="bio-socials"></div></div><br><div class="clear"></div>                                                    <p></p>
+                                                </article>
+                                                <div class="bot-shareoption">
+                                                    <span class="Shareon-bot">
+                                                        Share on
+                                                    </span>
+                                                    <div class="maxcollection maxcollection-1" data-collection="1"><span class="mb-collection-item item-24" data-doc-id="24_2" data-popup="{&quot;width&quot;:400,&quot;height&quot;:300}"><a class="maxbutton-24 maxbutton maxbutton-circle-social-share-facebook" href="https://www.facebook.com/sharer.php?u=https://www.edureka.co/blog/spark-streaming/&amp;utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-streaming-"><span class="mb-icon"><i class="fa fa-facebook"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-25" data-doc-id="25_2" data-popup="{&quot;width&quot;:550,&quot;height&quot;:420}"><a class="maxbutton-25 maxbutton maxbutton-circle-social-share-twitter" href="https://twitter.com/intent/tweet?url=https://www.edureka.co/blog/spark-streaming/&amp;utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-streaming-"><span class="mb-icon"><i class="fa fa-twitter"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-26" data-doc-id="26_2" data-popup="{&quot;width&quot;:700,&quot;height&quot;:500}"><a class="maxbutton-26 maxbutton maxbutton-circle-social-share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.edureka.co/blog/spark-streaming/&amp;utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-streaming-"><span class="mb-icon"><i class="fa fa-linkedin"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-27" data-doc-id="27_2" data-popup="{&quot;width&quot;:600,&quot;height&quot;:600}"><a class="maxbutton-27 maxbutton maxbutton-circle-social-share-google-plus" href="https://plus.google.com/share?url=https://www.edureka.co/blog/spark-streaming/&amp;utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-streaming-"><span class="mb-icon"><i class="fa fa-google-plus"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span></div>                                                </div>
+                                                                                                    <article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 related-blog next-blog-leftnav">
+                                                        <ul class="pager">
+                                                            <li class="pull-left"><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#" class="show-prev-in-series"><i class="fa fa-angle-left" aria-hidden="true"></i> PREVIOUS</a></li>
+                                                            <li class="pull-right"><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#" class="show-next-in-series">NEXT <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                                        </ul>
+                                                    </article>
+                                                                                                    <section id="edu-related-blog-carousel-2" class="bottom-webinar-widget widget_edu-related-blog-carousel"><div class="heading-title"><h3 class="bottom-widget-title"><span>Related Posts</span></h3></div><article class="Continue-watch-carousel">
+                        <div class="owl-carousel carousel-watch-again-carousel carousel-custom owl-loaded owl-drag"><div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 646px;"><div class="owl-item active" style="width: 151.4px; margin-right: 10px;"><div class="item">
+                        <a class="related-blog-link" href="https://www.edureka.co/blog/spark-tutorial/?utm_source=blog&amp;utm_medium=bottom-related-blog-blogs&amp;utm_campaign=spark-streaming"><article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 box-video-single no-padding">
+                            <div class="video-image">
+                                <img src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Spark-Tutorial-Edureka.png" alt="video image">
+                                
+                            </div>
+                            <div class="video-info">
+                                <span>Spark Tutorial: Real Time Cluster Computing Framework</span>
+                                <div><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 1.7K</div>
+                            </div>
+                        </article></a>
+                    </div></div><div class="owl-item active" style="width: 151.4px; margin-right: 10px;"><div class="item">
+                        <a class="related-blog-link" href="https://www.edureka.co/blog/spark-sql-tutorial/?utm_source=blog&amp;utm_medium=bottom-related-blog-blogs&amp;utm_campaign=spark-streaming"><article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 box-video-single no-padding">
+                            <div class="video-image">
+                                <img src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Spark-SQL-Edureka.png" alt="video image">
+                                
+                            </div>
+                            <div class="video-info">
+                                <span>Spark SQL Tutorial – Understanding Spark SQL With Examples</span>
+                                <div><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 4.5K</div>
+                            </div>
+                        </article></a>
+                    </div></div><div class="owl-item active" style="width: 151.4px; margin-right: 10px;"><div class="item">
+                        <a class="related-blog-link" href="https://www.edureka.co/blog/demystifying-partitioning-in-spark?utm_source=blog&amp;utm_medium=bottom-related-blog-blogs&amp;utm_campaign=spark-streaming"><article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 box-video-single no-padding">
+                            <div class="video-image">
+                                <img src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Demystifying-partitioning-in-spark.png" alt="video image">
+                                
+                            </div>
+                            <div class="video-info">
+                                <span>Demystifying Partitioning in Spark</span>
+                                <div><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 26K</div>
+                            </div>
+                        </article></a>
+                    </div></div><div class="owl-item active" style="width: 151.4px; margin-right: 10px;"><div class="item">
+                        <a class="related-blog-link" href="https://www.edureka.co/blog/apache-spark-vs-hadoop-mapreduce?utm_source=blog&amp;utm_medium=bottom-related-blog-blogs&amp;utm_campaign=spark-streaming"><article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 box-video-single no-padding">
+                            <div class="video-image">
+                                <img src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/b1.jpg" alt="video image">
+                                
+                            </div>
+                            <div class="video-info">
+                                <span>Apache Spark vs Hadoop MapReduce</span>
+                                <div><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 51.4K</div>
+                            </div>
+                        </article></a>
+                    </div></div></div></div><div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots disabled"><div class="owl-dot active"><span></span></div></div></div>
+                    </article></section>
+                                                <!--Comments Area Single post-->
+                                                <section class="padcomments">
+    <span class="comments"> Comments <div class="arrow-down"></div></span>
+    <span class="pull-right comment"> 0 Comments </span>
+</section>
+<section class="commsec" id="comments-wrapper">
+    
+<div id="disqus_thread"><iframe id="dsq-app1" name="dsq-app1" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/saved_resource(2).html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 675px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+
+</section>	
+                                            </section>
+                                        </div>
+                                    </div>
+                                </section>
+                            </section>	
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-xs-12 col-sm-12 no-padding blog-sidepanel"> 
+    <section class="col-lg-12 col-md-12 col-xs-12 col-sm-12 maincontainer detailpagesidebar" data-post_type="post" data-post_name="spark-streaming">
+             <section id="edu-related-blogs-2" class="right-side-widget custom-edu-widgets widget_edu-related-blogs"><h3 class="widget-title"><span>Related Blogs</span></h3><ul class="edu-hiran custom-widget-listing related-blogs"><li><article class="custom-related-post"><a href="https://www.edureka.co/blog/spark-tutorial/?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-streaming" class="custom-rel-thumb"><img width="86" height="50" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Spark-Tutorial-Edureka.png" class="attachment-550x50 size-550x50 wp-post-image" alt="Spark Tutorial - Edureka" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Spark-Tutorial-Edureka.png 816w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Spark-Tutorial-Edureka-150x88.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Spark-Tutorial-Edureka-300x175.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Spark-Tutorial-Edureka-768x449.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Spark-Tutorial-Edureka-513x300.png 513w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Spark-Tutorial-Edureka-308x180.png 308w" sizes="(max-width: 86px) 100vw, 86px"></a><a href="https://www.edureka.co/blog/spark-tutorial/?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-streaming" class="custom-rel-article"><span>Spark Tutorial: Real Time Cluster Computing Framework<span></span></span></a></article></li><li><article class="custom-related-post"><a href="https://www.edureka.co/blog/spark-sql-tutorial/?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-streaming" class="custom-rel-thumb"><img width="86" height="50" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Spark-SQL-Edureka.png" class="attachment-550x50 size-550x50 wp-post-image" alt="Spark SQL - Spark SQL - Edureka" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2016/12/Spark-SQL-Edureka.png 816w, https://cdn.edureka.co/blog/wp-content/uploads/2016/12/Spark-SQL-Edureka-300x175.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2016/12/Spark-SQL-Edureka-768x449.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2016/12/Spark-SQL-Edureka-513x300.png 513w, https://cdn.edureka.co/blog/wp-content/uploads/2016/12/Spark-SQL-Edureka-308x180.png 308w" sizes="(max-width: 86px) 100vw, 86px"></a><a href="https://www.edureka.co/blog/spark-sql-tutorial/?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-streaming" class="custom-rel-article"><span>Spark SQL Tutorial – Understanding Spark SQL With Examples<span></span></span></a></article></li><li><article class="custom-related-post"><a href="https://www.edureka.co/blog/demystifying-partitioning-in-spark?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-streaming" class="custom-rel-thumb"><img width="86" height="50" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/Demystifying-partitioning-in-spark.png" class="attachment-550x50 size-550x50 wp-post-image" alt="" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2016/03/Demystifying-partitioning-in-spark.png 600w, https://cdn.edureka.co/blog/wp-content/uploads/2016/03/Demystifying-partitioning-in-spark-300x175.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2016/03/Demystifying-partitioning-in-spark-514x300.png 514w" sizes="(max-width: 86px) 100vw, 86px"></a><a href="https://www.edureka.co/blog/demystifying-partitioning-in-spark?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-streaming" class="custom-rel-article"><span>Demystifying Partitioning in Spark<span></span></span></a></article></li><li><article class="custom-related-post"><a href="https://www.edureka.co/blog/apache-spark-vs-hadoop-mapreduce?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-streaming" class="custom-rel-thumb"><img width="86" height="50" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/b1.jpg" class="attachment-550x50 size-550x50 wp-post-image" alt="" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2015/12/b1.jpg 600w, https://cdn.edureka.co/blog/wp-content/uploads/2015/12/b1-300x175.jpg 300w, https://cdn.edureka.co/blog/wp-content/uploads/2015/12/b1-514x300.jpg 514w" sizes="(max-width: 86px) 100vw, 86px"></a><a href="https://www.edureka.co/blog/apache-spark-vs-hadoop-mapreduce?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-streaming" class="custom-rel-article"><span>Apache Spark vs Hadoop MapReduce<span></span></span></a></article></li></ul></section><section id="edu-custom-subscribe-2" class="right-side-widget custom-edu-widgets widget_edu-custom-subscribe">        <section class="col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding Newsletter-sub">
+            
+                        <form id="subscribe-form" novalidate="" class="custom-subscribe-form-wrapper">
+                <div class="subscribesec">
+                                    <!--<div class="close-thissub"><i class="icon-cross"></i></div>	-->
+                    <div class="subscribesec-box">										
+                        <h4 class="clearfix subscribeblogtitle"><p><i class="icon-Mail_this_post"></i></p><span>Subscribe to get free Newsletter</span></h4>
+                        <section class="sectrendcom">
+                            <article class="relatedcontmain">
+                                <div class="input-group Subscribeinput">                              
+                                    <input name="subscription-mail" type="email" autocomplete="off" class="form-control " required="" placeholder="Enter Email"> 
+                                    <!-- Add classes successform and errorform to toggle the input form -->
+
+                                </div>
+                                <input type="hidden" id="is_user_loggedin" value="0">
+                                <label id="loader" style="margin-left:120px;display:none"><img src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/loader.gif"></label>
+
+                                <p class="errormessage"> Please provide a valid Email Id </p>
+                            </article>                         
+                        </section>  
+                    </div>
+                    <div class="subscribesec-success">
+                        <i class="icon-success"></i>
+                        <p class="successmessage" style="display: none;"> Thank you, your subscription is successful</p> 
+                        <p class="alreadysubscribed" style="display: none;"> You have already subscribed.</p> 
+                    </div>
+                </div>
+                <button type="submit" id="subscribe-button" class="btn subscribebtn successbutton">
+                    <div class="sub-news-letter">SUBSCRIBE</div></button>
+            </form>
+            <div class="sub-browse-letter show-after-success hide">
+                <a class="" href="https://www.edureka.co/all-courses" target="_blank">BROWSE COURSES</a>
+            </div>
+        </section>
+        </section></section>
+</div>
+<!-- Right Panel ends -->
+</div></div></div>
+</section>
+
+<footer class="footer-new" id="footer_v2" style="position: static;">
+        <div class="container">
+        <div class="row">
+            <div class="padding-xs-only clearfix">
+                <div class="panel-group no-margin" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel">
+                        <div class="col-md-12 visible-xs accordion-head">
+
+                            <a data-parent="#accordion" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" href="javascript:void(0)">
+                                <h3 class="no-margin footer-new-hd-lineht"><img src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/edureka-logo.png" alt="edureka logo" class="footer-new_logo"></h3>
+                                <p class=" margin-vr5 grey-txt marg-btm-0-xs">© 2014 Brain4ce Education Solutions Pvt. Ltd.</p>
+                                <i class="fa fa-angle-up"></i>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+
+                        </div>
+                        <div id="collapse1" class="div-collapse collapse clearfix">
+                            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12 item-padding">
+                                <h4>Edureka</h4>
+                                <ul class="list-unstyled footer-menu wid-50-left">
+                                    <li><a href="https://www.edureka.co/about-us">About us</a></li>
+                                    <li><a href="https://www.edureka.co/allmedia">News &amp; Media</a></li>
+                                    <li><a href="https://www.edureka.co/contact-us">Contact us</a></li>
+                                    <li><a href="https://www.edureka.co/careers">Careers</a></li>
+                                </ul>
+                                <ul class="list-unstyled footer-menu wid-50-left">
+                                    <li><a href="https://www.edureka.co/blog/all">Blog</a></li>
+                                    <li><a href="https://www.edureka.co/reviews">Reviews</a></li>
+                                    <li><a href="https://www.edureka.co/terms-and-conditions">Terms &amp; conditions</a></li>
+                                    <li><a href="https://www.edureka.co/privacy-policy">Privacy policy</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item-padding">
+                                <h4>Work with us </h4>
+                                <ul class="list-unstyled footer-menu">
+                                    <li><a href="https://www.edureka.co/instructors/add">Become  an Instructor</a></li>
+                                    <li><a href="https://www.edureka.co/hire-from-edureka">Hire from Edureka</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3  col-md-3 col-sm-3 col-xs-6 item-padding">
+                                <h4>Follow us on </h4>
+                                <ul class="list-unstyled footer-social-icon">
+                                    <li><a class="fb" target="_blank" href="https://www.facebook.com/edurekaIN"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="tw" target="_blank" href="https://twitter.com/edurekaIN"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="in" target="_blank" href="https://www.linkedin.com/company/edureka"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a class="ut" target="_blank" href="https://www.youtube.com/user/edurekaIN"><i class="fa fa-youtube-play"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 item-padding padding-lft-25 text-center-xs">
+                                <h4>Learn on the GO!</h4>
+                                <ul class="list-unstyled footer-menu-store">
+                                    <li><a target="_blank" href="https://itunes.apple.com/in/app/edureka/id1033145415?mt=8">
+                                            <img alt="appleplaystore" class="img-responsive" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/applestorebtn.png"></a></li>
+                                    <li><a target="_blank" href="https://play.google.com/store/apps/details?id=co.edureka.app">
+                                            <img alt="googleplaystore" class="img-responsive" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/googleplaybtn.png"></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding border-top-half">
+                                <div class="padding-vr20 clearfix">
+                                    <div class="col-lg-5 col-md-6 col-sm-5 col-xs-12 no-padding">
+                                        <h3 class="no-margin footer-new-hd-lineht"><a href="https://www.edureka.co/"><img src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/edureka-logo.png" alt="edureka logo" class="footer-new_logo"></a></h3>
+                                        <p class=" margin-vr5 grey-txt">© 2014 Brain4ce Education Solutions Pvt. Ltd. All rights Reserved.</p>
+                                    </div>
+                                    <div class="col-lg-7 col-md-6 col-sm-7 col-xs-12 no-padding txt-marg-top text-xs-left">
+                                        <p class="grey-txt">"PMP®","PMI®", "PMI-ACP®" and "PMBOK®" are registered marks of the Project Management Institute, Inc. <br>
+                                            MongoDB®, Mongo and the leaf logo are the registered trademarks of MongoDB, Inc.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</footer>
+<div class="footerbar">
+    <div class="container clearfix">
+        <div class="row">
+            <a href="javascript:void(0);" class="call-us">
+                <span><img src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/phone-icon.png" alt="phoneicon"></span>
+                Call us on 
+                <span>1-800-275-9730 <i>(Toll Free)</i></span>
+                <span>+91 88808 62004</span>
+            </a>
+            <div class="dropdown pull-left hidden-xs">
+                <div class="bfh-selectbox country-style-footer triangle country-pop-small bfh-countries" data-country="IN" data-flags="true" data-filter="true">
+                    <input type="hidden" value="">
+                    <a class="bfh-selectbox-toggle res-popup" role="button" data-toggle="bfh-selectbox" href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial#">
+                        <span class="bfh-selectbox-option input-medium" data-option="">
+                        </span>
+
+
+                    </a>
+                    <div class="bfh-selectbox-options">
+                        <input type="text" class="bfh-selectbox-filter">
+                        <div role="listbox">
+                            <ul role="option" class="dropdown-menu-scrollbar mCustomScrollbar _mCS_3 mCS-autoHide mCS_no_scrollbar" style="position: relative; overflow: visible;"><div id="mCSB_3" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" tabindex="0" style="max-height: 200px;"><div id="mCSB_3_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+                            </div></div><div id="mCSB_3_scrollbar_vertical" class="mCSB_scrollTools mCSB_3_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_3_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></ul>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="call-us-xs">
+            <h3>24 X 7 Customer Support
+                <a class="close-call" href="javascript:void(0);">X</a>
+            </h3>
+            <ul class="list-unstyled">
+                <li><img src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/us-flag.png" alt="us flag"> 1-800-275-9730   (Toll Free)     </li>
+                <li><img src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/ind-flag.png" alt="india flag"> +91 88808 62004</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+            <script type="text/javascript">
+                jQuery(function($) {
+                    function equalHeight(group) {
+                        tallest = 0;
+                        group.each(function() {
+                            thisHeight = $(this).height();
+                            if(thisHeight > tallest) {
+                                tallest = thisHeight;
+                            }
+                        });
+                        group.height(tallest);
+                    }
+
+                    equalHeight($(".dg-grid-shortcode .dg_grid-shortcode-col"));
+
+                    $(window).resize(function() {
+                        equalHeight($(".dg-grid-shortcode .dg_grid-shortcode-col"));
+                    });
+                });
+            </script>
+            <script type="text/javascript"> 
+				var fonts_loaded =[];
+			</script><!--email_off--><style type="text/css">.maxbutton-24.maxbutton.maxbutton-circle-social-share-facebook{position:relative;text-decoration:none;display:inline-block;border-color:#000;box-shadow-color:#333;width:50px;height:50px;border-top-left-radius:80px;border-top-right-radius:80px;border-bottom-left-radius:80px;border-bottom-right-radius:80px;border-style:solid;border-width:0px;background:rgba(77, 103, 164, 1);-pie-background:linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(77, 103, 164, 1)), color-stop(1, rgba(77, 103, 164, 1)));background:-moz-linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:-o-linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1))}.maxbutton-24.maxbutton:hover.maxbutton-circle-social-share-facebook{border-color:#000;box-shadow-color:#333;background:rgba(77, 103, 164, 1);-pie-background:linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(77, 103, 164, 1)), color-stop(1, rgba(77, 103, 164, 1)));background:-moz-linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:-o-linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1))}.maxbutton-24.maxbutton.maxbutton-circle-social-share-facebook .mb-icon{text-align:center;padding-top:8px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:0px;display:block;background-color:unset}.maxbutton-24.maxbutton.maxbutton-circle-social-share-facebook .mb-icon .fa.fa-facebook{color:#fff;font-size:21px}.maxbutton-24.maxbutton:hover.maxbutton-circle-social-share-facebook .mb-icon .fa.fa-facebook{color:#fff}.maxbutton-24.maxbutton.maxbutton-circle-social-share-facebook .mb-text{color:#fff;font-family:PT Sans Narrow;font-size:12px;text-align:center;font-style:normal;font-weight:normal;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-24.maxbutton:hover.maxbutton-circle-social-share-facebook .mb-text{color:#fff}
+.maxbutton-25.maxbutton.maxbutton-circle-social-share-twitter{position:relative;text-decoration:none;display:inline-block;border-color:#000;box-shadow-color:#333;width:50px;height:50px;border-top-left-radius:80px;border-top-right-radius:80px;border-bottom-left-radius:80px;border-bottom-right-radius:80px;border-style:solid;border-width:0px;background:rgba(38, 167, 223, 1);-pie-background:linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(38, 167, 223, 1)), color-stop(1, rgba(38, 167, 223, 1)));background:-moz-linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:-o-linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1))}.maxbutton-25.maxbutton:hover.maxbutton-circle-social-share-twitter{border-color:#000;box-shadow-color:#333;background:rgba(38, 167, 223, 1);-pie-background:linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(38, 167, 223, 1)), color-stop(1, rgba(38, 167, 223, 1)));background:-moz-linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:-o-linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1))}.maxbutton-25.maxbutton.maxbutton-circle-social-share-twitter .mb-icon{text-align:center;padding-top:7px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:0px;display:block;background-color:unset}.maxbutton-25.maxbutton.maxbutton-circle-social-share-twitter .mb-icon .fa.fa-twitter{color:#fff;font-size:22px}.maxbutton-25.maxbutton:hover.maxbutton-circle-social-share-twitter .mb-icon .fa.fa-twitter{color:#fff}.maxbutton-25.maxbutton.maxbutton-circle-social-share-twitter .mb-text{color:#fff;font-family:PT Sans Narrow;font-size:12px;text-align:center;font-style:normal;font-weight:normal;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-25.maxbutton:hover.maxbutton-circle-social-share-twitter .mb-text{color:#fff}
+.maxbutton-26.maxbutton.maxbutton-circle-social-share-linkedin{position:relative;text-decoration:none;display:inline-block;border-color:#000;box-shadow-color:#333;width:50px;height:50px;border-top-left-radius:80px;border-top-right-radius:80px;border-bottom-left-radius:80px;border-bottom-right-radius:80px;border-style:solid;border-width:0px;background:rgba(1, 120, 181, 1);-pie-background:linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(1, 120, 181, 1)), color-stop(1, rgba(1, 120, 181, 1)));background:-moz-linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:-o-linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1))}.maxbutton-26.maxbutton:hover.maxbutton-circle-social-share-linkedin{border-color:#000;box-shadow-color:#333;background:rgba(1, 120, 181, 1);-pie-background:linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(1, 120, 181, 1)), color-stop(1, rgba(1, 120, 181, 1)));background:-moz-linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:-o-linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1))}.maxbutton-26.maxbutton.maxbutton-circle-social-share-linkedin .mb-icon{text-align:center;padding-top:7px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:0px;display:block;background-color:unset}.maxbutton-26.maxbutton.maxbutton-circle-social-share-linkedin .mb-icon .fa.fa-linkedin{color:#fff;font-size:22px}.maxbutton-26.maxbutton:hover.maxbutton-circle-social-share-linkedin .mb-icon .fa.fa-linkedin{color:#fff}.maxbutton-26.maxbutton.maxbutton-circle-social-share-linkedin .mb-text{color:#fff;font-family:PT Sans Narrow;font-size:12px;text-align:center;font-style:normal;font-weight:normal;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-26.maxbutton:hover.maxbutton-circle-social-share-linkedin .mb-text{color:#fff}
+.maxbutton-27.maxbutton.maxbutton-circle-social-share-google-plus{position:relative;text-decoration:none;display:inline-block;border-color:#000;box-shadow-color:#333;width:50px;height:50px;border-top-left-radius:80px;border-top-right-radius:80px;border-bottom-left-radius:80px;border-bottom-right-radius:80px;border-style:solid;border-width:0px;background:rgba(216, 74, 54, 1);-pie-background:linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(216, 74, 54, 1)), color-stop(1, rgba(216, 74, 54, 1)));background:-moz-linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:-o-linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1))}.maxbutton-27.maxbutton:hover.maxbutton-circle-social-share-google-plus{border-color:#000;box-shadow-color:#333;background:rgba(216, 74, 54, 1);-pie-background:linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(216, 74, 54, 1)), color-stop(1, rgba(216, 74, 54, 1)));background:-moz-linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:-o-linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1))}.maxbutton-27.maxbutton.maxbutton-circle-social-share-google-plus .mb-icon{text-align:center;padding-top:7px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:0px;display:block;background-color:unset}.maxbutton-27.maxbutton.maxbutton-circle-social-share-google-plus .mb-icon .fa.fa-google-plus{color:#fff;font-size:22px}.maxbutton-27.maxbutton:hover.maxbutton-circle-social-share-google-plus .mb-icon .fa.fa-google-plus{color:#fff}.maxbutton-27.maxbutton.maxbutton-circle-social-share-google-plus .mb-text{color:#fff;font-family:PT Sans Narrow;font-size:12px;text-align:center;font-style:normal;font-weight:normal;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-27.maxbutton:hover.maxbutton-circle-social-share-google-plus .mb-text{color:#fff}
+.maxcollection.maxcollection-1{display:inline-block;z-index:9999;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px}.maxcollection.maxcollection-1 .mb-collection-item.item-24{margin-right:0px;margin-bottom:0px;float:left;display:inline-block}.maxcollection.maxcollection-1 .mb-collection-item.item-25{margin-right:0px;margin-bottom:0px;float:left;display:inline-block}.maxcollection.maxcollection-1 .mb-collection-item.item-26{margin-right:0px;margin-bottom:0px;float:left;display:inline-block}.maxcollection.maxcollection-1 .mb-collection-item.item-27{margin-right:0px;margin-bottom:0px;float:left;display:inline-block}
+.maxbutton-16.maxbutton.maxbutton-enroll-yellow-big{position:relative;text-decoration:none;display:inline-block;border-color:#e7a207;box-shadow-color:#e7a207;width:280px;height:35px;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:0px;border-style:solid;border-width:0px;background:rgba(231, 162, 7, 1);-pie-background:linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(231, 162, 7, 1)), color-stop(1, rgba(231, 162, 7, 1)));background:-moz-linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:-o-linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1))}.maxbutton-16.maxbutton:hover.maxbutton-enroll-yellow-big{border-color:#e7a207;box-shadow-color:#e7a207;background:rgba(231, 162, 7, 1);-pie-background:linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(231, 162, 7, 1)), color-stop(1, rgba(231, 162, 7, 1)));background:-moz-linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:-o-linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1))}.maxbutton-16.maxbutton.maxbutton-enroll-yellow-big .mb-text{color:#fff;font-size:13px;text-align:center;font-style:normal;font-weight:bold;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-16.maxbutton:hover.maxbutton-enroll-yellow-big .mb-text{color:#fff}
+.maxbutton-22.maxbutton.maxbutton-certification-blue-big{position:relative;text-decoration:none;display:inline-block;border-color:#3778b0;box-shadow-color:#333;width:280px;height:35px;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:0px;border-style:solid;border-width:0px;background:rgba(55, 120, 176, 1);-pie-background:linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(55, 120, 176, 1)), color-stop(1, rgba(55, 120, 176, 1)));background:-moz-linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:-o-linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1))}.maxbutton-22.maxbutton:hover.maxbutton-certification-blue-big{border-color:#3778b0;box-shadow-color:#333;background:rgba(55, 120, 176, 1);-pie-background:linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(55, 120, 176, 1)), color-stop(1, rgba(55, 120, 176, 1)));background:-moz-linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:-o-linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1))}.maxbutton-22.maxbutton.maxbutton-certification-blue-big .mb-text{color:#fff;font-size:13px;text-align:center;font-style:normal;font-weight:bold;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-22.maxbutton:hover.maxbutton-certification-blue-big .mb-text{color:#fff}
+</style><!--/email_off-->
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/shCore.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/shBrushScala.js.download"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://cdn.edureka.co/blog/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "https://cdn.edureka.co/blog/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/jquery.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var postasmail = {"afp_nonce":"0512dd187f","afp_ajax_url":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/fancyquote.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var videolib = {"afp_nonce":"0512dd187f","afp_ajax_url":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/video-library.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/jquery.fitvids.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var fvpdata = {"ajaxurl":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php","nonce":"7b942922c3","fitvids":"1","dynamic":"","overlay":"","opacity":"0.75","color":"b","width":"640"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/frontend.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var mb_ajax = {"ajaxurl":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/front.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/maxbuttons_fonts.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/maxbuttons-pro-front.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/bootstrap.min.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/masonry.pkgd.min.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/imagesloaded.pkgd.min.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/jquery.bootpag.min.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/nprogress.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/CustomScrollbar.min.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/owl.carousel.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/0187-formValidation.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/0188-bootstrap.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/blog.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/modalEffects.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/modalEffects-related.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/mfb.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/signup.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var php_array = {"admin_ajax":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php"};
+var wnm_custom = {"template_url":"\/blog\/wp-content\/themes\/edu-hiran"};
+var myAjax = {"ajaxurl":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php"};
+var afp_vars = {"afp_nonce":"0512dd187f","afp_ajax_url":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php","postID":"45056","single":"1"};
+var post_vars = {"postID":"45056","postType":"post"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/ajax-pagination.js.download"></script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/wp-embed.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"platform":"wordpress@4.7.5","language":""},"disqusIdentifier":"45056 https:\/\/www.edureka.co\/blog\/?p=45056","disqusShortname":"edurekablog","disqusTitle":"Spark Streaming Tutorial \u2013 Sentiment Analysis Using Apache Spark","disqusUrl":"https:\/\/www.edureka.co\/blog\/spark-streaming\/","options":{"manualSync":"1"},"postId":"45056"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/disqus.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"edurekablog"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/count.js(1).download"></script>
+
+
+
+
+<!-- mfunc setPostViews(get_the_ID()); --><!-- /mfunc -->
+<!-- Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+Object Caching 1847/1953 objects using disk
+Page Caching using disk
+Content Delivery Network via Amazon Web Services: CloudFront: cdn.edureka.co
+Database Caching 30/81 queries in 0.023 seconds using disk
+
+ Served from: www.edureka.co @ 2017-06-25 10:59:26 by W3 Total Cache --><img alt="preload image" style="display: none;"><img alt="preload image" style="display: none;"><iframe style="display: none;" src="./Spark Streaming Tutorial _ Twitter Sentiment Analysis Using Apache Spark _ Edureka_files/saved_resource(3).html"></iframe></body></html>

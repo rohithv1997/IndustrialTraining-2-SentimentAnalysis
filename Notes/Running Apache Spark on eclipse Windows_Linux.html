@@ -1,0 +1,4181 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html -->
+<html dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Running Apache Spark on eclipse Windows/Linux</title>
+
+<!-- Chrome, Firefox OS and Opera -->
+<meta content="#ffffff" name="theme-color">
+<!-- Windows Phone -->
+<meta content="#ffffff" name="msapplication-navbutton-color">
+<meta content="blogger" name="generator">
+<link href="http://stdatalabs.blogspot.in/favicon.ico" rel="icon" type="image/x-icon">
+<link href="http://stdatalabs.blogspot.com/2016/09/running-apache-spark-on-eclipse.html" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="My Experiments with bigdata - Atom" href="http://stdatalabs.blogspot.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="My Experiments with bigdata - RSS" href="http://stdatalabs.blogspot.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="My Experiments with bigdata - Atom" href="https://www.blogger.com/feeds/1179959394978461385/posts/default">
+
+<link rel="alternate" type="application/atom+xml" title="My Experiments with bigdata - Atom" href="http://stdatalabs.blogspot.com/feeds/3902979584000713713/comments/default">
+<!--Can't find substitution for tag [blog.ieCssRetrofitLinks]-->
+<link href="./Running Apache Spark on eclipse Windows_Linux_files/sparkEclipse2.PNG" rel="image_src">
+<meta content="http://stdatalabs.blogspot.com/2016/09/running-apache-spark-on-eclipse.html" property="og:url">
+<meta content="Running Apache Spark on eclipse Windows/Linux" property="og:title">
+<meta content="Solving practical problems on bigdata hadoop technology stack like spark, hive, kafka, storm, flume etc" property="og:description">
+<meta content="https://4.bp.blogspot.com/-sJWC7IfvlXQ/V9Jrc3XnBKI/AAAAAAAAAGw/Hb2aA6vOZXsHUlyqBeD4Xbb1qMay7XTkACEw/w1200-h630-p-k-no-nu/sparkEclipse2.PNG" property="og:image">
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<link href="./Running Apache Spark on eclipse Windows_Linux_files/css" rel="stylesheet" type="text/css"><style id="page-skin-1" type="text/css"><!--
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+/*!************************************************
+* Blogger Template Style
+* Name: Soho
+**************************************************/
+body {
+overflow-wrap: break-word;
+word-break: break-word;
+word-wrap: break-word;
+}
+.hidden {
+display: none;
+}
+.invisible {
+visibility: hidden;
+}
+.container::after,
+.float-container::after {
+clear: both;
+content: '';
+display: table;
+}
+.clearboth {
+clear: both;
+}
+.dim-overlay {
+background-color: rgba(0, 0, 0, 0.54);
+height: 100vh;
+left: 0;
+position: fixed;
+top: 0;
+width: 100%;
+}
+#sharing-dim-overlay {
+background-color: transparent;
+}
+.loading-spinner-large {
+-webkit-animation: mspin-rotate 1568.63ms infinite linear;
+animation: mspin-rotate 1568.63ms infinite linear;
+height: 48px;
+overflow: hidden;
+position: absolute;
+width: 48px;
+z-index: 200;
+}
+.loading-spinner-large > div {
+-webkit-animation: mspin-revrot 5332ms infinite steps(4);
+animation: mspin-revrot 5332ms infinite steps(4);
+}
+.loading-spinner-large > div > div {
+-webkit-animation: mspin-singlecolor-large-film 1333ms infinite steps(81);
+animation: mspin-singlecolor-large-film 1333ms infinite steps(81);
+background-size: 100%;
+height: 48px;
+width: 3888px;
+}
+.mspin-black-large > div > div,
+.mspin-grey_54-large > div > div {
+background-image: url(https://www.blogblog.com/indie/mspin_black_large.svg);
+}
+.mspin-white-large > div > div {
+background-image: url(https://www.blogblog.com/indie/mspin_white_large.svg);
+}
+.mspin-grey_54-large {
+opacity: .54;
+}
+@-webkit-keyframes mspin-singlecolor-large-film {
+from {
+-webkit-transform: translateX(0);
+transform: translateX(0);
+}
+to {
+-webkit-transform: translateX(-3888px);
+transform: translateX(-3888px);
+}
+}
+@keyframes mspin-singlecolor-large-film {
+from {
+-webkit-transform: translateX(0);
+transform: translateX(0);
+}
+to {
+-webkit-transform: translateX(-3888px);
+transform: translateX(-3888px);
+}
+}
+@-webkit-keyframes mspin-rotate {
+from {
+-webkit-transform: rotate(0deg);
+transform: rotate(0deg);
+}
+to {
+-webkit-transform: rotate(360deg);
+transform: rotate(360deg);
+}
+}
+@keyframes mspin-rotate {
+from {
+-webkit-transform: rotate(0deg);
+transform: rotate(0deg);
+}
+to {
+-webkit-transform: rotate(360deg);
+transform: rotate(360deg);
+}
+}
+@-webkit-keyframes mspin-revrot {
+from {
+-webkit-transform: rotate(0deg);
+transform: rotate(0deg);
+}
+to {
+-webkit-transform: rotate(-360deg);
+transform: rotate(-360deg);
+}
+}
+@keyframes mspin-revrot {
+from {
+-webkit-transform: rotate(0deg);
+transform: rotate(0deg);
+}
+to {
+-webkit-transform: rotate(-360deg);
+transform: rotate(-360deg);
+}
+}
+input::-ms-clear {
+display: none;
+}
+.blogger-logo,
+.svg-icon-24.blogger-logo {
+fill: #ff9800;
+opacity: 1.0;
+}
+.skip-navigation {
+background-color: #fff;
+box-sizing: border-box;
+color: #000;
+display: block;
+height: 0;
+left: 0;
+line-height: 50px;
+overflow: hidden;
+padding-top: 0;
+position: fixed;
+text-align: center;
+top: 0;
+-webkit-transition: box-shadow 0.3s, height 0.3s, padding-top 0.3s;
+transition: box-shadow 0.3s, height 0.3s, padding-top 0.3s;
+width: 100%;
+z-index: 900;
+}
+.skip-navigation:focus {
+box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+height: 50px;
+}
+#main {
+outline: none;
+}
+.main-heading {
+position: absolute;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 0;
+border: 0;
+height: 1px;
+width: 1px;
+overflow: hidden;
+}
+.widget.Attribution {
+margin-top: 1em;
+text-align: center;
+}
+.widget.Attribution .blogger img,
+.widget.Attribution .blogger svg {
+vertical-align: bottom;
+}
+.widget.Attribution .blogger img {
+margin-right: 0.5em;
+}
+.widget.Attribution div {
+line-height: 24px;
+margin-top: 0.5em;
+}
+.widget.Attribution .image-attribution,
+.widget.Attribution .copyright {
+font-size: 0.7em;
+margin-top: 1.5em;
+}
+.item-control {
+display: none;
+}
+.BLOG_mobile_video_class {
+display: none;
+}
+.bg-photo {
+background-attachment: scroll !important;
+}
+body .CSS_LIGHTBOX {
+z-index: 900;
+}
+.extendable .show-more,
+.extendable .show-less {
+border-color: #be8b37;
+color: #be8b37;
+margin-top: 8px;
+}
+.extendable .show-more.hidden,
+.extendable .show-less.hidden {
+display: none;
+}
+.inline-ad {
+display: none;
+max-width: 100%;
+overflow: hidden;
+}
+.adsbygoogle {
+display: block;
+}
+#cookieChoiceInfo {
+bottom: 0;
+top: auto;
+}
+iframe.b-hbp-video {
+border: 0;
+}
+.post-body img {
+max-width: 100%;
+}
+.post-body iframe {
+max-width: 100%;
+}
+.post-body a[imageanchor="1"] {
+display: inline-block;
+}
+.byline {
+margin-right: 1em;
+}
+.byline:last-child {
+margin-right: 0;
+}
+.paging-control-container {
+margin-bottom: 16px;
+}
+.paging-control-container .paging-control {
+display: inline-block;
+}
+.paging-control-container .paging-control,
+.paging-control-container .comment-range-text::after {
+color: #be8b37;
+}
+.paging-control-container .paging-control,
+.paging-control-container .comment-range-text {
+margin-right: 8px;
+}
+.paging-control-container .paging-control::after,
+.paging-control-container .comment-range-text::after {
+content: '\00B7';
+cursor: default;
+padding-left: 8px;
+pointer-events: none;
+}
+.paging-control-container .paging-control:last-child::after,
+.paging-control-container .comment-range-text:last-child::after {
+content: none;
+}
+.byline.reactions iframe {
+height: 20px;
+}
+.b-notification {
+color: #000;
+background-color: #fff;
+border-bottom: solid 1px #000;
+box-sizing: border-box;
+padding: 16px 32px;
+text-align: center;
+}
+.b-notification.visible {
+-webkit-transition: margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+transition: margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.b-notification.invisible {
+position: absolute;
+}
+.b-notification-close {
+position: absolute;
+right: 8px;
+top: 8px;
+}
+.no-posts-message {
+line-height: 40px;
+text-align: center;
+}
+@media screen and (max-width: 1162px) {
+body.item-view .post-body a[imageanchor="1"][style*="float: left;"],
+body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {
+float: none !important;
+clear: none !important;
+}
+body.item-view .post-body a[imageanchor="1"] img {
+display: block;
+height: auto;
+margin: 0 auto;
+}
+body.item-view .post-body > .separator:first-child > a[imageanchor="1"]:first-child {
+margin-top: 20px;
+}
+.post-body a[imageanchor] {
+display: block;
+}
+body.item-view .post-body a[imageanchor="1"] {
+margin-left: 0 !important;
+margin-right: 0 !important;
+}
+body.item-view .post-body a[imageanchor="1"] + a[imageanchor="1"] {
+margin-top: 16px;
+}
+}
+#comments {
+border-top: 1px dashed rgba(0, 0, 0, 0.54);
+margin-top: 20px;
+padding: 20px;
+}
+#comments .comment-thread ol {
+margin: 0;
+padding-left: 0;
+}
+#comments .comment-thread ol {
+padding-left: 0;
+}
+#comments .comment-thread .comment-replies,
+#comments .comment .comment-replybox-single {
+margin-left: 60px;
+}
+#comments .comment-thread .thread-count {
+display: none;
+}
+#comments .comment {
+list-style-type: none;
+padding: 0 0 30px 0;
+position: relative;
+}
+#comments .comment .comment {
+padding-bottom: 8px;
+}
+.comment .avatar-image-container {
+position: absolute;
+}
+.comment .avatar-image-container img {
+border-radius: 50%;
+}
+.avatar-image-container svg,
+.comment .avatar-image-container .avatar-icon {
+border-radius: 50%;
+border: solid 1px #000000;
+box-sizing: border-box;
+fill: #000000;
+height: 35px;
+margin: 0;
+padding: 7px;
+width: 35px;
+}
+.comment .comment-block {
+margin-top: 10px;
+padding-bottom: 0;
+}
+.comment .comment-block {
+margin-left: 60px;
+}
+#comments .comment-author-header-wrapper {
+margin-left: 40px;
+}
+#comments .comment .thread-expanded .comment-block {
+padding-bottom: 20px;
+}
+#comments .comment .comment-header .user,
+#comments .comment .comment-header .user a {
+color: #000000;
+font-style: normal;
+font-weight: bold;
+}
+#comments .comment .comment-actions {
+background: transparent;
+border: 0;
+box-shadow: none;
+color: #be8b37;
+cursor: pointer;
+font-size: 14px;
+font-weight: bold;
+outline: none;
+text-decoration: none;
+text-transform: uppercase;
+width: auto;
+bottom: 0;
+margin-bottom: 15px;
+position: absolute;
+}
+#comments .comment .comment-actions > * {
+margin-right: 8px;
+}
+#comments .comment .comment-header .datetime {
+bottom: 0;
+color: rgba(0, 0, 0, 0.54);
+display: inline-block;
+font-size: 13px;
+font-style: italic;
+}
+#comments .comment .comment-header .datetime {
+margin-left: 8px;
+}
+#comments .comment .comment-header .datetime a,
+#comments .comment .comment-footer .comment-timestamp a {
+color: rgba(0, 0, 0, 0.54);
+}
+.comment .comment-body,
+#comments .comment .comment-content {
+margin-top: 12px;
+word-break: break-word;
+}
+.comment-body {
+margin-bottom: 12px;
+}
+#comments.embed[data-num-comments="0"] {
+border: none;
+margin-top: 0;
+padding-top: 0;
+}
+#comments.embed[data-num-comments="0"] #comment-post-message,
+#comments.embed[data-num-comments="0"] div.comment-form > p,
+#comments.embed[data-num-comments="0"] p.comment-footer {
+display: none;
+}
+#comment-editor-src {
+display: none;
+}
+.comments .comments-content .loadmore.loaded {
+max-height: 0;
+opacity: 0;
+overflow: hidden;
+}
+.extendable .remaining-items {
+height: 0;
+overflow: hidden;
+-webkit-transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.extendable .remaining-items.expanded {
+height: auto;
+}
+.svg-icon-24,
+.svg-icon-24-button {
+cursor: pointer;
+height: 24px;
+width: 24px;
+min-width: 24px;
+}
+.touch-icon {
+margin: -12px;
+padding: 12px;
+}
+.touch-icon:focus, .touch-icon:active {
+background-color: rgba(153, 153, 153, 0.4);
+border-radius: 50%;
+}
+svg:not(:root).touch-icon {
+overflow: visible;
+}
+html[dir=rtl] .rtl-reversible-icon {
+-webkit-transform: scaleX(-1);
+-ms-transform: scaleX(-1);
+transform: scaleX(-1);
+}
+.touch-icon-button,
+.svg-icon-24-button {
+background: transparent;
+border: 0;
+margin: 0;
+outline: none;
+padding: 0;
+}
+.touch-icon-button .touch-icon:focus,
+.touch-icon-button .touch-icon:active {
+background-color: transparent;
+}
+.touch-icon-button:focus .touch-icon,
+.touch-icon-button:active .touch-icon {
+background-color: rgba(153, 153, 153, 0.4);
+border-radius: 50%;
+}
+.Profile .default-avatar-wrapper .avatar-icon {
+border-radius: 50%;
+border: solid 1px #000000;
+box-sizing: border-box;
+fill: #000000;
+margin: 0;
+}
+.Profile .individual .default-avatar-wrapper .avatar-icon {
+padding: 25px;
+}
+.Profile .individual .profile-img,
+.Profile .individual .avatar-icon {
+height: 120px;
+width: 120px;
+}
+.Profile .team .default-avatar-wrapper .avatar-icon {
+padding: 8px;
+}
+.Profile .team .profile-img,
+.Profile .team .avatar-icon,
+.Profile .team .default-avatar-wrapper {
+height: 40px;
+width: 40px;
+}
+.snippet-container {
+margin: 0;
+position: relative;
+overflow: hidden;
+}
+.snippet-fade {
+bottom: 0;
+box-sizing: border-box;
+position: absolute;
+width: 96px;
+}
+.snippet-fade {
+right: 0;
+}
+.snippet-fade:after {
+content: '\2026';
+}
+.snippet-fade:after {
+float: right;
+}
+.centered-top-container.sticky {
+left: 0;
+position: fixed;
+right: 0;
+top: 0;
+width: auto;
+z-index: 50;
+-webkit-transition-property: opacity, -webkit-transform;
+transition-property: opacity, -webkit-transform;
+transition-property: transform, opacity;
+transition-property: transform, opacity, -webkit-transform;
+-webkit-transition-duration: 0.2s;
+transition-duration: 0.2s;
+-webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.centered-top-placeholder {
+display: none;
+}
+.collapsed-header .centered-top-placeholder {
+display: block;
+}
+.centered-top-container .Header .replaced h1,
+.centered-top-placeholder .Header .replaced h1 {
+display: none;
+}
+.centered-top-container.sticky .Header .replaced h1 {
+display: block;
+}
+.centered-top-container.sticky .Header .header-widget {
+background: none;
+}
+.centered-top-container.sticky .Header .header-image-wrapper {
+display: none;
+}
+.centered-top-container img,
+.centered-top-placeholder img {
+max-width: 100%;
+}
+.collapsible {
+-webkit-transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.collapsible,
+.collapsible > summary {
+display: block;
+overflow: hidden;
+}
+.collapsible > :not(summary) {
+display: none;
+}
+.collapsible[open] > :not(summary) {
+display: block;
+}
+.collapsible:focus,
+.collapsible > summary:focus {
+outline: none;
+}
+.collapsible > summary {
+cursor: pointer;
+display: block;
+padding: 0;
+}
+.collapsible:focus > summary,
+.collapsible > summary:focus {
+background-color: transparent;
+}
+.collapsible > summary::-webkit-details-marker {
+display: none;
+}
+.collapsible-title {
+-webkit-box-align: center;
+-webkit-align-items: center;
+-ms-flex-align: center;
+align-items: center;
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+}
+.collapsible-title .title {
+-webkit-box-flex: 1;
+-webkit-flex: 1 1 auto;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+-webkit-box-ordinal-group: 1;
+-webkit-order: 0;
+-ms-flex-order: 0;
+order: 0;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.collapsible-title .chevron-down,
+.collapsible[open] .collapsible-title .chevron-up {
+display: block;
+}
+.collapsible-title .chevron-up,
+.collapsible[open] .collapsible-title .chevron-down {
+display: none;
+}
+.flat-button {
+cursor: pointer;
+display: inline-block;
+font-weight: bold;
+text-transform: uppercase;
+border-radius: 2px;
+padding: 8px;
+margin: -8px;
+}
+.flat-icon-button {
+background: transparent;
+border: 0;
+margin: 0;
+outline: none;
+padding: 0;
+margin: -12px;
+padding: 12px;
+cursor: pointer;
+box-sizing: content-box;
+display: inline-block;
+line-height: 0;
+}
+.flat-icon-button,
+.flat-icon-button .splash-wrapper {
+border-radius: 50%;
+}
+.flat-icon-button .splash.animate {
+-webkit-animation-duration: 0.3s;
+animation-duration: 0.3s;
+}
+.overflowable-container {
+max-height: 28px;
+overflow: hidden;
+position: relative;
+}
+.overflow-button {
+cursor: pointer;
+}
+#overflowable-dim-overlay {
+background: transparent;
+}
+.overflow-popup {
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+background-color: #ffffff;
+left: 0;
+max-width: calc(100% - 32px);
+position: absolute;
+top: 0;
+visibility: hidden;
+z-index: 101;
+}
+.overflow-popup ul {
+list-style: none;
+}
+.overflow-popup li,
+.overflow-popup .tabs li {
+display: block;
+height: auto;
+}
+.overflow-popup .tabs li {
+padding-left: 0;
+padding-right: 0;
+}
+.overflow-button.hidden,
+.overflow-popup li.hidden,
+.overflow-popup .tabs li.hidden {
+display: none;
+}
+.search {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+line-height: 24px;
+width: 24px;
+}
+.search.focused {
+width: 100%;
+}
+.search.focused .section {
+width: 100%;
+}
+.search form {
+z-index: 101;
+}
+.search h3 {
+display: none;
+}
+.search form {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-flex: 1;
+-webkit-flex: 1 0 0;
+-ms-flex: 1 0 0px;
+flex: 1 0 0;
+border-bottom: solid 1px transparent;
+padding-bottom: 8px;
+}
+.search form > * {
+display: none;
+}
+.search.focused form > * {
+display: block;
+}
+.search .search-input label {
+display: none;
+}
+.centered-top-placeholder.cloned .search form {
+z-index: 30;
+}
+.search.focused form {
+border-color: rgba(0, 0, 0, 0.54);
+position: relative;
+width: auto;
+}
+.collapsed-header .centered-top-container .search.focused form {
+border-bottom-color: transparent;
+}
+.search-expand {
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 auto;
+-ms-flex: 0 0 auto;
+flex: 0 0 auto;
+}
+.search-expand-text {
+display: none;
+}
+.search-close {
+display: inline;
+vertical-align: middle;
+}
+.search-input {
+-webkit-box-flex: 1;
+-webkit-flex: 1 0 1px;
+-ms-flex: 1 0 1px;
+flex: 1 0 1px;
+}
+.search-input input {
+background: none;
+border: 0;
+box-sizing: border-box;
+color: rgba(0, 0, 0, 0.54);
+display: inline-block;
+outline: none;
+width: calc(100% - 48px);
+}
+.search-input input.no-cursor {
+color: transparent;
+text-shadow: 0 0 0 rgba(0, 0, 0, 0.54);
+}
+.collapsed-header .centered-top-container .search-action,
+.collapsed-header .centered-top-container .search-input input {
+color: rgba(0, 0, 0, 0.54);
+}
+.collapsed-header .centered-top-container .search-input input.no-cursor {
+color: transparent;
+text-shadow: 0 0 0 rgba(0, 0, 0, 0.54);
+}
+.search-input input.no-cursor:focus,
+.collapsed-header .centered-top-container .search-input input.no-cursor:focus {
+outline: none;
+}
+.search-focused > * {
+visibility: hidden;
+}
+.search-focused .search,
+.search-focused .search-icon {
+visibility: visible;
+}
+.search.focused .search-action {
+display: block;
+}
+.search.focused .search-action:disabled {
+opacity: .3;
+}
+.widget.Sharing .sharing-button {
+display: none;
+}
+.widget.Sharing .sharing-buttons li {
+padding: 0;
+}
+.widget.Sharing .sharing-buttons li span {
+display: none;
+}
+.post-share-buttons {
+position: relative;
+}
+.share-buttons .svg-icon-24,
+.centered-bottom .share-buttons .svg-icon-24 {
+fill: #000000;
+}
+.sharing-open.touch-icon-button:focus .touch-icon,
+.sharing-open.touch-icon-button:active .touch-icon {
+background-color: transparent;
+}
+.share-buttons {
+background-color: #ffffff;
+border-radius: 2px;
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+color: #000000;
+list-style: none;
+margin: 0;
+padding: 8px 0;
+position: absolute;
+top: -11px;
+min-width: 200px;
+z-index: 101;
+}
+.share-buttons.hidden {
+display: none;
+}
+.sharing-button {
+background: transparent;
+border: 0;
+margin: 0;
+outline: none;
+padding: 0;
+cursor: pointer;
+}
+.share-buttons li {
+margin: 0;
+height: 48px;
+}
+.share-buttons li:last-child {
+margin-bottom: 0;
+}
+.share-buttons li .sharing-platform-button {
+box-sizing: border-box;
+cursor: pointer;
+display: block;
+height: 100%;
+margin-bottom: 0;
+padding: 0 16px;
+position: relative;
+width: 100%;
+}
+.share-buttons li .sharing-platform-button:focus,
+.share-buttons li .sharing-platform-button:hover {
+background-color: rgba(128, 128, 128, 0.1);
+outline: none;
+}
+.share-buttons li svg[class^="sharing-"],
+.share-buttons li svg[class*=" sharing-"] {
+position: absolute;
+top: 10px;
+}
+.share-buttons li span.sharing-platform-button,
+.share-buttons li span.sharing-platform-button {
+position: relative;
+top: 0;
+}
+.share-buttons li .platform-sharing-text {
+display: block;
+font-size: 16px;
+line-height: 48px;
+white-space: nowrap;
+}
+.share-buttons li .platform-sharing-text {
+margin-left: 56px;
+}
+.sidebar-container {
+background-color: #f7f7f7;
+max-width: 284px;
+overflow-y: auto;
+-webkit-transition-property: -webkit-transform;
+transition-property: -webkit-transform;
+transition-property: transform;
+transition-property: transform, -webkit-transform;
+-webkit-transition-duration: .3s;
+transition-duration: .3s;
+-webkit-transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+width: 284px;
+z-index: 101;
+-webkit-overflow-scrolling: touch;
+}
+.sidebar-container .navigation {
+line-height: 0;
+padding: 16px;
+}
+.sidebar-container .sidebar-back {
+cursor: pointer;
+}
+.sidebar-container .widget {
+background: none;
+margin: 0 16px;
+padding: 16px 0;
+}
+.sidebar-container .widget .title {
+color: rgba(0, 0, 0, 0.54);
+margin: 0;
+}
+.sidebar-container .widget ul {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+.sidebar-container .widget ul ul {
+margin-left: 1em;
+}
+.sidebar-container .widget li {
+font-size: 16px;
+line-height: normal;
+}
+.sidebar-container .widget + .widget {
+border-top: 1px dashed rgba(0, 0, 0, 0.54);
+}
+.BlogArchive li {
+margin: 16px 0;
+}
+.BlogArchive li:last-child {
+margin-bottom: 0;
+}
+.Label li a {
+display: inline-block;
+}
+.Label .label-count,
+.BlogArchive .post-count {
+float: right;
+margin-left: .25em;
+}
+.Label .label-count::before,
+.BlogArchive .post-count::before {
+content: '(';
+}
+.Label .label-count::after,
+.BlogArchive .post-count::after {
+content: ')';
+}
+.widget.Translate .skiptranslate > div {
+display: block !important;
+}
+.widget.Profile .profile-link {
+background-image: none !important;
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+}
+.widget.Profile .team-member .profile-img,
+.widget.Profile .team-member .default-avatar-wrapper {
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 auto;
+-ms-flex: 0 0 auto;
+flex: 0 0 auto;
+margin-right: 1em;
+}
+.widget.Profile .individual .profile-link {
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-webkit-flex-direction: column;
+-ms-flex-direction: column;
+flex-direction: column;
+}
+.widget.Profile .team .profile-link .profile-name {
+-webkit-align-self: center;
+-ms-flex-item-align: center;
+-ms-grid-row-align: center;
+align-self: center;
+display: block;
+-webkit-box-flex: 1;
+-webkit-flex: 1 1 auto;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+}
+.dim-overlay {
+background-color: rgba(0, 0, 0, 0.54);
+z-index: 100;
+}
+body.sidebar-visible {
+overflow-y: hidden;
+}
+@media screen and (max-width: 1439px) {
+.sidebar-container {
+bottom: 0;
+position: fixed;
+top: 0;
+left: 0;
+right: auto;
+}
+.sidebar-container.sidebar-invisible {
+-webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+}
+html[dir=ltr] .sidebar-container.sidebar-invisible {
+-webkit-transform: translateX(-284px);
+-ms-transform: translateX(-284px);
+transform: translateX(-284px);
+}
+html[dir=rtl] .sidebar-container.sidebar-invisible {
+-webkit-transform: translateX(284px);
+-ms-transform: translateX(284px);
+transform: translateX(284px);
+}
+}
+@media screen and (min-width: 1440px) {
+.sidebar-container {
+position: absolute;
+top: 0;
+left: 0;
+right: auto;
+}
+.sidebar-container .navigation {
+display: none;
+}
+}
+.dialog {
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+background: #ffffff;
+box-sizing: border-box;
+padding: 30px;
+position: fixed;
+text-align: center;
+width: calc(100% - 24px);
+z-index: 101;
+}
+.dialog input[type=text],
+.dialog input[type=email] {
+background-color: transparent;
+border: 0;
+border-bottom: solid 1px rgba(0,0,0,0.12);
+color: #000000;
+display: block;
+font-family: EB Garamond, serif;
+font-size: 16px;
+line-height: 24px;
+margin: auto;
+padding-bottom: 7px;
+outline: none;
+text-align: center;
+width: 100%;
+}
+.dialog input[type=text]::-webkit-input-placeholder,
+.dialog input[type=email]::-webkit-input-placeholder {
+color: #000000;
+}
+.dialog input[type=text]::-moz-placeholder,
+.dialog input[type=email]::-moz-placeholder {
+color: #000000;
+}
+.dialog input[type=text]:-ms-input-placeholder,
+.dialog input[type=email]:-ms-input-placeholder {
+color: #000000;
+}
+.dialog input[type=text]::placeholder,
+.dialog input[type=email]::placeholder {
+color: #000000;
+}
+.dialog input[type=text]:focus,
+.dialog input[type=email]:focus {
+border-bottom: solid 2px #be8b37;
+padding-bottom: 6px;
+}
+.dialog input.no-cursor {
+color: transparent;
+text-shadow: 0 0 0 #000000;
+}
+.dialog input.no-cursor:focus {
+outline: none;
+}
+.dialog input.no-cursor:focus {
+outline: none;
+}
+.dialog input[type=submit] {
+font-family: EB Garamond, serif;
+}
+.subscribe-popup {
+max-width: 364px;
+}
+.subscribe-popup h3 {
+color: #000000;
+font-size: 1.8em;
+margin-top: 0;
+}
+.subscribe-popup .FollowByEmail h3 {
+display: none;
+}
+.subscribe-popup .FollowByEmail .follow-by-email-submit {
+background: transparent;
+border: 0;
+box-shadow: none;
+color: #be8b37;
+cursor: pointer;
+font-size: 14px;
+font-weight: bold;
+outline: none;
+text-decoration: none;
+text-transform: uppercase;
+width: auto;
+color: #be8b37;
+display: inline-block;
+margin: 0 auto;
+margin-top: 24px;
+width: auto;
+white-space: normal;
+}
+.subscribe-popup .FollowByEmail .follow-by-email-submit:disabled {
+cursor: default;
+opacity: .3;
+}
+@media (max-width: 800px) {
+.blog-name div.widget.Subscribe {
+margin-bottom: 16px;
+}
+body.item-view .blog-name div.widget.Subscribe {
+margin: 8px auto 16px auto;
+width: 100%;
+}
+}
+body#layout .bg-photo-overlay,
+body#layout .bg-photo {
+display: none;
+}
+body#layout .page_body {
+padding: 0;
+position: relative;
+top: 0;
+}
+body#layout .page {
+display: inline-block;
+left: inherit;
+position: relative;
+vertical-align: top;
+width: 540px;
+}
+body#layout .centered {
+max-width: 954px;
+}
+body#layout .navigation {
+display: none;
+}
+body#layout .sidebar-container {
+display: inline-block;
+width: 40%;
+}
+body#layout .hamburger-menu,
+body#layout .search {
+display: none;
+}
+body {
+background-color: #ffffff;
+color: #000000;
+font: normal 400 20px EB Garamond, serif;
+height: 100%;
+margin: 0;
+min-height: 100vh;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-weight: normal;
+}
+a {
+color: #be8b37;
+text-decoration: none;
+}
+.dim-overlay {
+z-index: 100;
+}
+body.sidebar-visible .page_body {
+overflow-y: scroll;
+}
+.widget .title {
+color: rgba(0, 0, 0, 0.54);
+font: normal 400 12px Montserrat, sans-serif;
+}
+.extendable .show-more,
+.extendable .show-less {
+color: #be8b37;
+font: normal 400 12px Montserrat, sans-serif;
+margin: 12px -8px 0 -8px;
+text-transform: uppercase;
+}
+.main .widget,
+.footer .widget {
+margin: 50px 0;
+}
+.main .widget .title {
+text-transform: uppercase;
+}
+.inline-ad {
+display: block;
+margin-top: 50px;
+}
+.adsbygoogle {
+text-align: center;
+}
+.page_body {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-webkit-flex-direction: column;
+-ms-flex-direction: column;
+flex-direction: column;
+min-height: 100vh;
+position: relative;
+z-index: 20;
+}
+.page_body > * {
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 auto;
+-ms-flex: 0 0 auto;
+flex: 0 0 auto;
+}
+.page_body > #footer {
+margin-top: auto;
+}
+.centered-bottom,
+.centered-top {
+margin: 0 32px;
+max-width: 100%;
+}
+.centered-top {
+padding-bottom: 12px;
+padding-top: 12px;
+}
+.sticky .centered-top {
+padding-bottom: 0;
+padding-top: 0;
+}
+.centered-top-container,
+.centered-top-placeholder {
+background: #ffffff;
+}
+.centered-top {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-flex-wrap: wrap;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+-webkit-box-pack: justify;
+-webkit-justify-content: space-between;
+-ms-flex-pack: justify;
+justify-content: space-between;
+position: relative;
+}
+.sticky .centered-top {
+-webkit-flex-wrap: nowrap;
+-ms-flex-wrap: nowrap;
+flex-wrap: nowrap;
+}
+.centered-top-container .svg-icon-24,
+.centered-top-placeholder .svg-icon-24 {
+fill: rgba(0, 0, 0, 0.54);
+}
+.back-button-container,
+.hamburger-menu-container {
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 auto;
+-ms-flex: 0 0 auto;
+flex: 0 0 auto;
+height: 48px;
+-webkit-box-ordinal-group: 2;
+-webkit-order: 1;
+-ms-flex-order: 1;
+order: 1;
+}
+.sticky .back-button-container,
+.sticky .hamburger-menu-container {
+-webkit-box-ordinal-group: 2;
+-webkit-order: 1;
+-ms-flex-order: 1;
+order: 1;
+}
+.back-button,
+.hamburger-menu,
+.search-expand-icon {
+cursor: pointer;
+margin-top: 0;
+}
+.search {
+-webkit-box-align: start;
+-webkit-align-items: flex-start;
+-ms-flex-align: start;
+align-items: flex-start;
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 auto;
+-ms-flex: 0 0 auto;
+flex: 0 0 auto;
+height: 48px;
+margin-left: 24px;
+-webkit-box-ordinal-group: 4;
+-webkit-order: 3;
+-ms-flex-order: 3;
+order: 3;
+}
+.search,
+.search.focused {
+width: auto;
+}
+.search.focused {
+position: static;
+}
+.sticky .search {
+display: none;
+-webkit-box-ordinal-group: 5;
+-webkit-order: 4;
+-ms-flex-order: 4;
+order: 4;
+}
+.search .section {
+right: 0;
+margin-top: 12px;
+position: absolute;
+top: 12px;
+width: 0;
+}
+.sticky .search .section {
+top: 0;
+}
+.search-expand {
+background: transparent;
+border: 0;
+margin: 0;
+outline: none;
+padding: 0;
+color: #be8b37;
+cursor: pointer;
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 auto;
+-ms-flex: 0 0 auto;
+flex: 0 0 auto;
+font: normal 400 12px Montserrat, sans-serif;
+text-transform: uppercase;
+word-break: normal;
+}
+.search.focused .search-expand {
+visibility: hidden;
+}
+.search .dim-overlay {
+background: transparent;
+}
+.search.focused .section {
+max-width: 400px;
+}
+.search.focused form {
+border-color: rgba(0, 0, 0, 0.54);
+height: 24px;
+}
+.search.focused .search-input {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-flex: 1;
+-webkit-flex: 1 1 auto;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+}
+.search-input input {
+-webkit-box-flex: 1;
+-webkit-flex: 1 1 auto;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+font: normal 400 16px Montserrat, sans-serif;
+}
+.search input[type='submit'] {
+display: none;
+}
+.subscribe-section-container {
+-webkit-box-flex: 1;
+-webkit-flex: 1 0 auto;
+-ms-flex: 1 0 auto;
+flex: 1 0 auto;
+margin-left: 24px;
+-webkit-box-ordinal-group: 3;
+-webkit-order: 2;
+-ms-flex-order: 2;
+order: 2;
+text-align: right;
+}
+.sticky .subscribe-section-container {
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 auto;
+-ms-flex: 0 0 auto;
+flex: 0 0 auto;
+-webkit-box-ordinal-group: 4;
+-webkit-order: 3;
+-ms-flex-order: 3;
+order: 3;
+}
+.subscribe-button {
+background: transparent;
+border: 0;
+margin: 0;
+outline: none;
+padding: 0;
+color: #be8b37;
+cursor: pointer;
+display: inline-block;
+font: normal 400 12px Montserrat, sans-serif;
+line-height: 48px;
+margin: 0;
+text-transform: uppercase;
+word-break: normal;
+}
+.subscribe-popup h3 {
+color: rgba(0, 0, 0, 0.54);
+font: normal 400 12px Montserrat, sans-serif;
+margin-bottom: 24px;
+text-transform: uppercase;
+}
+.subscribe-popup div.widget.FollowByEmail .follow-by-email-address {
+color: #000000;
+font: normal 400 12px Montserrat, sans-serif;
+}
+.subscribe-popup div.widget.FollowByEmail .follow-by-email-submit {
+color: #be8b37;
+font: normal 400 12px Montserrat, sans-serif;
+margin-top: 24px;
+text-transform: uppercase;
+}
+.blog-name {
+-webkit-box-flex: 1;
+-webkit-flex: 1 1 100%;
+-ms-flex: 1 1 100%;
+flex: 1 1 100%;
+-webkit-box-ordinal-group: 5;
+-webkit-order: 4;
+-ms-flex-order: 4;
+order: 4;
+overflow: hidden;
+}
+.sticky .blog-name {
+-webkit-box-flex: 1;
+-webkit-flex: 1 1 auto;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+margin: 0 12px;
+-webkit-box-ordinal-group: 3;
+-webkit-order: 2;
+-ms-flex-order: 2;
+order: 2;
+}
+body.search-view .centered-top.search-focused .blog-name {
+display: none;
+}
+.widget.Header h1 {
+font: normal 400 18px EB Garamond, serif;
+margin: 0;
+text-transform: uppercase;
+}
+.widget.Header h1,
+.widget.Header h1 a {
+color: #000000;
+}
+.widget.Header p {
+color: rgba(0, 0, 0, 0.54);
+font: normal 400 12px Montserrat, sans-serif;
+line-height: 1.7;
+}
+.sticky .widget.Header h1 {
+font-size: 16px;
+line-height: 48px;
+overflow: hidden;
+overflow-wrap: normal;
+text-overflow: ellipsis;
+white-space: nowrap;
+word-wrap: normal;
+}
+.sticky .widget.Header p {
+display: none;
+}
+.sticky {
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
+}
+#page_list_top .widget.PageList {
+font: normal 400 14px Montserrat, sans-serif;
+line-height: 28px;
+}
+#page_list_top .widget.PageList .title {
+display: none;
+}
+#page_list_top .widget.PageList .overflowable-contents {
+overflow: hidden;
+}
+#page_list_top .widget.PageList .overflowable-contents ul {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+#page_list_top .widget.PageList .overflow-popup ul {
+list-style: none;
+margin: 0;
+padding: 0 20px;
+}
+#page_list_top .widget.PageList .overflowable-contents li {
+display: inline-block;
+}
+#page_list_top .widget.PageList .overflowable-contents li.hidden {
+display: none;
+}
+#page_list_top .widget.PageList .overflowable-contents li:not(:first-child):before {
+color: rgba(0, 0, 0, 0.54);
+content: '\00b7';
+}
+#page_list_top .widget.PageList .overflowable-contents li a,
+#page_list_top .widget.PageList .overflow-popup li a,
+#page_list_top .widget.PageList .overflow-button a {
+color: rgba(0, 0, 0, 0.54);
+font: normal 400 14px Montserrat, sans-serif;
+line-height: 28px;
+text-transform: uppercase;
+}
+#page_list_top .widget.PageList .overflowable-contents li.selected a,
+#page_list_top .widget.PageList .overflow-popup li.selected a {
+color: rgba(0, 0, 0, 0.54);
+font: normal 700 14px Montserrat, sans-serif;
+line-height: 28px;
+}
+#page_list_top .widget.PageList .overflow-button {
+display: inline;
+}
+.sticky #page_list_top {
+display: none;
+}
+body.homepage-view .hero-image.has-image {
+background: #ffffff none no-repeat scroll center center;
+background-attachment: scroll;
+background-color: #ffffff;
+background-size: cover;
+height: 62.5vw;
+max-height: 75vh;
+min-height: 200px;
+width: 100%;
+}
+.post-filter-message {
+background-color: #2f2b23;
+color: rgba(254, 254, 254, 0.54);
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-flex-wrap: wrap;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+font: normal 400 12px Montserrat, sans-serif;
+-webkit-box-pack: justify;
+-webkit-justify-content: space-between;
+-ms-flex-pack: justify;
+justify-content: space-between;
+margin-top: 50px;
+padding: 18px;
+}
+.post-filter-message .message-container {
+-webkit-box-flex: 1;
+-webkit-flex: 1 1 auto;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+min-width: 0;
+}
+.post-filter-message .home-link-container {
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 auto;
+-ms-flex: 0 0 auto;
+flex: 0 0 auto;
+}
+.post-filter-message .search-label,
+.post-filter-message .search-query {
+color: rgba(254, 254, 254, 0.87);
+font: normal 700 12px Montserrat, sans-serif;
+text-transform: uppercase;
+}
+.post-filter-message .home-link,
+.post-filter-message .home-link a {
+color: #be8b37;
+font: normal 700 12px Montserrat, sans-serif;
+text-transform: uppercase;
+}
+.widget.FeaturedPost .thumb.hero-thumb {
+background-position: center;
+background-size: cover;
+height: 360px;
+}
+.widget.FeaturedPost .featured-post-snippet:before {
+content: '\2014';
+}
+.snippet-container,
+.snippet-fade {
+font: normal 400 14px Lora, serif;
+line-height: 23.8px;
+}
+.snippet-container {
+max-height: 166.6px;
+overflow: hidden;
+}
+.snippet-fade {
+background: -webkit-linear-gradient(left, #ffffff 0%, #ffffff 20%, rgba(255, 255, 255, 0) 100%);
+background: linear-gradient(to left, #ffffff 0%, #ffffff 20%, rgba(255, 255, 255, 0) 100%);
+color: #000000;
+}
+.post-sidebar {
+display: none;
+}
+.widget.Blog .blog-posts .post-outer-container {
+width: 100%;
+}
+.no-posts {
+text-align: center;
+}
+body.feed-view .widget.Blog .blog-posts .post-outer-container,
+body.item-view .widget.Blog .blog-posts .post-outer {
+margin-bottom: 50px;
+}
+.widget.Blog .post.no-featured-image,
+.widget.PopularPosts .post.no-featured-image {
+background-color: #2f2b23;
+padding: 30px;
+}
+.widget.Blog .post > .post-share-buttons-top {
+right: 0;
+position: absolute;
+top: 0;
+}
+.widget.Blog .post > .post-share-buttons-bottom {
+bottom: 0;
+right: 0;
+position: absolute;
+}
+.blog-pager {
+text-align: right;
+}
+.blog-pager a {
+color: #be8b37;
+font: normal 400 12px Montserrat, sans-serif;
+text-transform: uppercase;
+}
+.blog-pager .blog-pager-newer-link,
+.blog-pager .home-link {
+display: none;
+}
+.post-title {
+font: normal normal 20px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+margin: 0;
+text-transform: uppercase;
+}
+.post-title,
+.post-title a {
+color: #000000;
+}
+.post.no-featured-image .post-title,
+.post.no-featured-image .post-title a {
+color: #ffffff;
+}
+body.item-view .post-body-container:before {
+content: '\2014';
+}
+.post-body {
+color: #000000;
+font: normal 400 14px Lora, serif;
+line-height: 1.7;
+}
+.post-body blockquote {
+color: #000000;
+font: normal 400 16px Montserrat, sans-serif;
+line-height: 1.7;
+margin-left: 0;
+margin-right: 0;
+}
+.post-body img {
+height: auto;
+max-width: 100%;
+}
+.post-body .tr-caption {
+color: #000000;
+font: normal 400 12px Montserrat, sans-serif;
+line-height: 1.7;
+}
+.snippet-thumbnail {
+position: relative;
+}
+.snippet-thumbnail .post-header {
+background: #ffffff;
+bottom: 0;
+margin-bottom: 0;
+padding-right: 15px;
+padding-bottom: 5px;
+padding-top: 5px;
+position: absolute;
+}
+.snippet-thumbnail img {
+width: 100%;
+}
+.post-header,
+.post-footer {
+margin: 8px 0;
+}
+body.item-view .widget.Blog .post-header {
+margin: 0 0 16px 0;
+}
+body.item-view .widget.Blog .post-footer {
+margin: 50px 0 0 0;
+}
+.widget.FeaturedPost .post-footer {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-flex-wrap: wrap;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+-webkit-box-pack: justify;
+-webkit-justify-content: space-between;
+-ms-flex-pack: justify;
+justify-content: space-between;
+}
+.widget.FeaturedPost .post-footer > * {
+-webkit-box-flex: 0;
+-webkit-flex: 0 1 auto;
+-ms-flex: 0 1 auto;
+flex: 0 1 auto;
+}
+.widget.FeaturedPost .post-footer,
+.widget.FeaturedPost .post-footer a,
+.widget.FeaturedPost .post-footer button {
+line-height: 1.7;
+}
+.jump-link {
+margin: -8px;
+}
+.post-header,
+.post-header a,
+.post-header button {
+color: rgba(0, 0, 0, 0.54);
+font: normal 400 12px Montserrat, sans-serif;
+}
+.post.no-featured-image .post-header,
+.post.no-featured-image .post-header a,
+.post.no-featured-image .post-header button {
+color: rgba(254, 254, 254, 0.54);
+}
+.post-footer,
+.post-footer a,
+.post-footer button {
+color: #be8b37;
+font: normal 400 12px Montserrat, sans-serif;
+}
+.post.no-featured-image .post-footer,
+.post.no-featured-image .post-footer a,
+.post.no-featured-image .post-footer button {
+color: #be8b37;
+}
+body.item-view .post-footer-line {
+line-height: 2.3;
+}
+.byline {
+display: inline-block;
+}
+.byline .flat-button {
+text-transform: none;
+}
+.post-header .byline:not(:last-child):after {
+content: '\00b7';
+}
+.post-header .byline:not(:last-child) {
+margin-right: 0;
+}
+.byline.post-labels a {
+display: inline-block;
+word-break: break-all;
+}
+.byline.post-labels a:not(:last-child):after {
+content: ',';
+}
+.byline.reactions .reactions-label {
+line-height: 22px;
+vertical-align: top;
+}
+.post-share-buttons {
+margin-left: 0;
+}
+.share-buttons {
+background-color: #f9f9f9;
+border-radius: 0;
+box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.10);
+color: #000000;
+font: normal 400 16px Montserrat, sans-serif;
+}
+.share-buttons .svg-icon-24 {
+fill: #be8b37;
+}
+#comment-holder .continue {
+display: none;
+}
+#comment-editor {
+margin-bottom: 20px;
+margin-top: 20px;
+}
+.widget.Attribution,
+.widget.Attribution a,
+.widget.Attribution .image-attribution,
+.widget.Attribution .image-attribution a,
+.widget.Attribution .copyright,
+.widget.Attribution .copyright a {
+color: rgba(0, 0, 0, 0.54);
+font: normal 400 12px Montserrat, sans-serif;
+}
+.widget.Attribution svg {
+fill: rgba(0, 0, 0, 0.54);
+}
+.widget.Attribution .blogger a {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-align-content: center;
+-ms-flex-line-pack: center;
+align-content: center;
+-webkit-box-pack: center;
+-webkit-justify-content: center;
+-ms-flex-pack: center;
+justify-content: center;
+line-height: 24px;
+}
+.widget.Attribution .blogger svg {
+margin-right: 8px;
+}
+.widget.Profile ul {
+list-style: none;
+padding: 0;
+}
+.widget.Profile .individual .default-avatar-wrapper,
+.widget.Profile .individual .profile-img {
+border-radius: 50%;
+display: inline-block;
+height: 120px;
+width: 120px;
+}
+.widget.Profile .individual .profile-data a,
+.widget.Profile .team .profile-name {
+color: #000000;
+font: normal 400 20px EB Garamond, serif;
+text-transform: none;
+}
+.widget.Profile .individual dd {
+color: #000000;
+font: normal 400 20px EB Garamond, serif;
+margin: 0 auto;
+}
+.widget.Profile .individual .profile-link,
+.widget.Profile .team .visit-profile {
+color: #be8b37;
+font: normal 400 12px Montserrat, sans-serif;
+text-transform: uppercase;
+}
+.widget.Profile .team .default-avatar-wrapper,
+.widget.Profile .team .profile-img {
+border-radius: 50%;
+float: left;
+height: 40px;
+width: 40px;
+}
+.widget.Profile .team .profile-link .profile-name-wrapper {
+-webkit-box-flex: 1;
+-webkit-flex: 1 1 auto;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+}
+.widget.Label li,
+.widget.Label span.label-size {
+color: #be8b37;
+display: inline-block;
+font: normal 400 12px Montserrat, sans-serif;
+word-break: break-all;
+}
+.widget.Label li:not(:last-child):after,
+.widget.Label span.label-size:not(:last-child):after {
+content: ',';
+}
+.widget.PopularPosts .post {
+margin-bottom: 50px;
+}
+#comments {
+border-top: none;
+padding: 0;
+}
+#comments .comment .comment-footer,
+#comments .comment .comment-header,
+#comments .comment .comment-header .datetime,
+#comments .comment .comment-header .datetime a {
+color: rgba(0, 0, 0, 0.54);
+font: normal 400 12px Montserrat, sans-serif;
+}
+#comments .comment .comment-author,
+#comments .comment .comment-author a,
+#comments .comment .comment-header .user,
+#comments .comment .comment-header .user a {
+color: #000000;
+font: normal 400 14px Montserrat, sans-serif;
+}
+#comments .comment .comment-body,
+#comments .comment .comment-content {
+color: #000000;
+font: normal 400 14px Lora, serif;
+}
+#comments .comment .comment-actions,
+#comments .footer,
+#comments .footer a,
+#comments .loadmore,
+#comments .paging-control {
+color: #be8b37;
+font: normal 400 12px Montserrat, sans-serif;
+text-transform: uppercase;
+}
+#commentsHolder {
+border-bottom: none;
+border-top: none;
+}
+#comments .comment-form h4 {
+position: absolute;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 0;
+border: 0;
+height: 1px;
+width: 1px;
+overflow: hidden;
+}
+.sidebar-container {
+background-color: #ffffff;
+color: rgba(0, 0, 0, 0.54);
+font: normal 400 14px Montserrat, sans-serif;
+min-height: 100%;
+}
+html[dir=ltr] .sidebar-container {
+box-shadow: 1px 0 3px rgba(0, 0, 0, 0.10);
+}
+html[dir=rtl] .sidebar-container {
+box-shadow: -1px 0 3px rgba(0, 0, 0, 0.10);
+}
+.sidebar-container a {
+color: #be8b37;
+}
+.sidebar-container .svg-icon-24 {
+fill: rgba(0, 0, 0, 0.54);
+}
+.sidebar-container .widget {
+margin: 0;
+margin-left: 40px;
+padding: 40px;
+padding-left: 0;
+}
+.sidebar-container .widget + .widget {
+border-top: 1px solid rgba(0, 0, 0, 0.54);
+}
+.sidebar-container .widget .title {
+color: rgba(0, 0, 0, 0.54);
+font: normal 400 16px Montserrat, sans-serif;
+}
+.sidebar-container .widget ul li,
+.sidebar-container .widget.BlogArchive #ArchiveList li {
+font: normal 400 14px Montserrat, sans-serif;
+margin: 1em 0 0 0;
+}
+.sidebar-container .BlogArchive .post-count,
+.sidebar-container .Label .label-count {
+float: none;
+}
+.sidebar-container .Label li a {
+display: inline;
+}
+.sidebar-container .widget.Profile .default-avatar-wrapper .avatar-icon {
+border-color: #000000;
+fill: #000000;
+}
+.sidebar-container .widget.Profile .individual {
+text-align: center;
+}
+.sidebar-container .widget.Profile .individual dd:before {
+content: '\2014';
+display: block;
+}
+.sidebar-container .widget.Profile .individual .profile-data a,
+.sidebar-container .widget.Profile .team .profile-name {
+color: #000000;
+font: normal 400 24px EB Garamond, serif;
+}
+.sidebar-container .widget.Profile .individual dd {
+color: rgba(0, 0, 0, 0.87);
+font: normal 400 12px Montserrat, sans-serif;
+margin: 0 30px;
+}
+.sidebar-container .widget.Profile .individual .profile-link,
+.sidebar-container .widget.Profile .team .visit-profile {
+color: #be8b37;
+font: normal 400 14px Montserrat, sans-serif;
+}
+.sidebar-container .snippet-fade {
+background: -webkit-linear-gradient(left, #ffffff 0%, #ffffff 20%, rgba(255, 255, 255, 0) 100%);
+background: linear-gradient(to left, #ffffff 0%, #ffffff 20%, rgba(255, 255, 255, 0) 100%);
+}
+@media screen and (min-width: 640px) {
+.centered-bottom,
+.centered-top {
+margin: 0 auto;
+width: 576px;
+}
+.centered-top {
+-webkit-flex-wrap: nowrap;
+-ms-flex-wrap: nowrap;
+flex-wrap: nowrap;
+padding-bottom: 24px;
+padding-top: 36px;
+}
+.blog-name {
+-webkit-box-flex: 1;
+-webkit-flex: 1 1 auto;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+min-width: 0;
+-webkit-box-ordinal-group: 3;
+-webkit-order: 2;
+-ms-flex-order: 2;
+order: 2;
+}
+.sticky .blog-name {
+margin: 0;
+}
+.back-button-container,
+.hamburger-menu-container {
+margin-right: 36px;
+-webkit-box-ordinal-group: 2;
+-webkit-order: 1;
+-ms-flex-order: 1;
+order: 1;
+}
+.search {
+margin-left: 36px;
+-webkit-box-ordinal-group: 5;
+-webkit-order: 4;
+-ms-flex-order: 4;
+order: 4;
+}
+.search .section {
+top: 36px;
+}
+.sticky .search {
+display: block;
+}
+.subscribe-section-container {
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 auto;
+-ms-flex: 0 0 auto;
+flex: 0 0 auto;
+margin-left: 36px;
+-webkit-box-ordinal-group: 4;
+-webkit-order: 3;
+-ms-flex-order: 3;
+order: 3;
+}
+.subscribe-button {
+font: normal 400 14px Montserrat, sans-serif;
+line-height: 48px;
+}
+.subscribe-popup h3 {
+font: normal 400 14px Montserrat, sans-serif;
+}
+.subscribe-popup div.widget.FollowByEmail .follow-by-email-address {
+font: normal 400 14px Montserrat, sans-serif;
+}
+.subscribe-popup div.widget.FollowByEmail .follow-by-email-submit {
+font: normal 400 14px Montserrat, sans-serif;
+}
+.widget .title {
+font: normal 400 14px Montserrat, sans-serif;
+}
+.widget.Blog .post.no-featured-image,
+.widget.PopularPosts .post.no-featured-image {
+padding: 65px;
+}
+.post-title {
+font: normal bold 24px 'Trebuchet MS', Trebuchet, sans-serif;
+}
+.blog-pager a {
+font: normal 400 14px Montserrat, sans-serif;
+}
+.widget.Header h1 {
+font: normal bold 36px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+}
+.sticky .widget.Header h1 {
+font-size: 24px;
+}
+}
+@media screen and (min-width: 1162px) {
+.centered-bottom,
+.centered-top {
+width: 922px;
+}
+.back-button-container,
+.hamburger-menu-container {
+margin-right: 48px;
+}
+.search {
+margin-left: 48px;
+}
+.search-expand {
+font: normal 400 14px Montserrat, sans-serif;
+line-height: 48px;
+}
+.search-expand-text {
+display: block;
+}
+.search-expand-icon {
+display: none;
+}
+.subscribe-section-container {
+margin-left: 48px;
+}
+.post-filter-message {
+font: normal 400 14px Montserrat, sans-serif;
+}
+.post-filter-message .search-label,
+.post-filter-message .search-query {
+font: normal 700 14px Montserrat, sans-serif;
+}
+.post-filter-message .home-link {
+font: normal 700 14px Montserrat, sans-serif;
+}
+.widget.Blog .blog-posts .post-outer-container {
+width: 451px;
+}
+body.item-view .widget.Blog .blog-posts .post-outer-container {
+width: 100%;
+}
+body.item-view .widget.Blog .blog-posts .post-outer {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+}
+body.item-view .widget.PopularPosts,
+body.item-view .post-outer-container .inline-ad,
+#comments {
+margin-left: 220px;
+width: 682px;
+}
+.post-sidebar {
+box-sizing: border-box;
+display: block;
+font: normal 400 14px Montserrat, sans-serif;
+padding-right: 20px;
+width: 220px;
+}
+.post-sidebar-item {
+margin-bottom: 30px;
+}
+.post-sidebar-item ul {
+list-style: none;
+padding: 0;
+}
+.post-sidebar-item .sharing-button {
+color: #be8b37;
+cursor: pointer;
+display: inline-block;
+font: normal 400 14px Montserrat, sans-serif;
+line-height: normal;
+word-break: normal;
+}
+.post-sidebar-labels li {
+margin-bottom: 8px;
+}
+body.item-view .widget.Blog .post {
+width: 682px;
+}
+.widget.Blog .post.no-featured-image,
+.widget.PopularPosts .post.no-featured-image {
+padding: 100px 65px;
+}
+.page .widget.FeaturedPost .post-content {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-pack: justify;
+-webkit-justify-content: space-between;
+-ms-flex-pack: justify;
+justify-content: space-between;
+}
+.page .widget.FeaturedPost .thumb-link {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+}
+.page .widget.FeaturedPost .thumb.hero-thumb {
+height: auto;
+min-height: 300px;
+width: 451px;
+}
+.page .widget.FeaturedPost .post-content.has-featured-image .post-text-container {
+width: 425px;
+}
+.page .widget.FeaturedPost .post-content.no-featured-image .post-text-container {
+width: 100%;
+}
+.page .widget.FeaturedPost .post-header {
+margin: 0 0 8px 0;
+}
+.page .widget.FeaturedPost .post-footer {
+margin: 8px 0 0 0;
+}
+.post-body {
+font: normal 400 16px Lora, serif;
+line-height: 1.7;
+}
+.post-body blockquote {
+font: normal 400 24px Montserrat, sans-serif;
+line-height: 1.7;
+}
+.snippet-container,
+.snippet-fade {
+font: normal 400 16px Lora, serif;
+line-height: 27.2px;
+}
+.snippet-container {
+max-height: 326.4px;
+}
+.widget.Profile .individual .profile-data a,
+.widget.Profile .team .profile-name {
+font: normal 400 24px EB Garamond, serif;
+}
+.widget.Profile .individual .profile-link,
+.widget.Profile .team .visit-profile {
+font: normal 400 14px Montserrat, sans-serif;
+}
+}
+@media screen and (min-width: 1440px) {
+body {
+position: relative;
+}
+.page_body {
+margin-left: 284px;
+}
+.sticky .centered-top {
+padding-left: 284px;
+}
+.hamburger-menu-container {
+display: none;
+}
+.sidebar-container {
+overflow: visible;
+z-index: 32;
+}
+}
+
+--></style>
+<style id="template-skin-1" type="text/css"><!--
+body#layout .hidden,
+body#layout .invisible {
+display: inherit;
+}
+body#layout .page {
+width: 60%;
+}
+body#layout.ltr .page {
+float: right;
+}
+body#layout.rtl .page {
+float: left;
+}
+body#layout .sidebar-container {
+width: 40%;
+}
+body#layout.ltr .sidebar-container {
+float: left;
+}
+body#layout.rtl .sidebar-container {
+float: right;
+}
+--></style>
+<script src="./Running Apache Spark on eclipse Windows_Linux_files/cb=gapi.loaded_2" async=""></script><script src="./Running Apache Spark on eclipse Windows_Linux_files/cb=gapi.loaded_1" async=""></script><script src="./Running Apache Spark on eclipse Windows_Linux_files/cb=gapi.loaded_0" async=""></script><script src="./Running Apache Spark on eclipse Windows_Linux_files/ca-pub-5639044479937719.js.download"></script><script async="async" src="./Running Apache Spark on eclipse Windows_Linux_files/adsbygoogle.js.download"></script>
+<script async="async" src="./Running Apache Spark on eclipse Windows_Linux_files/imagesloaded-3.1.8.min.js.download"></script>
+<script async="async" src="./Running Apache Spark on eclipse Windows_Linux_files/masonry.pkgd.min.js.download"></script>
+<script async="async" src="./Running Apache Spark on eclipse Windows_Linux_files/clipboard.min.js.download"></script>
+<link href="./Running Apache Spark on eclipse Windows_Linux_files/authorization.css" media="all" onload="if(media!=&#39;all&#39;)media=&#39;all&#39;" rel="stylesheet"><noscript>&lt;link href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=1179959394978461385&amp;amp;zx=865236c9-5b60-4c18-a194-b0a083cdb06a' rel='stylesheet'/&gt;</noscript>
+<script async="" src="./Running Apache Spark on eclipse Windows_Linux_files/lazy.min.js.download"></script></head>
+<body class="post-view item-view version-1-1-0 variant-fancy_light collapsed-header" data-js-state="loaded">
+<a class="skip-navigation" href="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html#main" tabindex="0">
+Skip to main content
+</a>
+<div class="page">
+<div class="page_body">
+<div class="main-page-body-content">
+<div class="centered-top-placeholder cloned"><div class="centered-top">
+<div class="back-button-container">
+<a href="http://stdatalabs.blogspot.in/">
+<svg class="svg-icon-24 touch-icon back-button rtl-reversible-icon">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_arrow_back_black_24dp" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+</a>
+</div>
+<section class="subscribe-section-container">
+<button class="subscribe-button">Subscribe</button>
+<div class="subscribe-popup-container">
+<div aria-labelledby="subscribe-title" class="subscribe-popup dialog hidden" role="dialog" tabindex="-1">
+<div role="document">
+<h3 class="subscribe-title" id="subscribe-title">Subscribe to this blog</h3>
+<div class="section" id="subscription" name="Subscription"><div class="widget FollowByEmail" data-version="2" id="FollowByEmail1">
+<h3 class="title">
+Follow by Email
+</h3>
+<div class="widget-content">
+<div class="follow-by-email-inner">
+<form action="https://feedburner.google.com/fb/a/mailverify" method="post" onsubmit="window.open(&quot;https://feedburner.google.com/fb/a/mailverify?uri=blogspot/tZwCe&quot;, &quot;popupwindow&quot;, &quot;scrollbars=yes,width=550,height=520&quot;); return true" target="popupwindow">
+<input autocomplete="off" class="follow-by-email-address" name="email" placeholder="Email Address" type="email">
+<input class="follow-by-email-submit" type="submit" value="Get email notifications">
+<input name="uri" type="hidden" value="blogspot/tZwCe">
+<input name="loc" type="hidden" value="en_US">
+</form>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+</section>
+<div class="search">
+<button aria-label="Search" class="search-expand touch-icon-button">
+<div class="search-expand-text">Search</div>
+<svg class="svg-icon-24 touch-icon search-expand-icon">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_search_black_24dp" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+</button>
+<div class="section" id="search_top" name="Search (Top)"><div class="widget BlogSearch" data-version="2" id="BlogSearch1">
+<h3 class="title">
+Search This Blog
+</h3>
+<div class="widget-content" role="search">
+<form action="http://stdatalabs.blogspot.in/search" target="_top">
+<div class="search-input">
+<input aria-label="Search this blog" autocomplete="off" name="q" placeholder="Search this blog" value="">
+</div>
+<label>
+<input type="submit">
+<svg class="svg-icon-24 touch-icon search-icon">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_search_black_24dp" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+</label>
+</form>
+</div>
+</div></div>
+</div>
+<div class="blog-name">
+<div class="section" id="header" name="Header"><div class="widget Header" data-version="2" id="Header1">
+<div class="header-widget">
+<div>
+<h1>
+<a href="http://stdatalabs.blogspot.in/">
+My Experiments with bigdata
+</a>
+</h1>
+</div>
+<p>
+Solving practical problems on bigdata hadoop technology stack like  spark, hive, kafka, flume etc
+</p>
+</div>
+</div></div>
+<nav role="navigation">
+<div class="section" id="page_list_top" name="Page list (top)"><div class="widget PageList" data-version="2" id="PageList1">
+<div class="widget-content">
+<div class="overflowable-container">
+<div class="overflowable-contents">
+<div class="container">
+<ul class="tabs">
+<li class="overflowable-item">
+<a href="http://stdatalabs.blogspot.in/">Home</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="overflow-button hidden">
+<a>More…</a>
+</div>
+</div>
+</div>
+</div></div>
+</nav>
+</div>
+</div></div>
+
+<div class="hero-image"></div>
+<main class="centered-bottom" id="main" role="main" tabindex="-1">
+<div class="main section" id="page_body" name="Page body">
+<div class="widget Blog" data-version="2" id="Blog1">
+<div class="blog-posts hfeed container" role="feed">
+<div class="post-outer-container">
+<div class="post-outer">
+<div class="post-sidebar">
+<div class="post-sidebar-item post-share-buttons">
+<div aria-owns="sharing-popup-Blog1-byline-3902979584000713713" class="sharing">
+<button aria-controls="sharing-popup-Blog1-byline-3902979584000713713" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-Blog1-byline-3902979584000713713" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-Blog1-byline-3902979584000713713" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=email" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="post-sidebar-item post-sidebar-labels">
+<div>Labels</div>
+<ul>
+<li><a href="http://stdatalabs.blogspot.in/search/label/eclipse" rel="tag">eclipse</a></li>
+<li><a href="http://stdatalabs.blogspot.in/search/label/scala" rel="tag">scala</a></li>
+<li><a href="http://stdatalabs.blogspot.in/search/label/spark" rel="tag">spark</a></li>
+</ul>
+</div>
+</div>
+<div class="post">
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://stdatalabs.blogspot.com/2016/09/running-apache-spark-on-eclipse.html"
+  },
+  "headline": "Running Apache Spark on eclipse Windows/Linux","description": "It would be great if we can start building Spark applications on eclipse and run it without actually needing a Cluster. However before we can do tha&#8230;","datePublished": "2016-09-09T03:59:00-07:00",
+  "dateModified": "2016-09-09T03:59:34-07:00","image": {
+    "@type": "ImageObject","url": "https://4.bp.blogspot.com/-sJWC7IfvlXQ/V9Jrc3XnBKI/AAAAAAAAAGw/Hb2aA6vOZXsHUlyqBeD4Xbb1qMay7XTkACEw/w1200-h630-p-k-no-nu/sparkEclipse2.PNG",
+    "height": 630,
+    "width": 1200},"publisher": {
+    "@type": "Organization",
+    "name": "Blogger",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60",
+      "width": 206,
+      "height": 60
+    }
+  },"author": {
+    "@type": "Person",
+    "name": "sachin thirumala"
+  }
+}</script>
+<div class="post-header">
+<div class="post-header-line-1">
+<span class="byline post-timestamp">
+<meta content="http://stdatalabs.blogspot.com/2016/09/running-apache-spark-on-eclipse.html">
+<a class="timestamp-link" href="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" rel="bookmark" title="permanent link">
+<time class="published" datetime="2016-09-09T03:59:00-07:00" title="2016-09-09T03:59:00-07:00">
+September 09, 2016
+</time>
+</a>
+</span>
+</div>
+</div>
+<a name="3902979584000713713"></a>
+<h3 class="post-title entry-title">
+Running Apache Spark on eclipse Windows/Linux
+</h3>
+<div class="post-body-container">
+<div class="post-body entry-content float-container" id="post-body-3902979584000713713">
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<div dir="ltr" style="text-align: left;" trbidi="on">
+It would be great if we can start building Spark applications on eclipse and run it without actually needing a Cluster. However before we can do that, below are a few simple steps to follow in order to setup a Spark development environment on eclipse.<br>
+<div>
+<br></div>
+<div>
+<h3 style="text-align: left;">
+Go to Eclipse &gt; <i>Help &gt; Eclipse Marketplace:</i></h3>
+<div>
+<i><br></i></div>
+<h3 style="text-align: left;">
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://4.bp.blogspot.com/-sJWC7IfvlXQ/V9Jrc3XnBKI/AAAAAAAAAGw/Hb2aA6vOZXsHUlyqBeD4Xbb1qMay7XTkACEw/s1600/sparkEclipse2.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="318" src="./Running Apache Spark on eclipse Windows_Linux_files/sparkEclipse2.PNG" width="400"></a></div>
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+Install Scala IDE:</h3>
+<div style="text-align: left;">
+Under Search Tab type in "<i>scala</i>". Select Scala IDE x.x.x and click on "<i>Install</i>"</div>
+<div>
+<br></div>
+<h3 style="text-align: left;">
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://2.bp.blogspot.com/-yY-twf7XLbQ/V9Ju70kd0eI/AAAAAAAAAG4/BYOd80xYJyIxORFyRdUNtW2KuZPSUERaACLcB/s1600/sparkEclipse3.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="352" src="./Running Apache Spark on eclipse Windows_Linux_files/sparkEclipse3.PNG" width="400"></a></div>
+</h3>
+</div>
+<div style="text-align: left;">
+<i>(At the time of writing this article, Scala IDE 4.2.x was the latest)</i></div>
+<div style="text-align: left;">
+Accept the&nbsp;license agreement and continue installation. Installation completes in under an hour and a half.</div>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+Create a Maven Project:</h3>
+<div>
+<br></div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://1.bp.blogspot.com/-Iyb1_SRfamw/V9KKD5I_0VI/AAAAAAAAAHI/e8tT1zDC2aA-ihlEIoUAkSCSm7zQZzLYACLcB/s1600/sparkEclipse4.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="381" src="./Running Apache Spark on eclipse Windows_Linux_files/sparkEclipse4.PNG" width="400"></a></div>
+<div>
+<br></div>
+<div>
+Enter the <i>Group ID</i> and <i>Artifact ID</i> and click on "<i>Finish</i>"</div>
+<div>
+<br></div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://2.bp.blogspot.com/-s46CkgTESjw/V9KKLxrpAtI/AAAAAAAAAHM/GRFJhrjCryI32ZJsiYvDdiLkqfzKIBCkgCLcB/s1600/sparkEclipse5.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="346" src="./Running Apache Spark on eclipse Windows_Linux_files/sparkEclipse5.PNG" width="400"></a></div>
+<div>
+<br></div>
+<h3 style="text-align: left;">
+Add Scala Nature:</h3>
+<div>
+<div style="text-align: left;">
+Right click on the project you just created. Go to&nbsp;<i>Configure &gt; Add Scala Nature</i></div>
+<div style="text-align: left;">
+<i><br></i></div>
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://3.bp.blogspot.com/-i8Qn0dkJ3J4/V9KKwudIxXI/AAAAAAAAAHQ/W35HRhP4gRUCUFL37s2EKuiIuPksY0tFQCLcB/s1600/scalaNature.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="400" src="./Running Apache Spark on eclipse Windows_Linux_files/scalaNature.PNG" width="381"></a></div>
+<div>
+<br></div>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+Update the pom.xml with the list of dependencies:</h3>
+<div>
+<pre style="background: #f0f0f0; border: 1px dashed #cccccc; color: black; font-family: &quot;arial&quot;; font-size: 12px; height: auto; line-height: 20px; overflow: auto; padding: 0px; text-align: left; width: 99%;"><code style="color: black; word-wrap: normal;">           &lt;dependency&gt;  
+                &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;  
+                &lt;artifactId&gt;spark-core_2.10&lt;/artifactId&gt;  
+                &lt;version&gt;1.4.1&lt;/version&gt;  
+                &lt;scope&gt;compile&lt;/scope&gt;  
+           &lt;/dependency&gt;  
+           &lt;dependency&gt;  
+                &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;  
+                &lt;artifactId&gt;spark-streaming_2.10&lt;/artifactId&gt;  
+                &lt;version&gt;1.4.1&lt;/version&gt;  
+                &lt;scope&gt;compile&lt;/scope&gt;  
+           &lt;/dependency&gt;  
+           &lt;dependency&gt;  
+                &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;  
+                &lt;artifactId&gt;spark-mllib_2.10&lt;/artifactId&gt;  
+                &lt;version&gt;1.4.1&lt;/version&gt;  
+           &lt;/dependency&gt;  
+           &lt;dependency&gt;  
+                &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;  
+                &lt;artifactId&gt;spark-sql_2.10&lt;/artifactId&gt;  
+                &lt;version&gt;1.4.1&lt;/version&gt;  
+           &lt;/dependency&gt;  
+           &lt;dependency&gt;  
+                &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;  
+                &lt;artifactId&gt;spark-hive_2.10&lt;/artifactId&gt;  
+                &lt;version&gt;1.4.1&lt;/version&gt;  
+           &lt;/dependency&gt;  
+           &lt;dependency&gt;  
+                &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;  
+                &lt;artifactId&gt;spark-streaming-twitter_2.10&lt;/artifactId&gt;  
+                &lt;version&gt;1.4.1&lt;/version&gt;  
+           &lt;/dependency&gt;  
+           &lt;dependency&gt;  
+                &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;  
+                &lt;artifactId&gt;spark-streaming-kafka_2.10&lt;/artifactId&gt;  
+                &lt;version&gt;1.4.1&lt;/version&gt;  
+           &lt;/dependency&gt;  
+           &lt;dependency&gt;  
+                &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;  
+                &lt;artifactId&gt;hadoop-client&lt;/artifactId&gt;  
+                &lt;version&gt;2.4.1&lt;/version&gt;  
+                &lt;scope&gt;compile&lt;/scope&gt;  
+           &lt;/dependency&gt;  
+           &lt;dependency&gt;  
+                &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;  
+                &lt;artifactId&gt;hadoop-common&lt;/artifactId&gt;  
+                &lt;version&gt;2.4.1&lt;/version&gt;  
+                &lt;scope&gt;compile&lt;/scope&gt;  
+           &lt;/dependency&gt;  
+           &lt;dependency&gt;  
+                &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;  
+                &lt;artifactId&gt;spark-streaming-flume_2.10&lt;/artifactId&gt;  
+                &lt;version&gt;1.4.1&lt;/version&gt;  
+           &lt;/dependency&gt;  
+</code></pre>
+<br>
+<br></div>
+<div>
+<h3 style="text-align: left;">
+Remove Scala Library:</h3>
+</div>
+<div>
+Go to <i>Build path &gt; Configure Build Path</i></div>
+<div>
+Under Libraries, select <i>Scala Library container</i> and Click on <i>Remove</i></div>
+<div>
+<i><br></i></div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://2.bp.blogspot.com/-27LfcZtTu_M/V9KMOJ_SFAI/AAAAAAAAAHg/zn93TAvkkDMyD_OhbM5rWd2wkgePmz8wACLcB/s1600/scalaLibraryRemove.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="303" src="./Running Apache Spark on eclipse Windows_Linux_files/scalaLibraryRemove.PNG" width="400"></a></div>
+<div>
+<i><br></i></div>
+<h3 style="text-align: left;">
+Update Scala installation to Fixed scala installation:</h3>
+<div>
+Right click on the project. Go to <i>Properties &gt; Scala Compiler &gt; Click on the checkbox "Use Project Settings"</i></div>
+<div>
+Under <i>Scala Installation</i> dropdown select "<i>Fixed Scala Installation: 2.10.6 (built in)</i>"</div>
+<div>
+<br></div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://4.bp.blogspot.com/-zzJHwr11LGk/V9KMrQtb8oI/AAAAAAAAAHk/R87xz5Ly6JEDuT2IBZjb0nz6nN5zu8FUgCLcB/s1600/fizedScalaInstallation.PNG" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" height="321" src="./Running Apache Spark on eclipse Windows_Linux_files/fizedScalaInstallation.PNG" width="640"></a></div>
+<div>
+<br></div>
+<div>
+<br></div>
+<div>
+<br></div>
+<div>
+<br></div>
+<div>
+<br></div>
+<div>
+<br></div>
+<div>
+<br></div>
+<div>
+<br></div>
+<div>
+</div>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+Refactor Project:&nbsp;</h3>
+<div>
+Right click on <i>src/main/java</i>. Click on <i>Refactor &gt; Rename</i> and type in<i> scala</i> in place of <i>Java</i></div>
+<div>
+<br></div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://2.bp.blogspot.com/-itVVKI-lwFA/V9KNR89B2EI/AAAAAAAAAHo/jH_QeHJHwg8LYIPvTgX27tudoBHiebssQCLcB/s1600/refactor.PNG" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" height="323" src="./Running Apache Spark on eclipse Windows_Linux_files/refactor.PNG" width="640"></a></div>
+<div>
+<br></div>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+</h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<div>
+<br></div>
+<h3 style="text-align: left;">
+Select Scala perspective:</h3>
+<div>
+On the right top corner, click on "open perspective". Select&nbsp;<i>scala</i>&nbsp;and click OK<br>
+<br>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://3.bp.blogspot.com/-Aat8i2cKm_A/V9KVCGm7iEI/AAAAAAAAAIA/s5Con_Xl5l8DAjtDlJ2Y3SfQMGRNpGafwCLcB/s1600/sparkEclipse15.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" height="379" src="./Running Apache Spark on eclipse Windows_Linux_files/sparkEclipse15.png" width="640"></a></div>
+<br>
+<br>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+<br></h3>
+<h3 style="text-align: left;">
+Create a Scala Object:</h3>
+Right click on the <i>Package</i> within the <i>Project</i>. Select <i>Scala Object</i>. Type in a name and click "<i>Finish</i>"<br>
+<br>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://1.bp.blogspot.com/-oSlAu58UAeM/V9KVEsAjwjI/AAAAAAAAAIE/YqK-XSI3xHYEEqWO6ieeoI1Jvm52NBFoACEw/s1600/sparkEclipse14.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="383" src="./Running Apache Spark on eclipse Windows_Linux_files/sparkEclipse14.png" width="400"></a></div>
+<br>
+You can now start developing your Spark Application.<br>
+Good Luck!<br>
+<br></div>
+<div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<div class="byline post-share-buttons goog-inline-block">
+<div aria-owns="sharing-popup-Blog1-footer-1-3902979584000713713" class="sharing">
+<button aria-controls="sharing-popup-Blog1-footer-1-3902979584000713713" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-Blog1-footer-1-3902979584000713713" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-Blog1-footer-1-3902979584000713713" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;target=email" data-url="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="byline post-labels">
+<span class="byline-label">Labels:</span>
+<a href="http://stdatalabs.blogspot.in/search/label/eclipse" rel="tag">eclipse</a>
+<a href="http://stdatalabs.blogspot.in/search/label/scala" rel="tag">scala</a>
+<a href="http://stdatalabs.blogspot.in/search/label/spark" rel="tag">spark</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3">
+</div>
+</div>
+</div>
+</div>
+<section class="comments embed" data-num-comments="0" id="comments">
+<a name="comments"></a>
+<h3 class="title">Comments</h3>
+<div id="Blog1_comments-block-wrapper">
+</div>
+<div class="footer">
+<div class="comment-form">
+<a name="comment-form"></a>
+<h4 id="comment-post-message">Post a Comment</h4>
+<a href="https://www.blogger.com/comment-iframe.g?blogID=1179959394978461385&amp;postID=3902979584000713713&amp;skin=soho&amp;skin=soho&amp;blogspotRpcToken=311596" id="comment-editor-src"></a>
+<iframe allowtransparency="true" class="blogger-iframe-colorize blogger-comment-from-post" frameborder="0" height="94px" id="comment-editor" name="comment-editor" src="./Running Apache Spark on eclipse Windows_Linux_files/comment-iframe.html" width="100%" data-resized="true"></iframe>
+<script src="./Running Apache Spark on eclipse Windows_Linux_files/3134186057-comment_from_post_iframe.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+      BLOG_CMT_createIframe('https://www.blogger.com/rpc_relay.html');
+    </script>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div><div class="widget PopularPosts" data-version="2" id="PopularPosts1">
+<h3 class="title">
+Popular Posts
+</h3>
+<div class="widget-content">
+<div role="feed">
+<article class="post" role="article">
+<div class="post has-featured-image">
+<div class="snippet-thumbnail">
+<a href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html"><img alt="Image" sizes="(max-width: 660px) 100vw, 660px" src="./Running Apache Spark on eclipse Windows_Linux_files/streaming-arch.png" srcset="https://3.bp.blogspot.com/-HZFbMeJMOcU/V9Lh479Bb-I/AAAAAAAAAIU/9I71X95SNlY9IoouUGs-i0lLcDVHNN0QgCLcB/w330/streaming-arch.png 330w, https://3.bp.blogspot.com/-HZFbMeJMOcU/V9Lh479Bb-I/AAAAAAAAAIU/9I71X95SNlY9IoouUGs-i0lLcDVHNN0QgCLcB/w660/streaming-arch.png 660w, https://3.bp.blogspot.com/-HZFbMeJMOcU/V9Lh479Bb-I/AAAAAAAAAIU/9I71X95SNlY9IoouUGs-i0lLcDVHNN0QgCLcB/w1320/streaming-arch.png 1320w"></a>
+<div class="post-header">
+<div class="post-header-line-1">
+<span class="byline post-timestamp">
+<meta content="http://stdatalabs.blogspot.com/2016/09/spark-streaming-part-1-real-time.html">
+<a class="timestamp-link" href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html" rel="bookmark" title="permanent link">
+<time class="published" datetime="2016-09-09T11:17:00-07:00" title="2016-09-09T11:17:00-07:00">
+September 09, 2016
+</time>
+</a>
+</span>
+</div>
+</div>
+</div>
+<h3 class="post-title"><a href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html">Spark Streaming part 1: Real time twitter sentiment analysis</a></h3>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-0">
+<div class="byline post-share-buttons goog-inline-block">
+<div aria-owns="sharing-popup-PopularPosts1-footer-0-8401979169790163299" class="sharing">
+<button aria-controls="sharing-popup-PopularPosts1-footer-0-8401979169790163299" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-PopularPosts1-footer-0-8401979169790163299" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-PopularPosts1-footer-0-8401979169790163299" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8401979169790163299&amp;target=" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8401979169790163299&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8401979169790163299&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8401979169790163299&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8401979169790163299&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8401979169790163299&amp;target=email" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="byline post-comment-link container">
+<a class="comment-link" href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html#comments" onclick="">
+Post a Comment
+</a>
+</span>
+</div>
+</div>
+</div>
+</article>
+<article class="post" role="article">
+<div class="post has-featured-image">
+<div class="snippet-thumbnail">
+<a href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html"><img alt="Image" sizes="(max-width: 660px) 100vw, 660px" src="./Running Apache Spark on eclipse Windows_Linux_files/kafkaSpark.png" srcset="https://3.bp.blogspot.com/-L4SzqzgsuPw/V9Uz5C7OH3I/AAAAAAAAAKI/C7IeA0ap1r4_kvgIfR5v8pmXq1qqUZhrgCEw/w330/kafkaSpark.png 330w, https://3.bp.blogspot.com/-L4SzqzgsuPw/V9Uz5C7OH3I/AAAAAAAAAKI/C7IeA0ap1r4_kvgIfR5v8pmXq1qqUZhrgCEw/w660/kafkaSpark.png 660w, https://3.bp.blogspot.com/-L4SzqzgsuPw/V9Uz5C7OH3I/AAAAAAAAAKI/C7IeA0ap1r4_kvgIfR5v8pmXq1qqUZhrgCEw/w1320/kafkaSpark.png 1320w"></a>
+<div class="post-header">
+<div class="post-header-line-1">
+<span class="byline post-timestamp">
+<meta content="http://stdatalabs.blogspot.com/2016/09/spark-streaming-part-3-real-time.html">
+<a class="timestamp-link" href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html" rel="bookmark" title="permanent link">
+<time class="published" datetime="2016-09-11T08:14:00-07:00" title="2016-09-11T08:14:00-07:00">
+September 11, 2016
+</time>
+</a>
+</span>
+</div>
+</div>
+</div>
+<h3 class="post-title"><a href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html">Spark streaming part 3: Real time twitter sentiment analysis using kafka</a></h3>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-0">
+<div class="byline post-share-buttons goog-inline-block">
+<div aria-owns="sharing-popup-PopularPosts1-footer-0-2421307544706964468" class="sharing">
+<button aria-controls="sharing-popup-PopularPosts1-footer-0-2421307544706964468" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-PopularPosts1-footer-0-2421307544706964468" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-PopularPosts1-footer-0-2421307544706964468" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2421307544706964468&amp;target=" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2421307544706964468&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2421307544706964468&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2421307544706964468&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2421307544706964468&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2421307544706964468&amp;target=email" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="byline post-comment-link container">
+<a class="comment-link" href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html#comments" onclick="">
+3 comments
+</a>
+</span>
+</div>
+</div>
+</div>
+</article>
+<article class="post" role="article">
+<div class="post has-featured-image">
+<div class="snippet-thumbnail">
+<a href="http://stdatalabs.blogspot.in/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html"><img alt="Image" sizes="(max-width: 660px) 100vw, 660px" src="./Running Apache Spark on eclipse Windows_Linux_files/Capture.PNG" srcset="https://3.bp.blogspot.com/-4vDDCSjj9us/WM0nWxi8EgI/AAAAAAAAAc0/y4JN-ei05cQaYQFnH8fFWiF9z3va_eLOwCEw/w330/Capture.PNG 330w, https://3.bp.blogspot.com/-4vDDCSjj9us/WM0nWxi8EgI/AAAAAAAAAc0/y4JN-ei05cQaYQFnH8fFWiF9z3va_eLOwCEw/w660/Capture.PNG 660w, https://3.bp.blogspot.com/-4vDDCSjj9us/WM0nWxi8EgI/AAAAAAAAAc0/y4JN-ei05cQaYQFnH8fFWiF9z3va_eLOwCEw/w1320/Capture.PNG 1320w"></a>
+<div class="post-header">
+<div class="post-header-line-1">
+<span class="byline post-timestamp">
+<meta content="http://stdatalabs.blogspot.com/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html">
+<a class="timestamp-link" href="http://stdatalabs.blogspot.in/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html" rel="bookmark" title="permanent link">
+<time class="published" datetime="2017-03-18T09:46:00-07:00" title="2017-03-18T09:46:00-07:00">
+March 18, 2017
+</time>
+</a>
+</span>
+</div>
+</div>
+</div>
+<h3 class="post-title"><a href="http://stdatalabs.blogspot.in/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html">MapReduce VS Spark - Aadhaar dataset analysis</a></h3>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-0">
+<div class="byline post-share-buttons goog-inline-block">
+<div aria-owns="sharing-popup-PopularPosts1-footer-0-2964983291649509760" class="sharing">
+<button aria-controls="sharing-popup-PopularPosts1-footer-0-2964983291649509760" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-PopularPosts1-footer-0-2964983291649509760" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-PopularPosts1-footer-0-2964983291649509760" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2964983291649509760&amp;target=" data-url="http://stdatalabs.blogspot.in/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2964983291649509760&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2964983291649509760&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2964983291649509760&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2964983291649509760&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2964983291649509760&amp;target=email" data-url="http://stdatalabs.blogspot.in/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="byline post-comment-link container">
+<a class="comment-link" href="http://stdatalabs.blogspot.in/2017/03/mapreduce-vs-spark-aadhaar-dataset-analysis.html#comments" onclick="">
+Post a Comment
+</a>
+</span>
+</div>
+</div>
+</div>
+</article>
+<article class="post" role="article">
+<div class="post has-featured-image">
+<div class="snippet-thumbnail">
+<a href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html"><img alt="Image" sizes="(max-width: 660px) 100vw, 660px" src="./Running Apache Spark on eclipse Windows_Linux_files/streaming-arch(1).png" srcset="https://4.bp.blogspot.com/-AJamaqURNKU/V9Oo3gbW0DI/AAAAAAAAAJc/RaAMc0awiOwESbNgWdT6qUOn8NDiarD1gCEw/w330/streaming-arch.png 330w, https://4.bp.blogspot.com/-AJamaqURNKU/V9Oo3gbW0DI/AAAAAAAAAJc/RaAMc0awiOwESbNgWdT6qUOn8NDiarD1gCEw/w660/streaming-arch.png 660w, https://4.bp.blogspot.com/-AJamaqURNKU/V9Oo3gbW0DI/AAAAAAAAAJc/RaAMc0awiOwESbNgWdT6qUOn8NDiarD1gCEw/w1320/streaming-arch.png 1320w"></a>
+<div class="post-header">
+<div class="post-header-line-1">
+<span class="byline post-timestamp">
+<meta content="http://stdatalabs.blogspot.com/2016/09/spark-streaming-part-2-real-time_10.html">
+<a class="timestamp-link" href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html" rel="bookmark" title="permanent link">
+<time class="published" datetime="2016-09-10T01:38:00-07:00" title="2016-09-10T01:38:00-07:00">
+September 10, 2016
+</time>
+</a>
+</span>
+</div>
+</div>
+</div>
+<h3 class="post-title"><a href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html">Spark streaming part 2: Real time twitter sentiment analysis using Flume</a></h3>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-0">
+<div class="byline post-share-buttons goog-inline-block">
+<div aria-owns="sharing-popup-PopularPosts1-footer-0-462339611134717064" class="sharing">
+<button aria-controls="sharing-popup-PopularPosts1-footer-0-462339611134717064" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-PopularPosts1-footer-0-462339611134717064" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-PopularPosts1-footer-0-462339611134717064" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=462339611134717064&amp;target=" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=462339611134717064&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=462339611134717064&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=462339611134717064&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=462339611134717064&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=462339611134717064&amp;target=email" data-url="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="byline post-comment-link container">
+<a class="comment-link" href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html#comments" onclick="">
+Post a Comment
+</a>
+</span>
+</div>
+</div>
+</div>
+</article>
+<article class="post" role="article">
+<div class="post has-featured-image">
+<div class="snippet-thumbnail">
+<a href="http://stdatalabs.blogspot.in/2016/10/data-guarantees-in-spark-streaming-with.html"><img alt="Image" sizes="(max-width: 660px) 100vw, 660px" src="./Running Apache Spark on eclipse Windows_Linux_files/checkpointing.PNG" srcset="https://4.bp.blogspot.com/-IirWGGxbc2E/WAj8ROJn_nI/AAAAAAAAAQw/-zWCJOkCwn0c3CXAIM7Qmb9ePF00Tw9QgCLcB/w330/checkpointing.PNG 330w, https://4.bp.blogspot.com/-IirWGGxbc2E/WAj8ROJn_nI/AAAAAAAAAQw/-zWCJOkCwn0c3CXAIM7Qmb9ePF00Tw9QgCLcB/w660/checkpointing.PNG 660w, https://4.bp.blogspot.com/-IirWGGxbc2E/WAj8ROJn_nI/AAAAAAAAAQw/-zWCJOkCwn0c3CXAIM7Qmb9ePF00Tw9QgCLcB/w1320/checkpointing.PNG 1320w"></a>
+<div class="post-header">
+<div class="post-header-line-1">
+<span class="byline post-timestamp">
+<meta content="http://stdatalabs.blogspot.com/2016/10/data-guarantees-in-spark-streaming-with.html">
+<a class="timestamp-link" href="http://stdatalabs.blogspot.in/2016/10/data-guarantees-in-spark-streaming-with.html" rel="bookmark" title="permanent link">
+<time class="published" datetime="2016-10-22T04:31:00-07:00" title="2016-10-22T04:31:00-07:00">
+October 22, 2016
+</time>
+</a>
+</span>
+</div>
+</div>
+</div>
+<h3 class="post-title"><a href="http://stdatalabs.blogspot.in/2016/10/data-guarantees-in-spark-streaming-with.html">Data guarantees in Spark Streaming with Kafka integration</a></h3>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-0">
+<div class="byline post-share-buttons goog-inline-block">
+<div aria-owns="sharing-popup-PopularPosts1-footer-0-3084484568034597229" class="sharing">
+<button aria-controls="sharing-popup-PopularPosts1-footer-0-3084484568034597229" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-PopularPosts1-footer-0-3084484568034597229" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-PopularPosts1-footer-0-3084484568034597229" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3084484568034597229&amp;target=" data-url="http://stdatalabs.blogspot.in/2016/10/data-guarantees-in-spark-streaming-with.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3084484568034597229&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2016/10/data-guarantees-in-spark-streaming-with.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3084484568034597229&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2016/10/data-guarantees-in-spark-streaming-with.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3084484568034597229&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2016/10/data-guarantees-in-spark-streaming-with.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3084484568034597229&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2016/10/data-guarantees-in-spark-streaming-with.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=3084484568034597229&amp;target=email" data-url="http://stdatalabs.blogspot.in/2016/10/data-guarantees-in-spark-streaming-with.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="byline post-comment-link container">
+<a class="comment-link" href="http://stdatalabs.blogspot.in/2016/10/data-guarantees-in-spark-streaming-with.html#comments" onclick="">
+1 comment
+</a>
+</span>
+</div>
+</div>
+</div>
+</article>
+<article class="post" role="article">
+<div class="post has-featured-image">
+<div class="snippet-thumbnail">
+<a href="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html"><img alt="Image" sizes="(max-width: 660px) 100vw, 660px" src="./Running Apache Spark on eclipse Windows_Linux_files/sparkZipWithIndex1.PNG" srcset="https://2.bp.blogspot.com/-bi5zfia-ZWo/V96N9C97IbI/AAAAAAAAAME/VPBxmHtEwYU1p6dNWRD2W3-IoLVVBr2fQCLcB/w330/sparkZipWithIndex1.PNG 330w, https://2.bp.blogspot.com/-bi5zfia-ZWo/V96N9C97IbI/AAAAAAAAAME/VPBxmHtEwYU1p6dNWRD2W3-IoLVVBr2fQCLcB/w660/sparkZipWithIndex1.PNG 660w, https://2.bp.blogspot.com/-bi5zfia-ZWo/V96N9C97IbI/AAAAAAAAAME/VPBxmHtEwYU1p6dNWRD2W3-IoLVVBr2fQCLcB/w1320/sparkZipWithIndex1.PNG 1320w"></a>
+<div class="post-header">
+<div class="post-header-line-1">
+<span class="byline post-timestamp">
+<meta content="http://stdatalabs.blogspot.com/2016/09/assigning-row-number-in-spark-using.html">
+<a class="timestamp-link" href="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html" rel="bookmark" title="permanent link">
+<time class="published" datetime="2016-09-18T05:58:00-07:00" title="2016-09-18T05:58:00-07:00">
+September 18, 2016
+</time>
+</a>
+</span>
+</div>
+</div>
+</div>
+<h3 class="post-title"><a href="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html">Assigning row number in spark using zipWithindex</a></h3>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-0">
+<div class="byline post-share-buttons goog-inline-block">
+<div aria-owns="sharing-popup-PopularPosts1-footer-0-5869782776590383641" class="sharing">
+<button aria-controls="sharing-popup-PopularPosts1-footer-0-5869782776590383641" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-PopularPosts1-footer-0-5869782776590383641" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-PopularPosts1-footer-0-5869782776590383641" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5869782776590383641&amp;target=" data-url="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5869782776590383641&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5869782776590383641&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5869782776590383641&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5869782776590383641&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5869782776590383641&amp;target=email" data-url="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="byline post-comment-link container">
+<a class="comment-link" href="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html#comments" onclick="">
+Post a Comment
+</a>
+</span>
+</div>
+</div>
+</div>
+</article>
+<article class="post" role="article">
+<div class="post has-featured-image">
+<div class="snippet-thumbnail">
+<a href="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html"><img alt="Image" sizes="(max-width: 660px) 100vw, 660px" src="./Running Apache Spark on eclipse Windows_Linux_files/storm+architecture.png" srcset="https://1.bp.blogspot.com/-RRI8QnYMgcM/V-fY5yTV9AI/AAAAAAAAANA/Qz514YU-b0YPEZ_sIUNK3sHx7iCQL57PgCEw/w330/storm%2Barchitecture.png 330w, https://1.bp.blogspot.com/-RRI8QnYMgcM/V-fY5yTV9AI/AAAAAAAAANA/Qz514YU-b0YPEZ_sIUNK3sHx7iCQL57PgCEw/w660/storm%2Barchitecture.png 660w, https://1.bp.blogspot.com/-RRI8QnYMgcM/V-fY5yTV9AI/AAAAAAAAANA/Qz514YU-b0YPEZ_sIUNK3sHx7iCQL57PgCEw/w1320/storm%2Barchitecture.png 1320w"></a>
+<div class="post-header">
+<div class="post-header-line-1">
+<span class="byline post-timestamp">
+<meta content="http://stdatalabs.blogspot.com/2016/09/realtime-stream-processing-using-apache.html">
+<a class="timestamp-link" href="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html" rel="bookmark" title="permanent link">
+<time class="published" datetime="2016-09-25T07:13:00-07:00" title="2016-09-25T07:13:00-07:00">
+September 25, 2016
+</time>
+</a>
+</span>
+</div>
+</div>
+</div>
+<h3 class="post-title"><a href="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html">Realtime stream processing using Apache Storm - Part 1</a></h3>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-0">
+<div class="byline post-share-buttons goog-inline-block">
+<div aria-owns="sharing-popup-PopularPosts1-footer-0-8083195912903852102" class="sharing">
+<button aria-controls="sharing-popup-PopularPosts1-footer-0-8083195912903852102" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-PopularPosts1-footer-0-8083195912903852102" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-PopularPosts1-footer-0-8083195912903852102" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8083195912903852102&amp;target=" data-url="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8083195912903852102&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8083195912903852102&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8083195912903852102&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8083195912903852102&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=8083195912903852102&amp;target=email" data-url="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="byline post-comment-link container">
+<a class="comment-link" href="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html#comments" onclick="">
+Post a Comment
+</a>
+</span>
+</div>
+</div>
+</div>
+</article>
+<article class="post" role="article">
+<div class="post has-featured-image">
+<div class="snippet-thumbnail">
+<a href="http://stdatalabs.blogspot.in/2016/10/real-time-stream-processing-using.html"><img alt="Image" sizes="(max-width: 660px) 100vw, 660px" src="./Running Apache Spark on eclipse Windows_Linux_files/kafkaProducer.PNG" srcset="https://2.bp.blogspot.com/-PmMWBy3ak2g/V_FQrK2vSxI/AAAAAAAAAOE/NBRmn2eYwDssr7CecU1NUnc870afUfwhgCLcB/w330/kafkaProducer.PNG 330w, https://2.bp.blogspot.com/-PmMWBy3ak2g/V_FQrK2vSxI/AAAAAAAAAOE/NBRmn2eYwDssr7CecU1NUnc870afUfwhgCLcB/w660/kafkaProducer.PNG 660w, https://2.bp.blogspot.com/-PmMWBy3ak2g/V_FQrK2vSxI/AAAAAAAAAOE/NBRmn2eYwDssr7CecU1NUnc870afUfwhgCLcB/w1320/kafkaProducer.PNG 1320w"></a>
+<div class="post-header">
+<div class="post-header-line-1">
+<span class="byline post-timestamp">
+<meta content="http://stdatalabs.blogspot.com/2016/10/real-time-stream-processing-using.html">
+<a class="timestamp-link" href="http://stdatalabs.blogspot.in/2016/10/real-time-stream-processing-using.html" rel="bookmark" title="permanent link">
+<time class="published" datetime="2016-10-02T11:34:00-07:00" title="2016-10-02T11:34:00-07:00">
+October 02, 2016
+</time>
+</a>
+</span>
+</div>
+</div>
+</div>
+<h3 class="post-title"><a href="http://stdatalabs.blogspot.in/2016/10/real-time-stream-processing-using.html">Realtime stream processing using Apache Storm and Kafka - Part 2</a></h3>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-0">
+<div class="byline post-share-buttons goog-inline-block">
+<div aria-owns="sharing-popup-PopularPosts1-footer-0-5215068366768031039" class="sharing">
+<button aria-controls="sharing-popup-PopularPosts1-footer-0-5215068366768031039" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-PopularPosts1-footer-0-5215068366768031039" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-PopularPosts1-footer-0-5215068366768031039" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5215068366768031039&amp;target=" data-url="http://stdatalabs.blogspot.in/2016/10/real-time-stream-processing-using.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5215068366768031039&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2016/10/real-time-stream-processing-using.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5215068366768031039&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2016/10/real-time-stream-processing-using.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5215068366768031039&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2016/10/real-time-stream-processing-using.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5215068366768031039&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2016/10/real-time-stream-processing-using.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=5215068366768031039&amp;target=email" data-url="http://stdatalabs.blogspot.in/2016/10/real-time-stream-processing-using.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="byline post-comment-link container">
+<a class="comment-link" href="http://stdatalabs.blogspot.in/2016/10/real-time-stream-processing-using.html#comments" onclick="">
+Post a Comment
+</a>
+</span>
+</div>
+</div>
+</div>
+</article>
+<article class="post" role="article">
+<div class="post has-featured-image">
+<div class="snippet-thumbnail">
+<a href="http://stdatalabs.blogspot.in/2017/02/mapreduce-vs-spark-wordcount-example.html"><img alt="Image" sizes="(max-width: 660px) 100vw, 660px" src="./Running Apache Spark on eclipse Windows_Linux_files/mrOutput.PNG" srcset="https://2.bp.blogspot.com/-2Gs0ZyIveQE/WJ9d-aduPdI/AAAAAAAAAZs/CVEFQSNXJPkp9fubhYTH8mzmE9SecB-mgCLcB/w330/mrOutput.PNG 330w, https://2.bp.blogspot.com/-2Gs0ZyIveQE/WJ9d-aduPdI/AAAAAAAAAZs/CVEFQSNXJPkp9fubhYTH8mzmE9SecB-mgCLcB/w660/mrOutput.PNG 660w, https://2.bp.blogspot.com/-2Gs0ZyIveQE/WJ9d-aduPdI/AAAAAAAAAZs/CVEFQSNXJPkp9fubhYTH8mzmE9SecB-mgCLcB/w1320/mrOutput.PNG 1320w"></a>
+<div class="post-header">
+<div class="post-header-line-1">
+<span class="byline post-timestamp">
+<meta content="http://stdatalabs.blogspot.com/2017/02/mapreduce-vs-spark-wordcount-example.html">
+<a class="timestamp-link" href="http://stdatalabs.blogspot.in/2017/02/mapreduce-vs-spark-wordcount-example.html" rel="bookmark" title="permanent link">
+<time class="published" datetime="2017-02-11T11:21:00-08:00" title="2017-02-11T11:21:00-08:00">
+February 11, 2017
+</time>
+</a>
+</span>
+</div>
+</div>
+</div>
+<h3 class="post-title"><a href="http://stdatalabs.blogspot.in/2017/02/mapreduce-vs-spark-wordcount-example.html">MapReduce VS Spark - Wordcount Example</a></h3>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-0">
+<div class="byline post-share-buttons goog-inline-block">
+<div aria-owns="sharing-popup-PopularPosts1-footer-0-2683294647520077203" class="sharing">
+<button aria-controls="sharing-popup-PopularPosts1-footer-0-2683294647520077203" aria-label="Share" class="sharing-button touch-icon-button" id="sharing-button-PopularPosts1-footer-0-2683294647520077203" role="button" aria-expanded="false" aria-haspopup="true">
+Share
+</button>
+<div class="share-buttons-container">
+<ul aria-hidden="true" aria-label="Share" class="share-buttons hidden" id="sharing-popup-PopularPosts1-footer-0-2683294647520077203" role="menu">
+<li>
+<span aria-label="Get link" class="sharing-platform-button sharing-element-link" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2683294647520077203&amp;target=" data-url="http://stdatalabs.blogspot.in/2017/02/mapreduce-vs-spark-wordcount-example.html" role="menuitem" tabindex="-1" title="Get link">
+<svg class="svg-icon-24 touch-icon sharing-link">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_link_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Get link</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Facebook" class="sharing-platform-button sharing-element-facebook" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2683294647520077203&amp;target=facebook" data-url="http://stdatalabs.blogspot.in/2017/02/mapreduce-vs-spark-wordcount-example.html" role="menuitem" tabindex="-1" title="Share to Facebook">
+<svg class="svg-icon-24 touch-icon sharing-facebook">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Facebook</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Twitter" class="sharing-platform-button sharing-element-twitter" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2683294647520077203&amp;target=twitter" data-url="http://stdatalabs.blogspot.in/2017/02/mapreduce-vs-spark-wordcount-example.html" role="menuitem" tabindex="-1" title="Share to Twitter">
+<svg class="svg-icon-24 touch-icon sharing-twitter">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Twitter</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Pinterest" class="sharing-platform-button sharing-element-pinterest" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2683294647520077203&amp;target=pinterest" data-url="http://stdatalabs.blogspot.in/2017/02/mapreduce-vs-spark-wordcount-example.html" role="menuitem" tabindex="-1" title="Share to Pinterest">
+<svg class="svg-icon-24 touch-icon sharing-pinterest">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Pinterest</span>
+</span>
+</li>
+<li>
+<span aria-label="Share to Google+" class="sharing-platform-button sharing-element-googlePlus" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2683294647520077203&amp;target=googleplus" data-url="http://stdatalabs.blogspot.in/2017/02/mapreduce-vs-spark-wordcount-example.html" role="menuitem" tabindex="-1" title="Share to Google+">
+<svg class="svg-icon-24 touch-icon sharing-googlePlus">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_googlePlus_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Google+</span>
+</span>
+</li>
+<li>
+<span aria-label="Email" class="sharing-platform-button sharing-element-email" data-href="https://www.blogger.com/share-post.g?blogID=1179959394978461385&amp;postID=2683294647520077203&amp;target=email" data-url="http://stdatalabs.blogspot.in/2017/02/mapreduce-vs-spark-wordcount-example.html" role="menuitem" tabindex="-1" title="Email">
+<svg class="svg-icon-24 touch-icon sharing-email">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_24_email_dark" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<span class="platform-sharing-text">Email</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<span class="byline post-comment-link container">
+<a class="comment-link" href="http://stdatalabs.blogspot.in/2017/02/mapreduce-vs-spark-wordcount-example.html#comments" onclick="">
+Post a Comment
+</a>
+</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div></div>
+</main>
+</div>
+<footer class="footer section" id="footer" name="Footer"><div class="widget Attribution" data-version="2" id="Attribution1">
+<div class="widget-content">
+<div class="blogger">
+<a href="https://www.blogger.com/">
+<svg class="svg-icon-24">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_post_blogger_black_24dp" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+Powered by Blogger
+</a>
+</div>
+</div>
+</div></footer>
+</div>
+</div>
+<aside class="sidebar-container container sidebar-invisible" role="complementary">
+<div class="navigation">
+<svg class="svg-icon-24 touch-icon sidebar-back rtl-reversible-icon">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_arrow_back_black_24dp" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+</div>
+<div class="section" id="sidebar" name="Sidebar"><div class="widget Profile" data-version="2" id="Profile1">
+<div class="widget-content individual">
+<a href="https://plus.google.com/115730013321259726877">
+<img alt="My photo" class="profile-img" height="120" src="./Running Apache Spark on eclipse Windows_Linux_files/photo.jpg" width="120">
+</a>
+<div class="profile-info">
+<dl class="profile-datablock">
+<dt class="profile-data">
+<a class="profile-link g-profile" href="https://plus.google.com/115730013321259726877" rel="author" data-gapiscan="true" data-onload="true" data-gapiattached="true">
+sachin thirumala
+</a>
+<div id="___follow_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 112px; height: 20px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 112px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1498389062822" name="I0_1498389062822" src="./Running Apache Spark on eclipse Windows_Linux_files/follow.html" data-gapiattached="true"></iframe></div>
+</dt>
+</dl>
+<a class="profile-link" href="https://plus.google.com/115730013321259726877" rel="author">
+Visit profile
+</a>
+</div>
+</div>
+</div><div class="widget HTML" data-version="2" id="HTML1">
+<h3 class="title">
+Follow me @github
+</h3>
+<div class="widget-content">
+<!-- Place this tag where you want the button to render. -->
+<iframe allowtransparency="true" scrolling="no" frameborder="0" src="./Running Apache Spark on eclipse Windows_Linux_files/buttons.html" style="width: 181px; height: 28px; border: none;"></iframe>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async="" defer="" src="./Running Apache Spark on eclipse Windows_Linux_files/buttons.js.download"></script>
+</div>
+</div><div class="widget Stats" data-version="2" id="Stats1">
+<h3 class="title">
+Pageviews
+</h3>
+<div class="widget-content">
+<div id="Stats1_content">
+<img alt="Sparkline" height="30" id="Stats1_sparkline" width="75" src="./Running Apache Spark on eclipse Windows_Linux_files/chart">
+<span class="counter-wrapper graph-counter-wrapper" id="Stats1_totalCount">
+<span class="digit stage-0"><strong>2</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>3</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>0</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>9</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>3</strong><span class="blind-plate"></span></span></span>
+</div>
+</div>
+</div><div class="widget BlogArchive" data-version="2" id="BlogArchive1">
+<details class="collapsible extendable">
+<summary>
+<div class="collapsible-title">
+<h3 class="title">
+Archive
+</h3>
+<svg class="svg-icon-24 chevron-down">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_expand_more_black_24dp" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+<svg class="svg-icon-24 chevron-up">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_expand_less_black_24dp" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+</div>
+</summary>
+<div class="widget-content">
+<div id="ArchiveList">
+<div id="BlogArchive1_ArchiveList">
+<div class="first-items">
+<ul class="hierarchy">
+<li class="archivedate">
+<div class="hierarchy-title">
+<a class="post-count-link" href="http://stdatalabs.blogspot.in/2017/">
+2017
+<span class="post-count">4</span>
+</a>
+</div>
+<div class="hierarchy-content">
+<ul class="hierarchy">
+<li class="archivedate">
+<div class="hierarchy-title">
+<a class="post-count-link" href="http://stdatalabs.blogspot.in/2017/03/">
+March
+<span class="post-count">2</span>
+</a>
+</div>
+<div class="hierarchy-content">
+</div>
+</li>
+<li class="archivedate">
+<div class="hierarchy-title">
+<a class="post-count-link" href="http://stdatalabs.blogspot.in/2017/02/">
+February
+<span class="post-count">2</span>
+</a>
+</div>
+<div class="hierarchy-content">
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="remaining-items">
+<ul class="hierarchy">
+<li class="archivedate">
+<div class="hierarchy-title">
+<a class="post-count-link" href="http://stdatalabs.blogspot.in/2016/">
+2016
+<span class="post-count">14</span>
+</a>
+</div>
+<div class="hierarchy-content">
+<ul class="hierarchy">
+<li class="archivedate">
+<div class="hierarchy-title">
+<a class="post-count-link" href="http://stdatalabs.blogspot.in/2016/11/">
+November
+<span class="post-count">1</span>
+</a>
+</div>
+<div class="hierarchy-content">
+</div>
+</li>
+<li class="archivedate">
+<div class="hierarchy-title">
+<a class="post-count-link" href="http://stdatalabs.blogspot.in/2016/10/">
+October
+<span class="post-count">4</span>
+</a>
+</div>
+<div class="hierarchy-content">
+</div>
+</li>
+<li class="archivedate">
+<div class="hierarchy-title">
+<a class="post-count-link" href="http://stdatalabs.blogspot.in/2016/09/">
+September
+<span class="post-count">9</span>
+</a>
+</div>
+<div class="hierarchy-content">
+<ul class="posts hierarchy">
+<li>
+<a href="http://stdatalabs.blogspot.in/2016/09/realtime-stream-processing-using-apache.html">Realtime stream processing using Apache Storm - Pa...</a>
+</li>
+<li>
+<a href="http://stdatalabs.blogspot.in/2016/09/assigning-row-number-in-spark-using.html">Assigning row number in spark using zipWithindex</a>
+</li>
+<li>
+<a href="http://stdatalabs.blogspot.in/2016/09/creating-hive-custom-input-format-and.html">Creating a hive custom input format and record rea...</a>
+</li>
+<li>
+<a href="http://stdatalabs.blogspot.in/2016/09/spark-custom-udf-example.html">Spark custom UDF example</a>
+</li>
+<li>
+<a href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-3-real-time.html">Spark streaming part 3: Real time twitter sentimen...</a>
+</li>
+<li>
+<a href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-2-real-time_10.html">Spark streaming part 2: Real time twitter sentimen...</a>
+</li>
+<li>
+<a href="http://stdatalabs.blogspot.in/2016/09/spark-streaming-part-1-real-time.html">Spark Streaming part 1: Real time twitter sentimen...</a>
+</li>
+<li>
+<a href="http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html">Running Apache Spark on eclipse Windows/Linux</a>
+</li>
+<li>
+<a href="http://stdatalabs.blogspot.in/2016/09/test-if-filedirectory-exists-in-hdfs_8.html">Test if file/directory exists in HDFS: hadoop fs -...</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<span class="show-more flat-button">Show more</span>
+<span class="show-less hidden flat-button">Show less</span>
+</div>
+</div>
+</div>
+</details>
+</div><div class="widget AdSense" data-version="2" id="AdSense1">
+<div class="widget-content">
+<script async="" src="./Running Apache Spark on eclipse Windows_Linux_files/adsbygoogle.js.download"></script>
+<!-- stdatalabs_sidebar_AdSense1_1x1_as -->
+<ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-5639044479937719" data-ad-host="ca-host-pub-1556223355139109" data-ad-host-channel="L0001" data-ad-slot="2015200781" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:187px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:187px;background-color:transparent"><iframe width="187" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:187px;height:600px;" src="./Running Apache Spark on eclipse Windows_Linux_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div><div class="widget PlusFollowers" data-version="2" id="PlusFollowers1">
+<h3 class="title">
+Google+ Followers
+</h3>
+<div class="widget-content">
+<div id="___plus_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 187px; height: 294px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 187px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 294px;" tabindex="0" vspace="0" width="100%" id="I1_1498389062827" name="I1_1498389062827" src="./Running Apache Spark on eclipse Windows_Linux_files/followers.html" data-gapiattached="true" title="+1"></iframe></div>
+<script type="text/javascript">
+        window.___gcfg = {'lang': 'en-GB'};
+      </script>
+</div>
+<script type="text/javascript">
+    (function() {
+      var w = document.getElementById("PlusFollowers1_iframe");
+      w && w.setAttribute('data-width', w.parentElement.offsetWidth);
+    })();
+  </script>
+</div>
+</div>
+</aside>
+<script type="text/javascript" src="./Running Apache Spark on eclipse Windows_Linux_files/4082044553-fancy_compiled.js.download" async="true"></script>
+<script src="./Running Apache Spark on eclipse Windows_Linux_files/plusone.js.download" type="text/javascript" gapi_processed="true"></script>
+
+<script type="text/javascript" src="./Running Apache Spark on eclipse Windows_Linux_files/1373531190-widgets.js.download"></script>
+<script type="text/javascript">
+window['__wavt'] = 'AOuZoY5xzCLnJ5_H2NEYd83OHsv43zv8jg:1498389055702';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d1179959394978461385','//stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html','1179959394978461385');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '1179959394978461385', 'title': 'My Experiments with bigdata', 'url': 'http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html', 'canonicalUrl': 'http://stdatalabs.blogspot.com/2016/09/running-apache-spark-on-eclipse.html', 'homepageUrl': 'http://stdatalabs.blogspot.in/', 'searchUrl': 'http://stdatalabs.blogspot.in/search', 'canonicalHomepageUrl': 'http://stdatalabs.blogspot.com/', 'blogspotFaviconUrl': 'http://stdatalabs.blogspot.in/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': false, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'en-GB', 'localeUnderscoreDelimited': 'en_gb', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22My Experiments with bigdata - Atom\x22 href\x3d\x22http://stdatalabs.blogspot.com/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22My Experiments with bigdata - RSS\x22 href\x3d\x22http://stdatalabs.blogspot.com/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22My Experiments with bigdata - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/1179959394978461385/posts/default\x22 /\x3e\n\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22My Experiments with bigdata - Atom\x22 href\x3d\x22http://stdatalabs.blogspot.com/feeds/3902979584000713713/comments/default\x22 /\x3e\n', 'meTag': '', 'openIdOpTag': '', 'adsenseClientId': 'ca-pub-5639044479937719', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': true, 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/bf57f599ad14cd48', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'sharing': {'platforms': [{'name': 'Get link', 'key': 'link', 'shareMessage': 'Get link', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Share to Facebook', 'target': 'facebook'}, {'name': 'BlogThis!', 'key': 'blogThis', 'shareMessage': 'BlogThis!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Share to Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Share to Pinterest', 'target': 'pinterest'}, {'name': 'Google+', 'key': 'googlePlus', 'shareMessage': 'Share to Google+', 'target': 'googleplus'}, {'name': 'Email', 'key': 'email', 'shareMessage': 'Email', 'target': 'email'}], 'googlePlusShareButtonWidth': 300, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27en_GB\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': 'Read more', 'pageType': 'item', 'postId': '3902979584000713713', 'postImageThumbnailUrl': 'https://4.bp.blogspot.com/-sJWC7IfvlXQ/V9Jrc3XnBKI/AAAAAAAAAGw/Hb2aA6vOZXsHUlyqBeD4Xbb1qMay7XTkACEw/s72-c/sparkEclipse2.PNG', 'postImageUrl': 'https://4.bp.blogspot.com/-sJWC7IfvlXQ/V9Jrc3XnBKI/AAAAAAAAAGw/Hb2aA6vOZXsHUlyqBeD4Xbb1qMay7XTkACEw/s400/sparkEclipse2.PNG', 'pageName': 'Running Apache Spark on eclipse Windows/Linux', 'pageTitle': 'My Experiments with bigdata: Running Apache Spark on eclipse Windows/Linux', 'metaDescription': ''}}, {'name': 'features', 'data': {'ga_social_hooks': 'true', 'unsupported_browser_message': 'false', 'lightbox_img_parsing': 'false', 'sharing_get_link_dialog': 'false'}}, {'name': 'messages', 'data': {'edit': 'Edit', 'linkCopiedToClipboard': 'Link copied to clipboard', 'ok': 'Ok', 'postLink': 'Post link'}}, {'name': 'template', 'data': {'name': 'Soho', 'localizedName': 'Soho', 'isResponsive': true, 'isAlternateRendering': false, 'isCustom': false, 'variant': 'fancy_light', 'variantId': 'fancy_light', 'variantName': 'Light', 'localizedVariantName': 'Light'}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': 'Running Apache Spark on eclipse Windows/Linux', 'description': 'Solving practical problems on bigdata hadoop technology stack like spark, hive, kafka, storm, flume etc', 'featuredImage': 'https://4.bp.blogspot.com/-sJWC7IfvlXQ/V9Jrc3XnBKI/AAAAAAAAAGw/Hb2aA6vOZXsHUlyqBeD4Xbb1qMay7XTkACEw/s400/sparkEclipse2.PNG', 'url': 'http://stdatalabs.blogspot.in/2016/09/running-apache-spark-on-eclipse.html', 'type': 'item', 'isSingleItem': true, 'isMultipleItems': false, 'isError': false, 'isPage': false, 'isPost': true, 'isHomepage': false, 'isArchive': false, 'isLabelSearch': false, 'postId': 3902979584000713713}}, {'name': 'widgets', 'data': [{'title': 'Follow by Email', 'type': 'FollowByEmail', 'sectionId': 'subscription', 'id': 'FollowByEmail1'}, {'title': 'Search This Blog', 'type': 'BlogSearch', 'sectionId': 'search_top', 'id': 'BlogSearch1'}, {'title': 'My Experiments with bigdata (Header)', 'type': 'Header', 'sectionId': 'header', 'id': 'Header1'}, {'title': '', 'type': 'PageList', 'sectionId': 'page_list_top', 'id': 'PageList1'}, {'title': '', 'type': 'FeaturedPost', 'sectionId': 'page_body', 'id': 'FeaturedPost1', 'postId': '2964983291649509760'}, {'title': 'Blog Posts', 'type': 'Blog', 'sectionId': 'page_body', 'id': 'Blog1', 'posts': [{'id': '3902979584000713713', 'title': 'Running Apache Spark on eclipse Windows/Linux', 'featuredImage': 'https://4.bp.blogspot.com/-sJWC7IfvlXQ/V9Jrc3XnBKI/AAAAAAAAAGw/Hb2aA6vOZXsHUlyqBeD4Xbb1qMay7XTkACEw/s400/sparkEclipse2.PNG', 'showInlineAds': false}], 'headerByline': {'regionName': 'header1', 'items': [{'name': 'timestamp', 'label': ''}]}, 'footerBylines': [{'regionName': 'footer1', 'items': [{'name': 'share', 'label': ''}, {'name': 'comments', 'label': 'comments'}, {'name': 'icons', 'label': ''}]}, {'regionName': 'footer2', 'items': [{'name': 'labels', 'label': 'Labels:'}]}, {'regionName': 'footer3', 'items': [{'name': 'location', 'label': 'Location:'}]}], 'allBylineItems': [{'name': 'timestamp', 'label': ''}, {'name': 'share', 'label': ''}, {'name': 'comments', 'label': 'comments'}, {'name': 'icons', 'label': ''}, {'name': 'labels', 'label': 'Labels:'}, {'name': 'location', 'label': 'Location:'}]}, {'title': '', 'type': 'PopularPosts', 'sectionId': 'page_body', 'id': 'PopularPosts1', 'posts': [{'title': 'Spark Streaming part 1: Real time twitter sentiment analysis', 'id': 8401979169790163299}, {'title': 'Spark streaming part 3: Real time twitter sentiment analysis using kafka', 'id': 2421307544706964468}, {'title': 'MapReduce VS Spark - Aadhaar dataset analysis', 'id': 2964983291649509760}, {'title': 'Spark streaming part 2: Real time twitter sentiment analysis using Flume', 'id': 462339611134717064}, {'title': 'Running Apache Spark on eclipse Windows/Linux', 'id': 3902979584000713713}, {'title': 'Data guarantees in Spark Streaming with Kafka integration', 'id': 3084484568034597229}, {'title': 'Assigning row number in spark using zipWithindex', 'id': 5869782776590383641}, {'title': 'Realtime stream processing using Apache Storm - Part 1', 'id': 8083195912903852102}, {'title': 'Realtime stream processing using Apache Storm and Kafka - Part 2', 'id': 5215068366768031039}, {'title': 'MapReduce VS Spark - Wordcount Example', 'id': 2683294647520077203}]}, {'type': 'Attribution', 'sectionId': 'footer', 'id': 'Attribution1'}, {'title': 'About Me', 'type': 'Profile', 'sectionId': 'sidebar', 'id': 'Profile1'}, {'title': 'Follow me @github', 'type': 'HTML', 'sectionId': 'sidebar', 'id': 'HTML1'}, {'title': 'Pageviews', 'type': 'Stats', 'sectionId': 'sidebar', 'id': 'Stats1'}, {'type': 'BlogArchive', 'sectionId': 'sidebar', 'id': 'BlogArchive1'}, {'type': 'AdSense', 'sectionId': 'sidebar', 'id': 'AdSense1'}, {'title': 'Google+ Followers', 'type': 'PlusFollowers', 'sectionId': 'sidebar', 'id': 'PlusFollowers1'}]}]);
+_WidgetManager._RegisterWidget('_FollowByEmailView', new _WidgetInfo('FollowByEmail1', 'subscription', null, document.getElementById('FollowByEmail1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogSearchView', new _WidgetInfo('BlogSearch1', 'search_top', null, document.getElementById('BlogSearch1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header', null, document.getElementById('Header1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_PageListView', new _WidgetInfo('PageList1', 'page_list_top', null, document.getElementById('PageList1'), {'title': '', 'links': [{'isCurrentPage': false, 'href': 'http://stdatalabs.blogspot.in/', 'title': 'Home'}], 'mobile': false}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_FeaturedPostView', new _WidgetInfo('FeaturedPost1', 'page_body', null, document.getElementById('FeaturedPost1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'page_body', null, document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'lightboxEnabled': true, 'lightboxModuleUrl': 'https://www.blogger.com/static/v1/jsbin/2510911582-lbx__en_gb.js', 'lightboxCssUrl': 'https://www.blogger.com/static/v1/v-css/368954415-lightbox_bundle.css'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_PopularPostsView', new _WidgetInfo('PopularPosts1', 'page_body', null, document.getElementById('PopularPosts1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_AttributionView', new _WidgetInfo('Attribution1', 'footer', null, document.getElementById('Attribution1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ProfileView', new _WidgetInfo('Profile1', 'sidebar', null, document.getElementById('Profile1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML1', 'sidebar', null, document.getElementById('HTML1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_StatsView', new _WidgetInfo('Stats1', 'sidebar', null, document.getElementById('Stats1'), {'title': 'Pageviews', 'showGraphicalCounter': true, 'showAnimatedCounter': false, 'showSparkline': true, 'statsUrl': '//stdatalabs.blogspot.in/b/stats?style\x3dBLACK_TRANSPARENT\x26timeRange\x3dALL_TIME\x26token\x3d2Pyp4FwBAAA.aPNoHyd7U6ckOmiiAXcN2H4ahJvD3mB-HVtlaAbvAdQ.9UOc-Ue1rdg3Yvcbfxuu_w'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar', null, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr', 'loadingMessage': 'Loading\x26hellip;'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_AdSenseView', new _WidgetInfo('AdSense1', 'sidebar', null, document.getElementById('AdSense1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_PlusFollowersView', new _WidgetInfo('PlusFollowers1', 'sidebar', null, document.getElementById('PlusFollowers1'), {}, 'displayModeFull'));
+</script>
+
+<iframe name="oauth2relay681668927" id="oauth2relay681668927" src="./Running Apache Spark on eclipse Windows_Linux_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><div class="dim-overlay hidden" id="subscribe-dim-overlay"></div><div class="dim-overlay hidden"></div><link type="text/css" rel="stylesheet" href="./Running Apache Spark on eclipse Windows_Linux_files/368954415-lightbox_bundle.css"><script type="text/javascript" src="./Running Apache Spark on eclipse Windows_Linux_files/2510911582-lbx__en_gb.js.download"></script><header class="centered-top-container sticky animating" role="banner" style="transform: translate3d(0px, 0px, 0px); opacity: 1;">
+<div class="centered-top">
+<div class="back-button-container">
+<a href="http://stdatalabs.blogspot.in/">
+<svg class="svg-icon-24 touch-icon back-button rtl-reversible-icon">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_arrow_back_black_24dp" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+</a>
+</div>
+<section class="subscribe-section-container">
+<button class="subscribe-button">Subscribe</button>
+<div class="subscribe-popup-container">
+<div aria-labelledby="subscribe-title" class="subscribe-popup dialog hidden" role="dialog" tabindex="-1">
+<div role="document">
+<h3 class="subscribe-title" id="subscribe-title">Subscribe to this blog</h3>
+<div class="section" id="subscription" name="Subscription"><div class="widget FollowByEmail" data-version="2" id="FollowByEmail1">
+<h3 class="title">
+Follow by Email
+</h3>
+<div class="widget-content">
+<div class="follow-by-email-inner">
+<form action="https://feedburner.google.com/fb/a/mailverify" method="post" onsubmit="window.open(&quot;https://feedburner.google.com/fb/a/mailverify?uri=blogspot/tZwCe&quot;, &quot;popupwindow&quot;, &quot;scrollbars=yes,width=550,height=520&quot;); return true" target="popupwindow">
+<input autocomplete="off" class="follow-by-email-address" name="email" placeholder="Email Address" type="email">
+<input class="follow-by-email-submit" type="submit" value="Get email notifications" disabled="" aria-disabled="true">
+<input name="uri" type="hidden" value="blogspot/tZwCe">
+<input name="loc" type="hidden" value="en_US">
+</form>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+</section>
+<div class="search">
+<button aria-label="Search" class="search-expand touch-icon-button">
+<div class="search-expand-text">Search</div>
+<svg class="svg-icon-24 touch-icon search-expand-icon">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_search_black_24dp" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+</button>
+<div class="section" id="search_top" name="Search (Top)"><div class="widget BlogSearch" data-version="2" id="BlogSearch1">
+<h3 class="title">
+Search This Blog
+</h3>
+<div class="widget-content" role="search">
+<form action="http://stdatalabs.blogspot.in/search" target="_top">
+<div class="search-input">
+<input aria-label="Search this blog" autocomplete="off" name="q" placeholder="Search this blog" value="">
+</div>
+<label>
+<input type="submit">
+<svg class="svg-icon-24 touch-icon search-icon">
+<use xlink:href="/responsive/sprite_v1_6.css.svg#ic_search_black_24dp" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+</label>
+</form>
+</div>
+</div></div>
+<div class="dim-overlay hidden"></div></div>
+<div class="blog-name">
+<div class="section" id="header" name="Header"><div class="widget Header" data-version="2" id="Header1">
+<div class="header-widget">
+<div>
+<h1>
+<a href="http://stdatalabs.blogspot.in/">
+My Experiments with bigdata
+</a>
+</h1>
+</div>
+<p>
+Solving practical problems on bigdata hadoop technology stack like  spark, hive, kafka, flume etc
+</p>
+</div>
+</div></div>
+<nav role="navigation">
+<div class="section" id="page_list_top" name="Page list (top)"><div class="widget PageList" data-version="2" id="PageList1">
+<div class="widget-content">
+<div class="overflowable-container overflowable-2">
+<div class="overflowable-contents">
+<div class="container">
+<ul class="tabs">
+<li class="overflow-button-container" aria-hidden="true" style="display: none;"><div class="overflow-button">
+<a>More…</a>
+</div></li><li class="overflowable-item" aria-hidden="false">
+<a href="http://stdatalabs.blogspot.in/">Home</a>
+</li>
+</ul>
+</div>
+</div><div class="overflowable-backup" aria-hidden="true" style="position: absolute; visibility: hidden; bottom: 0px; left: 0px; right: 0px; top: 0px;"><div class="overflowable-contents overflowable-backup-content">
+<div class="container">
+<ul class="tabs">
+<li class="overflowable-item">
+<a href="http://stdatalabs.blogspot.in/">Home</a>
+</li>
+</ul>
+</div>
+</div></div>
+
+</div><div class="overflow-popup" style="display: none;">
+<div class="container">
+<ul class="tabs">
+<li class="overflowable-item">
+<a href="http://stdatalabs.blogspot.in/">Home</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div>
+</nav>
+</div>
+</div>
+</header></body></html>

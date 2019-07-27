@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<!-- saved from url=(0084)https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>How to work with MySQL and Apache Spark? - Stack Overflow</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="https://stackoverflow.com/opensearch.xml">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:domain" content="stackoverflow.com">
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="How to work with MySQL and Apache Spark?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I want to run my existing application with Apache Spark and MySQL.">
+    <meta property="og:url" content="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark">
+    <link rel="canonical" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark">
+
+    
+    
+    <script type="text/javascript" async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/ados"></script><script async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/quant.js.download"></script><script async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/beacon.js.download"></script><script async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/analytics.js.download"></script><script type="text/javascript" async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/ados.js.download"></script><script src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/jquery.min.js.download"></script>
+    <script src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/stub.en.js.download"></script>
+    <link rel="stylesheet" type="text/css" href="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;How to work with MySQL and Apache Spark?&#39;" href="https://stackoverflow.com/feeds/question/27718382">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:3,shownCommentCount:3,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:27718382});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '27718382');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text', true); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1498390087,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"childUrl":"https://meta.stackoverflow.com","enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"540c27fe73a426f19f768ab2a1751457","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true,"canSeeNewHeaderDesign":true,"ab":{"devstory_onboarding_exp":{"v":"opt_out_of_match_emails","g":1}}},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75,"likedTagsMaxLength":300,"dislikedTagsMaxLength":300}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true,"enableImgurHttps":true,"forceHttpsImages":true},"comments":{},"userProfile":{"openGraphAPIKey":"58740831ad23540e00c58987"},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"50ab272b55b7","js/moderator.en.js":"6e931caec7a9","js/full-anon.en.js":"2fef363bf2d3","js/full.en.js":"4927e96fa177","js/wmd.en.js":"c7cd3f01ea77","js/third-party/jquery.autocomplete.min.js":"d3b8fa7fdf74","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"9678f60e1dea","js/help.en.js":"dbd4f489eff2","js/tageditor.en.js":"7968c1573954","js/tageditornew.en.js":"c4d010519bcd","js/inline-tag-editing.en.js":"a4fa53d308ae","js/revisions.en.js":"cf90cfea0ccf","js/review.en.js":"2a38cb38679c","js/tagsuggestions.en.js":"97867e3c2def","js/post-validation.en.js":"cbd804f3edaf","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"35dcb223a374","js/keyboard-shortcuts.en.js":"9978772c2295","js/external-editor.en.js":"b46c950d6c5a","js/adops.en.js":"9a6a7812a212","js/external-editor.en.js":"b46c950d6c5a","js/snippet-javascript.en.js":"72f8bd5f8a20","js/snippet-javascript-codemirror.en.js":"eba3ee02b5bf"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    <noscript id="noscript-css">&lt;style type="text/css"&gt;body,.so-header{margin-top:1.9em}&lt;/style&gt;</noscript>
+<script async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/full-anon.en.js.download"></script><script async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/snippet-javascript.en.js.download"></script><script async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/post-validation.en.js.download"></script><script async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/prettify-full.en.js.download"></script><script async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/external-editor.en.js.download"></script><script type="text/javascript" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/adFeedback.js.download"></script><link rel="stylesheet" href="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/adFeedback.css"><link rel="stylesheet" href="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/jobs-multi.min.css" type="text/css"></head>
+<body class="question-page new-topbar">
+            <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+<header class="so-header js-so-header _fixed _scrolling">
+    <div class="-container">
+        <div class="-main">            
+            <a href="https://stackoverflow.com/" class="-logo js-gps-track " data-gps-track="top_nav.click({is_current:false, location:2, destination:8})">
+
+                <span class="-img">Stack Overflow</span>
+            </a>
+
+            <nav class="navigation" role="navigation" aria-label="site navigation">
+                <ol class="-list">
+                        <li class="-item _current">
+        <a id="nav-questions" href="https://stackoverflow.com/questions" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:true, location:2, destination:1})">Questions</a>
+    </li>
+
+    <li class="-item">
+        <a id="nav-jobs" href="https://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:6})">Developer Jobs</a>
+    </li>
+                        <li class="-item">
+        <a id="nav-docs" href="https://stackoverflow.com/documentation" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:7})">Documentation <small class="beta-badge">beta</small></a>
+    </li>
+                        <li class="-item">
+        <a id="nav-tags" href="https://stackoverflow.com/tags" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:2})">Tags</a>
+    </li>
+
+                        <li class="-item">
+        <a id="nav-users" href="https://stackoverflow.com/users" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:3})">Users</a>
+    </li>
+
+                </ol>
+            </nav>
+
+                <form id="search" action="https://stackoverflow.com/search" method="get" class="searchbar" autocomplete="off" role="search">
+                    <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"></path></svg>
+                    <input name="q" type="text" placeholder="Search..." value="" tabindex="1" autocomplete="off" maxlength="240" class="f-input js-search-field">
+                    <button type="submit" class="btn js-search-submit">
+                        <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"></path></svg>
+                    </button>
+                </form>
+
+        </div>
+        
+
+
+    
+
+<div class="-actions">
+    <nav class="secondary-nav">
+        <div class="-dialog-container js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="https://stackoverflow.com/">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li>
+                            <div class="related-links">
+            <a href="https://stackoverflow.com/help" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:14 })">help</a>
+                    <a href="https://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+    <a href="https://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                    </li>
+                    <li class="related-site">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                        
+    <a href="https://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="site.switch({ target_site:552, item_type:3 }),site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+your communities            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;amp;utm_source=stackoverflow.com&amp;amp;utm_medium=dev-story&amp;amp;utm_campaign=signup-redirect" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f27718382%2fhow-to-work-with-mysql-and-apache-spark" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="https://stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="https://stackoverflow.blog/" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+                <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="https://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="https://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+
+        </div>
+        <ol class="-list">
+
+
+    <li class="-item"><a href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" class="-link js-help-button" title="Help Center and other resources">
+        <svg role="icon" class="svg-icon iconHelp" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 1 0 0 16.001A8 8 0 0 0 9 1zm.812 12.126c-.02.716-.55 1.157-1.238 1.137-.659-.02-1.177-.49-1.157-1.209.02-.715.566-1.17 1.225-1.15.691.021 1.194.507 1.17 1.222zm1.956-5.114c-.168.237-.546.542-1.02.912l-.527.361c-.257.197-.417.43-.502.695-.044.141-.076.507-.084.752-.004.048-.032.156-.181.156H7.883c-.165 0-.185-.096-.18-.144.023-.667.12-1.218.397-1.66.374-.594 1.426-1.221 1.426-1.221.161-.12.286-.25.382-.39.177-.24.321-.51.321-.8 0-.333-.08-.65-.293-.915-.249-.31-.518-.458-1.036-.458-.51 0-.808.257-1.021.594-.213.338-.177.735-.177 1.097H5.746c0-1.366.357-2.238 1.112-2.752.51-.35 1.162-.502 1.921-.502.996 0 1.788.184 2.487.715.647.49.988 1.181.988 2.113 0 .575-.2 1.057-.486 1.447z"></path></svg>
+    </a></li>
+                <li class="-item">
+        <a href="https://stackexchange.com/" class="-link js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 169 Stack Exchange sites">
+            <svg role="icon" class="svg-icon iconStackExchange" width="18" height="18" viewBox="0 0 18 18"><path d="M1 13a2 2 0 0 0 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2zM15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2zM1 6h16v4H1V6z"></path></svg>
+        </a>
+    </li>
+
+
+        </ol>
+    </nav>
+        <div class="-ctas">
+                <a href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f27718382%2fhow-to-work-with-mysql-and-apache-spark" class="login-link btn-clear" rel="nofollow">Log In</a>
+                    <a href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;utm_source=stackoverflow.com&amp;utm_medium=dev-story&amp;utm_campaign=signup-redirect" class="login-link btn" rel="nofollow">Sign Up</a>
+
+        </div>
+</div>
+    </div>
+</header>
+
+    <script>
+        StackExchange.ready(function () { StackExchange.topbar.init(); });
+            StackExchange.scrollPadding.setPaddingTop(60, 10);     </script>
+
+    <div class="container">
+        
+
+
+        <div id="content" class="snippet-hidden">
+
+
+
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+
+<div id="herobox" class="alternate">
+    <div class="test"></div>
+        <div id="close">
+            <a title="click to minimize"><span>x</span> Dismiss</a>
+        </div>
+    <div class="content">
+        <b>Join the Stack Overflow Community</b>
+        <div class="separator"></div>
+        <div class="blurb">
+            Stack Overflow is a community of 7.3 million programmers, just like you, helping each other.
+                <br>
+Join them; it only takes a minute:                <br>
+        </div>
+        <a href="https://stackoverflow.com/users/signup?ssrc=hero&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;amp;utm_source=stackoverflow.com&amp;amp;utm_medium=dev-story&amp;amp;utm_campaign=signup-redirect" id="tell-me-more" class="button">Sign up</a>
+    </div>
+</div>
+<script>
+    StackExchange.ready(function () {
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;;
+        }
+        
+        $('#tell-me-more').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+            });
+        });
+        
+        $('#herobox #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+            });
+            
+            $.cookie("hero", "mini", { path: "/", expires: 365 });
+            $.ajax({
+                url: "/hero-mini",
+                success: function (data) {
+                    $("#herobox").fadeOut("fast", function () {
+                        $("#herobox").replaceWith(data);
+                        $("#herobox-mini").fadeIn("fast");
+                    });
+                }
+            });
+            return false;
+        });
+    });
+
+</script>			<div id="question-header">
+                <h1 itemprop="name"><a href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark" class="question-hyperlink">How to work with MySQL and Apache Spark?</a></h1>
+
+            
+<div class="aside-cta" role="navigation" aria-label="ask new question">
+    <a href="https://stackoverflow.com/questions/ask" class="btn-outlined">Ask Question</a>
+</div>
+		</div>
+			<div id="mainbar" role="main" aria-label="question and answers">
+
+			
+
+<div class="question" data-questionid="27718382" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk286741408",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk286741408"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="27718382">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">14</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#">favorite</a>
+        <div class="favoritecount"><b>6</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I want to run my existing application with Apache Spark and MySQL.</p>
+    </div>
+    <div class="post-taglist">
+        <a href="https://stackoverflow.com/questions/tagged/mysql" class="post-tag js-gps-track" title="show questions tagged &#39;mysql&#39;" rel="tag">mysql</a> <a href="https://stackoverflow.com/questions/tagged/apache-spark" class="post-tag js-gps-track" title="show questions tagged &#39;apache-spark&#39;" rel="tag">apache-spark</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/q/27718382" title="short permalink to this question" class="short-link" id="link-post-27718382">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/27718382/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/27718382/revisions" title="show all edits to this post">edited <span title="2017-01-06 12:14:19Z" class="relativetime">Jan 6 at 12:14</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/2777965/030"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/QjaLa.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/2777965/030">030</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,076</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="16 silver badges"><span class="badge2"></span><span class="badgecount">16</span></span><span title="48 bronze badges"><span class="badge3"></span><span class="badgecount">48</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2014-12-31 08:33:29Z" class="relativetime">Dec 31 '14 at 8:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/4407820/pangkaj-paul"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/photo.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/4407820/pangkaj-paul">pangkaj paul</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">89</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-27718382" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-43848842" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Probably this will help: <a href="http://www.infoobjects.com/spark-sql-jdbcrdd/" rel="nofollow noreferrer">infoobjects.com/spark-sql-jdbcrdd</a></span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1502148/g%c3%a1bor-bakos" title="4,679 reputation" class="comment-user">Gábor Bakos</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment43848842_27718382"><span title="2014-12-31 08:56:44Z" class="relativetime-clean">Dec 31 '14 at 8:56</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-43894916" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">try google. You need to understand first how spark is working. Then you might try integrate you existing project with spark. For initial research about spark all you need is google</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1408096/xhudik" title="1,670 reputation" class="comment-user">xhudik</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment43894916_27718382"><span title="2015-01-02 12:15:02Z" class="relativetime-clean">Jan 2 '15 at 12:15</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-43940727" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">People are going out on a limb in the answers below trying to guess what you're trying to achieve. You should be more specific.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/3588161/fizz" title="2,537 reputation" class="comment-user">Fizz</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment43940727_27718382"><span title="2015-01-04 11:32:57Z" class="relativetime-clean">Jan 4 '15 at 11:32</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-27718382" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								9 Answers
+                                <span style="display:none;" itemprop="answerCount">9</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="33496677"></a>
+<div id="answer-33496677" class="answer" data-answerid="33496677" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="33496677">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">13</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>From pySpark, it work for me : </p>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">dataframe_mysql </span><span class="pun">=</span><span class="pln"> mySqlContext</span><span class="pun">.</span><span class="kwd">read</span><span class="pun">.</span><span class="pln">format</span><span class="pun">(</span><span class="str">"jdbc"</span><span class="pun">).</span><span class="pln">options</span><span class="pun">(</span><span class="pln">
+    url</span><span class="pun">=</span><span class="str">"jdbc:mysql://localhost:3306/my_bd_name"</span><span class="pun">,</span><span class="pln">
+    driver </span><span class="pun">=</span><span class="pln"> </span><span class="str">"com.mysql.jdbc.Driver"</span><span class="pun">,</span><span class="pln">
+    dbtable </span><span class="pun">=</span><span class="pln"> </span><span class="str">"my_tablename"</span><span class="pun">,</span><span class="pln">
+    </span><span class="kwd">user</span><span class="pun">=</span><span class="str">"root"</span><span class="pun">,</span><span class="pln">
+    password</span><span class="pun">=</span><span class="str">"root"</span><span class="pun">).</span><span class="kwd">load</span><span class="pun">()</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/33496677" title="short permalink to this answer" class="short-link" id="link-post-33496677">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/33496677/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-11-03 10:24:56Z" class="relativetime">Nov 3 '15 at 10:24</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/4887530/cherah30"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/e55d396b2bb93f856bf36fc46ecff224" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/4887530/cherah30">cherah30</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">160</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-33496677" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-70167765" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><code>mySqlContext </code> should be <code>sqlContext </code></span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1398065/shellbye" title="1,795 reputation" class="comment-user">shellbye</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment70167765_33496677"><span title="2017-01-05 09:27:29Z" class="relativetime-clean">Jan 5 at 9:27</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-33496677" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1876789059",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1876789059"><a href="https://engine.adzerk.net/r?e=eyJhdiI6NDIxMCwiYXQiOjQsImJ0IjowLCJjbSI6NTQ3NzgxLCJjaCI6MTE3OCwiY2siOnt9LCJjciI6MjM4NzY1OCwiZGkiOiJkYWUzMDhmODQxYmY0NzkzOTExZGFhYTZmZTYyMzcwOSIsImRtIjoxLCJmYyI6Mjk4OTUzMSwiZmwiOjI5NTQwNDAsImlwIjoiNDkuMjAzLjI0OC4wIiwia3ciOiJteXNxbCxhcGFjaGUtc3BhcmsiLCJtayI6ImFwYWNoZS1zcGFyayIsIm53IjoyMiwicGMiOjQuMiwiZWMiOjQuMiwicHIiOjc2NSwicnQiOjIsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvLmluLyIsInNhIjoiMyIsInNiIjoiaS0wODc1MGJhMmM1ODYyZDc2NyIsInNwIjoyNzkzLCJzdCI6ODI3NywidWsiOiJ1ZTEtNTQ4NDc5YTY4YTVlNGUwMzlhNGUwMTFmY2ZhOTY1MjMiLCJ6biI6NDQsInRzIjoxNDk4MzkwMDk2MTgwLCJiZiI6dHJ1ZSwicG4iOiJhZHplcmsxODc2Nzg5MDU5IiwidXIiOiJodHRwczovL3NvZnR3YXJlLmludGVsLmNvbS9haS9hY2FkZW15P2NpZD0mdXRtX2NvbnRlbnQ9TWFjaGluZV9MZWFybmluZ19FbnRodXNpYXN0cyZ1dG1fbWVkaXVtPUJhbm5lcl9BZCZ1dG1fc291cmNlPVN0YWNrT3ZlcmZsb3cmdXRtX2NhbXBhaWduPUFJXzFIXzE3X1N0YWNrX092ZXJmbG93X0NhbXBhaWduIn0&amp;s=Ky44NouJQaDzTnbShtDePWbG6sU" rel="nofollow" target="_blank" title=""><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/658740afcad4444ab296b210b8ea7bdf.png" title="" alt="" border="0" width="728" height="90"></a><img height="0px" width="0px" border="0" style="position:absolute;" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/i.gif"><div class="adzerk-vote-controls" style="display: none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div></div>
+  
+<a name="34177129"></a>
+<div id="answer-34177129" class="answer" data-answerid="34177129" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="34177129">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">9</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p><strong>Using Scala, this worked for me :</strong>
+Use the commands below:</p>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">sudo </span><span class="pun">-</span><span class="pln">u root spark-shell </span><span class="com">--jars /mnt/resource/lokeshtest/guava-12.0.1.jar,/mnt/resource/lokeshtest/hadoop-aws-2.6.0.jar,/mnt/resource/lokeshtest/aws-java-sdk-1.7.3.jar,/mnt/resource/lokeshtest/mysql-connector-java-5.1.38/mysql-connector-java-5.1.38/mysql-connector-java-5.1.38-bin.jar --packages com.databricks:spark-csv_2.10:1.2.0</span><span class="pln">
+
+import org</span><span class="pun">.</span><span class="pln">apache</span><span class="pun">.</span><span class="pln">spark</span><span class="pun">.</span><span class="pln">sql</span><span class="pun">.</span><span class="pln">SQLContext
+
+val sqlcontext </span><span class="pun">=</span><span class="pln"> new org</span><span class="pun">.</span><span class="pln">apache</span><span class="pun">.</span><span class="pln">spark</span><span class="pun">.</span><span class="pln">sql</span><span class="pun">.</span><span class="pln">SQLContext</span><span class="pun">(</span><span class="pln">sc</span><span class="pun">)</span><span class="pln">
+
+val dataframe_mysql </span><span class="pun">=</span><span class="pln"> sqlcontext</span><span class="pun">.</span><span class="kwd">read</span><span class="pun">.</span><span class="pln">format</span><span class="pun">(</span><span class="str">"jdbc"</span><span class="pun">).</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"url"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"jdbc:mysql://Public_IP:3306/DB_NAME"</span><span class="pun">).</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"driver"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"com.mysql.jdbc.Driver"</span><span class="pun">).</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"dbtable"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"tblage"</span><span class="pun">).</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"user"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"sqluser"</span><span class="pun">).</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"password"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"sqluser"</span><span class="pun">).</span><span class="kwd">load</span><span class="pun">()</span><span class="pln">
+
+dataframe_mysql</span><span class="pun">.</span><span class="pln">show</span><span class="pun">()</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/34177129" title="short permalink to this answer" class="short-link" id="link-post-34177129">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/34177129/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-12-09 11:01:27Z" class="relativetime">Dec 9 '15 at 11:01</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/5023304/lokesh"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/picture" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/5023304/lokesh">Lokesh</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">189</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="5 bronze badges"><span class="badge3"></span><span class="badgecount">5</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-34177129" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-34177129" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="38726802"></a>
+<div id="answer-38726802" class="answer" data-answerid="38726802" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="38726802">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">8</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>For Scala if you use the <code>sbt</code> this will also work. </p>
+
+<p>In your <code>build.sbt</code> file:</p>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">libraryDependencies </span><span class="pun">++=</span><span class="pln"> Seq</span><span class="pun">(</span><span class="pln">
+    </span><span class="str">"org.apache.spark"</span><span class="pln"> </span><span class="pun">%%</span><span class="pln"> </span><span class="str">"spark-core"</span><span class="pln"> </span><span class="pun">%</span><span class="pln"> </span><span class="str">"1.6.2"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"org.apache.spark"</span><span class="pln"> </span><span class="pun">%%</span><span class="pln"> </span><span class="str">"spark-sql"</span><span class="pln"> </span><span class="pun">%</span><span class="pln"> </span><span class="str">"1.6.2"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"org.apache.spark"</span><span class="pln"> </span><span class="pun">%%</span><span class="pln"> </span><span class="str">"spark-mllib"</span><span class="pln"> </span><span class="pun">%</span><span class="pln"> </span><span class="str">"1.6.2"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"mysql"</span><span class="pln"> </span><span class="pun">%</span><span class="pln"> </span><span class="str">"mysql-connector-java"</span><span class="pln"> </span><span class="pun">%</span><span class="pln"> </span><span class="str">"5.1.12"</span><span class="pln">
+</span><span class="pun">)</span></code></pre>
+
+<p>Then you just need to declare your usage of the driver. </p>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">Class</span><span class="pun">.</span><span class="pln">forName</span><span class="pun">(</span><span class="str">"com.mysql.jdbc.Driver"</span><span class="pun">).</span><span class="pln">newInstance
+
+val conf </span><span class="pun">=</span><span class="pln"> new SparkConf</span><span class="pun">().</span><span class="pln">setAppName</span><span class="pun">(</span><span class="str">"MY_APP_NAME"</span><span class="pun">).</span><span class="pln">setMaster</span><span class="pun">(</span><span class="str">"MASTER"</span><span class="pun">)</span><span class="pln">
+
+val sc </span><span class="pun">=</span><span class="pln"> new SparkContext</span><span class="pun">(</span><span class="pln">conf</span><span class="pun">)</span><span class="pln">
+
+val sqlContext </span><span class="pun">=</span><span class="pln"> new SQLContext</span><span class="pun">(</span><span class="pln">sc</span><span class="pun">)</span><span class="pln">
+
+val data </span><span class="pun">=</span><span class="pln"> sqlContext</span><span class="pun">.</span><span class="kwd">read</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">format</span><span class="pun">(</span><span class="str">"jdbc"</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"url"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"jdbc:mysql://&lt;HOST&gt;:3306/&lt;database&gt;"</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"user"</span><span class="pun">,</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">USERNAME</span><span class="pun">&gt;)</span><span class="pln">
+</span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"password"</span><span class="pun">,</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">PASSWORD</span><span class="pun">&gt;)</span><span class="pln">
+</span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"dbtable"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"MYSQL_QUERY"</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">.</span><span class="kwd">load</span><span class="pun">()</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/38726802" title="short permalink to this answer" class="short-link" id="link-post-38726802">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/38726802/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/38726802/revisions" title="show all edits to this post">edited <span title="2016-12-13 18:59:07Z" class="relativetime">Dec 13 '16 at 18:59</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-08-02 17:20:05Z" class="relativetime">Aug 2 '16 at 17:20</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/2117467/jstuartmill"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/e3719945eecb4fcf94d95f6368549869" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/2117467/jstuartmill">jstuartmill</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">116</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-38726802" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-69430375" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">looks like an autocomplete faux pas, com.myself.jdbc.Driver -&gt; com.mysql.jdbc.Driver?</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1386205/rodrigo-del-c-andrade" title="421 reputation" class="comment-user">Rodrigo Del C. Andrade</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment69430375_38726802"><span title="2016-12-13 02:52:38Z" class="relativetime-clean">Dec 13 '16 at 2:52</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-69461076" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You're right! thanks for catching that.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/2117467/jstuartmill" title="116 reputation" class="comment-user">jstuartmill</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment69461076_38726802"><span title="2016-12-13 18:59:27Z" class="relativetime-clean">Dec 13 '16 at 18:59</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-38726802" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="34874688"></a>
+<div id="answer-34874688" class="answer" data-answerid="34874688" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="34874688">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="kwd">public</span><span class="pln"> static void main</span><span class="pun">(</span><span class="pln">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    Map</span><span class="pun">&lt;</span><span class="pln">String</span><span class="pun">,</span><span class="pln"> String</span><span class="pun">&gt;</span><span class="pln"> options </span><span class="pun">=</span><span class="pln"> new HashMap</span><span class="pun">&lt;</span><span class="pln">String</span><span class="pun">,</span><span class="pln"> String</span><span class="pun">&gt;();</span><span class="pln">
+    options</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="str">"url"</span><span class="pun">,</span><span class="str">"jdbc:postgresql://&lt;DBURL&gt;:&lt;PORT&gt;/&lt;Database&gt;?user=&lt;UserName&gt;&amp;password=&lt;Password&gt;"</span><span class="pun">);</span><span class="pln">
+    options</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="str">"dbtable"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"&lt;TableName&gt;"</span><span class="pun">);</span><span class="pln">
+    JavaSparkContext sc </span><span class="pun">=</span><span class="pln"> new JavaSparkContext</span><span class="pun">(</span><span class="pln">new SparkConf</span><span class="pun">().</span><span class="pln">setAppName</span><span class="pun">(</span><span class="str">"DBConnection"</span><span class="pun">).</span><span class="pln">setMaster</span><span class="pun">(</span><span class="str">"local[*]"</span><span class="pun">));</span><span class="pln">
+    SQLContext sqlContext </span><span class="pun">=</span><span class="pln"> new org</span><span class="pun">.</span><span class="pln">apache</span><span class="pun">.</span><span class="pln">spark</span><span class="pun">.</span><span class="pln">sql</span><span class="pun">.</span><span class="pln">SQLContext</span><span class="pun">(</span><span class="pln">sc</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">//</span><span class="pln"> DataFrame jdbcDF </span><span class="pun">=</span><span class="pln"> sqlContext</span><span class="pun">.</span><span class="kwd">load</span><span class="pun">(</span><span class="str">"jdbc"</span><span class="pun">,</span><span class="pln"> options</span><span class="pun">).</span><span class="pln">cache</span><span class="pun">();</span><span class="pln">
+    DataFrame jdbcDF </span><span class="pun">=</span><span class="pln"> sqlContext</span><span class="pun">.</span><span class="pln">jdbc</span><span class="pun">(</span><span class="pln">options</span><span class="pun">.</span><span class="pln">get</span><span class="pun">(</span><span class="str">"url"</span><span class="pun">),</span><span class="pln">options</span><span class="pun">.</span><span class="pln">get</span><span class="pun">(</span><span class="str">"dbtable"</span><span class="pun">));</span><span class="pln">
+    System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Data-------------------&gt;"</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> jdbcDF</span><span class="pun">.</span><span class="pln">toJSON</span><span class="pun">().</span><span class="pln">first</span><span class="pun">());</span><span class="pln">
+    </span><span class="kwd">Row</span><span class="pun">[]</span><span class="pln"> </span><span class="kwd">rows</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> jdbcDF</span><span class="pun">.</span><span class="pln">collect</span><span class="pun">();</span><span class="pln">
+    System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Without Filter \n ------------------------------------------------- "</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">Row</span><span class="pln"> row2 </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">rows</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="pln">row2</span><span class="pun">.</span><span class="pln">toString</span><span class="pun">());</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Filter Data\n ------------------------------------------------- "</span><span class="pun">);</span><span class="pln">
+    jdbcDF </span><span class="pun">=</span><span class="pln"> jdbcDF</span><span class="pun">.</span><span class="kwd">select</span><span class="pun">(</span><span class="str">"agency_id"</span><span class="pun">,</span><span class="str">"route_id"</span><span class="pun">).</span><span class="kwd">where</span><span class="pun">(</span><span class="pln">jdbcDF</span><span class="pun">.</span><span class="pln">col</span><span class="pun">(</span><span class="str">"route_id"</span><span class="pun">).$</span><span class="pln">less</span><span class="pun">$</span><span class="pln">eq</span><span class="pun">(</span><span class="lit">3</span><span class="pun">));</span><span class="pln">
+    </span><span class="kwd">rows</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> jdbcDF</span><span class="pun">.</span><span class="pln">collect</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">Row</span><span class="pln"> row2 </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">rows</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="pln">row2</span><span class="pun">.</span><span class="pln">toString</span><span class="pun">());</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/34874688" title="short permalink to this answer" class="short-link" id="link-post-34874688">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/34874688/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/34874688/revisions" title="show all edits to this post">edited <span title="2016-01-19 10:44:36Z" class="relativetime">Jan 19 '16 at 10:44</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/1743880/tunaki"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/wcXBB.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/1743880/tunaki">Tunaki</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 68,781" dir="ltr">68.8k</span><span title="20 gold badges"><span class="badge1"></span><span class="badgecount">20</span></span><span title="119 silver badges"><span class="badge2"></span><span class="badgecount">119</span></span><span title="161 bronze badges"><span class="badge3"></span><span class="badgecount">161</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-01-19 10:44:11Z" class="relativetime">Jan 19 '16 at 10:44</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/5809954/jatin"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/ea468ff2cf22b20c638a4d48a038e8fa" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/5809954/jatin">Jatin</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">41</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-34874688" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-57487474" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This code will halp to connect spark with database</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/5809954/jatin" title="41 reputation" class="comment-user">Jatin</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment57487474_34874688"><span title="2016-01-19 10:49:28Z" class="relativetime-clean">Jan 19 '16 at 10:49</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-34874688" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="41125629"></a>
+<div id="answer-41125629" class="answer" data-answerid="41125629" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="41125629">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>With spark 2.0.x,you can use DataFrameReader and DataFrameWriter.
+Use SparkSession.read to access DataFrameReader and use Dataset.write to access DataFrameWriter.</p>
+
+<p>Suppose using spark-shell.</p>
+
+<h2>read example</h2>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">val prop</span><span class="pun">=</span><span class="pln">new java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="pln">Properties</span><span class="pun">()</span><span class="pln">
+prop</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="str">"user"</span><span class="pun">,</span><span class="str">"username"</span><span class="pun">)</span><span class="pln">
+prop</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="str">"password"</span><span class="pun">,</span><span class="str">"yourpassword"</span><span class="pun">)</span><span class="pln">
+val url</span><span class="pun">=</span><span class="str">"jdbc:mysql://host:port/db_name"</span><span class="pln">
+
+val df</span><span class="pun">=</span><span class="pln">spark</span><span class="pun">.</span><span class="kwd">read</span><span class="pun">.</span><span class="pln">jdbc</span><span class="pun">(</span><span class="pln">url</span><span class="pun">,</span><span class="str">"table_name"</span><span class="pun">,</span><span class="pln">prop</span><span class="pun">)</span><span class="pln"> 
+df</span><span class="pun">.</span><span class="pln">show</span><span class="pun">()</span></code></pre>
+
+<h2>read example 2</h2>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">val jdbcDF </span><span class="pun">=</span><span class="pln"> spark</span><span class="pun">.</span><span class="kwd">read</span><span class="pln">
+  </span><span class="pun">.</span><span class="pln">format</span><span class="pun">(</span><span class="str">"jdbc"</span><span class="pun">)</span><span class="pln">
+  </span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"url"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"jdbc:mysql:dbserver"</span><span class="pun">)</span><span class="pln">
+  </span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"dbtable"</span><span class="pun">,</span><span class="pln"> </span><span class="pun">“</span><span class="kwd">schema</span><span class="pun">.</span><span class="pln">tablename</span><span class="str">")
+  .option("</span><span class="kwd">user</span><span class="str">", "</span><span class="pln">username</span><span class="str">")
+  .option("</span><span class="pln">password</span><span class="str">", "</span><span class="pln">password</span><span class="str">"</span><span class="pun">)</span><span class="pln">
+  </span><span class="pun">.</span><span class="kwd">load</span><span class="pun">()</span></code></pre>
+
+<p>from <a href="http://spark.apache.org/docs/latest/sql-programming-guide.html#jdbc-to-other-databases" rel="nofollow noreferrer">spark doc</a></p>
+
+<h2>write example</h2>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">import org</span><span class="pun">.</span><span class="pln">apache</span><span class="pun">.</span><span class="pln">spark</span><span class="pun">.</span><span class="pln">sql</span><span class="pun">.</span><span class="pln">SaveMode
+
+val prop</span><span class="pun">=</span><span class="pln">new java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="pln">Properties</span><span class="pun">()</span><span class="pln">
+prop</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="str">"user"</span><span class="pun">,</span><span class="str">"username"</span><span class="pun">)</span><span class="pln">
+prop</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="str">"password"</span><span class="pun">,</span><span class="str">"yourpassword"</span><span class="pun">)</span><span class="pln">
+val url</span><span class="pun">=</span><span class="str">"jdbc:mysql://host:port/db_name"</span><span class="pln">
+</span><span class="pun">//</span><span class="pln">df </span><span class="kwd">is</span><span class="pln"> a dataframe </span><span class="kwd">contains</span><span class="pln"> the data which you want </span><span class="kwd">to</span><span class="pln"> write</span><span class="pun">.</span><span class="pln">
+df</span><span class="pun">.</span><span class="pln">write</span><span class="pun">.</span><span class="pln">mode</span><span class="pun">(</span><span class="pln">SaveMode</span><span class="pun">.</span><span class="pln">Append</span><span class="pun">).</span><span class="pln">jdbc</span><span class="pun">(</span><span class="pln">url</span><span class="pun">,</span><span class="str">"table_name"</span><span class="pun">,</span><span class="pln">prop</span><span class="pun">)</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/41125629" title="short permalink to this answer" class="short-link" id="link-post-41125629">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/41125629/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/41125629/revisions" title="show all edits to this post">edited <span title="2016-12-13 19:01:11Z" class="relativetime">Dec 13 '16 at 19:01</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/623150/martin-barker"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/24c7de594bcee8d11775e88de61fb28f" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/623150/martin-barker">Martin Barker</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,428</span><span title="14 silver badges"><span class="badge2"></span><span class="badgecount">14</span></span><span title="45 bronze badges"><span class="badge3"></span><span class="badgecount">45</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-12-13 16:12:54Z" class="relativetime">Dec 13 '16 at 16:12</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/5549569/liam"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/zFmv6.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/5549569/liam">Liam</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">51</span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-41125629" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-74299180" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Worked nicely and cleanly! Thanks for this</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/3875610/user3875610" title="550 reputation" class="comment-user">user3875610</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment74299180_41125629"><span title="2017-04-26 04:52:00Z" class="relativetime-clean">Apr 26 at 4:52</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-41125629" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="27757533"></a>
+<div id="answer-27757533" class="answer" data-answerid="27757533" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="27757533">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Based on this <a href="http://www.infoobjects.com/spark-sql-jdbcrdd/" rel="nofollow" title="Spark SQL: JdbcRDD">infoobjects article</a> try the following (assuming Java or Scala, not sure how this would work with python):</p>
+
+<ul>
+<li>add the <a href="http://dev.mysql.com/downloads/connector/j/" rel="nofollow">mysql-connector-java</a> to the path of your spark cluster</li>
+<li>initialize the driver: <code>Class.forName("com.mysql.jdbc.Driver")</code></li>
+<li>create a <a href="https://spark.apache.org/docs/1.2.0/api/scala/index.html#org.apache.spark.rdd.JdbcRDD" rel="nofollow">JdbcRDD</a> data source:</li>
+</ul>
+
+<hr>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">val myRDD </span><span class="pun">=</span><span class="pln"> new JdbcRDD</span><span class="pun">(</span><span class="pln"> sc</span><span class="pun">,</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> 
+                               DriverManager</span><span class="pun">.</span><span class="pln">getConnection</span><span class="pun">(</span><span class="pln">url</span><span class="pun">,</span><span class="pln">username</span><span class="pun">,</span><span class="pln">password</span><span class="pun">),</span><span class="pln">
+                        </span><span class="str">"select first_name,last_name,gender from person limit ?, ?"</span><span class="pun">,</span><span class="pln">
+                        </span><span class="lit">1</span><span class="pun">,//</span><span class="pln">lower bound
+                        </span><span class="lit">5</span><span class="pun">,//</span><span class="pln">upper bound
+                        </span><span class="lit">2</span><span class="pun">,//</span><span class="pln">number </span><span class="kwd">of</span><span class="pln"> partitions
+                        r </span><span class="pun">=&gt;</span><span class="pln">
+                          r</span><span class="pun">.</span><span class="pln">getString</span><span class="pun">(</span><span class="str">"last_name"</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">", "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> r</span><span class="pun">.</span><span class="pln">getString</span><span class="pun">(</span><span class="str">"first_name"</span><span class="pun">))</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/27757533" title="short permalink to this answer" class="short-link" id="link-post-27757533">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/27757533/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-01-03 17:27:12Z" class="relativetime">Jan 3 '15 at 17:27</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/1502148/g%c3%a1bor-bakos"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/4480f70be76c7ceec6e8a49dac84b9a1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/1502148/g%c3%a1bor-bakos">Gábor Bakos</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">4,679</span><span title="9 gold badges"><span class="badge1"></span><span class="badgecount">9</span></span><span title="21 silver badges"><span class="badge2"></span><span class="badgecount">21</span></span><span title="41 bronze badges"><span class="badge3"></span><span class="badgecount">41</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-27757533" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-54425382" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">JdbcRDD is discouraged now.  Better to look at the DataFrame interface in Spark 1.4 and later.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/430996/matt-ingenthron" title="1,189 reputation" class="comment-user">Matt Ingenthron</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment54425382_27757533"><span title="2015-10-24 00:30:03Z" class="relativetime-clean">Oct 24 '15 at 0:30</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-54437863" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@MattIngenthron That is true, although when the question was asked and answered, it was not available.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1502148/g%c3%a1bor-bakos" title="4,679 reputation" class="comment-user">Gábor Bakos</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment54437863_27757533"><span title="2015-10-24 15:37:06Z" class="relativetime-clean">Oct 24 '15 at 15:37</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-54449500" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Yep, understood.  I just found this when searching myself and others may do the same so I updated it to be sure new people find the latest stuff.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/430996/matt-ingenthron" title="1,189 reputation" class="comment-user">Matt Ingenthron</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment54449500_27757533"><span title="2015-10-25 03:42:36Z" class="relativetime-clean">Oct 25 '15 at 3:42</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-27757533" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="42811897"></a>
+<div id="answer-42811897" class="answer" data-answerid="42811897" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="42811897">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>For Spark 2.1.0 and Scala (On Windows 7 OS), below code works pretty fine for me: </p>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">import org</span><span class="pun">.</span><span class="pln">apache</span><span class="pun">.</span><span class="pln">spark</span><span class="pun">.</span><span class="pln">sql</span><span class="pun">.</span><span class="pln">SparkSession
+
+object MySQL </span><span class="pun">{</span><span class="pln">
+  def main</span><span class="pun">(</span><span class="pln">args</span><span class="pun">:</span><span class="pln"> Array</span><span class="pun">[</span><span class="pln">String</span><span class="pun">])</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">//</span><span class="pln">At first </span><span class="kwd">create</span><span class="pln"> a Spark Session </span><span class="kwd">as</span><span class="pln"> the entry point </span><span class="kwd">of</span><span class="pln"> your app
+    val spark</span><span class="pun">:</span><span class="pln">SparkSession </span><span class="pun">=</span><span class="pln"> SparkSession
+      </span><span class="pun">.</span><span class="pln">builder</span><span class="pun">()</span><span class="pln">
+      </span><span class="pun">.</span><span class="pln">appName</span><span class="pun">(</span><span class="str">"JDBC"</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="pln">master</span><span class="pun">(</span><span class="str">"local[*]"</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="pln">config</span><span class="pun">(</span><span class="str">"spark.sql.warehouse.dir"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"C:/Exp/"</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="pln">getOrCreate</span><span class="pun">();</span><span class="pln">    
+
+    val dataframe_mysql </span><span class="pun">=</span><span class="pln"> spark</span><span class="pun">.</span><span class="kwd">read</span><span class="pun">.</span><span class="pln">format</span><span class="pun">(</span><span class="str">"jdbc"</span><span class="pun">)</span><span class="pln">
+                          </span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"url"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"jdbc:mysql://localhost/feedback"</span><span class="pun">)</span><span class="pln">
+                          </span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"driver"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"com.mysql.jdbc.Driver"</span><span class="pun">)</span><span class="pln">
+                          </span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"dbtable"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"person"</span><span class="pun">)</span><span class="pln"> </span><span class="pun">//</span><span class="pln">replace </span><span class="kwd">with</span><span class="pln"> own
+                          </span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"user"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"root"</span><span class="pun">)</span><span class="pln"> </span><span class="pun">//</span><span class="pln">replace </span><span class="kwd">with</span><span class="pln"> own 
+                          </span><span class="pun">.</span><span class="kwd">option</span><span class="pun">(</span><span class="str">"password"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"vertrigo"</span><span class="pun">)</span><span class="pln"> </span><span class="pun">//</span><span class="pln"> replace </span><span class="kwd">with</span><span class="pln"> own
+                          </span><span class="pun">.</span><span class="kwd">load</span><span class="pun">()</span><span class="pln">
+
+    dataframe_mysql</span><span class="pun">.</span><span class="pln">show</span><span class="pun">()</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/42811897" title="short permalink to this answer" class="short-link" id="link-post-42811897">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/42811897/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2017-03-15 13:57:17Z" class="relativetime">Mar 15 at 13:57</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/7655178/martin"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/190449be6767f550cce8adecf2b0dea4" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/7655178/martin">Martin</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">26</span><span title="3 bronze badges"><span class="badge3"></span><span class="badgecount">3</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-42811897" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-76444434" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Indicating the driver option as you do in your answer was need for me in order to make it work</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1667003/rauljosepalma" title="61 reputation" class="comment-user">rauljosepalma</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment76444434_42811897"><span title="2017-06-23 22:39:16Z" class="relativetime-clean">yesterday</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-42811897" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="43095709"></a>
+<div id="answer-43095709" class="answer" data-answerid="43095709" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="43095709">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>For Java, this worked for me:</p>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pun">@</span><span class="pln">Bean
+</span><span class="kwd">public</span><span class="pln"> SparkConf sparkConf</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    SparkConf sparkConf </span><span class="pun">=</span><span class="pln"> new SparkConf</span><span class="pun">()</span><span class="pln">
+            </span><span class="pun">.</span><span class="pln">setAppName</span><span class="pun">(</span><span class="pln">appName</span><span class="pun">)</span><span class="pln">
+            </span><span class="pun">.</span><span class="pln">setSparkHome</span><span class="pun">(</span><span class="pln">sparkHome</span><span class="pun">)</span><span class="pln">
+            </span><span class="pun">.</span><span class="pln">setMaster</span><span class="pun">(</span><span class="pln">masterUri</span><span class="pun">);</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> sparkConf</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">@</span><span class="pln">Bean
+</span><span class="kwd">public</span><span class="pln"> JavaSparkContext javaSparkContext</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> new JavaSparkContext</span><span class="pun">(</span><span class="pln">sparkConf</span><span class="pun">());</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">@</span><span class="pln">Bean
+</span><span class="kwd">public</span><span class="pln"> SparkSession sparkSession</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> SparkSession
+            </span><span class="pun">.</span><span class="pln">builder</span><span class="pun">()</span><span class="pln">
+            </span><span class="pun">.</span><span class="pln">sparkContext</span><span class="pun">(</span><span class="pln">javaSparkContext</span><span class="pun">().</span><span class="pln">sc</span><span class="pun">())</span><span class="pln">
+            </span><span class="pun">.</span><span class="pln">appName</span><span class="pun">(</span><span class="str">"Java Spark SQL basic example"</span><span class="pun">)</span><span class="pln">
+            </span><span class="pun">.</span><span class="pln">getOrCreate</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<hr>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">Properties properties </span><span class="pun">=</span><span class="pln"> new Properties</span><span class="pun">();</span><span class="pln">
+        properties</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="str">"user"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"root"</span><span class="pun">);</span><span class="pln">
+        properties</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="str">"password"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"root"</span><span class="pun">);</span><span class="pln">
+        properties</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="str">"driver"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"com.mysql.cj.jdbc.Driver"</span><span class="pun">);</span><span class="pln">
+        sparkSession</span><span class="pun">.</span><span class="kwd">read</span><span class="pun">()</span><span class="pln">
+                    </span><span class="pun">.</span><span class="pln">jdbc</span><span class="pun">(</span><span class="str">"jdbc:mysql://localhost:3306/books?useSSL=false"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"(SELECT books.BOOK_ID as BOOK_ID, books.BOOK_TITLE as BOOK_TITLE, books.BOOK_AUTHOR as BOOK_AUTHOR, borrowers.BORR_NAME as BORR_NAME FROM books LEFT OUTER JOIN borrowers ON books.BOOK_ID = borrowers.BOOK_ID) as t"</span><span class="pun">,</span><span class="pln"> properties</span><span class="pun">)</span><span class="pln"> </span><span class="pun">//</span><span class="pln"> </span><span class="kwd">join</span><span class="pln"> example
+                    </span><span class="pun">.</span><span class="pln">show</span><span class="pun">();</span></code></pre>
+
+<p>of course, for MySQL, I needed the connector:</p>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">    </span><span class="pun">&lt;!</span><span class="com">-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;</span><span class="pln">
+    </span><span class="pun">&lt;</span><span class="pln">dependency</span><span class="pun">&gt;</span><span class="pln">
+        </span><span class="pun">&lt;</span><span class="pln">groupId</span><span class="pun">&gt;</span><span class="pln">mysql</span><span class="pun">&lt;/</span><span class="pln">groupId</span><span class="pun">&gt;</span><span class="pln">
+        </span><span class="pun">&lt;</span><span class="pln">artifactId</span><span class="pun">&gt;</span><span class="pln">mysql-connector-java</span><span class="pun">&lt;/</span><span class="pln">artifactId</span><span class="pun">&gt;</span><span class="pln">
+        </span><span class="pun">&lt;</span><span class="pln">version</span><span class="pun">&gt;</span><span class="lit">6.0.6</span><span class="pun">&lt;/</span><span class="pln">version</span><span class="pun">&gt;</span><span class="pln">
+    </span><span class="pun">&lt;/</span><span class="pln">dependency</span><span class="pun">&gt;</span></code></pre>
+
+<p>And I get</p>
+
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pun">+</span><span class="com">-------+------------------+--------------+---------------+</span><span class="pln">
+</span><span class="pun">|</span><span class="pln">BOOK_ID</span><span class="pun">|</span><span class="pln">        BOOK_TITLE</span><span class="pun">|</span><span class="pln">   BOOK_AUTHOR</span><span class="pun">|</span><span class="pln">      BORR_NAME</span><span class="pun">|</span><span class="pln">
+</span><span class="pun">+</span><span class="com">-------+------------------+--------------+---------------+</span><span class="pln">
+</span><span class="pun">|</span><span class="pln">      </span><span class="lit">1</span><span class="pun">|</span><span class="pln">        Gy</span><span class="pun">ű</span><span class="pln">r</span><span class="pun">ű</span><span class="pln"> k</span><span class="pun">ú</span><span class="pln">ra</span><span class="pun">|</span><span class="pln">J</span><span class="pun">.</span><span class="pln">R</span><span class="pun">.</span><span class="pln">K</span><span class="pun">.</span><span class="pln"> Tolkien</span><span class="pun">|</span><span class="pln">   S</span><span class="pun">á</span><span class="pln">ra Sarolta</span><span class="pun">|</span><span class="pln">
+</span><span class="pun">|</span><span class="pln">      </span><span class="lit">2</span><span class="pun">|</span><span class="pln">     Kecske-eledel</span><span class="pun">|</span><span class="pln">     Mekk Elek</span><span class="pun">|</span><span class="pln">Mal</span><span class="pun">á</span><span class="pln">ta Melchior</span><span class="pun">|</span><span class="pln">
+</span><span class="pun">|</span><span class="pln">      </span><span class="lit">3</span><span class="pun">|</span><span class="pln">      R</span><span class="pun">é</span><span class="pln">p</span><span class="pun">á</span><span class="pln">s t</span><span class="pun">é</span><span class="pln">szta</span><span class="pun">|</span><span class="pln"> Veg</span><span class="pun">á</span><span class="pln">n Eleaz</span><span class="pun">á</span><span class="pln">r</span><span class="pun">|</span><span class="pln">           </span><span class="kwd">null</span><span class="pun">|</span><span class="pln">
+</span><span class="pun">|</span><span class="pln">      </span><span class="lit">4</span><span class="pun">|</span><span class="pln">Krumpli </span><span class="pun">é</span><span class="pln">s pity</span><span class="pun">ó</span><span class="pln">ka</span><span class="pun">|</span><span class="pln"> Farmer Em</span><span class="pun">í</span><span class="pln">lia</span><span class="pun">|</span><span class="pln">           </span><span class="kwd">null</span><span class="pun">|</span><span class="pln">
+</span><span class="pun">+</span><span class="com">-------+------------------+--------------+---------------+</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/43095709" title="short permalink to this answer" class="short-link" id="link-post-43095709">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/43095709/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2017-03-29 13:59:10Z" class="relativetime">Mar 29 at 13:59</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/2413303/epicpandaforce"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/d48460c4a048738361f41d90291dfb22" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/2413303/epicpandaforce">EpicPandaForce</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 28,108" dir="ltr">28.1k</span><span title="9 gold badges"><span class="badge1"></span><span class="badgecount">9</span></span><span title="77 silver badges"><span class="badge2"></span><span class="badgecount">77</span></span><span title="157 bronze badges"><span class="badge3"></span><span class="badgecount">157</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-43095709" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-43095709" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="33102288"></a>
+<div id="answer-33102288" class="answer" data-answerid="33102288" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="33102288">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<pre class="lang-sql prettyprint prettyprinted"><code><span class="pln">   val query</span><span class="pun">:</span><span class="pln"> String </span><span class="pun">=</span><span class="pln">
+    </span><span class="str">"select col1, col2 from schema.table_name where condition"</span><span class="pln">
+
+  val url</span><span class="pun">=</span><span class="pln"> </span><span class="str">"jdbc:mysql://&lt;ip&gt;:3306/&lt;schema&gt;"</span><span class="pln">
+  val username </span><span class="pun">=</span><span class="pln"> </span><span class="str">""</span><span class="pln">
+  val password </span><span class="pun">=</span><span class="pln"> </span><span class="str">""</span><span class="pln">
+  val sqlContext </span><span class="pun">=</span><span class="pln"> new org</span><span class="pun">.</span><span class="pln">apache</span><span class="pun">.</span><span class="pln">spark</span><span class="pun">.</span><span class="pln">sql</span><span class="pun">.</span><span class="pln">SQLContext</span><span class="pun">(</span><span class="pln">sc</span><span class="pun">)</span><span class="pln">
+  val df </span><span class="pun">=</span><span class="pln"> sqlContext</span><span class="pun">.</span><span class="kwd">load</span><span class="pun">(</span><span class="str">"jdbc"</span><span class="pun">,</span><span class="pln"> Map</span><span class="pun">(</span><span class="pln">
+    </span><span class="str">"url"</span><span class="pln"> </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="pun">(</span><span class="pln">url </span><span class="pun">+</span><span class="pln"> </span><span class="str">"/?user="</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> username </span><span class="pun">+</span><span class="pln"> </span><span class="str">"&amp;password="</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> password</span><span class="pun">),</span><span class="pln">
+    </span><span class="str">"dbtable"</span><span class="pln"> </span><span class="pun">-&gt;</span><span class="pln"> s</span><span class="str">"($query) as tbl"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"driver"</span><span class="pln"> </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="str">"com.mysql.jdbc.Driver"</span><span class="pun">))</span><span class="pln">
+
+df</span><span class="pun">.</span><span class="pln">show</span><span class="pun">()</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/33102288" title="short permalink to this answer" class="short-link" id="link-post-33102288">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/33102288/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/33102288/revisions" title="show all edits to this post">edited <span title="2015-11-01 13:49:28Z" class="relativetime">Nov 1 '15 at 13:49</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-10-13 12:06:33Z" class="relativetime">Oct 13 '15 at 12:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/1924716/liran-brimer"><div class="gravatar-wrapper-32"><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/picture(1)" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/1924716/liran-brimer">Liran Brimer</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,481</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="16 bronze badges"><span class="badge3"></span><span class="badgecount">16</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-33102288" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-57561337" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">SQLContext.load is deprecated now and will be removed in 2.0</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/1007922/kane" title="707 reputation" class="comment-user">kane</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#comment57561337_33102288"><span title="2016-01-20 23:54:18Z" class="relativetime-clean">Jan 20 '16 at 23:54</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-33102288" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="https://stackoverflow.com/questions/27718382/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="27718382">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.co.in/">
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                StackExchange.prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li id="wmd-bold-button" class="wmd-button" style="left: 0px;"><span style="background-position: 0px -20px;"></span></li><li id="wmd-italic-button" class="wmd-button" style="left: 25px;"><span style="background-position: -20px -20px;"></span></li><li id="wmd-spacer1" class="wmd-spacer" style="left: 50px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-link-button" class="wmd-button" style="left: 75px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-quote-button" class="wmd-button" style="left: 100px;"><span style="background-position: -60px -20px;"></span></li><li id="wmd-code-button" class="wmd-button" style="left: 125px;"><span style="background-position: -80px -20px;"></span></li><li id="wmd-image-button" class="wmd-button" style="left: 150px;"><span style="background-position: -100px -20px;"></span></li><li id="wmd-spacer2" class="wmd-spacer" style="left: 175px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-olist-button" class="wmd-button" style="left: 200px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-ulist-button" class="wmd-button" style="left: 225px;"><span style="background-position: -140px -20px;"></span></li><li id="wmd-heading-button" class="wmd-button" style="left: 250px;"><span style="background-position: -160px -20px;"></span></li><li id="wmd-hr-button" class="wmd-button" style="left: 275px;"><span style="background-position: -180px -20px;"></span></li><li id="wmd-spacer3" class="wmd-spacer" style="left: 300px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-undo-button" class="wmd-button" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-redo-button" class="wmd-button" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="540c27fe73a426f19f768ab2a1751457">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="https://stackoverflow.com/users/login?ssrc=question_page&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f27718382%2fhow-to-work-with-mysql-and-apache-spark%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid">
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false">
+                    <input type="hidden" name="use-google" class="use-google" value="false">
+                    <input type="button" class="submit-openid" value="Submit" style="display:none">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'https%3a%2f%2fstackoverflow.com%2fquestions%2f27718382%2fhow-to-work-with-mysql-and-apache-spark%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        &lt;h3&gt;Post as a guest&lt;/h3&gt;
+    &lt;div class="form-item"&gt;
+        &lt;table&gt;
+        &lt;tr&gt;
+                    &lt;td class="vm"&gt;
+                &lt;div&gt;
+                    &lt;label for="display-name"&gt;Name&lt;/label&gt;
+                    &lt;input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105"&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;label for="m-address"&gt;Email&lt;/label&gt;
+                    &lt;input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" /&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="https://stackexchange.com/legal/privacy-policy" name="privacy" target="_blank">privacy policy</a> and <a href="https://stackexchange.com/legal/terms-of-service" name="tos" target="_blank">terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="https://stackoverflow.com/questions/tagged/mysql" class="post-tag" title="show questions tagged &#39;mysql&#39;" rel="tag">mysql</a> <a href="https://stackoverflow.com/questions/tagged/apache-spark" class="post-tag" title="show questions tagged &#39;apache-spark&#39;" rel="tag">apache-spark</a>  or <a href="https://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes" role="complementary" aria-label="sidebar">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-12-31 08:33:29Z"><b>2 years, 5 months ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+                                    <b>26,901 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark?lastactivity" class="lastactivity-link" title="2017-03-29 13:59:10Z">2 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1438887740",[5,17,2221,1129,43]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1438887740"><a href="https://engine.adzerk.net/r?e=eyJhdiI6MTQzNDk0LCJhdCI6NSwiYnQiOjAsImNtIjo1ODUyMTcsImNoIjoxMTc4LCJjayI6e30sImNyIjozMDIzNTAyLCJkaSI6Ijg4ZDAzNDA1OTk1OTRjN2Q4ZmE0Y2EyNTBjNmRlZGNjIiwiZG0iOjEsImZjIjo1MTYzOTk0LCJmbCI6NTMzMTU4NCwiaXAiOiI0OS4yMDMuMjQ4LjAiLCJrdyI6Im15c3FsLGFwYWNoZS1zcGFyayIsIm1rIjoiYXBhY2hlLXNwYXJrIiwibnciOjIyLCJwYyI6OS45OSwiZWMiOjkuOTksInByIjo3NjUsInJ0IjoyLCJyZiI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jby5pbi8iLCJzYSI6IjMiLCJzYiI6ImktMDg3NTBiYTJjNTg2MmQ3NjciLCJzcCI6Mjc5Mywic3QiOjgyNzcsInVrIjoidWUxLTU0ODQ3OWE2OGE1ZTRlMDM5YTRlMDExZmNmYTk2NTIzIiwiem4iOjQ1LCJ0cyI6MTQ5ODM5MDA5NjE4NCwiYmYiOnRydWUsInBuIjoiYWR6ZXJrMTQzODg4Nzc0MCIsInVyIjoiaHR0cHM6Ly93d3cuY29uZmx1ZW50LmlvL2NvbmZsdWVudC1jbG91ZC8_dXRtX3NvdXJjZT1zdGFja292ZXJmbG93In0&amp;s=cK1NenUkc5c7JoScnqWOJhsp9X8" rel="nofollow" target="_blank" title=""><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/d17daa50a7be4e5a82141de026d3e7c5.png" title="" alt="" border="0" width="300" height="250"></a><img height="0px" width="0px" border="0" style="position:absolute;" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/i(1).gif"><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div></div>
+            <div id="hireme" class="orange tagged tex2jax_ignore clc-jobs-multi"><a class="top " href="https://stackoverflow.com/jobs?allowsremote=true" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=48qvUnPfu_uKh2r4XD9PJiaBd09n8674_XNK-loNs2zGj353Ak4EMkgx9GxgYGiwZ2RkYJJmWn-YfXMD555FAkDxlAMxEz9ZvtKMtpdmWrua_dQDjgeP-cHiLQfeWRqqptgzFJ87z1Jo7MSSow8A&amp;cr=10440&amp;ct=1&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%3Fallowsremote%3Dtrue%26med=clc&amp;sig=wd-mIx68VCQo5A"><span>Work from anywhere</span></a><div class="middle"><ul class="jobs"><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="Customer Success and Webapp Performance Guru at Platform.sh. Click to learn more." href="https://stackoverflow.com/jobs/144572/customer-success-and-webapp-performance-guru-platformsh" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=48qvUnPfu_uKh2r4XD9PJiaBd09n8674_XNK-loNs2zGj353Ak4EMkgx9GxgYGiwZ2RkYJJmWn-YfXMD555FAkDxlAMxEz9ZvtKMtpdmWrua_dQDjgeP-cHiLQfeWRqqptgzFJ87z1Jo7MSSow8A&amp;cr=266556&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F144572%2Fcustomer-success-and-webapp-performance-guru-platformsh%3Fmed=clc&amp;sig=EUbUHX4aFLTvlA"><div class="title">Customer Success and Webapp Performance Guru</div><div><span class="company">Platform.sh</span><span class="location">No office location</span></div><div class="opts"><span class="opt salary">$60k - $70k</span><span class="opt remote">Remote</span></div><span class="post-tag">magento2</span><span class="post-tag">php</span><div></div></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=48qvUnPfu_uKh2r4XD9PJiaBd09n8674_XNK-loNs2zGj353Ak4EMkgx9GxgYGiwZ2RkYJJmWn-YfXMD555FAkDxlAMxEz9ZvtKMtpdmWrua_dQDjgeP-cHiLQfeWRqqptgzFJ87z1Jo7MSSow8A&amp;cr=266556&amp;ct=-1&amp;sig=QzFVFsN6d1gUjw" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="PHP Fullstack Developer (eastern europe) (remote) at MobyMax. Click to learn more." href="https://stackoverflow.com/jobs/140872/php-fullstack-developer-eastern-europe-remote-mobymax" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=48qvUnPfu_uKh2r4XD9PJiaBd09n8674_XNK-loNs2zGj353Ak4EMkgx9GxgYGiwZ2RkYJJmWn-YfXMD555FAkDxlAMxEz9ZvtKMtpdmWrua_dQDjgeP-cHiLQfeWRqqptgzFJ87z1Jo7MSSow8A&amp;cr=258528&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F140872%2Fphp-fullstack-developer-eastern-europe-remote-mobymax%3Fmed=clc&amp;sig=chGfhzXgnsanlw"><div class="title">PHP Fullstack Developer (eastern europe) (remote)</div><div><span class="company">MobyMax</span><span class="location">No office location</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="post-tag">mysql</span><span class="post-tag">php</span><div></div></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=48qvUnPfu_uKh2r4XD9PJiaBd09n8674_XNK-loNs2zGj353Ak4EMkgx9GxgYGiwZ2RkYJJmWn-YfXMD555FAkDxlAMxEz9ZvtKMtpdmWrua_dQDjgeP-cHiLQfeWRqqptgzFJ87z1Jo7MSSow8A&amp;cr=258528&amp;ct=-1&amp;sig=eMjru6VFX4DuMQ" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li></ul></div><img src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/impression.gif" class="impression" style="display: none;"></div>
+        <script>
+window.clc_request = 'ArVrmUC9u9QIAAAAAO7ypgECAAAAAgAAAAAUAAAAfG15c3FsfGFwYWNoZS1zcGFya3wAQkkCQUeiZMqfVQ';;!function load(n){var u,r;try{if("function"!=typeof[].indexOf)return;if(!window.addEventListener)return;if(!n.allowed)return;if(!RegExp(n.allowed).test(location.hostname))return;var t=window,i=t.document,f=n.wv;if(i.hidden&&f)return void i.addEventListener("visibilitychange",function e(){i.hidden||(load(n),i.removeEventListener("visibilitychange",e))});if(t.clc=t.clc||{},t.clc.init=t.clc.init||[],n.autoload&&t.clc.init.push(function(n){return n.load()}),t.clc.options){for(u in t.clc.options)n[u]=t.clc.options[u];t.clc.options=n}else t.clc.options=n;r=i.createElement("script");r.async=!0;r.src=n.lib;i.body.appendChild(r)}catch(o){}}.call(null, {"lib":"https://cdn.sstatic.net/clc/clc.min.js?v=15f527bc6c30","u":"https://clc.stackoverflow.com/markup.js","azw":true,"kt":2000,"tto":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"h":"clc.stackoverflow.com","autoload":true,"allowed":"^(((talent\\.)?stackoverflow)|(blog\\.codinghorror)|(serverfault|askubuntu)|([^\\.]+\\.stackexchange))\\.com$","wv":true});        </script>
+			
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/36830933?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/36830933/sparksql-read-from-mysql-database-table-using-python?noredirect=1&amp;lq=1" class="question-hyperlink">SparkSQL read from MySQL database table using Python</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/37199338?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/37199338/in-apache-spark-can-you-build-an-rdd-from-a-database-mysql-mongodb-etc?noredirect=1&amp;lq=1" class="question-hyperlink">In Apache Spark, can you build an RDD from a database (MySQL, MongoDB, etc)?</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/29027359?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/29027359/cassandra-spark-vs-mysql-spark?noredirect=1&amp;lq=1" class="question-hyperlink">Cassandra + Spark vs MySQL + Spark</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/39313143?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/39313143/apache-spark-is-it-good-to-use-structured-data?noredirect=1&amp;lq=1" class="question-hyperlink">Apache Spark : Is it good to use structured data</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/39613776?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/39613776/spark-streaming-how-to-efficiently-save-foreachrdd-data-into-mysql-database?noredirect=1&amp;lq=1" class="question-hyperlink">Spark Streaming: How to efficiently save foreachRDD data into Mysql Database?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/1135245?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">1025</div></a><a href="https://stackoverflow.com/questions/1135245/how-to-get-a-list-of-mysql-user-accounts?rq=1" class="question-hyperlink">How to get a list of MySQL user accounts</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/24119897?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">219</div></a><a href="https://stackoverflow.com/questions/24119897/apache-spark-vs-apache-storm?rq=1" class="question-hyperlink">Apache Spark vs. Apache Storm</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/24637312?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">36</div></a><a href="https://stackoverflow.com/questions/24637312/spark-driver-in-apache-spark?rq=1" class="question-hyperlink">Spark Driver in Apache spark</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/24896233?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">2</div></a><a href="https://stackoverflow.com/questions/24896233/how-to-save-apache-spark-schema-output-in-mysql-database?rq=1" class="question-hyperlink">how to save apache spark schema output in mysql database</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/32280276?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">3</div></a><a href="https://stackoverflow.com/questions/32280276/apache-spark-mysql-connection-suitable-jdbc-driver-not-found?rq=1" class="question-hyperlink">Apache Spark Mysql connection suitable jdbc driver not found</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/34130839?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="https://stackoverflow.com/questions/34130839/how-to-read-mysql-tables-into-apache-spark-pyspark-efficiently?rq=1" class="question-hyperlink">How to read MySQL tables into Apache Spark/PySpark efficiently?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/34805121?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">-2</div></a><a href="https://stackoverflow.com/questions/34805121/how-to-migrate-data-using-apache-spark?rq=1" class="question-hyperlink">How to migrate data using Apache SPark?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/39057669?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="https://stackoverflow.com/questions/39057669/how-can-i-connect-to-a-mysql-database-into-apache-spark-using-sparkr?rq=1" class="question-hyperlink">How can I connect to a MySQL database into Apache Spark using SparkR?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/42161589?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="https://stackoverflow.com/questions/42161589/how-to-insert-a-model-in-mysql-with-spark-and-java?rq=1" class="question-hyperlink">How to insert a model in mysql with spark and java</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/43737658?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">-1</div></a><a href="https://stackoverflow.com/questions/43737658/make-permanent-connection-with-mysql-apache-spark?rq=1" class="question-hyperlink">Make permanent connection with MySQL (Apache Spark)</a></div>
+                    </div>
+				</div>
+            
+
+<div id="hot-network-questions" class="module tex2jax_ignore">
+    <h4>
+        <a href="https://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-japanese" title="Japanese Language Stack Exchange"></div><a href="https://japanese.stackexchange.com/questions/48721/words-for-snail" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:257 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    words for snail
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="https://tex.stackexchange.com/questions/376694/pgfplots-tikz-plot-two-or-more-added-expressions-in-different-domains" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    PGFplots Tikz plot two or more added expressions in different domains
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-astronomy" title="Astronomy Stack Exchange"></div><a href="https://astronomy.stackexchange.com/questions/21381/how-do-we-not-know-whats-in-the-solar-system" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:514 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do we not know what's in the Solar System?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="https://academia.stackexchange.com/questions/91310/would-it-be-unethical-to-not-cite-a-figure-obtained-from-a-qa-forum" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Would it be unethical to not cite a figure obtained from a Q&amp;A forum?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="https://movies.stackexchange.com/questions/75191/why-does-quentin-tarantino-add-non-plot-related-dialogue-in-his-movies" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does Quentin Tarantino add non-plot related dialogue in his movies?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="https://academia.stackexchange.com/questions/91285/advisor-transferring-to-better-school" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Advisor transferring to better school
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-politics" title="Politics Stack Exchange"></div><a href="https://politics.stackexchange.com/questions/20087/why-is-greeces-debt-considered-a-problem-but-not-us-debt-which-is-much-larger" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:475 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is Greece's debt considered a problem but not US debt, which is much larger?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="https://superuser.com/questions/1222372/why-do-we-have-cpus-with-all-the-cores-at-the-same-speeds-and-not-combinations-o" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do we have CPUs with all the cores at the same speeds and not combinations of different speeds?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="https://scifi.stackexchange.com/questions/162268/fantasy-series-about-a-world-with-ice-ships-and-lots-of-religious-overtones" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Fantasy series about a world with ice ships and lots of religious overtones
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-hinduism" title="Hinduism Stack Exchange"></div><a href="https://hinduism.stackexchange.com/questions/19132/from-which-scripture-does-adi-shankara-quote-about-maheswara-shaping-name-and-fo" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:567 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    From which scripture does Adi Shankara quote about Maheswara shaping name and forms of all beings from the words of Veda?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="https://mathematica.stackexchange.com/questions/149026/how-to-extract-first-9-rows-from-every-block-of-22-rows" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to extract first 9 rows from every block of 22 rows?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="https://english.stackexchange.com/questions/395556/is-there-a-term-for-deliberately-misestimating-a-value-to-avoid-a-threshold" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there a term for deliberately misestimating a value to avoid a threshold?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="https://security.stackexchange.com/questions/162690/my-android-phone-is-vulnerable-but-there-is-no-updates" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    My Android phone is vulnerable, but there is no updates?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="https://unix.stackexchange.com/questions/373095/accidentally-used-the-output-redirection-instead-of-a-pipe" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Accidentally used the output redirection &gt; instead of a pipe |
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="https://rpg.stackexchange.com/questions/102200/which-spell-save-dc-to-use-for-a-staff-of-the-magi-for-a-multiclass-eldritch-kni" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Which spell save DC to use for a Staff of the Magi for a multiclass Eldritch Knight/Sorcerer?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="https://ell.stackexchange.com/questions/133549/run-an-errand-what-does-run-mean" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    'run an errand' - what does 'run' mean?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="https://askubuntu.com/questions/928308/is-it-possible-to-use-ubuntu-without-ram-at-all" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it possible to use ubuntu without ram at all?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-outdoors" title="The Great Outdoors Stack Exchange"></div><a href="https://outdoors.stackexchange.com/questions/16367/how-does-water-depth-affect-swimming-safety-why-do-signs-especially-in-the-uk" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:395 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How does water depth affect swimming safety? Why do signs, especially in the UK, say "DANGER: deep water"?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-writers" title="Writers Stack Exchange"></div><a href="https://writers.stackexchange.com/questions/28897/redeeming-a-good-character-who-does-a-bad-thing" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:166 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Redeeming a Good Character Who Does a Bad Thing
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="https://ux.stackexchange.com/questions/109321/how-do-we-ensure-users-read-instructions" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do we ensure users read instructions?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="https://mathematica.stackexchange.com/questions/148993/how-to-plot-output-data-of-do-command" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to plot output data of Do-command?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/93284/what-to-say-instead-of-calm-down-if-you-see-the-other-person-getting-angry-dur" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What to say instead of "calm down" if you see the other person getting angry during the discussion?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="https://academia.stackexchange.com/questions/91101/where-did-i-lose-control-of-my-studies" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where did I lose control of my studies?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/127322/is-my-os-32-bit-or-64-bit" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is my OS 32-bit or 64-bit?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="https://stackoverflow.com/feeds/question/27718382" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/27718382/ivc/3984');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/27718382/ivc/3984" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">lang-sql</div></div>
+
+
+        </div>
+    </div>
+
+        <footer id="footer" class="s-footer categories" role="contentinfo">
+            <div class="-container g-column">
+                <ul class="-menu g-row">
+
+                    <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.com/company/about">about us</a></li>
+                        <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 2 })" href="https://stackoverflow.com/tour">tour</a></li>
+                    <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 3 })" href="https://stackoverflow.com/help">help</a></li>
+                    <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 4 })" href="https://stackoverflow.blog/?blb=1">blog</a></li>
+                        <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 5 })" href="https://chat.stackoverflow.com/">chat</a></li>
+                    <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 6 })" href="https://data.stackexchange.com/">data</a></li>
+                    <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 7 })" href="https://stackexchange.com/legal">legal</a></li>
+                    <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 8 })" href="https://stackexchange.com/legal/privacy-policy">privacy policy</a></li>
+                    <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 9 })" href="https://stackoverflow.com/company/work-here">work here</a></li>
+                    <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 10 })" href="https://www.stackoverflowbusiness.com/advertise">advertising info</a></li>
+                        <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 11 })" href="https://stackoverflow.com/jobs/directory/developer-jobs">developer jobs directory</a></li>
+
+                    <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 12 })" onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a></li>
+                    <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 13 })" href="https://stackoverflow.com/contact"><strong>contact us</strong></a></li>
+                        <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 14 })" href="https://meta.stackoverflow.com/"><strong>feedback</strong></a></li>
+                    <li class="-item g-col">
+                        
+                    </li>
+                </ul>
+                <div class="-toc g-row" id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                <strong>Technology</strong>
+            </th>
+            <th>
+                <strong>Life / Arts</strong>
+            </th>
+            <th>
+                <strong>Culture / Recreation</strong>
+            </th>
+            <th>
+                <strong>Science</strong>
+            </th>
+            <th>
+                <strong>Other</strong>
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="https://stackoverflow.com/" class="-link js-gps-track" title="professional and enthusiast programmers" data-gps-track="footer.click({ location: 2, link: 25 })">Stack Overflow</a></li>
+                        <li><a href="https://serverfault.com/" class="-link js-gps-track" title="system and network administrators" data-gps-track="footer.click({ location: 2, link: 25 })">Server Fault</a></li>
+                        <li><a href="https://superuser.com/" class="-link js-gps-track" title="computer enthusiasts and power users" data-gps-track="footer.click({ location: 2, link: 25 })">Super User</a></li>
+                        <li><a href="https://webapps.stackexchange.com/" class="-link js-gps-track" title="power users of web applications" data-gps-track="footer.click({ location: 2, link: 25 })">Web Applications</a></li>
+                        <li><a href="https://askubuntu.com/" class="-link js-gps-track" title="Ubuntu users and developers" data-gps-track="footer.click({ location: 2, link: 25 })">Ask Ubuntu</a></li>
+                        <li><a href="https://webmasters.stackexchange.com/" class="-link js-gps-track" title="pro webmasters" data-gps-track="footer.click({ location: 2, link: 25 })">Webmasters</a></li>
+                        <li><a href="https://gamedev.stackexchange.com/" class="-link js-gps-track" title="professional and independent game developers" data-gps-track="footer.click({ location: 2, link: 25 })">Game Development</a></li>
+                        <li><a href="https://tex.stackexchange.com/" class="-link js-gps-track" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems" data-gps-track="footer.click({ location: 2, link: 25 })">TeX - LaTeX</a></li>
+                        <li><a href="https://softwareengineering.stackexchange.com/" class="-link js-gps-track" title="professionals, academics, and students working within the systems development life cycle" data-gps-track="footer.click({ location: 2, link: 25 })">Software Engineering</a></li>
+                        <li><a href="https://unix.stackexchange.com/" class="-link js-gps-track" title="users of Linux, FreeBSD and other Un*x-like operating systems" data-gps-track="footer.click({ location: 2, link: 25 })">Unix &amp; Linux</a></li>
+                        <li><a href="https://apple.stackexchange.com/" class="-link js-gps-track" title="power users of Apple hardware and software" data-gps-track="footer.click({ location: 2, link: 25 })">Ask Different (Apple)</a></li>
+                        <li><a href="https://wordpress.stackexchange.com/" class="-link js-gps-track" title="WordPress developers and administrators" data-gps-track="footer.click({ location: 2, link: 25 })">WordPress Development</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="https://gis.stackexchange.com/" class="-link js-gps-track" title="cartographers, geographers and GIS professionals" data-gps-track="footer.click({ location: 2, link: 25 })">Geographic Information Systems</a></li>
+                        <li><a href="https://electronics.stackexchange.com/" class="-link js-gps-track" title="electronics and electrical engineering professionals, students, and enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">Electrical Engineering</a></li>
+                        <li><a href="https://android.stackexchange.com/" class="-link js-gps-track" title="enthusiasts and power users of the Android operating system" data-gps-track="footer.click({ location: 2, link: 25 })">Android Enthusiasts</a></li>
+                        <li><a href="https://security.stackexchange.com/" class="-link js-gps-track" title="information security professionals" data-gps-track="footer.click({ location: 2, link: 25 })">Information Security</a></li>
+                        <li><a href="https://dba.stackexchange.com/" class="-link js-gps-track" title="database professionals who wish to improve their database skills and learn from others in the community" data-gps-track="footer.click({ location: 2, link: 25 })">Database Administrators</a></li>
+                        <li><a href="https://drupal.stackexchange.com/" class="-link js-gps-track" title="Drupal developers and administrators" data-gps-track="footer.click({ location: 2, link: 25 })">Drupal Answers</a></li>
+                        <li><a href="https://sharepoint.stackexchange.com/" class="-link js-gps-track" title="SharePoint enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">SharePoint</a></li>
+                        <li><a href="https://ux.stackexchange.com/" class="-link js-gps-track" title="user experience researchers and experts" data-gps-track="footer.click({ location: 2, link: 25 })">User Experience</a></li>
+                        <li><a href="https://mathematica.stackexchange.com/" class="-link js-gps-track" title="users of Wolfram Mathematica" data-gps-track="footer.click({ location: 2, link: 25 })">Mathematica</a></li>
+                        <li><a href="https://salesforce.stackexchange.com/" class="-link js-gps-track" title="Salesforce administrators, implementation experts, developers and anybody in-between" data-gps-track="footer.click({ location: 2, link: 25 })">Salesforce</a></li>
+                        <li><a href="https://expressionengine.stackexchange.com/" class="-link js-gps-track" title="administrators, end users, developers and designers for ExpressionEngine® CMS" data-gps-track="footer.click({ location: 2, link: 25 })">ExpressionEngine® Answers</a></li>
+                        <li><a href="https://crypto.stackexchange.com/" class="-link js-gps-track" title="software developers, mathematicians and others interested in cryptography" data-gps-track="footer.click({ location: 2, link: 25 })">Cryptography</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="https://codereview.stackexchange.com/" class="-link js-gps-track" title="peer programmer code reviews" data-gps-track="footer.click({ location: 2, link: 25 })">Code Review</a></li>
+                        <li><a href="https://magento.stackexchange.com/" class="-link js-gps-track" title="users of the Magento e-Commerce platform" data-gps-track="footer.click({ location: 2, link: 25 })">Magento</a></li>
+                        <li><a href="https://dsp.stackexchange.com/" class="-link js-gps-track" title="practitioners of the art and science of signal, image and video processing" data-gps-track="footer.click({ location: 2, link: 25 })">Signal Processing</a></li>
+                        <li><a href="https://raspberrypi.stackexchange.com/" class="-link js-gps-track" title="users and developers of hardware and software for Raspberry Pi" data-gps-track="footer.click({ location: 2, link: 25 })">Raspberry Pi</a></li>
+                        <li><a href="https://codegolf.stackexchange.com/" class="-link js-gps-track" title="programming puzzle enthusiasts and code golfers" data-gps-track="footer.click({ location: 2, link: 25 })">Programming Puzzles &amp; Code Golf</a></li>
+                                            <li>
+                            <a href="https://stackexchange.com/sites#technology" class="more js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://photo.stackexchange.com/" class="-link js-gps-track" title="professional, enthusiast and amateur photographers" data-gps-track="footer.click({ location: 2, link: 25 })">Photography</a></li>
+                        <li><a href="https://scifi.stackexchange.com/" class="-link js-gps-track" title="science fiction and fantasy enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="https://graphicdesign.stackexchange.com/" class="-link js-gps-track" title="Graphic Design professionals, students, and enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">Graphic Design</a></li>
+                        <li><a href="https://movies.stackexchange.com/" class="-link js-gps-track" title="movie and tv enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">Movies &amp; TV</a></li>
+                        <li><a href="https://music.stackexchange.com/" class="-link js-gps-track" title="musicians, students, and enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">Music: Practice &amp; Theory</a></li>
+                        <li><a href="https://cooking.stackexchange.com/" class="-link js-gps-track" title="professional and amateur chefs" data-gps-track="footer.click({ location: 2, link: 25 })">Seasoned Advice (cooking)</a></li>
+                        <li><a href="https://diy.stackexchange.com/" class="-link js-gps-track" title="contractors and serious DIYers" data-gps-track="footer.click({ location: 2, link: 25 })">Home Improvement</a></li>
+                        <li><a href="https://money.stackexchange.com/" class="-link js-gps-track" title="people who want to be financially literate" data-gps-track="footer.click({ location: 2, link: 25 })">Personal Finance &amp; Money</a></li>
+                        <li><a href="https://academia.stackexchange.com/" class="-link js-gps-track" title="academics and those enrolled in higher education" data-gps-track="footer.click({ location: 2, link: 25 })">Academia</a></li>
+                                            <li>
+                            <a href="https://stackexchange.com/sites#lifearts" class="more js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                                more (8)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://english.stackexchange.com/" class="-link js-gps-track" title="linguists, etymologists, and serious English language enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">English Language &amp; Usage</a></li>
+                        <li><a href="https://skeptics.stackexchange.com/" class="-link js-gps-track" title="scientific skepticism" data-gps-track="footer.click({ location: 2, link: 25 })">Skeptics</a></li>
+                        <li><a href="https://judaism.stackexchange.com/" class="-link js-gps-track" title="those who base their lives on Jewish law and tradition and anyone interested in learning more" data-gps-track="footer.click({ location: 2, link: 25 })">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="https://travel.stackexchange.com/" class="-link js-gps-track" title="road warriors and seasoned travelers" data-gps-track="footer.click({ location: 2, link: 25 })">Travel</a></li>
+                        <li><a href="https://christianity.stackexchange.com/" class="-link js-gps-track" title="committed Christians, experts in Christianity and those interested in learning more" data-gps-track="footer.click({ location: 2, link: 25 })">Christianity</a></li>
+                        <li><a href="https://ell.stackexchange.com/" class="-link js-gps-track" title="speakers of other languages learning English" data-gps-track="footer.click({ location: 2, link: 25 })">English Language Learners</a></li>
+                        <li><a href="https://japanese.stackexchange.com/" class="-link js-gps-track" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language" data-gps-track="footer.click({ location: 2, link: 25 })">Japanese Language</a></li>
+                        <li><a href="https://gaming.stackexchange.com/" class="-link js-gps-track" title="passionate videogamers on all platforms" data-gps-track="footer.click({ location: 2, link: 25 })">Arqade (gaming)</a></li>
+                        <li><a href="https://bicycles.stackexchange.com/" class="-link js-gps-track" title="people who build and repair bicycles, people who train cycling, or commute on bicycles" data-gps-track="footer.click({ location: 2, link: 25 })">Bicycles</a></li>
+                        <li><a href="https://rpg.stackexchange.com/" class="-link js-gps-track" title="gamemasters and players of tabletop, paper-and-pencil role-playing games" data-gps-track="footer.click({ location: 2, link: 25 })">Role-playing Games</a></li>
+                        <li><a href="https://anime.stackexchange.com/" class="-link js-gps-track" title="anime and manga fans" data-gps-track="footer.click({ location: 2, link: 25 })">Anime &amp; Manga</a></li>
+                        <li><a href="https://mechanics.stackexchange.com/" class="-link js-gps-track" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles" data-gps-track="footer.click({ location: 2, link: 25 })">Motor Vehicle Maintenance &amp; Repair</a></li>
+                                            <li>
+                            <a href="https://stackexchange.com/sites#culturerecreation" class="more js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                                more (17)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://mathoverflow.net/" class="-link js-gps-track" title="professional mathematicians" data-gps-track="footer.click({ location: 2, link: 25 })">MathOverflow</a></li>
+                        <li><a href="https://math.stackexchange.com/" class="-link js-gps-track" title="people studying math at any level and professionals in related fields" data-gps-track="footer.click({ location: 2, link: 25 })">Mathematics</a></li>
+                        <li><a href="https://stats.stackexchange.com/" class="-link js-gps-track" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization" data-gps-track="footer.click({ location: 2, link: 25 })">Cross Validated (stats)</a></li>
+                        <li><a href="https://cstheory.stackexchange.com/" class="-link js-gps-track" title="theoretical computer scientists and researchers in related fields" data-gps-track="footer.click({ location: 2, link: 25 })">Theoretical Computer Science</a></li>
+                        <li><a href="https://physics.stackexchange.com/" class="-link js-gps-track" title="active researchers, academics and students of physics" data-gps-track="footer.click({ location: 2, link: 25 })">Physics</a></li>
+                        <li><a href="https://chemistry.stackexchange.com/" class="-link js-gps-track" title="scientists, academics, teachers and students" data-gps-track="footer.click({ location: 2, link: 25 })">Chemistry</a></li>
+                        <li><a href="https://biology.stackexchange.com/" class="-link js-gps-track" title="biology researchers, academics, and students" data-gps-track="footer.click({ location: 2, link: 25 })">Biology</a></li>
+                        <li><a href="https://cs.stackexchange.com/" class="-link js-gps-track" title="students, researchers and practitioners of computer science" data-gps-track="footer.click({ location: 2, link: 25 })">Computer Science</a></li>
+                        <li><a href="https://philosophy.stackexchange.com/" class="-link js-gps-track" title="those interested in the study of the fundamental nature of knowledge, reality, and existence" data-gps-track="footer.click({ location: 2, link: 25 })">Philosophy</a></li>
+                                            <li>
+                            <a href="https://stackexchange.com/sites#science" class="more js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                                more (3)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://meta.stackexchange.com/" class="-link js-gps-track" title="meta-discussion of the Stack Exchange family of Q&amp;A websites" data-gps-track="footer.click({ location: 2, link: 25 })">Meta Stack Exchange</a></li>
+                        <li><a href="https://stackapps.com/" class="-link js-gps-track" title="apps, scripts, and development with the Stack Exchange API" data-gps-track="footer.click({ location: 2, link: 25 })">Stack Apps</a></li>
+                        <li><a href="https://area51.stackexchange.com/" class="-link js-gps-track" title="proposing new sites in the Stack Exchange network" data-gps-track="footer.click({ location: 2, link: 25 })">Area 51</a></li>
+                        <li><a href="https://www.stackoverflowbusiness.com/talent" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })">Stack Overflow Talent</a></li>
+                                    </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+                <div class="g-col -copyright" id="copyright">
+                    site design / logo © 2017 Stack Exchange Inc; user contributions licensed under <a class="-link" href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a>
+                    with <a class="-link" href="https://stackoverflow.blog/2009/06/25/attribution-required/" rel="license">attribution required</a>
+                </div>
+                <div class="g-col -copyright _muted" id="svnrev">
+                    rev 2017.6.23.26318
+                </div>
+
+            </div>
+        </footer>
+
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled
+            &lt;img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;
+        &lt;/div&gt;
+    </noscript>
+<script>var z=document.createElement("script");z.type="text/javascript",z.async=!0,z.src="https://static.adzerk.net/ados.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z,s);</script>
+<script>
+var ados = ados || {};
+ados.run = ados.run || [];
+
+
+ados.run.push(function () {
+    setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+    ados_setKeywords('mysql,apache-spark');; ados_load();
+});   
+
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                ga('create', 'UA-5620270-1');
+                ga('create', 'UA-5620270-59', {name: 'pageData', sampleRate: 5 });
+                ga('set', 'dimension2', '|mysql|apache-spark|');
+                ga('pageData.set', 'dimension2', '|mysql|apache-spark|');
+                ga('send', 'pageview');
+                ga('pageData.send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+
+<script async="" src="./How to work with MySQL and Apache Spark_ - Stack Overflow_files/clc.min.js.download"></script></body></html>

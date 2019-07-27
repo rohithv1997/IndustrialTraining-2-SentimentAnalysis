@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- saved from url=(0119)https://pippio.com/api/sync?pid=1391&ref=https%3A%2F%2Fwww.edureka.co%2Fblog%2Fspark-tutorial%2F&it=1&iv=cbn7vfd1tv3r4f -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><script>
+		var f = function () {
+	function loadChains(chains, limit, onChainDone) {
+    function newImageLoader(url) {
+        return function () {
+            var e = new Image();
+            addListeners(e);
+            e.src = url;
+        };
+    }
+
+    function newScriptLoader(url) {
+        return function () {
+            var e = document.createElement('script');
+            e.type = 'text/javascript';
+            e.async = true;
+            addListeners(e);
+            e.src = url;
+            document.head.appendChild(e);
+        };
+    }
+
+    function newIframeLoader(url) {
+        return function () {
+            var e = document.createElement('iframe');
+            e.style.display = 'none';
+            e.width = 1;
+            e.height = 1;
+            addListeners(e);
+            e.src = url;
+            document.body.appendChild(e);
+        };
+    }
+
+    function addListeners(e) {
+        addLoadErrorListeners(e, loadNext);
+        if (typeof onChainDone === 'function') {
+            addLoadErrorListeners(e, onChainDone);
+        }
+    }
+
+    function addLoadErrorListeners(e, listener) {
+        if (typeof e.addEventListener === 'function') {
+            e.addEventListener('load', listener, false);
+            e.addEventListener('error', listener, false);
+        } else if (typeof e.attachEvent === 'function') {
+            e.attachEvent('onload', listener);
+            e.attachEvent('onerror', listener);
+        }
+    }
+
+    function loadNext() {
+        var next = loaders.shift();
+        if (typeof next === "function") {
+            setTimeout(next);
+        }
+    }
+
+    var loaders = chains.reduce(function (acc, value) {
+        var mode = value[0];
+        var url = value[1];
+
+        switch (mode) {
+            case 'image':
+                acc.push(newImageLoader(url));
+                break;
+            case 'script':
+                acc.push(newScriptLoader(url));
+                break;
+            case 'iframe':
+                acc.push(newIframeLoader(url));
+                break;
+        }
+        return acc;
+    }, []);
+
+    for (var i = 0; i < limit; i++) {
+        loadNext();
+    }
+}
+
+	var chains = [];
+	chains.push(['image', 'https://idsync.rlcdn.com/462246.gif?partner_uid=cbn7vfd1tv3r4f']);
+	chains.push(['image', 'https://aa.agkn.com/adscores/s.pixel?sid=9102279158&em=fdaa1cb8399575f3e4a6b3c34a0703e9']);
+	chains.push(['image', 'https://aa.agkn.com/adscores/s.pixel?sid=9102280158&em=6c878c64defb9d5e2bb680f85621a98ee7b69c7a']);
+	chains.push(['image', 'https://p.nexac.com/e/a-1137/s-7715.xgi?ret=img&na_em=c2629bc2ee567f17841de095ef64f5ceba82c09d&na_ci=Idqp2fMPqQ4gucOqVH6Q1nkVRg']);
+	chains.push(['image', 'https://widget.criteo.com/event?a=40136&v=4.1.0&p0=e%3Dce%26m%3D%255Bfdaa1cb8399575f3e4a6b3c34a0703e997d2e7c4ff7dad07eb794ff8782dbcd4%255D&rt=gif']);
+	chains.push(['image', 'https://login.dotomi.com/ucm/UCMController?dtm_com=29&dtm_fid=103&dtm_cid=3167&dtm_cmagic=20c86a&dtm_format=6&cli_promo_id=110&dtm_email_hash=97d2e7c4ff7dad07eb794ff8782dbcd4&dtm_email_hash=fdaa1cb8399575f3e4a6b3c34a0703e9']);
+	chains.push(['image', 'https://global.ib-ibi.com/image.sbxx?go=273959&pid=447&xid=Idqp2fMPqQ4gucOqVH6Q1nkVRg&id1=97d2e7c4ff7dad07eb794ff8782dbcd4']);
+	chains.push(['image', 'https://i.liadm.com/s/h/19713?m=fdaa1cb8399575f3e4a6b3c34a0703e9&sh1=6c878c64defb9d5e2bb680f85621a98ee7b69c7a&sh2=bfebe1aa3f8f9ed3187474d4318881ce701302a01127a62809488e012c5b814d']);
+	chains.push(['image', 'https://sp.adbrn.com/match?syncid=pip1_fed054db-2b91-4f7c-8617-e6658ed56c7b&cid=Idqp2fMPqQ4gucOqVH6Q1nkVRg&rurl=https%3A%2F%2Fpippio.com%2Fapi%2Fsync%3Fpid%3D1312%26m%3DCO8KEhkKFQgBEPkHGg5jYm43dmZkMXR2M3I0ZhAAGmEI17a-ygUSBQiEChAAEgUIoAoQABIFCJoOEAASBQilDxAAEgUIjBAQABIFCK4REAASBQjqFxAAEgUIqBkQABIFCKkZEAASBQi5HBAAEgUI2ikQABIFCJlDEAASBQjVQxAA%26it%3D1%26iv%3D%24%7BCOOKIE_ID%7D']);
+	chains.push(['image', 'https://pixel.sojern.com/idSync/sync?pid=arbor']);
+	chains.push(['image', 'https://p.adsymptotic.com/d/px?_pid=13001&_psign=c5ccca7f0d37071ee38ee7ac29330eac&_puuid=Idqp2fMPqQ4gucOqVH6Q1nkVRg&_redirect=https%3A%2F%2Fpippio.com%2Fapi%2Fsync%3Fpid%3D1284%26m%3DCO8KEhkKFQgBEPkHGg5jYm43dmZkMXR2M3I0ZhAAGmEI17a-ygUSBQiEChAAEgUIoAoQABIFCJoOEAASBQilDxAAEgUIjBAQABIFCK4REAASBQjqFxAAEgUIqBkQABIFCKkZEAASBQi5HBAAEgUI2ikQABIFCJlDEAASBQjVQxAA%26it%3D1%26iv%3D%24%7BUUID%7D']);
+	chains.push(['image', 'https://p.adsymptotic.com/d/px?_pid=13553&_psign=9e62e5c043ecadc9479a0ccac401dd7d']);
+	chains.push(['image', 'https://trc.taboola.com/sg/arbor/1/cm/']);
+
+	loadChains(chains, 10, (typeof onDone === "function") ? onDone : null);
+		};
+
+		if (document.body) { f(); } else { document.addEventListener('DOMContentLoaded', f); }
+	</script>
+</head><body></body></html>

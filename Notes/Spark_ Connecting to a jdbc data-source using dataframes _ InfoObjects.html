@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<!-- saved from url=(0083)http://www.infoobjects.com/spark-connecting-to-a-jdbc-data-source-using-dataframes/ -->
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+	<link rel="shortcut icon" type="text/css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/io-favicon3.ico">
+	
+	<title>Spark: Connecting to a jdbc data-source using dataframes | InfoObjects</title>
+	
+	<link rel="pingback" href="http://www.infoobjects.com/xmlrpc.php">
+	
+		<style type="text/css">
+		#site-title a,
+		#site-description {
+			color: #d2691e !important;
+		}
+		#sa_branding {background:url() top left no-repeat;background-position:center;}
+	</style>
+		
+		
+    <!-- Bootstrap Core CSS -->
+    <link href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<script type="text/javascript" async="" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/ga.js.download"></script><script src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/828871362.js.download"></script>
+	<script src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/jquery.min.js.download" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#tabsholder").tytabs({
+								tabinit:"1",
+								fadespeed:"fast"
+								});
+		$("#tabsholder2").tytabs({
+								prefixtabs:"tabz",
+								prefixcontent:"contentz",
+								classcontent:"tabscontent",
+								tabinit:"3",
+								catchget:"tab2",
+								fadespeed:"normal"
+								});
+	});
+
+	/* #### SPOTTED TRIFORCE ARTS ####
+	 * Contact Form Handling
+	 */
+	contactForm = {
+		toggle: function(id) { // Accordion Toggle
+			if (!jQuery("#contactButton"+id).hasClass("button-active")) {
+				jQuery(".contactAccordion .contactButton").removeClass("button-active");
+				jQuery(".contactAccordion .contactDrawer").slideUp();
+				var t = setTimeout(function(id) {
+					jQuery("#contactButton"+id).addClass("button-active");
+					jQuery("#contactDrawer"+id).slideDown();
+				},500,id);
+			}
+		},
+		popup: function() { // Popup Toggle
+			if (jQuery("#overlay").hasClass('open')) {
+				jQuery("#feedback-popup iframe").attr('src','/cfpu/');
+				jQuery("#overlay").removeClass('open');
+			} else {
+				jQuery("#overlay").addClass('open');
+				jQuery("#overlay").height(jQuery(window).height());
+			}
+		}
+	}
+
+	</script>
+	<!-- WP HEAD START -->
+	<link rel="alternate" type="application/rss+xml" title="InfoObjects » Feed" href="http://www.infoobjects.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="InfoObjects » Comments Feed" href="http://www.infoobjects.com/comments/feed/">
+<link rel="stylesheet" id="scap.flashblock-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/flashblock.css" type="text/css" media="all">
+<link rel="stylesheet" id="scap.player-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/player.css" type="text/css" media="all">
+<link rel="stylesheet" id="pt-cv-bootstrap-style-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/bootstrap.custom.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="pt-cv-public-style-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/public.css" type="text/css" media="all">
+<link rel="stylesheet" id="jquery-ui-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/jquery-ui-1.10.3.custom.css" type="text/css" media="all">
+<link rel="stylesheet" id="contact_form_maker_frontend-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/contact_form_maker_frontend.css" type="text/css" media="all">
+<link rel="stylesheet" id="my-calendar-style-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/refresh.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-syntax-css-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/wp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="Bootstrap_css-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/bootstrap.min(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="recent-posts-slider-pro-css-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/recent-posts-slider-pro.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="slider-pro-css-css" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/slider-pro.min.css" type="text/css" media="all">
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/soundmanager2-nodebug-jsmin.js.download"></script>
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/jquery.sliderPro.min.js.download"></script>
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/js"></script>
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/if_gmap_front_end.js.download"></script>
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/cfm_main_front_end.js.download"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.infoobjects.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.infoobjects.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Journey of Schema into Big Data World" href="http://www.infoobjects.com/journey-of-schema-in-big-data-world/">
+<link rel="next" title="Spark: Connecting to Amazon EC2" href="http://www.infoobjects.com/spark-connecting-to-amazon-ec2/">
+<meta name="generator" content="WordPress 3.5">
+<link rel="canonical" href="http://www.infoobjects.com/spark-connecting-to-a-jdbc-data-source-using-dataframes/">
+<link rel="shortlink" href="http://www.infoobjects.com/?p=5574">
+
+<style type="text/css">
+<!--
+.mcjs .mc-main .details, .mcjs .mc-main .calendar-events { display: none; }
+/* Styles by My Calendar - Joseph C Dolson http://www.joedolson.com/ */
+
+.mc-main .mc_general .event-title, .mc-main .mc_general .event-title a { background: #ffffcc; color: #000000; }
+.mc-main .mc_general .event-title a:hover, .mc-main .mc_general .event-title a:focus { background: #ffffff;}
+.mc-event-visible {
+display: block!important;
+}
+-->
+</style>
+<script type="text/javascript">
+jQuery('html').addClass('mcjs');
+jQuery(document).ready(function($) { $('html').removeClass('mcjs') });
+</script>
+<style type="text/css" media="screen">#rps {
+    border: none;
+}
+#rps .slider {
+    background: none repeat scroll 0 0 #E9E6DD;
+}
+#rps .col p.post-title span {
+    color: #666666;
+    font-size: 22px;
+    font-weight: normal;
+    padding-bottom: 10px;
+    padding-top: 14px;
+    font-family: 'helvetica';
+}
+#rps .col p {
+    padding: 0 40px;
+}
+
+#rps .col p.post-title {
+    padding: 0 0 0 15px;
+}
+
+.slider-content > a {
+    background-color: #C9C9C6;
+    background-image: url("/wp-content/uploads/2014/02/more.gif");
+    background-position: right top;
+    background-repeat: no-repeat;
+    color: #7A7673;
+    font-weight: bold;
+    margin-left: 15px;
+    padding: 3px 30px 5px 10px;
+}
+#rps .paging {
+   background:none;
+}
+#rps .paging a {
+    color: #2A2A2A;
+}
+#rps .paging a.active {
+    background: none repeat scroll 0 0 #F7931E;
+    border: none;
+}
+.theme1 .sp-slides-container {
+    background-color: #E9E6DD;
+}
+.slider-pro p {
+    padding: 0 30px;
+}
+.sp-button {
+    background-color: #fff;
+    border: none;
+}
+.sp-selected-button {
+    background-color: #F3AC57;
+}
+.sp-buttons {
+    padding-right: 10px;
+}</style><script type="text/javascript"></script>	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+	
+	<!-- WP HEAD END -->
+
+	<script type="text/javascript">
+	jQuery('html').addClass('mcjs');
+
+	/* Spotted Triforce Arts Toolbox */
+	var STA = {
+		
+		/* tells me what size the window is */
+		size: function() {
+			if (jQuery("#whatsize .visible-xs").css("display") == "block") {return "xs";}
+			else if (jQuery("#whatsize .visible-sm").css("display") == "block") {return "sm";}
+			else if (jQuery("#whatsize .visible-md").css("display") == "block") {return "md";}
+			else if (jQuery("#whatsize .visible-lg").css("display") == "block") {return "lg";}
+		},
+		
+		/* Makes sure that in mobile layout, the two main homepage columns are the same height */
+		columnHeight: function () {
+			if (STA.size() != "xs") {
+				jQuery(".leftCol-image").css('height',jQuery(".rightCol-image").height()+"px");
+			}
+		},
+		
+		/* Manages the homepage tabs */
+		tytabs: {
+			
+			showTab: function(tabid) {
+				jQuery("#tytabs-content > div").fadeOut();
+				jQuery("#tytabs .mob-tytab").removeClass("active");
+				var t = setTimeout(function(tabid) {
+					jQuery("#tytabs-content-"+tabid).fadeIn();
+				},1500,tabid);
+				var t2 = setTimeout(function(tabid) {
+					jQuery("#home-tab-"+tabid).addClass("active");
+				},500,tabid);
+			}
+		}
+		
+	}
+	jQuery(window).resize(STA.columnHeight);
+
+	jQuery(document).ready(function($) { 
+		$('html').removeClass('mcjs') 
+		
+		STA.columnHeight();
+		
+	});
+	</script>
+
+    <!-- Custom CSS -->
+    <link href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/mobile-friendly.css" rel="stylesheet">
+<style type="text/css">.fancybox-margin{margin-right:0px;}</style><style data-olark="true" type="text/css">.olark-key,#hbl_code,#olark-data{display: none !important;}</style><style data-olark="true" type="text/css">@media print {#habla_beta_container_do_not_rely_on_div_classes_or_names {display: none !important}}</style><link data-olark="true" rel="stylesheet" href="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/theme.css" type="text/css"><script type="text/javascript" charset="UTF-8" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/common.js.download"></script><script type="text/javascript" charset="UTF-8" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/util.js.download"></script><script type="text/javascript" charset="UTF-8" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/stats.js.download"></script></head>
+
+<body class="single single-post postid-5574 single-format-standard page-template page-template-mobile-friendly-post-with-side-graphic-php singular"><div id="olark" style="display: none;"><olark><iframe frameborder="0" id="olark-loader" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/saved_resource.html"></iframe></olark></div>
+	<div id="whatsize"><div class="visible-xs"></div><div class="visible-sm"></div><div class="visible-md"></div><div class="visible-lg"></div></div>
+	<div id="preload"></div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top row" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" onclick="jQuery(&#39;#bs-example-navbar-collapse-1&#39;).toggleClass(&#39;open&#39;);">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="http://www.infoobjects.com/" alt="home"><img width="196" border="0" height="80" alt="" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/logo.png"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse row" id="bs-example-navbar-collapse-1">
+				
+				 		
+<div class="greybar col-xs-10" id="menunext"><span class="social facebook"><a target="_blank" rel="publisher" href="http://www.facebook.com/infoobjects.inc"><img border="0" align="right" alt="facebook" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/Facebook-24.png"></a></span><span class="social"><a target="_blank" rel="publisher" href="https://twitter.com/infoobjects"><img border="0" align="right" alt="twitter" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/Twitter-24.png"></a></span><span class="social"><a target="_blank" rel="publisher" href="https://plus.google.com/111867741837694064332"><img border="0" align="right" alt="google plus" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/google_plus.png"></a></span>
+<div class="greybarlink" style="float:right;"><a href="mailto:bigdata@infoobjects.com"><div class="emailicon visible-sm"></div>bigdata<span class="hidden-sm">@infoobjects.com</span></a></div>
+<div class="greybarlink" style="float:right;"><a href="mailto:azure@infoobjects.com"><div class="emailicon visible-sm"></div>azure<span class="hidden-sm">@infoobjects.com</span></a></div>
+<div class="greybarlink" style="float:right;"><a href="mailto:aws@infoobjects.com"><div class="emailicon visible-sm"></div>aws<span class="hidden-sm">@infoobjects.com</span></a></div>
+</div>
+<ul class="nav navbar-nav navbar-right" id="this" style="margin-right:0px;">
+	<li class="dropdown">
+	  <a href="http://www.infoobjects.com/spark-connecting-to-a-jdbc-data-source-using-dataframes/#" class="dropdown-toggle" onclick="event.stopPropagation();$(&#39;.dropdown&#39;).removeClass(&#39;open&#39;);$(this).parent().toggleClass(&#39;open&#39;);" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+	  <ul class="dropdown-menu">
+		<li><a href="http://www.infoobjects.com/real-time-streaming/">Real-time Streaming</a></li>
+		<li><a href="http://www.infoobjects.com/apache-spark-support/">Apache Spark Support</a></li>
+		<li><a href="http://www.infoobjects.com/data-science-outsourcing/">Data Science Outsourcing</a></li>
+		<li class="dropdown">
+		  <a href="http://www.infoobjects.com/spark-connecting-to-a-jdbc-data-source-using-dataframes/#" class="dropdown-toggle" onclick="event.stopPropagation();$(this).parent().toggleClass(&#39;open&#39;);" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SAP Integration <span class="caret"></span></a>
+		  <ul class="dropdown-menu">
+			<li><a href="http://www.infoobjects.com/apache-spark-and-sap-vora/">SAP HANA Vora</a></li>
+			<li><a href="http://www.infoobjects.com/sap-data-services/">SAP Data Services</a></li>
+		  </ul>
+		</li>
+		<li><a href="http://www.infoobjects.com/mobile-testing/chatbot-integration-consulting/">Chatbots</a></li>
+	  </ul>
+	</li>
+	<!--<li class="dropdown">
+	  <a href="#" class="dropdown-toggle" onclick="event.stopPropagation();$('.dropdown').removeClass('open');$(this).parent().toggleClass('open');" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Public Cloud <span class="caret"></span></a>
+	  <ul class="dropdown-menu">
+		<li><a data-old="/amazon-web-services-migration-services/" href="/amazon-web-services-consulting/">Amazon Web Services</a></li>
+	  </ul>
+	</li>-->
+	<li class="dropdown">
+	  <a href="http://www.infoobjects.com/spark-connecting-to-a-jdbc-data-source-using-dataframes/#" class="dropdown-toggle" onclick="event.stopPropagation();$(&#39;.dropdown&#39;).removeClass(&#39;open&#39;);$(this).parent().toggleClass(&#39;open&#39;);" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Big Data <span class="caret"></span></a>
+	  <ul class="dropdown-menu">
+		<li><a href="http://www.infoobjects.com/hadoop/">Hadoop</a></li>
+		<li><a href="http://www.infoobjects.com/data-lake/">Storage</a></li>
+		<li><a href="http://www.infoobjects.com/compute-landscape/">Compute Landscape</a></li>
+		<li><a href="http://www.infoobjects.com/spark-and-iot/">I<small>o</small>T</a></li>
+	  </ul>
+	</li>
+	<li class="dropdown">
+	  <a href="http://www.infoobjects.com/spark-connecting-to-a-jdbc-data-source-using-dataframes/#" class="dropdown-toggle" onclick="event.stopPropagation();$(&#39;.dropdown&#39;).removeClass(&#39;open&#39;);$(this).parent().toggleClass(&#39;open&#39;);" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Spark on Tap <span class="caret"></span></a>
+	  <ul class="dropdown-menu">
+		<li><a href="http://www.infoobjects.com/big-data-on-tap/">Spark On Tap</a></li>
+		<li><a href="http://www.infoobjects.com/business-intelligence/">Spark &amp; BI</a></li>
+		<li><a href="http://www.infoobjects.com/gpus/">Spark on GPU</a></li>
+	  </ul>
+	</li>
+	<li class="dropdown">
+	  <a href="http://www.infoobjects.com/spark-connecting-to-a-jdbc-data-source-using-dataframes/#" class="dropdown-toggle" onclick="event.stopPropagation();$(&#39;.dropdown&#39;).removeClass(&#39;open&#39;);$(this).parent().toggleClass(&#39;open&#39;);" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AWS <span class="caret"></span></a>
+	  <ul class="dropdown-menu">
+		<li><a data-old="/amazon-web-servicesaws-consulting/" href="http://www.infoobjects.com/amazon-web-services-consulting/">Consulting</a></li>
+		<li><a href="http://www.infoobjects.com/public-cloud-orchestrator/">Public Cloud Orchestrator</a></li>
+	  </ul>
+	</li>
+	<li class="active"><a href="http://www.infoobjects.com/spark-cookbook/">Code</a></li>
+	<li class="active"><a href="http://www.infoobjects.com/training/">Training</a></li>
+  </ul>
+  
+					  <div class="headerRightHugger hidden-xs" style="display:none:&gt;&lt;div class=" calltab"="" onclick="contactForm.popup();"></div><div class="call_slit"></div>				 
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+	
+		<div id="container">
+		<div id="content" role="main" class="post-5574 post type-post status-publish format-standard hentry category-spark_cookbook">
+			<div id="page-content">
+				<div class="container homepage">
+					<div class="row">
+						<div class="col-xs-12 col-sm-4 leftCol-image hidden-xs" style="height: 1797px;"></div>
+						<div class="col-xs-12 col-sm-8 rightCol-image">
+							<h1>Spark: Connecting to a jdbc data-source using dataframes</h1>
+							<p>So far in Spark, JdbcRDD has been the right way to connect with a relational data source. In Spark 1.4 onwards there is an inbuilt datasource available to connect to a jdbc source using dataframes. </p>
+<h2>Dataframe</h2>
+<p>Spark introduced dataframes in version 1.3 and enriched dataframe API in 1.4. RDDs are a unit of compute and storage in Spark but lack any information about the structure of the data i.e. schema. Dataframes combine RDDs with Schema and this small addition makes them very very powerful. You can read more about dataframes <a href="http://www.infoobjects.com/dataframes-with-apache-spark/">here</a>.</p>
+<p>Please make sure that jdbc driver jar is visible on client node and all slaves nodes on which executor will run. </p>
+<p>Let us create ‘person’ table in mysql (or database of your choice) with following script:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">Create</span> <span style="color: #990099; font-weight: bold;">table</span> ‘person’ <span style="color: #990099; font-weight: bold;">in</span> MySql <span style="color: #990099; font-weight: bold;">using</span> following DDL
+<span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> <span style="color: #008000;">`person`</span> <span style="color: #FF00FF;">(</span>
+  <span style="color: #008000;">`person<span style="color: #008080; font-weight: bold;">_</span>id`</span> <span style="color: #999900; font-weight: bold;">int</span><span style="color: #FF00FF;">(</span><span style="color: #008080;">11</span><span style="color: #FF00FF;">)</span> <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #9900FF; font-weight: bold;">NULL</span> <span style="color: #FF9900; font-weight: bold;">AUTO_INCREMENT</span><span style="color: #000033;">,</span>
+  <span style="color: #008000;">`first<span style="color: #008080; font-weight: bold;">_</span>name`</span> <span style="color: #999900; font-weight: bold;">varchar</span><span style="color: #FF00FF;">(</span><span style="color: #008080;">30</span><span style="color: #FF00FF;">)</span> <span style="color: #990099; font-weight: bold;">DEFAULT</span> <span style="color: #9900FF; font-weight: bold;">NULL</span><span style="color: #000033;">,</span>
+  <span style="color: #008000;">`last<span style="color: #008080; font-weight: bold;">_</span>name`</span> <span style="color: #999900; font-weight: bold;">varchar</span><span style="color: #FF00FF;">(</span><span style="color: #008080;">30</span><span style="color: #FF00FF;">)</span> <span style="color: #990099; font-weight: bold;">DEFAULT</span> <span style="color: #9900FF; font-weight: bold;">NULL</span><span style="color: #000033;">,</span>
+  <span style="color: #008000;">`gender`</span> <span style="color: #000099;">char</span><span style="color: #FF00FF;">(</span><span style="color: #008080;">1</span><span style="color: #FF00FF;">)</span> <span style="color: #990099; font-weight: bold;">DEFAULT</span> <span style="color: #9900FF; font-weight: bold;">NULL</span><span style="color: #000033;">,</span>
+  <span style="color: #008000;">`age`</span> <span style="color: #999900; font-weight: bold;">tinyint</span><span style="color: #FF00FF;">(</span><span style="color: #008080;">4</span><span style="color: #FF00FF;">)</span> <span style="color: #990099; font-weight: bold;">DEFAULT</span> <span style="color: #9900FF; font-weight: bold;">NULL</span><span style="color: #000033;">,</span>
+  <span style="color: #990099; font-weight: bold;">PRIMARY KEY</span> <span style="color: #FF00FF;">(</span><span style="color: #008000;">`person<span style="color: #008080; font-weight: bold;">_</span>id`</span><span style="color: #FF00FF;">)</span>
+<span style="color: #FF00FF;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Now Let’s insert some data to play with</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">Insert</span> <span style="color: #990099; font-weight: bold;">into</span> person <span style="color: #990099; font-weight: bold;">values</span><span style="color: #FF00FF;">(</span>‘Barack’<span style="color: #000033;">,</span>’Obama’<span style="color: #000033;">,</span>’M’<span style="color: #000033;">,</span><span style="color: #008080;">53</span><span style="color: #FF00FF;">)</span><span style="color: #000033;">;</span>
+<span style="color: #990099; font-weight: bold;">Insert</span> <span style="color: #990099; font-weight: bold;">into</span> person <span style="color: #990099; font-weight: bold;">values</span><span style="color: #FF00FF;">(</span>‘Bill’<span style="color: #000033;">,</span>’Clinton’<span style="color: #000033;">,</span>’M’<span style="color: #000033;">,</span><span style="color: #008080;">71</span><span style="color: #FF00FF;">)</span><span style="color: #000033;">;</span>
+<span style="color: #990099; font-weight: bold;">Insert</span> <span style="color: #990099; font-weight: bold;">into</span> person <span style="color: #990099; font-weight: bold;">values</span><span style="color: #FF00FF;">(</span>‘Hillary’<span style="color: #000033;">,</span>’Clinton’<span style="color: #000033;">,</span>’F’<span style="color: #000033;">,</span><span style="color: #008080;">68</span><span style="color: #FF00FF;">)</span><span style="color: #000033;">;</span>
+<span style="color: #990099; font-weight: bold;">Insert</span> <span style="color: #990099; font-weight: bold;">into</span> person <span style="color: #990099; font-weight: bold;">values</span><span style="color: #FF00FF;">(</span>‘Bill’<span style="color: #000033;">,</span>’Gates’<span style="color: #000033;">,</span>’M’<span style="color: #000033;">,</span><span style="color: #008080;">69</span><span style="color: #FF00FF;">)</span><span style="color: #000033;">;</span>
+<span style="color: #990099; font-weight: bold;">Insert</span> <span style="color: #990099; font-weight: bold;">into</span> person <span style="color: #990099; font-weight: bold;">values</span><span style="color: #FF00FF;">(</span>‘Michelle’<span style="color: #000033;">,</span>’Obama’<span style="color: #000033;">,</span>’F’<span style="color: #000033;">,</span><span style="color: #008080;">51</span><span style="color: #FF00FF;">)</span><span style="color: #000033;">;</span></pre></td></tr></tbody></table></div>
+
+<p>Download mysql jar from <a href="http://dev.mysql.com/downloads/connector/j/">http://dev.mysql.com/downloads/connector/j/</a>.</p>
+<p>Make MySQL driver available to Spark shell and launch it</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">$spark-shell -–driver-class-path /path-to-mysql-jar/mysql-connector-java-5.1.34-bin.<span style="color: #000000;">jar</span></pre></td></tr></tbody></table></div>
+
+<p>Construct Jdbc URL</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> <span style="color: #0000ff; font-weight: bold;">val</span> url<span style="color: #000080;">=</span><span style="color: #6666FF;">"jdbc:mysql://localhost:3306/hadoopdb"</span></pre></td></tr></tbody></table></div>
+
+<p>Create connection properties object with username and password</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> <span style="color: #0000ff; font-weight: bold;">val</span> prop <span style="color: #000080;">=</span> <span style="color: #0000ff; font-weight: bold;">new</span> java.<span style="color: #000000;">util</span>.<span style="color: #000000;">Properties</span>
+scala<span style="color: #000080;">&gt;</span> prop.<span style="color: #000000;">setProperty</span><span style="color: #F78811;">(</span><span style="color: #6666FF;">"user"</span>,”hduser”<span style="color: #F78811;">)</span>
+scala<span style="color: #000080;">&gt;</span> prop.<span style="color: #000000;">setProperty</span><span style="color: #F78811;">(</span><span style="color: #6666FF;">"password"</span>,<span style="color: #6666FF;">"********"</span><span style="color: #F78811;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Load DataFrame with JDBC data-source (url, table name, properties)</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> <span style="color: #0000ff; font-weight: bold;">val</span> people <span style="color: #000080;">=</span> sqlContext.<span style="color: #000000;">read</span>.<span style="color: #000000;">jdbc</span><span style="color: #F78811;">(</span>url,<span style="color: #6666FF;">"person"</span>,prop<span style="color: #F78811;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Show the results in a nice tabular format</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> people.<span style="color: #000000;">show</span></pre></td></tr></tbody></table></div>
+
+<p>This has loaded the whole table, what if I only would like to load males (url, table name, predicates, properties)</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> <span style="color: #0000ff; font-weight: bold;">val</span> males <span style="color: #000080;">=</span> sqlContext.<span style="color: #000000;">read</span>.<span style="color: #000000;">jdbc</span><span style="color: #F78811;">(</span>url,<span style="color: #6666FF;">"person"</span>,Array<span style="color: #F78811;">(</span><span style="color: #6666FF;">"gender='M'"</span><span style="color: #F78811;">)</span>,prop<span style="color: #F78811;">)</span>
+scala<span style="color: #000080;">&gt;</span> males.<span style="color: #000000;">show</span></pre></td></tr></tbody></table></div>
+
+<p>Show only first names</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> <span style="color: #0000ff; font-weight: bold;">val</span> first<span style="color: #000080;">_</span>names <span style="color: #000080;">=</span> people.<span style="color: #000000;">select</span><span style="color: #F78811;">(</span><span style="color: #6666FF;">"first_name"</span><span style="color: #F78811;">)</span>
+scala<span style="color: #000080;">&gt;</span> first<span style="color: #000080;">_</span>names.<span style="color: #000000;">show</span></pre></td></tr></tbody></table></div>
+
+<p>Show only people below age 60</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> <span style="color: #0000ff; font-weight: bold;">val</span> below60 <span style="color: #000080;">=</span> people.<span style="color: #000000;">filter</span><span style="color: #F78811;">(</span>people<span style="color: #F78811;">(</span><span style="color: #6666FF;">"age"</span><span style="color: #F78811;">)</span> <span style="color: #000080;">&lt;</span> <span style="color: #F78811;">60</span><span style="color: #F78811;">)</span>
+scala<span style="color: #000080;">&gt;</span> below60.<span style="color: #000000;">show</span></pre></td></tr></tbody></table></div>
+
+<p>Group people by gender</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> <span style="color: #0000ff; font-weight: bold;">val</span> grouped <span style="color: #000080;">=</span> people.<span style="color: #000000;">groupBy</span><span style="color: #F78811;">(</span><span style="color: #6666FF;">"gender"</span><span style="color: #F78811;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Find number of males and females</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> <span style="color: #0000ff; font-weight: bold;">val</span> gender<span style="color: #000080;">_</span>count <span style="color: #000080;">=</span> grouped.<span style="color: #000000;">count</span>
+scala<span style="color: #000080;">&gt;</span> gender<span style="color: #000080;">_</span>count.<span style="color: #000000;">show</span></pre></td></tr></tbody></table></div>
+
+<p>Find average age of males and females</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> <span style="color: #0000ff; font-weight: bold;">val</span> avg<span style="color: #000080;">_</span>age <span style="color: #000080;">=</span> grouped.<span style="color: #000000;">avg</span><span style="color: #F78811;">(</span><span style="color: #6666FF;">"age"</span><span style="color: #F78811;">)</span>
+scala<span style="color: #000080;">&gt;</span> avg<span style="color: #000080;">_</span>age.<span style="color: #000000;">show</span></pre></td></tr></tbody></table></div>
+
+<p>Now save this avg age data to a new table</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="scala" style="font-family:monospace;">scala<span style="color: #000080;">&gt;</span> gender<span style="color: #000080;">_</span>count.<span style="color: #000000;">write</span>.<span style="color: #000000;">jdbc</span><span style="color: #F78811;">(</span>url,<span style="color: #6666FF;">"gender_count"</span>,prop<span style="color: #F78811;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Please contact <a href="mailto:bigdata@infoobjects.com">us</a> if you need any help.</p>
+							<nav id="nav-single" class="clearfix">
+							  <span class="nav-previous col-xs-6">
+							  « <a href="http://www.infoobjects.com/journey-of-schema-in-big-data-world/" rel="prev">Journey of Schema into Big Data World</a>							  </span><span class="nav-next col-xs-6">
+							  <a href="http://www.infoobjects.com/spark-connecting-to-amazon-ec2/" rel="next">Spark: Connecting to Amazon EC2</a> »							  </span>
+							</nav>
+							
+							<!-- Page Content -->
+							<!-- /.container -->
+						<div style="height:50px;clear:both;">&nbsp;</div>
+						</div>
+						
+						<div class="col-xs-12 here">
+							<!-- /.row -->
+							<!-- Footer -->
+							
+	</div><!-- #main -->
+	</div><!-- #main -->
+
+
+	<footer id="colophon" role="contentinfo" class="row">
+		<div class="footer"><ul id="menu-footer-menu" class=""><li id="menu-item-6277" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6277"><a href="http://www.infoobjects.com/our-team/">Our Team</a></li>
+<li id="menu-item-862" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-862"><a href="http://www.infoobjects.com/employment/">Employment Opportunities</a></li>
+<li id="menu-item-861" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-861"><a href="http://www.infoobjects.com/privacy/">Privacy Policy</a></li>
+<li id="menu-item-1401" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1401"><a href="http://www.infoobjects.com/clients/">Clients</a></li>
+<li id="menu-item-859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-859"><a href="http://www.infoobjects.com/contact-us/">Contact Us</a></li>
+<li id="menu-item-2360" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2360"><a href="http://www.infoobjects.com/activities/">Activities</a></li>
+<li id="menu-item-6291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6291"><a href="http://www.infoobjects.com/media/">Videos</a></li>
+<li id="menu-item-6426" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6426"><a href="https://s3-us-west-2.amazonaws.com/infoobjects.sandbox/io_sandbox.ova">Sandbox</a></li>
+</ul></div>		
+<!--
+		<div class="footer">
+        	<ul>
+        	<li><a href="http://www.infoobjects.com/hadoop">What is B ig Data</a></li>
+             <li><a href="http://www.infoobjects.com/about">About InfoObjects</a></li>
+             <li><a href="http://www.infoobjects.com/employment">Employment Opportunities</a></li>
+	     <li><a href="http://www.infoobjects.com/privacy">Privacy Policy</a></li>
+            <li><a href="http://www.infoobjects.com/contact-us/" title="Contact Us">Contact Us</a></li>
+         -->   
+<!--   
+                <li><a href="http://www.infoobjects.com/customers">Our Customers</a></li>
+             <li><a href="http://www.infoobjects.com/industries">Industries Served</a></li>
+              
+               
+            	  <li><a href="http://www.infoobjects.com/awards">Awards and Recognitions</a></li>
+                <li><a href="http://www.infoobjects.com/testimonials">Testimonials</a></li>
+                <li><a href="http://www.infoobjects.com/team">Our Team</a></li>
+                
+               
+              -->
+<!--
+              </ul>
+        </div>
+-->
+              <div class="footer-logos"><img alt="Apache Spark Logo" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/spark-logo.png"></div>
+<div class="description"> © InfoObjects 2017. All rights reserved. Apache Hadoop, Apache Spark, Apache Hadoop Logo, Apache Spark Logo are trademarks of the Apache Software Foundation.</div>
+	</footer><!-- #colophon -->
+
+
+	<script type="text/javascript">function ctSetCookie(c_name, value, def_value) {    document.cookie = c_name + "=" + escape(value.replace(/^def_value$/, value)) + "; path=/";}ctSetCookie("ct_checkjs", "27713", "0");</script>
+<!-- WP Audio player plugin v1.5 - http://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556/ -->
+	<script type="text/javascript">
+    soundManager.useFlashBlock = true; // optional - if used, required flashblock.css
+    soundManager.url = 'http://www.infoobjects.com/wp-content/plugins/compact-wp-audio-player/swf/soundmanager2.swf';
+    function play_mp3(flg,ids,mp3url,volume,loops){
+      soundManager.createSound({
+        id:'btnplay_'+ids,
+        volume: volume,
+        url: mp3url
+      });
+
+      if(flg == 'play'){
+		//soundManager.stopAll();        
+		soundManager.play('btnplay_'+ids,{
+			onfinish: function() {
+				if(loops == 'true'){
+					loopSound('btnplay_'+ids);
+				}
+				else{
+					document.getElementById('btnplay_'+ids).style.display = 'inline';
+					document.getElementById('btnstop_'+ids).style.display = 'none';
+				}
+			}
+		});
+      }
+      else if(flg == 'stop'){
+        //soundManager.stop('btnplay_'+ids);
+    	soundManager.pause('btnplay_'+ids);
+      }
+    }
+    function show_hide(flag,ids){
+      if(flag=='play'){
+        document.getElementById('btnplay_'+ids).style.display = 'none';
+        document.getElementById('btnstop_'+ids).style.display = 'inline';
+      }
+      else if (flag == 'stop'){
+        document.getElementById('btnplay_'+ids).style.display = 'inline';
+        document.getElementById('btnstop_'+ids).style.display = 'none';
+      }
+    }
+    function loopSound(soundID) {
+    	window.setTimeout(function() {
+    		soundManager.play(soundID,{onfinish:function(){loopSound(soundID);}});
+    	},1);
+    }
+	</script>
+	
+<script type="text/javascript">
+	(function( $ ) { 'use strict'; 
+
+$(function() {
+  $(".calendar-event").children().not(".event-title").hide();
+  $(document).on("click", ".calendar-event .event-title",
+     function(e) {
+         e.preventDefault(); // remove line if you are using a link in the event title
+		$(this).parent().children().not(".event-title").toggle();
+	 });
+  $(document).on("click", ".calendar-event .close",
+     function(e) {
+         e.preventDefault();
+		$(this).parent().toggle();
+	 });
+	});
+$(function() {
+  $("li.mc-events").children().not(".event-date").hide();
+  $("li.current-day").children().show();
+  $(document).on("click", ".event-date",
+     function(e) {
+	 e.preventDefault();
+	 $(this).parent().children().not(".event-date").toggle();
+     });
+});
+$(function() {
+  $(".mini .has-events").children().not(".trigger").hide();
+  $(document).on("click", ".mini .has-events .trigger",
+     function(e) {
+	 e.preventDefault();	 
+	 $(this).parent().children().not(".trigger").toggle(); 
+	 });
+  $(document).on("click", ".mini-event .close",
+     function(e) {
+         e.preventDefault();
+	 $(this).parent().parent().parent().toggle();
+	 });
+});
+	}(jQuery));
+</script><script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/jquery.ui.widget.min.js.download"></script>
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/jquery.ui.effect.min.js.download"></script>
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/jquery.ui.effect-shake.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var PT_CV_PAGINATION = {"first":"\u00ab","prev":"\u2039","next":"\u203a","last":"\u00bb","goto_first":"Go to first page","goto_prev":"Go to previous page","goto_next":"Go to next page","goto_last":"Go to last page","current_page":"Current page is","goto_page":"Go to page"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/bootstrap.custom.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var PT_CV_PUBLIC = {"_prefix":"pt-cv-","page_to_show":"5","_nonce":"99db00a82a","is_admin":"","is_mobile":"","ajaxurl":"http:\/\/www.infoobjects.com\/wp-admin\/admin-ajax.php","lang":"","loading_image_src":"data:image\/gif;base64,R0lGODlhDwAPALMPAMrKygwMDJOTkz09PZWVla+vr3p6euTk5M7OzuXl5TMzMwAAAJmZmWZmZszMzP\/\/\/yH\/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAPACwAAAAADwAPAAAEQvDJaZaZOIcV8iQK8VRX4iTYoAwZ4iCYoAjZ4RxejhVNoT+mRGP4cyF4Pp0N98sBGIBMEMOotl6YZ3S61Bmbkm4mAgAh+QQFCgAPACwAAAAADQANAAAENPDJSRSZeA418itN8QiK8BiLITVsFiyBBIoYqnoewAD4xPw9iY4XLGYSjkQR4UAUD45DLwIAIfkEBQoADwAsAAAAAA8ACQAABC\/wyVlamTi3nSdgwFNdhEJgTJoNyoB9ISYoQmdjiZPcj7EYCAeCF1gEDo4Dz2eIAAAh+QQFCgAPACwCAAAADQANAAAEM\/DJBxiYeLKdX3IJZT1FU0iIg2RNKx3OkZVnZ98ToRD4MyiDnkAh6BkNC0MvsAj0kMpHBAAh+QQFCgAPACwGAAAACQAPAAAEMDC59KpFDll73HkAA2wVY5KgiK5b0RRoI6MuzG6EQqCDMlSGheEhUAgqgUUAFRySIgAh+QQFCgAPACwCAAIADQANAAAEM\/DJKZNLND\/kkKaHc3xk+QAMYDKsiaqmZCxGVjSFFCxB1vwy2oOgIDxuucxAMTAJFAJNBAAh+QQFCgAPACwAAAYADwAJAAAEMNAs86q1yaWwwv2Ig0jUZx3OYa4XoRAfwADXoAwfo1+CIjyFRuEho60aSNYlOPxEAAAh+QQFCgAPACwAAAIADQANAAAENPA9s4y8+IUVcqaWJ4qEQozSoAzoIyhCK2NFU2SJk0hNnyEOhKR2AzAAj4Pj4GE4W0bkJQIAOw=="};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/public.js.download"></script>
+
+	
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+$('ul.tabs li').children().each(function(){
+$(this).hover(function(){
+if($(this).parent().hasClass('current')){
+	//$(this).parent().removeClass('current');
+	//$(this).parent().addClass('wasCurrent');
+	}
+});
+});
+
+$('ul.tabs li').children().each(function(){
+$(this).mouseout(function(){
+if($(this).parent().hasClass('wasCurrent')){
+$(this).parent().addClass('current');
+$(this).parent().removeClass('wasCurrent');
+}
+});
+});
+
+$("#mydroplinemenu ul li a").hover(function(){
+		$(this).siblings('ul').css({ display:'block'});
+	});
+
+$("ul.menu li a").click(function(){
+		$(this).siblings('ul').css({ display:'block'});
+	});
+
+$("#tabsholder ul.tabs > li").hover(function(e) {
+    var $currentTab = $(this);
+    $currentTab.siblings("li.current").removeClass("current").addClass("currentLight");
+},
+function(e) {
+    var $currentTab = $(this);
+    $currentTab.siblings("li.currentLight").removeClass("currentLight").addClass("current");
+});
+});
+</script>
+
+<script type="text/javascript">
+
+function ShowHideTab1(){
+$("#content1").hide();
+$("#content2").show();
+
+$("#tab2").addClass("current");
+$("#tab1").removeClass("current");
+}
+
+function ShowHideTab2(){
+$("#content2").hide();
+$("#content3").show();
+
+$("#tab3").addClass("current");
+$("#tab2").removeClass("current");
+}
+
+</script>
+
+
+
+<script type="text/javascript">
+
+function testTab(){
+$("#tab2").click(function(){
+	if($(this).hasId("#tab2")) {
+		$(this).addClass("TabImg2_active");
+	}
+    	else {
+        	$(this).removeClass ("TabImg2");
+    	}
+  });
+}
+</script>
+
+
+<script>
+$(document).ready(function(){
+	$('#videobx').hide();
+  $(".watch").click(function(){
+    $('#videobx').slideToggle();
+  });
+});
+</script>
+
+<script type="text/javascript">	
+	$(document).ready( function() {	
+		// When site loaded, load the Popupbox First
+		loadPopupBox();
+	
+		$('.popupBoxClose').click( function() {			
+			//unloadPopupBox();
+			var pid = $(this).parent().attr("id");
+			//closePopup(pid); Due to mobile-friendly layout, this is no longer required
+			$('#'+pid).slideUp();
+		});
+
+		function unloadPopupBox() {	// TO Unload the Popupbox
+			$('.popup_box').fadeOut("slow");
+		}	
+		
+		function loadPopupBox() {	// To Load the Popupbox
+			$('.popup_box').fadeIn("slow");		
+		}
+		/**********************************************************/		
+	});
+/* ### SPOTTED TRIFORCE ARTS ###
+ * allows for news stack re-arrangement when a news box is closed on the homepage
+ * OBSOLETE AS OF BOOTSTRAP UPDATE
+ */
+function closePopup(pid) {
+	// assemble list of existing boxes
+	var pboxes = {};
+	var order = new Array();
+	jQuery("#news_stack .popup_box").each(function() {
+		var top = jQuery(this).position()['top'];
+		order.push(top);
+		pboxes[top] = Array(jQuery(this).attr('id'),jQuery(this).height());
+	});
+	
+	// order by vertical position
+	order = order.sort(function(a, b){return a-b});
+	
+	// remove box to delete and slide others below it up
+	var rippleDelete = 0;
+	for(var place in order) {
+		var t = order[place];
+		if (pboxes[t][0] == pid) {
+			// found box to remove
+			jQuery("#"+pid).fadeOut();
+			rippleDelete -= (pboxes[t][1] + 42);
+			var q = setTimeout(function(id) {
+				jQuery(id).remove();
+			},900,pid);
+		} else {
+			var q = setTimeout(function(id,y) {
+				jQuery(id).css('top',y);
+			},1000,"#"+pboxes[t][0],t+rippleDelete);
+		}
+	}
+}
+</script>
+
+<script type="text/javascript">
+/* SPOTTED TRIFORCE ARTS
+ * This code checks if there are any calendar items to display
+ * on the home page, and if so, unhides the calendar pop box
+ */
+ 
+function unhideCalendar() {
+    if ($("#pop_cal .future-event").length > 0) {
+        $(".home #pop_cal").removeClass('hidden');
+    }
+}
+
+$(function() {
+    var t = setTimeout(function() {
+	unhideCalendar();
+    },2000);
+});
+/* END SPOTTED TRIFORCE ARTS */
+</script>
+<!-- begin olark code -->
+<script data-cfasync="false" type="text/javascript">/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+f[z]=function(){
+(a.s=a.s||[]).push(arguments)};var a=f[z]._={
+},q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+0:+new Date};a.P=function(u){
+a.p[u]=new Date-a.p[0]};function s(){
+a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+b.contentWindow[g].open()}catch(w){
+c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('4238-133-10-7945');/*]]>*/</script><noscript>&lt;a href="https://www.olark.com/site/4238-133-10-7945/contact" title="Contact us" target="_blank"&gt;Questions? Feedback?&lt;/a&gt; powered by &lt;a href="http://www.olark.com?welcome" title="Olark live chat software"&gt;Olark live chat software&lt;/a&gt;</noscript>
+<!-- end olark code -->
+						</div>
+						
+						
+						
+						
+						
+
+					</div>
+				</div>
+			</div>
+		
+	
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/bootstrap.min.js.download"></script><iframe data-olark="true" style="width: 0px; height: 0px; position: absolute; left: 0px; bottom: 0px; border: none;" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/saved_resource(1).html"></iframe>
+	
+    <!-- fancybox script -->
+    <script src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/jquery.fancybox.js.download"></script>
+
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-8340920-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+
+<div data-olark="true"><div id="olark-wrapper" class="" data-reactid=".0"><style rel="stylesheet" type="text/css" data-reactid=".0.0">#olark-wrapper .olark-launch-button {
+  background-color: #f7921e !important;
+}
+#olark-wrapper .olark-launch-button svg path {
+  fill: #ffffff !important;
+}
+#olark-wrapper .olark-launch-button .olark-button-text {
+  color: #ffffff !important;
+}
+#olark-wrapper .olark-top-bar {
+  background-color: #f7921e !important;
+  color: #ffffff !important;
+  border-color: #f18509 !important;
+}
+#olark-wrapper .olark-top-bar-text {
+  color: #ffffff !important;
+}
+#olark-wrapper .olark-top-bar-arrow {
+  fill: #ffffff !important;
+}
+#olark-wrapper .olark-end-chat-button {
+  color: #ffffff !important;
+  background-color: rgba(217, 119, 8, 0.5) !important;
+}
+#olark-wrapper .olark-end-chat-button:hover {
+  background-color: #d97708 !important;
+}
+#olark-wrapper #olark-container .olark-visitor-message:not(.olark-message-trans-bg) {
+  background-color: rgba(247, 146, 30, 0.25) !important;
+}
+#olark-wrapper #olark-container .olark-form-send-button {
+  background-color: #f7921e !important;
+  color: #ffffff !important;
+}
+#olark-wrapper #olark-container .olark-feedback-form-button {
+  background-color: #f7921e !important;
+  color: #ffffff !important;
+}
+#olark-wrapper #olark-container .olark-restart-button {
+  background-color: #f7921e !important;
+  color: #ffffff !important;
+}
+#olark-wrapper #olark-container .olark-branding-panel .olark-branding-cancel-button {
+  background-color: #f7921e !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+#olark-wrapper #olark-container .olark-branding-panel .olark-branding-go-button {
+  border: none !important;
+  background: rgba(247, 146, 30, 0.35) !important;
+}
+#olark-wrapper #olark-container .olark-send-transcript-container .olark-send-transcript-form.olark-inline-form-valid .olark-form-input-container {
+  border-color: #f7921e !important;
+}
+#olark-wrapper #olark-container .olark-send-transcript-container .olark-send-transcript-form.olark-inline-form-valid .olark-send-icon {
+  fill: #f7921e !important;
+}
+#olark-wrapper #olark-container .olark-visitor-message:not(.olark-message-has-border) {
+  border: none !important;
+}
+#olark-wrapper .olark-end-chat-flag {
+  fill: #f7921e !important;
+}
+#olark-wrapper #olark-container .olark-form-confirmation-icon .olark-launch-button-icon {
+  fill: #f7921e !important;
+}
+#olark-wrapper #olark-container .olark-form-input:focus {
+  border-color: #f7921e !important;
+}
+#olark-wrapper #olark-container .olark-form-message-input:focus {
+  border-color: #f7921e !important;
+}
+</style><div class="olark-attention-grabber olark-hidden olark-above-tab olark-init" data-reactid=".0.1"><span class="olark-attention-grabber-cancel olark-hidden" data-reactid=".0.1.0"><svg viewBox="0 0 11 12" fill="#ffffff" x="0" y="0" data-reactid=".0.1.0.0"><polygon class="olark-cancel-x" points="10.5,2.7 9.1,1.3 5.5,4.9 1.8,1.3 0.5,2.7 4.1,6.3 0.5,9.9 1.8,11.3 5.5,7.7 9.1,11.3 10.5,9.9 6.8,6.3" data-reactid=".0.1.0.0.0"></polygon></svg></span><div class="olark-bounding-box" data-reactid=".0.1.1"><img class="olark-attention-grabber-img" src="./Spark_ Connecting to a jdbc data-source using dataframes _ InfoObjects_files/0cbdc756ad1f88ea3ef2342dfa6e91c8.png" data-reactid=".0.1.1.0"></div></div><button class="olark-launch-button olark-chat-tab olark-size-md" data-reactid=".0.2"><svg x="0px" y="0px" viewBox="0 0 28 18" data-reactid=".0.2.0"><path fill="#ffffff" d="M28,3.2C28,1.5,26.5,0,24.8,0H3.2C1.5,0,0,1.5,0,3.2v11.5C0,16.5,1.5,18,3.2,18h21.5c1.8,0,3.2-1.5,3.2-3.2 V3.2z M24.7,14.8c-0.2,0.1-0.4,0.2-0.6,0.2c-0.2,0-0.4-0.1-0.6-0.3l-5-5.3l-3.6,3c-0.3,0.2-0.6,0.3-0.9,0.3s-0.7-0.1-0.9-0.4l-3.6-3 l-5,5.3c-0.2,0.2-0.4,0.3-0.6,0.3c-0.2,0-0.4-0.1-0.6-0.2c-0.3-0.3-0.4-0.8,0-1.2l4.9-5.3L3.3,4.5C3,4.2,2.9,3.6,3.2,3.3 C3.5,2.9,4,2.9,4.4,3.2l9.6,7.9l9.6-7.9c0.4-0.3,0.9-0.2,1.2,0.1c0.3,0.4,0.2,0.9-0.1,1.2l-4.8,3.9l4.9,5.3 C25.1,14,25,14.5,24.7,14.8z" data-reactid=".0.2.0.0"></path></svg><div class="olark-notification-badge olark-hidden" data-reactid=".0.2.1"><div class="olark-notification-badge-text" data-reactid=".0.2.1.0">0</div></div><p class="olark-button-text" data-reactid=".0.2.2">Contact us!</p></button><div id="olark-container" class="olark-hidden olark-size-md" data-reactid=".0.3"><div class="olark-top-bar" data-reactid=".0.3.0"><div class="olark-top-bar-text" data-reactid=".0.3.0.0">Contact us!</div><div class="olark-top-bar-button" data-reactid=".0.3.0.1"><svg viewBox="0 0 15.1 8.9" fill="#ffffff" data-reactid=".0.3.0.1.0"><polygon class="olark-top-bar-arrow" points="0.2,1.4 7.6,8.9 15.1,1.4 13.7,0 7.6,6 1.6,0" data-reactid=".0.3.0.1.0.0"></polygon></svg></div></div><div class="olark-conversation-container olark-form-conversation-container olark-no-message-form olark-offline-message-container" data-reactid=".0.3.1"><div class="olark-form-message" data-reactid=".0.3.1.0">We're not around, but we'd love to chat another time.</div><div class="olark-form-container" data-reactid=".0.3.1.1"><form class="olark-form" novalidate="" data-reactid=".0.3.1.1.0"><div class="olark-form-input-container" data-reactid=".0.3.1.1.0.0:$fname"><input type="text" name="fname" class="olark-form-input" id="olark-form-input-fname" placeholder="" tabindex="1" autocomplete="on" required="" data-reactid=".0.3.1.1.0.0:$fname.0"><label class="olark-float-label" for="olark-form-input-fname" data-reactid=".0.3.1.1.0.0:$fname.1">&lt;click here&gt; and type your Name</label><span class="olark-required-asterisk" data-reactid=".0.3.1.1.0.0:$fname.2"><svg viewBox="0 0 20 20" x="0" y="0" fill="currentcolor" data-reactid=".0.3.1.1.0.0:$fname.2.0"><path d="M10,0C4.5,0,0,4.5,0,10c0,5.5,4.5,10,10,10s10-4.5,10-10C20,4.5,15.5,0,10,0z M13.8,13.6L12,15l-2-3L8,15l-1.8-1.4l2-2.8 L5,9.6l0.8-2.2L9,8.6L8.8,5h2.4L11,8.6l3.2-1.3L15,9.6l-3.2,1.1L13.8,13.6z" data-reactid=".0.3.1.1.0.0:$fname.2.0.0"></path></svg></span></div><div class="olark-form-input-container" data-reactid=".0.3.1.1.0.0:$email"><input type="email" name="email" class="olark-form-input" id="olark-form-input-email" placeholder="" tabindex="2" autocomplete="on" required="" data-reactid=".0.3.1.1.0.0:$email.0"><label class="olark-float-label" for="olark-form-input-email" data-reactid=".0.3.1.1.0.0:$email.1">&lt;click here&gt; and type your Email</label><span class="olark-required-asterisk" data-reactid=".0.3.1.1.0.0:$email.2"><svg viewBox="0 0 20 20" x="0" y="0" fill="currentcolor" data-reactid=".0.3.1.1.0.0:$email.2.0"><path d="M10,0C4.5,0,0,4.5,0,10c0,5.5,4.5,10,10,10s10-4.5,10-10C20,4.5,15.5,0,10,0z M13.8,13.6L12,15l-2-3L8,15l-1.8-1.4l2-2.8 L5,9.6l0.8-2.2L9,8.6L8.8,5h2.4L11,8.6l3.2-1.3L15,9.6l-3.2,1.1L13.8,13.6z" data-reactid=".0.3.1.1.0.0:$email.2.0.0"></path></svg></span></div><div class="olark-form-input-container" data-reactid=".0.3.1.1.0.0:$phone"><input type="tel" name="phone" class="olark-form-input" id="olark-form-input-phone" placeholder="" tabindex="3" autocomplete="on" data-reactid=".0.3.1.1.0.0:$phone.0"><label class="olark-float-label" for="olark-form-input-phone" data-reactid=".0.3.1.1.0.0:$phone.1"></label></div><div class="olark-form-input-container" data-reactid=".0.3.1.1.0.0:$body"><div data-reactid=".0.3.1.1.0.0:$body.0"><div class="olark-form-message-input olark-clone-textarea" data-reactid=".0.3.1.1.0.0:$body.0.0" style="width: 330px !important; overflow-wrap: break-word;">We're not around but we still want to hear from you!  Leave us a note:</div><textarea class="olark-form-message-input" tabindex="4" name="body" id="olark-form-input-body" placeholder="We&#39;re not around but we still want to hear from you!  Leave us a note:" title="We&#39;re not around but we still want to hear from you!  Leave us a note:" required="" data-reactid=".0.3.1.1.0.0:$body.0.1"></textarea></div><span class="olark-required-asterisk" data-reactid=".0.3.1.1.0.0:$body.2"><svg viewBox="0 0 20 20" x="0" y="0" fill="currentcolor" data-reactid=".0.3.1.1.0.0:$body.2.0"><path d="M10,0C4.5,0,0,4.5,0,10c0,5.5,4.5,10,10,10s10-4.5,10-10C20,4.5,15.5,0,10,0z M13.8,13.6L12,15l-2-3L8,15l-1.8-1.4l2-2.8 L5,9.6l0.8-2.2L9,8.6L8.8,5h2.4L11,8.6l3.2-1.3L15,9.6l-3.2,1.1L13.8,13.6z" data-reactid=".0.3.1.1.0.0:$body.2.0.0"></path></svg></span></div><button class="olark-form-send-button" type="submit" data-reactid=".0.3.1.1.0.2">Send</button></form></div></div><div class="olark-branding-link" data-reactid=".0.3.4"><a href="https://olark.com/" target="_blank" data-reactid=".0.3.4.0">Olark Live Chat</a></div></div><div class="olark-image-modal-container olark-hidden" data-reactid=".0.4"><span class="olark-close-image-modal" data-reactid=".0.4.0"><svg viewBox="0 0 11 12" fill="#ffffff" x="0" y="0" data-reactid=".0.4.0.0"><polygon class="olark-cancel-x" points="10.5,2.7 9.1,1.3 5.5,4.9 1.8,1.3 0.5,2.7 4.1,6.3 0.5,9.9 1.8,11.3 5.5,7.7 9.1,11.3 10.5,9.9 6.8,6.3" data-reactid=".0.4.0.0.0"></polygon></svg></span><span class="olark-image-modal-wrapper" data-reactid=".0.4.1"><img class="olark-image-modal" src="http://www.infoobjects.com/spark-connecting-to-a-jdbc-data-source-using-dataframes/" data-reactid=".0.4.1.0"></span></div></div></div></body></html>

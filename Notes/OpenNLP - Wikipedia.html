@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://en.wikipedia.org/wiki/OpenNLP -->
+<html class="client-js ve-not-available" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>OpenNLP - Wikipedia</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"OpenNLP","wgTitle":"OpenNLP","wgCurRevisionId":781134168,"wgRevisionId":781134168,"wgArticleId":30972465,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Natural language processing","Statistical natural language processing","Natural language processing toolkits","Apache Software Foundation","Java (programming language) libraries","Cross-platform software"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"OpenNLP","wgRelevantArticleId":30972465,"wgRequestId":"WUogawpAADgAAFWVPOsAAACL","wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgFlaggedRevsParams":{"tags":{}},"wgStableRevisionId":null,"wgWikiEditorEnabledModules":{"toolbar":true,"preview":false,"publish":false},"wgBetaFeaturesFeatures":[],"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":false,"wgPopupsShouldSendModuleToUser":false,"wgPopupsConflictsWithNavPopupGadget":false,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","usePageImages":true,"usePageDescriptions":true},"wgPreferredVariant":"en","wgMFExpandAllSectionsUserOption":false,"wgMFDisplayWikibaseDescriptions":{"search":true,"nearby":true,"watchlist":true,"tagline":false},"wgRelatedArticles":null,"wgRelatedArticlesUseCirrusSearch":true,"wgRelatedArticlesOnlyUseCirrusSearch":false,"wgULSCurrentAutonym":"English","wgNoticeProject":"wikipedia","wgCentralNoticeCookiesToDelete":[],"wgCentralNoticeCategoriesUsingLegacy":["Fundraising","fundraising"],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgWikibaseItemId":"Q7095836","wgCentralAuthMobileDomain":false,"wgVisualEditorToolbarScrollOffset":0,"wgVisualEditorUnsupportedEditParams":["preload","preloadparams","preloadtitle","undo","undoafter","veswitched"],"wgEditSubmitButtonLabelPublish":false});mw.loader.state({"ext.globalCssJs.user.styles":"ready","ext.globalCssJs.site.styles":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","wikibase.client.init":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","mediawiki.skinning.interface":"ready","skins.vector.styles":"ready","ext.globalCssJs.user":"ready","ext.globalCssJs.site":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1dqfd7l",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["ext.cite.a11y","site","mediawiki.page.startup","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.watchlist-notice","ext.gadget.DRN-wizard","ext.gadget.charinsert","ext.gadget.refToolbar","ext.gadget.extra-toolbar-buttons","ext.gadget.switcher","ext.gadget.featured-articles-links","ext.centralauth.centralautologin","mmv.head","mmv.bootstrap.autostart","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging.subscriber","ext.wikimediaEvents","ext.navigationTiming","ext.uls.eventlogger","ext.uls.init","ext.uls.interface","ext.quicksurveys.init","ext.centralNotice.geoIP","ext.centralNotice.startUp","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="./OpenNLP - Wikipedia_files/load.php">
+<script async="" src="./OpenNLP - Wikipedia_files/load(1).php"></script>
+<style>
+.cite-accessibility-label{ top:-99999px;clip:rect( 1px 1px 1px 1px ); clip:rect( 1px,1px,1px,1px ); position:absolute !important;padding:0 !important;border:0 !important;height:1px !important;width:1px !important; overflow:hidden}
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:0;z-index:1099;padding:0;margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:#fff;cursor:pointer;border:solid 1px #aaa;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:#fff;cursor:pointer;border:solid 1px #aaa;padding:0;margin:0}.suggestions-result{color:#000;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#4c59a6;color:#fff}.suggestions-special .special-label{color:#808080;text-align:left}.suggestions-special .special-query{color:#000;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:#c0c0c0}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:#fff}.highlight{font-weight:bold}
+.wp-teahouse-question-form{position:absolute;margin-left:auto;margin-right:auto;background-color:#f4f3f0;border:1px solid #a7d7f9;padding:1em}#wp-th-question-ask{float:right}.wp-teahouse-ask a.external{background-image:none !important}.wp-teahouse-respond-form{position:absolute;margin-left:auto;margin-right:auto;background-color:#f4f3f0;border:1px solid #a7d7f9;padding:1em}.wp-th-respond{float:right}.wp-teahouse-respond a.external{background-image:none !important}
+.referencetooltip{position:absolute;list-style:none;list-style-image:none;opacity:0;font-size:10px;margin:0;z-index:5;padding:0}.referencetooltip li{border:#080086 2px solid;max-width:260px;padding:10px 8px 13px 8px;margin:0px;background-color:#F7F7F7;-webkit-box-shadow:2px 4px 2px rgba(0,0,0,0.3);-moz-box-shadow:2px 4px 2px rgba(0,0,0,0.3);box-shadow:2px 4px 2px rgba(0,0,0,0.3)}.referencetooltip li+li{margin-left:7px;margin-top:-2px;border:0;padding:0;height:3px;width:0px;background-color:transparent;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;border-top:12px #080086 solid;border-right:7px transparent solid;border-left:7px transparent solid}.referencetooltip>li+li::after{content:'';border-top:8px #F7F7F7 solid;border-right:5px transparent solid;border-left:5px transparent solid;margin-top:-12px;margin-left:-5px;z-index:1;height:0px;width:0px;display:block}.client-js body .referencetooltip li li{border:none;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;height:auto;width:auto;margin:auto;padding:0;position:static}.RTflipped{padding-top:13px}.referencetooltip.RTflipped li+li{position:absolute;top:2px;border-top:0;border-bottom:12px #080086 solid}.referencetooltip.RTflipped li+li::after{border-top:0;border-bottom:8px #F7F7F7 solid;position:absolute;margin-top:7px}.RTsettings{float:right;height:24px;width:24px;cursor:pointer;background-image:url(//upload.wikimedia.org/wikipedia/commons/thumb/0/05/OOjs_UI_icon_advanced.svg/24px-OOjs_UI_icon_advanced.svg.png);background-image:linear-gradient(transparent,transparent),url(//upload.wikimedia.org/wikipedia/commons/0/05/OOjs_UI_icon_advanced.svg);margin-top:-9px;margin-right:-7px;-webkit-transition:opacity 0.15s;-moz-transition:opacity 0.15s;-ms-transition:opacity 0.15s;-o-transition:opacity 0.15s;transition:opacity 0.15s;opacity:0.6;filter:alpha(opacity=60)}.RTsettings:hover{opacity:1;filter:alpha(opacity=100)}.RTTarget{border:#080086 2px solid}
+.skin-vector li.GA,.skin-monobook li.GA,.skin-modern li.GA{list-style-image:url(//upload.wikimedia.org/wikipedia/commons/4/42/Monobook-bullet-ga.png)} .skin-vector li.FA,.skin-monobook li.FA{list-style-image:url(//upload.wikimedia.org/wikipedia/commons/d/d4/Monobook-bullet-star.png)}.skin-modern li.FA{list-style-image:url(//upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Modern-bullet-star.svg/9px-Modern-bullet-star.svg.png)}
+@-webkit-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-webkit-transform:translateY( -20px )}100%{opacity:1;-webkit-transform:translateY( 0 )}}@-moz-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-moz-transform:translateY( -20px )}100%{opacity:1;-moz-transform:translateY( 0 )}}@-o-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-o-transform:translateY( -20px )}100%{opacity:1;-o-transform:translateY( 0 )}}@keyframes centralAuthPPersonalAnimation{0%{opacity:0;transform:translateY( -20px )}100%{opacity:1;transform:translateY( 0 )}}.centralAuthPPersonalAnimation{-webkit-animation-duration:1s;-moz-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-name:centralAuthPPersonalAnimation;-moz-animation-name:centralAuthPPersonalAnimation;-o-animation-name:centralAuthPPersonalAnimation;animation-name:centralAuthPPersonalAnimation}
+.mw-ui-button{font-family:inherit;font-size:1em;display:inline-block;min-width:4em;max-width:28.75em;padding:0.546875em 1em;line-height:1.286;margin:0;border-radius:2px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;*display:inline; zoom:1;vertical-align:middle;background-color:#f8f9fa;color:#222222;border:1px solid #a2a9b1;text-align:center;font-weight:bold;cursor:pointer}.mw-ui-button:visited{color:#222222}.mw-ui-button:hover{background-color:#ffffff;color:#444444;border-color:#a2a9b1}.mw-ui-button:focus{background-color:#ffffff;color:#222222;border-color:#3366cc;box-shadow:inset 0 0 0 1px #3366cc,inset 0 0 0 2px #ffffff}.mw-ui-button:active,.mw-ui-button.is-on,.mw-ui-button.mw-ui-checked{background-color:#d9d9d9;color:#000000;border-color:#72777d;box-shadow:none}.mw-ui-button:disabled{background-color:#c8ccd1;color:#fff;border-color:#c8ccd1}.mw-ui-button:disabled:hover,.mw-ui-button:disabled:active{background-color:#c8ccd1;color:#fff;box-shadow:none;border-color:#c8ccd1}.mw-ui-button:focus{outline-width:0}.mw-ui-button:focus::-moz-focus-inner{border-color:transparent;padding:0}.mw-ui-button:not( :disabled ){-webkit-transition:background-color 100ms,color 100ms,border-color 100ms,box-shadow 100ms;-moz-transition:background-color 100ms,color 100ms,border-color 100ms,box-shadow 100ms;transition:background-color 100ms,color 100ms,border-color 100ms,box-shadow 100ms}.mw-ui-button:disabled{text-shadow:none;cursor:default}.mw-ui-button.mw-ui-big{font-size:1.3em}.mw-ui-button.mw-ui-block{display:block;width:100%;margin-left:auto;margin-right:auto}.mw-ui-button.mw-ui-progressive,.mw-ui-button.mw-ui-constructive{background-color:#3366cc;color:#fff;border:1px solid #3366cc;text-shadow:0 1px rgba(0,0,0,0.1)}.mw-ui-button.mw-ui-progressive:hover,.mw-ui-button.mw-ui-constructive:hover{background-color:#447ff5;border-color:#447ff5}.mw-ui-button.mw-ui-progressive:focus,.mw-ui-button.mw-ui-constructive:focus{box-shadow:inset 0 0 0 1px #3366cc,inset 0 0 0 2px #ffffff}.mw-ui-button.mw-ui-progressive:active,.mw-ui-button.mw-ui-constructive:active,.mw-ui-button.mw-ui-progressive.is-on,.mw-ui-button.mw-ui-constructive.is-on,.mw-ui-button.mw-ui-progressive.mw-ui-checked,.mw-ui-button.mw-ui-constructive.mw-ui-checked{background-color:#2a4b8d;border-color:#2a4b8d;box-shadow:none}.mw-ui-button.mw-ui-progressive:disabled,.mw-ui-button.mw-ui-constructive:disabled{background-color:#c8ccd1;color:#fff;border-color:#c8ccd1}.mw-ui-button.mw-ui-progressive:disabled:hover,.mw-ui-button.mw-ui-constructive:disabled:hover,.mw-ui-button.mw-ui-progressive:disabled:active,.mw-ui-button.mw-ui-constructive:disabled:active,.mw-ui-button.mw-ui-progressive:disabled.mw-ui-checked,.mw-ui-button.mw-ui-constructive:disabled.mw-ui-checked{background-color:#c8ccd1;color:#fff;border-color:#c8ccd1;box-shadow:none}.mw-ui-button.mw-ui-progressive.mw-ui-quiet,.mw-ui-button.mw-ui-constructive.mw-ui-quiet{color:#222222}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:hover,.mw-ui-button.mw-ui-constructive.mw-ui-quiet:hover{background-color:transparent;color:#447ff5}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:active,.mw-ui-button.mw-ui-constructive.mw-ui-quiet:active,.mw-ui-button.mw-ui-progressive.mw-ui-quiet.mw-ui-checked,.mw-ui-button.mw-ui-constructive.mw-ui-quiet.mw-ui-checked{color:#2a4b8d}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:focus,.mw-ui-button.mw-ui-constructive.mw-ui-quiet:focus{background-color:transparent;color:#3366cc}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:disabled,.mw-ui-button.mw-ui-constructive.mw-ui-quiet:disabled{color:#c8ccd1}.mw-ui-button.mw-ui-destructive{background-color:#dd3333;color:#fff;border:1px solid #dd3333;text-shadow:0 1px rgba(0,0,0,0.1)}.mw-ui-button.mw-ui-destructive:hover{background-color:#ff4242;border-color:#ff4242}.mw-ui-button.mw-ui-destructive:focus{box-shadow:inset 0 0 0 1px #dd3333,inset 0 0 0 2px #ffffff}.mw-ui-button.mw-ui-destructive:active,.mw-ui-button.mw-ui-destructive.is-on,.mw-ui-button.mw-ui-destructive.mw-ui-checked{background-color:#b32424;border-color:#b32424;box-shadow:none}.mw-ui-button.mw-ui-destructive:disabled{background-color:#c8ccd1;color:#fff;border-color:#c8ccd1}.mw-ui-button.mw-ui-destructive:disabled:hover,.mw-ui-button.mw-ui-destructive:disabled:active,.mw-ui-button.mw-ui-destructive:disabled.mw-ui-checked{background-color:#c8ccd1;color:#fff;border-color:#c8ccd1;box-shadow:none}.mw-ui-button.mw-ui-destructive.mw-ui-quiet{color:#222222}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:hover{background-color:transparent;color:#ff4242}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:active,.mw-ui-button.mw-ui-destructive.mw-ui-quiet.mw-ui-checked{color:#b32424}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:focus{background-color:transparent;color:#dd3333}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:disabled{color:#c8ccd1}.mw-ui-button.mw-ui-quiet{background:transparent;border:0;text-shadow:none;color:#222222}.mw-ui-button.mw-ui-quiet:hover{background-color:transparent;color:#444444}.mw-ui-button.mw-ui-quiet:active,.mw-ui-button.mw-ui-quiet.mw-ui-checked{color:#000000}.mw-ui-button.mw-ui-quiet:focus{background-color:transparent;color:#222222}.mw-ui-button.mw-ui-quiet:disabled{color:#c8ccd1}.mw-ui-button.mw-ui-quiet:hover,.mw-ui-button.mw-ui-quiet:focus{box-shadow:none}.mw-ui-button.mw-ui-quiet:active,.mw-ui-button.mw-ui-quiet:disabled{background:transparent}input.mw-ui-button::-moz-focus-inner,button.mw-ui-button::-moz-focus-inner{margin-top:-1px;margin-bottom:-1px}a.mw-ui-button{text-decoration:none}a.mw-ui-button:hover,a.mw-ui-button:focus{text-decoration:none}.mw-ui-button-group > *{min-width:48px;border-radius:0;float:left}.mw-ui-button-group > *:first-child{border-top-left-radius:2px;border-bottom-left-radius:2px}.mw-ui-button-group > *:not( :first-child ){border-left:0}.mw-ui-button-group > *:last-child{border-top-right-radius:2px;border-bottom-right-radius:2px}.mw-ui-button-group .is-on .button{cursor:default}
+.mw-ui-icon{position:relative;line-height:1.5em;min-height:1.5em;min-width:1.5em}.mw-ui-icon.mw-ui-icon-element{text-indent:-999px;overflow:hidden;width:3.5em;min-width:3.5em;max-width:3.5em}.mw-ui-icon.mw-ui-icon-element:before{left:0;right:0;position:absolute;margin:0 1em}.mw-ui-icon.mw-ui-icon-before:before,.mw-ui-icon.mw-ui-icon-element:before{background-position:50% 50%;background-repeat:no-repeat;background-size:100% auto;float:left;display:block;min-height:1.5em;content:''}.mw-ui-icon.mw-ui-icon-before:before{position:relative;width:1.5em;margin-right:1em}.mw-ui-icon.mw-ui-icon-small:before{background-size:66.67% auto}
+.mw-notification-area{position:absolute}.mw-notification-area-floating{position:fixed}.mw-notification-area{top:0;right:0; padding:1em;width:20em;line-height:1.35;z-index:10000; overflow:hidden}.mw-notification{padding:0.25em 1em;margin-bottom:0.5em;border:solid 1px #ddd;background-color:#fcfcfc; cursor:pointer;opacity:0;-webkit-transform:translateX( 35px );transform:translateX( 35px );-webkit-transition:opacity 0.35s ease-in-out,-webkit-transform 0.35s ease-in-out;transition:opacity 0.35s ease-in-out,transform 0.35s ease-in-out}.mw-notification-visible{opacity:1;-webkit-transform:translateX( 0 );transform:translateX( 0 )}.mw-notification-replaced{opacity:0;-webkit-transform:translateY( -35px );transform:translateY( -35px );pointer-events:none}.mw-notification-title{font-weight:bold}.mw-notification-type-warn{border-color:#f5be00; background-color:#ffffe8}.mw-notification-type-error{border-color:#eb3941; background-color:#fff8f8} .mw-notification-area{font-size:0.8em}.mw-notification-area-layout{top:7em}.mw-notification{background-color:#fff;padding:0.75em 1.5em;border:1px solid #a2a9b1;border-radius:2px;box-shadow:0 2px 2px 0 rgba(0,0,0,0.25)}.mw-notification-type-warn{border-color:#f5be00; }.mw-notification-type-error{border-color:#d33; }
+@media print {
+	.mw-notification-area{display:none}}
+.uls-menu{border-radius:4px; font-size:medium}.uls-search,.uls-language-settings-close-block{border-top-right-radius:4px;border-top-left-radius:4px}.uls-language-list{border-bottom-right-radius:4px;border-bottom-left-radius:4px} .uls-menu.callout .caret-before,.uls-menu.callout .caret-after{border-top:10px solid transparent;border-bottom:10px solid transparent;display:inline-block; top:17px;position:absolute}.uls-menu.callout .caret-after{display:inline-block}.uls-menu.callout .caret-right .caret-before,.uls-menu.callout .caret-right .caret-after{ border-left:10px solid #c9c9c9; right:-11px}.uls-menu.callout .caret-right .caret-after{ border-left:10px solid #fcfcfc; right:-10px}.uls-menu.callout--languageselection .caret-right .caret-after{ border-left:10px solid #fff}.uls-menu.callout .caret-left .caret-before,.uls-menu.callout .caret-left .caret-after{ border-right:10px solid #c9c9c9; left:-11px}.uls-menu.callout .caret-left .caret-after{ border-right:10px solid #fcfcfc; left:-10px}.uls-menu.callout--languageselection .caret-left .caret-after{ border-right:10px solid #fff}.uls-ui-languages button{margin:5px 15px 5px 0;white-space:nowrap;overflow:hidden}.uls-search-wrapper-wrapper{position:relative;padding-left:40px;margin-top:5px;margin-bottom:5px}.uls-icon-back{background:transparent url(/w/extensions/UniversalLanguageSelector/resources/images/back-grey-ltr.png?90e9b) no-repeat scroll center center;background-image:-webkit-linear-gradient(transparent,transparent),url(/w/extensions/UniversalLanguageSelector/resources/images/back-grey-ltr.svg?ae714);background-image:linear-gradient(transparent,transparent),url(data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20id%3D%22Layer_1%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M7%2013.1l8.9%208.9c.8-.8.8-2%200-2.8l-6.1-6.1%206-6.1c.8-.8.8-2%200-2.8L7%2013.1z%22%20id%3D%22path3%22%20fill%3D%22%23555%22%2F%3E%0A%3C%2Fsvg%3E%0A);background-size:28px;background-position:center center;height:32px;width:40px;display:block;position:absolute;left:0;border-right:1px solid #c9c9c9;opacity:0.8}.uls-icon-back:hover{opacity:1;cursor:pointer}
+.ext-quick-survey-panel,.ext-qs-loader-bar{width:auto;background-color:#eaecf0} .ext-qs-loader-bar{display:block;height:100px;margin-left:1.4em;clear:right;float:right;background-color:#eaecf0}.ext-qs-loader-bar.mw-ajax-loader{top:0}@media all and (min-width:720px){.ext-qs-loader-bar,.ext-quick-survey-panel{margin-left:1.4em;width:300px;clear:right;float:right}}
+@media print{#centralNotice{display:none}}.cn-closeButton{display:inline-block;zoom:1;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAACeklEQVR4Aa1UM3jkcRBN6qS//tTFttPHqmI359VZ5dm2L1zFtr02YlRx5sX2ft/7ed7O/w1M5ufnt8NZQjCBQXhG+IYZe5zjfju7xcHc3NzEzMwM6xOEqNnZ2ZeVlZW827dv1ycmJnbGx8d3Yr5582Z9eXk5D/d4h/empqYm+K0nw3yKcF4sFmdzOJzGgIAAhb29vc7Ozk6/Atrr/fz8lCwWq6m3tzcb72G3nmzFo/NNTU354eHhIltbW72Tk5M2IyND9P79+8ZPnz7VvXnzpoHBYPS4uLhobGxsDMHBwaLa2tp82MF+PVmUUqnMioiI6LOysjLQLCcPS2ZmZn7Ozc39oPtFYG80GgWpqakSS0tLY1hYmEgikWTBfoXsLD16BT3gUWhoqEKtVheREZ+Qu0IEjI+PZ2k0GqFer+cnJSWJra2tDWw2u2FqauoVeEAW3NzcnBcYGCh3dHTUtba2ltNjLvRJSEiQEQEPRENDQzkMBqPXwsKiXyqVFsFDNzc3LWmoqKmp4YIHZIyHDx9WOzg46GJiYmTk5e/h4eHstLQ0CX2ykXST4JPJ8y7sSVM5/QGMf9y4caMHf3r//v1a8IDsGRm04/D58+dtpNFPPNRqtflXrlzpI8G15IEGc2xsrFSlUglwD+Tk5NRBmuTk5A7wgOxbXFxcF8iysrIa1mskEolKvL29Ne7u7mpXV1dNaWlp9fr7X79+VYMMeQieY/dsv5p1r2g2Nja2vWZ7RXNiYuIA0dwlzwYGBjbkGXmURXeLeUa1ul2ebV8BEH+7CiAiASTYvgJ2qc3MzMzF2vz8+XPd27dvG5hMZg+CsV1tHmfXOP5+dqyddgHOI7v1srTdcwAAAABJRU5ErkJggg==);background:url(/w/extensions/CentralNotice/resources/subscribing/CloseWindow19x19.png?7596b)!ie;width:19px;height:19px;text-indent:19px;white-space:nowrap;overflow:hidden}</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:#000;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:#fff}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}
+.mw-mmv-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;background-color:#000}body.mw-mmv-lightbox-open{overflow-y:auto;  }body.mw-mmv-lightbox-open #mw-page-base,body.mw-mmv-lightbox-open #mw-head-base,body.mw-mmv-lightbox-open #mw-navigation,body.mw-mmv-lightbox-open #content,body.mw-mmv-lightbox-open #footer,body.mw-mmv-lightbox-open #globalWrapper{ display:none}body.mw-mmv-lightbox-open > *{ display:none}body.mw-mmv-lightbox-open > .mw-mmv-overlay,body.mw-mmv-lightbox-open > .mw-mmv-wrapper{display:block}.mw-mmv-filepage-buttons{margin-top:5px}.mw-mmv-filepage-buttons .mw-mmv-view-expanded,.mw-mmv-filepage-buttons .mw-mmv-view-config{display:block;line-height:inherit}.mw-mmv-filepage-buttons .mw-mmv-view-expanded.mw-ui-icon:before{background-image:url(data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201024%20768%22%3E%0A%20%20%20%20%3Cg%20fill%3D%22%2372777d%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M851.2%2071.6L690.7%20232.1l-40.1-40.3-9.6%20164.8%20164.8-9.3-40.3-40.4L926%20146.4l58.5%2058.5L997.6%200%20792.7%2013.1%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M769.6%2089.3H611.9l70.9%2070.8%207.9%207.5m-47.1%20234.6l-51.2%203%203-51.2%209.4-164.4%205.8-100.3H26.4V768h883.1V387l-100.9%205.8-165%209.4zM813.9%20678H113.6l207.2-270.2%2031.5-12.9L548%20599.8l105.9-63.2%20159.8%20140.8.2.6zm95.6-291.9V228l-79.1%2078.9%207.8%207.9%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A)}.mw-mmv-filepage-buttons .mw-mmv-view-config.mw-ui-icon:before{background-image:url(data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201024%20768%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M897%20454.6V313.4L810.4%20299c-6.4-23.3-16-45.7-27.3-65.8l50.5-71.4-99.4-100.2-71.4%2050.5c-20.9-11.2-42.5-20.9-65.8-27.3L582.6-1H441.4L427%2085.6c-23.3%206.4-45.7%2016-65.8%2027.3l-71.4-50.5-100.3%2099.5%2050.5%2071.4c-11.2%2020.9-20.9%2042.5-27.3%2066.6L127%20313.4v141.2l85.8%2014.4c6.4%2023.3%2016%2045.7%2027.3%2066.6L189.6%20607l99.5%2099.5%2071.4-50.5c20.9%2011.2%2042.5%2020.9%2066.6%2027.3l14.4%2085.8h141.2l14.4-86.6c23.3-6.4%2045.7-16%2065.8-27.3l71.4%2050.5%2099.5-99.5-50.5-71.4c11.2-20.9%2020.9-42.5%2027.3-66.6l86.4-13.6zm-385%2077c-81.8%200-147.6-66.6-147.6-147.6%200-81.8%2066.6-147.6%20147.6-147.6S659.6%20302.2%20659.6%20384%20593.8%20531.6%20512%20531.6z%22%20fill%3D%22%2372777d%22%2F%3E%0A%3C%2Fsvg%3E%0A);opacity:0.75}.mw-mmv-filepage-buttons .mw-mmv-view-config.mw-ui-icon:before:hover{opacity:1}
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;line-height:1.35;opacity:1;-webkit-transition:opacity 250ms;-moz-transition:opacity 250ms;transition:opacity 250ms}.postedit.mw-notification{padding-right:3em}.skin-monobook .postedit{top:6em !important; }.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB9ElEQVR4AZWRA3AYURQArxrVHtW2bdu2bdu2zdi2bdu2bWxs7zeehZaw4f70kbs+zI3e/nWK+RWx3aOFlrL56Sy5SxrruG69hlv6OyK+mz+8KDSXdXembj0ispT7tjs4ZTIbpYBvxGSGKzZTeFrb7W/meN002swFs0U8ttpHTkF2BvCqWQrW35929bTsKm5Zb+SEwWwcY8wAngB9m7Z+d+rIPZ/npdy12M5p47n8dXsCYAf0qPy06eGMdktuDu9Qf+JmKl3SWM91qzVcN9tAbEYkwMaq0tyb1m/To5kP170el/BK8/qa6sJr70ydf+T/Uu5ab+Oo/lS0AkUBpIFWlZ9WPhxpse/PHO7YbOOczjL0vZV2lNxPPtG73dYXM+xvm2znrOl83tidoqCwMBgYXsPFB0on5S6pr+eK5TKuW67lgvaKvF8mL1dtfTL32FHxRdyx3cQpg7m4x9sCXKkTIzA4LDH44zWdzaUf71hv5rTG4uyzcusybxSX7aThbMQ8XgCYAp3rzTTQOiIh9PNlzY3FSuZxrzjme1Y7uGS6kjsWO4jPjM4FVjRZsvD4kO9XtTZzQn82NyzWc0B7AmZh6gA/hOYSGhfw9YbOVnarj+S7800AL2BIsxUAbWNToj7bhBuQmZcOsFdoKUC74rGheCwXmqAIQTc9jQcrADIAAAAASUVORK5CYII=);background-image:url(/w/resources/src/mediawiki.action/images/green-checkmark.png?d94f1)!ie;background-position:left}.postedit-close{position:absolute;padding:0 0.8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:#000;text-shadow:0 0.0625em 0 #fff;text-decoration:none;opacity:0.2}.postedit:hover .postedit-close{color:#000;text-decoration:none;opacity:0.4}
+#uls-settings-block{border-top:1px solid #c9c9c9;background:#f8f8f8;background:-webkit-gradient( linear,left top,left bottom,from( #fbfbfb ),to( #f0f0f0 ) );background:-webkit-linear-gradient( top,#fbfbfb,#f0f0f0 );background:-moz-linear-gradient( top,#fbfbfb,#f0f0f0 );background:-o-linear-gradient( top,#fbfbfb,#f0f0f0 );background:linear-gradient( #fbfbfb,#f0f0f0 );padding-left:10px;line-height:1.2em;border-radius:0 0 5px 5px}#uls-settings-block div.display-settings-block,#uls-settings-block div.input-settings-block{display:inline-block;margin:8px 15px;color:#565656}#uls-settings-block div.display-settings-block:hover,#uls-settings-block div.input-settings-block:hover{color:#252525}</style><style>
+.ve-activated #toc,.ve-activated #siteNotice,.ve-activated .mw-indicators,.ve-activated #t-print,.ve-activated #t-permalink,.ve-activated #p-coll-print_export,.ve-activated #t-cite,.ve-deactivating .ve-ui-surface,.ve-active .ve-init-mw-desktopArticleTarget-editableContent{display:none} .ve-activating .ve-ui-surface{height:0;padding:0 !important; overflow:hidden} .ve-loading #content > :not( .ve-init-mw-desktopArticleTarget-loading-overlay ), .ve-activated .ve-init-mw-desktopArticleTarget-uneditableContent{ pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;opacity:0.5}.ve-activated #catlinks{cursor:pointer}.ve-activated #catlinks a{opacity:1} .ve-activated #content{position:relative} .ve-init-mw-desktopArticleTarget-loading-overlay{position:absolute;left:0;right:0;z-index:1;margin-top:-0.5em}.ve-init-mw-desktopArticleTarget-progress{height:1em;overflow:hidden;margin:0 25%}.ve-init-mw-desktopArticleTarget-progress-bar{height:1em;width:0} .mw-editsection{white-space:nowrap; unicode-bidi:-moz-isolate;unicode-bidi:-webkit-isolate;unicode-bidi:isolate}.mw-editsection-divider{color:#555} .ve-init-mw-desktopArticleTarget-progress{height:0.75em;border:1px solid #36c;background:#fff;border-radius:2px;box-shadow:0 0.1em 0 0 rgba( 0,0,0,0.15 )}.ve-init-mw-desktopArticleTarget-progress-bar{height:0.75em;background:#36c}</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="./OpenNLP - Wikipedia_files/load(2).php">
+<meta name="generator" content="MediaWiki 1.30.0-wmf.5">
+<meta name="referrer" content="origin-when-cross-origin">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Apache_OpenNLP_Logo.svg/1200px-Apache_OpenNLP_Logo.svg.png">
+<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/OpenNLP">
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;action=edit">
+<link rel="edit" title="Edit this page" href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;action=edit">
+<link rel="apple-touch-icon" href="https://en.wikipedia.org/static/apple-touch/wikipedia.png">
+<link rel="shortcut icon" href="https://en.wikipedia.org/static/favicon/wikipedia.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://en.wikipedia.org/w/opensearch_desc.php" title="Wikipedia (en)">
+<link rel="EditURI" type="application/rsd+xml" href="https://en.wikipedia.org/w/api.php?action=rsd">
+<link rel="copyright" href="https://creativecommons.org/licenses/by-sa/3.0/">
+<link rel="canonical" href="https://en.wikipedia.org/wiki/OpenNLP">
+<link rel="dns-prefetch" href="https://login.wikimedia.org/">
+<link rel="dns-prefetch" href="https://meta.wikimedia.org/">
+<script src="./OpenNLP - Wikipedia_files/load(3).php"></script></head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-OpenNLP rootpage-OpenNLP skin-vector action-view">		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main"><div id="mw-notification-area" class="mw-notification-area mw-notification-area-floating" style="display: none;"></div>
+			<a id="top"></a>
+
+							<div id="siteNotice" class="mw-body-content"><div id="centralNotice" class="cn-wle2017in"><div style="background:#FCFCFC; border:1px solid #339966; margin: 0 auto 1em auto; font-size: 120%; overflow: hidden; text-align: center; padding: 0.5ex;"><div id="cn-toggle-box" style="float:right;" valign="middle"><a href="https://en.wikipedia.org/wiki/OpenNLP#" title="Hide" onclick="mw.centralNotice.hideBanner();return false;"><img border="0" src="./OpenNLP - Wikipedia_files/CloseWindow19x19.png" alt="Hide"></a></div>
+<div style="margin-top: 13px"><center>
+<div class="floatleft"><a href="https://commons.wikimedia.org/wiki/Commons:Wiki_Loves_Earth_2017_in_India" class="image"><img alt="WLE Austria Logo (no text).svg" src="./OpenNLP - Wikipedia_files/50px-WLE_Austria_Logo_(no_text).svg.png" width="50" height="50" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/85/WLE_Austria_Logo_%28no_text%29.svg/75px-WLE_Austria_Logo_%28no_text%29.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/8/85/WLE_Austria_Logo_%28no_text%29.svg/100px-WLE_Austria_Logo_%28no_text%29.svg.png 2x" style="margin-top:-10px;"></a></div><span class="plainlinks"><a href="https://commons.wikimedia.org/wiki/Commons:Wiki_Loves_Earth_2017_in_India">Wiki Loves Earth photo contest: Upload photos of natural heritage sites in India to help Wikipedia and win fantastic prizes!</a></span></center>
+</div></div><div style="clear:both;"></div></div><!-- CentralNotice --></div>
+						<div class="mw-indicators mw-body-content">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">OpenNLP</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="https://en.wikipedia.org/wiki/OpenNLP#mw-head">navigation</a>, 					<a href="https://en.wikipedia.org/wiki/OpenNLP#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><table class="infobox vevent" style="width:22em">
+<caption class="summary">Apache OpenNLP</caption>
+<tbody><tr>
+<td colspan="2" style="text-align:center"><a href="https://en.wikipedia.org/wiki/File:Apache_OpenNLP_Logo.svg" class="image"><img alt="Apache OpenNLP Logo.svg" src="./OpenNLP - Wikipedia_files/220px-Apache_OpenNLP_Logo.svg.png" width="220" height="85" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/5/58/Apache_OpenNLP_Logo.svg/330px-Apache_OpenNLP_Logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/5/58/Apache_OpenNLP_Logo.svg/440px-Apache_OpenNLP_Logo.svg.png 2x" data-file-width="650" data-file-height="250"></a></td>
+</tr>
+<tr>
+<th scope="row" style="white-space: nowrap;"><a href="https://en.wikipedia.org/wiki/Software_developer" title="Software developer">Developer(s)</a></th>
+<td><a href="https://en.wikipedia.org/wiki/Apache_Software_Foundation" title="Apache Software Foundation">Apache Software Foundation</a></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center"></td>
+</tr>
+<tr>
+<th scope="row" style="white-space: nowrap;"><a href="https://en.wikipedia.org/wiki/Software_release_life_cycle" title="Software release life cycle">Stable release</a></th>
+<td>
+<div style="margin:0px;">1.8.0 / May&nbsp;18,&nbsp;2017<span style="display:none">&nbsp;(<span class="bday dtstart published updated">2017-05-18</span>)</span></div>
+</td>
+</tr>
+<tr style="display:none">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" style="white-space: nowrap;">Development status</th>
+<td>Active</td>
+</tr>
+<tr>
+<th scope="row" style="white-space: nowrap;">Written in</th>
+<td><a href="https://en.wikipedia.org/wiki/Java_(programming_language)" title="Java (programming language)">Java</a></td>
+</tr>
+<tr>
+<th scope="row" style="white-space: nowrap;"><a href="https://en.wikipedia.org/wiki/Operating_system" title="Operating system">Operating system</a></th>
+<td><a href="https://en.wikipedia.org/wiki/Cross-platform" title="Cross-platform">Cross-platform</a></td>
+</tr>
+<tr>
+<th scope="row" style="white-space: nowrap;"><a href="https://en.wikipedia.org/wiki/Software_categories#Broad_categories" title="Software categories">Type</a></th>
+<td><a href="https://en.wikipedia.org/wiki/Natural_language_processing" title="Natural language processing">Natural language processing</a></td>
+</tr>
+<tr>
+<th scope="row" style="white-space: nowrap;"><a href="https://en.wikipedia.org/wiki/Software_license" title="Software license">License</a></th>
+<td><a href="https://en.wikipedia.org/wiki/Apache_License" title="Apache License">Apache 2.0</a></td>
+</tr>
+<tr>
+<th scope="row" style="white-space: nowrap;">Website</th>
+<td><a rel="nofollow" class="external free" href="https://opennlp.apache.org/">https://opennlp.apache.org/</a></td>
+</tr>
+</tbody></table>
+<p>The <a href="https://en.wikipedia.org/wiki/Apache_Software_Foundation" title="Apache Software Foundation">Apache</a> <b>OpenNLP</b> library is a <a href="https://en.wikipedia.org/wiki/Machine_learning" title="Machine learning">machine learning</a> based toolkit for the <a href="https://en.wikipedia.org/wiki/Natural_language_processing" title="Natural language processing">processing of natural language</a> text. It supports the most common NLP tasks, such as <a href="https://en.wikipedia.org/wiki/Tokenization_(lexical_analysis)" class="mw-redirect" title="Tokenization (lexical analysis)">tokenization</a>, <a href="https://en.wikipedia.org/wiki/Sentence_boundary_disambiguation" title="Sentence boundary disambiguation">sentence segmentation</a>, <a href="https://en.wikipedia.org/wiki/Part-of-speech_tagging" title="Part-of-speech tagging">part-of-speech tagging</a>, <a href="https://en.wikipedia.org/wiki/Named_entity_recognition" class="mw-redirect" title="Named entity recognition">named entity extraction</a>, <a href="https://en.wikipedia.org/wiki/Shallow_parsing" title="Shallow parsing">chunking</a>, <a href="https://en.wikipedia.org/wiki/Syntactic_parsing" class="mw-redirect" title="Syntactic parsing">parsing</a>, and <a href="https://en.wikipedia.org/wiki/Coreference" title="Coreference">coreference resolution</a>. These tasks are usually required to build more advanced text processing services.<sup id="cite_ref-1" class="reference"><a href="https://en.wikipedia.org/wiki/OpenNLP#cite_note-1">[1]</a></sup><sup id="cite_ref-2" class="reference"><a href="https://en.wikipedia.org/wiki/OpenNLP#cite_note-2">[2]</a></sup></p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;action=edit&amp;section=1" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div role="navigation" aria-label="Portals" class="noprint portal plainlist tright" style="margin:0.5em 0 0.5em 1em;border:solid #aaa 1px">
+<ul style="display:table;box-sizing:border-box;padding:0.1em;max-width:175px;background:#f9f9f9;font-size:85%;line-height:110%;font-style:italic;font-weight:bold">
+<li style="display:table-row"><span style="display:table-cell;padding:0.2em;vertical-align:middle;text-align:center"><img alt="" src="./OpenNLP - Wikipedia_files/28px-Free_and_open-source_software_logo_(2009).svg.png" width="28" height="28" class="noviewer" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/31/Free_and_open-source_software_logo_%282009%29.svg/42px-Free_and_open-source_software_logo_%282009%29.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/31/Free_and_open-source_software_logo_%282009%29.svg/56px-Free_and_open-source_software_logo_%282009%29.svg.png 2x" data-file-width="512" data-file-height="512"></span><span style="display:table-cell;padding:0.2em 0.2em 0.2em 0.3em;vertical-align:middle"><a href="https://en.wikipedia.org/wiki/Portal:Free_software" class="mw-redirect" title="Portal:Free software">Free software portal</a></span></li>
+</ul>
+</div>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/List_of_natural_language_processing_toolkits" class="mw-redirect" title="List of natural language processing toolkits">List of natural language processing toolkits</a>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Unstructured_Information_Management_Architecture" class="mw-redirect" title="Unstructured Information Management Architecture">Unstructured Information Management Architecture</a> (UIMA)</li>
+<li><a href="https://en.wikipedia.org/wiki/General_Architecture_for_Text_Engineering" title="General Architecture for Text Engineering">General Architecture for Text Engineering</a> (GATE)</li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/CTAKES" title="CTAKES">cTAKES</a></li>
+</ul>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;action=edit&amp;section=2" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><b><a href="https://en.wikipedia.org/wiki/OpenNLP#cite_ref-1"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://opennlp.apache.org/index.html">Apache OpenNLP Website</a></span></li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="https://en.wikipedia.org/wiki/OpenNLP#cite_ref-2"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://wiki.apache.org/incubator/OpenNLPProposal">Apache OpenNLP Proposal</a></span></li>
+</ol>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;action=edit&amp;section=3" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a rel="nofollow" class="external text" href="https://opennlp.apache.org/index.html">Apache OpenNLP Website</a></li>
+</ul>
+<div role="navigation" class="navbox navbox-spacing-temp" aria-labelledby="Apache_Software_Foundation" style="padding:3px">
+<table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit" id="collapsibleTable0">
+<tbody><tr>
+<th scope="col" class="navbox-title" colspan="3"><span class="collapseButton">[<a id="collapseButton0" href="https://en.wikipedia.org/wiki/OpenNLP#">hide</a>]</span>
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="https://en.wikipedia.org/wiki/Template:Apache" title="Template:Apache"><abbr title="View this template" style=";;background:none transparent;border:none;">v</abbr></a></li>
+<li class="nv-talk"><a href="https://en.wikipedia.org/wiki/Template_talk:Apache" title="Template talk:Apache"><abbr title="Discuss this template" style=";;background:none transparent;border:none;">t</abbr></a></li>
+<li class="nv-edit"><a class="external text" href="https://en.wikipedia.org/w/index.php?title=Template:Apache&amp;action=edit"><abbr title="Edit this template" style=";;background:none transparent;border:none;">e</abbr></a></li>
+</ul>
+</div>
+<div id="Apache_Software_Foundation" style="font-size:114%;margin:0 4em"><a href="https://en.wikipedia.org/wiki/Apache_Software_Foundation" title="Apache Software Foundation">Apache Software Foundation</a></div>
+</th>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:1%">Top level projects</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Accumulo" title="Apache Accumulo">Accumulo</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_ActiveMQ" title="Apache ActiveMQ">ActiveMQ</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Ambari" title="Apache Ambari">Ambari</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Ant" title="Apache Ant">Ant</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Apex" title="Apache Apex">Apex</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Aries" title="Apache Aries">Aries</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_HTTP_Server" title="Apache HTTP Server">Apache HTTP Server</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Portable_Runtime" title="Apache Portable Runtime">APR</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Avro" title="Apache Avro">Avro</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Axis" title="Apache Axis">Axis</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Axis2" title="Apache Axis2">Axis2</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Beam" title="Apache Beam">Beam</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Bloodhound" title="Apache Bloodhound">Bloodhound</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Brooklyn" title="Apache Brooklyn">Brooklyn</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Buildr" title="Apache Buildr">Buildr</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Calcite" title="Apache Calcite">Calcite</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Camel" title="Apache Camel">Camel</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Cassandra" title="Apache Cassandra">Cassandra</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Cayenne" title="Apache Cayenne">Cayenne</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Chemistry" title="Apache Chemistry">Chemistry</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_CloudStack" title="Apache CloudStack">CloudStack</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Cocoon" title="Apache Cocoon">Cocoon</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Cordova" title="Apache Cordova">Cordova</a></li>
+<li><a href="https://en.wikipedia.org/wiki/CouchDB" title="CouchDB">CouchDB</a></li>
+<li><a href="https://en.wikipedia.org/wiki/CTAKES" title="CTAKES">cTAKES</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_CXF" title="Apache CXF">CXF</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Derby" title="Apache Derby">Derby</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Directory" title="Apache Directory">Directory</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Drill" title="Apache Drill">Drill</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Empire-db" title="Apache Empire-db">Empire-db</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Felix" title="Apache Felix">Felix</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Flex" title="Apache Flex">Flex</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Flink" title="Apache Flink">Flink</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Flume" title="Apache Flume">Flume</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Forrest" title="Apache Forrest">Forrest</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Geronimo" title="Apache Geronimo">Geronimo</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Gora" title="Apache Gora">Gora</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Gump" title="Apache Gump">Gump</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Hadoop" title="Apache Hadoop">Hadoop</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Hama" title="Apache Hama">Hama</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_HBase" title="Apache HBase">HBase</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Hive" title="Apache Hive">Hive</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Jackrabbit" title="Apache Jackrabbit">Jackrabbit</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_James" title="Apache James">James</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Jini" title="Jini">Jini</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_JMeter" title="Apache JMeter">JMeter</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Kafka" title="Apache Kafka">Kafka</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Kudu" title="Apache Kudu">Kudu</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Kylin" title="Apache Kylin">Kylin</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Lucene" title="Apache Lucene">Lucene</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Mahout" title="Apache Mahout">Mahout</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Marmotta" title="Apache Marmotta">Marmotta</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Maven" title="Apache Maven">Maven</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_MINA" title="Apache MINA">MINA</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Mod_perl" title="Mod perl">mod_perl</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_MyFaces" title="Apache MyFaces">MyFaces</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Nutch" title="Apache Nutch">Nutch</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_ODE" title="Apache ODE">ODE</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_OFBiz" title="Apache OFBiz">OFBiz</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Oozie" title="Apache Oozie">Oozie</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_OpenEJB" title="Apache OpenEJB">OpenEJB</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_OpenJPA" title="Apache OpenJPA">OpenJPA</a></li>
+<li><a class="mw-selflink selflink">OpenNLP</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_OpenOffice" title="Apache OpenOffice">OpenOffice</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_PDFBox" title="Apache PDFBox">PDFBox</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Parquet" title="Apache Parquet">Parquet</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Phoenix" title="Apache Phoenix">Phoenix</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_POI" title="Apache POI">POI</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Pig_(programming_tool)" title="Pig (programming tool)">Pig</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Pivot" title="Apache Pivot">Pivot</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Qpid" title="Apache Qpid">Qpid</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Roller" title="Apache Roller">Roller</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Samza" title="Apache Samza">Samza</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_ServiceMix" title="Apache ServiceMix">ServiceMix</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Shiro" title="Apache Shiro">Shiro</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Sling" title="Apache Sling">Sling</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Solr" title="Apache Solr">Solr</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Spark" title="Apache Spark">Spark</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Stanbol" title="Apache Stanbol">Stanbol</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Storm_(event_processor)" title="Storm (event processor)">Storm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SpamAssassin" title="SpamAssassin">SpamAssassin</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sqoop" title="Sqoop">Sqoop</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Struts_1" title="Apache Struts 1">Struts 1</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Struts_2" title="Apache Struts 2">Struts 2</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Subversion" title="Apache Subversion">Subversion</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_SystemML" title="Apache SystemML">SystemML</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Tapestry" title="Apache Tapestry">Tapestry</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Thrift" title="Apache Thrift">Thrift</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Tika" title="Apache Tika">Tika</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Tomcat" title="Apache Tomcat">Tomcat</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Traffic_Server" title="Traffic Server">Traffic Server</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Tuscany" title="Apache Tuscany">Tuscany</a></li>
+<li><a href="https://en.wikipedia.org/wiki/UIMA" title="UIMA">UIMA</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Velocity" title="Apache Velocity">Velocity</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Wave" title="Apache Wave">Wave</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Wicket" title="Apache Wicket">Wicket</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Wink" title="Apache Wink">Wink</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Xalan" title="Xalan">Xalan</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Xerces" title="Xerces">Xerces</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_ZooKeeper" title="Apache ZooKeeper">ZooKeeper</a></li>
+</ul>
+</div>
+</td>
+<td class="navbox-image" rowspan="6" style="width:1px;padding:0px 0px 0px 2px">
+<div><a href="https://en.wikipedia.org/wiki/File:Apache_Software_Foundation_Logo_(2016).svg" class="image" title="ASF logo"><img alt="ASF logo" src="./OpenNLP - Wikipedia_files/200px-Apache_Software_Foundation_Logo_(2016).svg.png" width="200" height="98" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/db/Apache_Software_Foundation_Logo_%282016%29.svg/300px-Apache_Software_Foundation_Logo_%282016%29.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/d/db/Apache_Software_Foundation_Logo_%282016%29.svg/400px-Apache_Software_Foundation_Logo_%282016%29.svg.png 2x" data-file-width="512" data-file-height="250"></a></div>
+</td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:1%"><a href="https://en.wikipedia.org/wiki/Apache_Commons" title="Apache Commons">Commons</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Byte_Code_Engineering_Library" title="Byte Code Engineering Library">BCEL</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bean_Scripting_Framework" title="Bean Scripting Framework">BSF</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Commons_Daemon" title="Commons Daemon">Daemon</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Jelly" title="Apache Jelly">Jelly</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Commons_Logging" title="Apache Commons Logging">Logging</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:1%"><a href="https://en.wikipedia.org/wiki/Apache_Incubator" title="Apache Incubator">Incubator</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Singa" class="mw-redirect" title="Apache Singa">SINGA</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Trafodion" title="Apache Trafodion">Trafodion</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_XAP" title="Apache XAP">XAP</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:1%">Other projects</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Batik_(software)" title="Batik (software)">Batik</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Chainsaw_(log_file_viewer)" title="Chainsaw (log file viewer)">Chainsaw</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Formatting_Objects_Processor" title="Formatting Objects Processor">FOP</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Ivy" title="Apache Ivy">Ivy</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Log4j" title="Log4j">Log4j</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:1%"><a href="https://en.wikipedia.org/wiki/Apache_Attic" title="Apache Attic">Attic</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Abdera" title="Apache Abdera">Abdera</a></li>
+<li><a href="https://en.wikipedia.org/wiki/AxKit" title="AxKit">AxKit</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Beehive" title="Apache Beehive">Beehive</a></li>
+<li><a href="https://en.wikipedia.org/wiki/BlueSky_Open_Platform" title="BlueSky Open Platform">Bluesky</a></li>
+<li><a href="https://en.wikipedia.org/wiki/IBATIS" title="IBATIS">iBATIS</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Jakarta_Cactus" title="Jakarta Cactus">Cactus</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Click" title="Apache Click">Click</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Continuum" title="Apache Continuum">Continuum</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Deltacloud" title="Deltacloud">Deltacloud</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Excalibur" title="Apache Excalibur">Excalibur</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Harmony" title="Apache Harmony">Harmony</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_HiveMind" title="Apache HiveMind">HiveMind</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Jakarta_Project" title="Jakarta Project">Jakarta</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Lenya" title="Apache Lenya">Lenya</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Shale" title="Apache Shale">Shale</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Shindig" title="Apache Shindig">Shindig</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Jakarta_Slide" title="Jakarta Slide">Slide</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_C%2B%2B_Standard_Library" title="Apache C++ Standard Library">stdcxx</a></li>
+<li><a href="https://en.wikipedia.org/wiki/XMLBeans" title="XMLBeans">XMLBeans</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:1%">Licenses</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Apache_License" title="Apache License">Apache License</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<td class="navbox-abovebelow" colspan="3">
+<div>
+<ul>
+<li><img alt="Category" src="./OpenNLP - Wikipedia_files/16px-Folder_Hexagonal_Icon.svg.png" title="Category" width="16" height="14" srcset="//upload.wikimedia.org/wikipedia/en/thumb/4/48/Folder_Hexagonal_Icon.svg/24px-Folder_Hexagonal_Icon.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/4/48/Folder_Hexagonal_Icon.svg/32px-Folder_Hexagonal_Icon.svg.png 2x" data-file-width="36" data-file-height="31"> <b><a href="https://en.wikipedia.org/wiki/Category:Apache_Software_Foundation" title="Category:Apache Software Foundation">Category</a></b></li>
+</ul>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1238
+Cached time: 20170621045137
+Cache expiry: 2592000
+Dynamic content: false
+CPU time usage: 0.120 seconds
+Real time usage: 0.159 seconds
+Preprocessor visited node count: 619/1000000
+Preprocessor generated node count: 0/1500000
+Post‐expand include size: 26942/2097152 bytes
+Template argument size: 1048/2097152 bytes
+Highest expansion depth: 25/40
+Expensive parser function count: 2/500
+Lua time usage: 0.040/10.000 seconds
+Lua memory usage: 1.52 MB/50 MB
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  117.350      1 -total
+ 85.22%  100.005      2 Template:Infobox
+ 74.63%   87.574      1 Template:Infobox_software
+ 25.11%   29.463      1 Template:Infobox_software/simple
+ 16.75%   19.651      1 Template:Apache
+ 14.62%   17.162      1 Template:Navbox
+  7.89%    9.260      1 Template:Release_date
+  6.03%    7.076      1 Template:Icon
+  5.62%    6.595      1 Template:Portal
+  3.10%    3.640      1 Template:MONTHNAME
+-->
+</div>
+<!-- Saved in parser cache with key enwiki:pcache:idhash:30972465-0!canonical and timestamp 20170621045137 and revision id 781134168
+ -->
+<noscript>&lt;img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /&gt;</noscript></div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;oldid=781134168">https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;oldid=781134168</a>"					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://en.wikipedia.org/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="https://en.wikipedia.org/wiki/Category:Natural_language_processing" title="Category:Natural language processing">Natural language processing</a></li><li><a href="https://en.wikipedia.org/wiki/Category:Statistical_natural_language_processing" title="Category:Statistical natural language processing">Statistical natural language processing</a></li><li><a href="https://en.wikipedia.org/wiki/Category:Natural_language_processing_toolkits" title="Category:Natural language processing toolkits">Natural language processing toolkits</a></li><li><a href="https://en.wikipedia.org/wiki/Category:Apache_Software_Foundation" title="Category:Apache Software Foundation">Apache Software Foundation</a></li><li><a href="https://en.wikipedia.org/wiki/Category:Java_(programming_language)_libraries" title="Category:Java (programming language) libraries">Java (programming language) libraries</a></li><li><a href="https://en.wikipedia.org/wiki/Category:Cross-platform_software" title="Category:Cross-platform software">Cross-platform software</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-anonuserpage">Not logged in</li><li id="pt-anontalk"><a href="https://en.wikipedia.org/wiki/Special:MyTalk" title="Discussion about edits from this IP address [alt-shift-n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs"><a href="https://en.wikipedia.org/wiki/Special:MyContributions" title="A list of edits made from this IP address [alt-shift-y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&amp;returnto=OpenNLP" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="https://en.wikipedia.org/w/index.php?title=Special:UserLogin&amp;returnto=OpenNLP" title="You&#39;re encouraged to log in; however, it&#39;s not mandatory. [alt-shift-o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="https://en.wikipedia.org/wiki/OpenNLP" title="View the content page [alt-shift-c]" accesskey="c">Article</a></span></li>
+															<li id="ca-talk"><span><a href="https://en.wikipedia.org/wiki/Talk:OpenNLP" title="Discussion about the content page [alt-shift-t]" accesskey="t" rel="discussion">Talk</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label" tabindex="0">
+							<span>Variants</span><a href="https://en.wikipedia.org/wiki/OpenNLP#" tabindex="-1"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="https://en.wikipedia.org/wiki/OpenNLP">Read</a></span></li>
+															<li id="ca-edit"><span><a href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;action=edit" title="Edit this page [alt-shift-e]" accesskey="e">Edit</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;action=history" title="Past revisions of this page [alt-shift-h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 id="p-cactions-label" tabindex="0"><span>More</span><a href="https://en.wikipedia.org/wiki/OpenNLP#" tabindex="-1"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="https://en.wikipedia.org/w/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Search Wikipedia" title="Search Wikipedia [alt-shift-f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off"><input type="hidden" value="Special:Search" name="title"><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton">							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="https://en.wikipedia.org/wiki/Main_Page" title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage-description"><a href="https://en.wikipedia.org/wiki/Main_Page" title="Visit the main page [alt-shift-z]" accesskey="z">Main page</a></li><li id="n-contents"><a href="https://en.wikipedia.org/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li><li id="n-featuredcontent"><a href="https://en.wikipedia.org/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li><li id="n-currentevents"><a href="https://en.wikipedia.org/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li><li id="n-randompage"><a href="https://en.wikipedia.org/wiki/Special:Random" title="Load a random article [alt-shift-x]" accesskey="x">Random article</a></li><li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li><li id="n-shoplink"><a href="https://shop.wikimedia.org/" title="Visit the Wikipedia store">Wikipedia store</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-interaction" aria-labelledby="p-interaction-label">
+			<h3 id="p-interaction-label">Interaction</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-help"><a href="https://en.wikipedia.org/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li><li id="n-aboutsite"><a href="https://en.wikipedia.org/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li><li id="n-portal"><a href="https://en.wikipedia.org/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-recentchanges"><a href="https://en.wikipedia.org/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li><li id="n-contactpage"><a href="https://en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="https://en.wikipedia.org/wiki/Special:WhatLinksHere/OpenNLP" title="List of all English Wikipedia pages containing links to this page [alt-shift-j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="https://en.wikipedia.org/wiki/Special:RecentChangesLinked/OpenNLP" rel="nofollow" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="https://en.wikipedia.org/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [alt-shift-u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="https://en.wikipedia.org/wiki/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li><li id="t-permalink"><a href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;oldid=781134168" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;action=info" title="More information about this page">Page information</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Q7095836" title="Link to connected data repository item [alt-shift-g]" accesskey="g">Wikidata item</a></li><li id="t-cite"><a href="https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&amp;page=OpenNLP&amp;id=781134168" title="Information on how to cite this page">Cite this page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-coll-print_export" aria-labelledby="p-coll-print_export-label">
+			<h3 id="p-coll-print_export-label">Print/export</h3>
+
+			<div class="body">
+									<ul>
+						<li id="coll-create_a_book"><a href="https://en.wikipedia.org/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=OpenNLP">Create a book</a></li><li id="coll-download-as-rdf2latex"><a href="https://en.wikipedia.org/w/index.php?title=Special:ElectronPdf&amp;page=OpenNLP&amp;action=show-selection-screen&amp;coll-download-url=%2Fw%2Findex.php%3Ftitle%3DSpecial%3ABook%26bookcmd%3Drender_article%26arttitle%3DOpenNLP%26returnto%3DOpenNLP%26oldid%3D781134168%26writer%3Drdf2latex">Download as PDF</a></li><li id="t-print"><a href="https://en.wikipedia.org/w/index.php?title=OpenNLP&amp;printable=yes" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-lang" aria-labelledby="p-lang-label"><span class="uls-settings-trigger" title="Language settings" tabindex="0" role="button" aria-haspopup="true"></span>
+			<h3 id="p-lang-label">Languages</h3>
+
+			<div class="body">
+									<ul>
+						<li class="interlanguage-link interwiki-zh"><a href="https://zh.wikipedia.org/wiki/OpenNLP" title="OpenNLP – Chinese" lang="zh" hreflang="zh" class="interlanguage-link-target">中文</a></li>					</ul>
+				<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Q7095836#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>			</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last edited on 19 May 2017, at 08:51.</li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="https://wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="https://wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="https://www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="https://wikimediafoundation.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="https://en.wikipedia.org/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="https://en.wikipedia.org/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="https://en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-cookiestatement"><a href="https://wikimediafoundation.org/wiki/Cookie_statement">Cookie statement</a></li>
+											<li id="footer-places-mobileview"><a href="https://en.m.wikipedia.org/w/index.php?title=OpenNLP&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+							<a href="https://wikimediafoundation.org/"><img src="./OpenNLP - Wikipedia_files/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"></a>						</li>
+											<li id="footer-poweredbyico">
+							<a href="https://www.mediawiki.org/"><img src="./OpenNLP - Wikipedia_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/poweredby_mediawiki_132x47.png 1.5x, /static/images/poweredby_mediawiki_176x62.png 2x" width="88" height="31"></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.120","walltime":"0.159","ppvisitednodes":{"value":619,"limit":1000000},"ppgeneratednodes":{"value":0,"limit":1500000},"postexpandincludesize":{"value":26942,"limit":2097152},"templateargumentsize":{"value":1048,"limit":2097152},"expansiondepth":{"value":25,"limit":40},"expensivefunctioncount":{"value":2,"limit":500},"entityaccesscount":{"value":1,"limit":400},"timingprofile":["100.00%  117.350      1 -total"," 85.22%  100.005      2 Template:Infobox"," 74.63%   87.574      1 Template:Infobox_software"," 25.11%   29.463      1 Template:Infobox_software/simple"," 16.75%   19.651      1 Template:Apache"," 14.62%   17.162      1 Template:Navbox","  7.89%    9.260      1 Template:Release_date","  6.03%    7.076      1 Template:Icon","  5.62%    6.595      1 Template:Portal","  3.10%    3.640      1 Template:MONTHNAME"]},"scribunto":{"limitreport-timeusage":{"value":"0.040","limit":"10.000"},"limitreport-memusage":{"value":1598259,"limit":52428800}},"cachereport":{"origin":"mw1238","timestamp":"20170621045137","ttl":2592000,"transientcontent":false}}});});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":55,"wgHostname":"mw1261"});});</script>
+	
+
+<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div><a accesskey="v" href="https://en.wikipedia.org/wiki/OpenNLP?action=edit" style="display: none;"></a></body></html>

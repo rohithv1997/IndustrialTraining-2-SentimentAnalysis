@@ -1,0 +1,49 @@
+body, div, td {
+  font-family: 'Open Sans', sans-serif; 
+}
+
+body, div, td {
+ 
+}
+
+/*-------------------------------------------
+    Custom styles
+-------------------------------------------*/
+
+#hcustom .sidebar {
+  width: 888px;
+}
+
+/*--- start: SHARING BUTTONS ---*/
+.gs-bar > a {
+color: #888 !important;
+background: #AAA !important;
+border-radius: 0 !important;
+box-shadow: none !important;
+}
+.gs-bar > a > i {
+border-color: #CCC !important;
+}
+.gs-bar > a > i:after {
+height: 0 !important;
+}
+/*--- end: SHARING BUTTONS ---*/
+/*--- start: SHARING POPUP WINDOW ---*/
+html .gs-buttons.gs-floating.gs-small:not(.gs-flat-colors).gs-bottom-left {
+left: 0 !important;
+}
+html .gs-plus-popup,
+html .gs-plus-popup .gs-popup-search input,
+html .gs-buttons.gs-round a[class*="gs-"] {
+border-radius: 0 !important;
+}
+html .gs-plus-popup.gs-color-native {
+background: #AAA !important;
+}
+html .gs-plus-popup .gs-popup-body {
+margin-bottom: 10px !important;
+}
+html .gs-plus-popup .gs-badge-wrapper {
+display: none !important;
+}
+/*--- end: SHARING POPUP WINDOW ---*/

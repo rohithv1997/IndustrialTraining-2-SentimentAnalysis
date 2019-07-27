@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/QAPage"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>sql - How to Create Trigger to Keep Track of Last Changed Data - Stack Overflow</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="https://stackoverflow.com/opensearch.xml">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:domain" content="stackoverflow.com">
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="How to Create Trigger to Keep Track of Last Changed Data">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="CREATE TABLE Member
+(
+    memberID - PK
+    memberName
+    dateRegistered - one time process
+);
+
+CREATE TABLE MemberLastChanged
+(
+   memberID 
+   memberName
+   dateEntered
+);
+If by any chance a user ">
+    <meta property="og:url" content="https://stackoverflow.com/questions/4574010/how-to-create-trigger-to-keep-track-of-last-changed-data">
+    <link rel="canonical" href="https://stackoverflow.com/questions/4574010/how-to-create-trigger-to-keep-track-of-last-changed-data">
+
+    
+    
+    <script type="text/javascript" async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/ados"></script><script async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/quant.js"></script><script async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/beacon.js"></script><script async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/analytics.js"></script><script type="text/javascript" async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/ados.js"></script><script src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/jquery.js"></script><style type="text/css"></style>
+    <script src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/stub.js"></script>
+    <link rel="stylesheet" type="text/css" href="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question 'How to Create Trigger to Keep Track of Last Changed Data'" href="https://stackoverflow.com/feeds/question/4574010">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/4574010/how-to-create-trigger-to-keep-track-of-last-changed-data">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/4574010/how-to-create-trigger-to-keep-track-of-last-changed-data">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/4574010/how-to-create-trigger-to-keep-track-of-last-changed-data">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:4574010});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '4574010');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text', true); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1496922086,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"childUrl":"https://meta.stackoverflow.com","enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"5625f00a0be285052d4e3ab23df0cf8e","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true,"canSeeNewHeaderDesign":true,"ab":{"devstory_timeline_exp":{"v":"new_add_item_interaction","g":2}}},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75,"likedTagsMaxLength":300,"dislikedTagsMaxLength":300}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true,"enableImgurHttps":true,"forceHttpsImages":true},"comments":{},"userProfile":{"openGraphAPIKey":"58740831ad23540e00c58987"},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"603f66610f5e","js/moderator.en.js":"f38ff18af017","js/full-anon.en.js":"149670969fc4","js/full.en.js":"2510cf588997","js/wmd.en.js":"af4e0cf56dcd","js/third-party/jquery.autocomplete.min.js":"d3b8fa7fdf74","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"ba2685451c38","js/help.en.js":"a56fdf9b9ff2","js/tageditor.en.js":"235a2acc7d79","js/tageditornew.en.js":"37258b54fcc7","js/inline-tag-editing.en.js":"7581a98341e4","js/revisions.en.js":"d059a98114ef","js/review.en.js":"429e6a363749","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"d1ed57564ccd","js/explore-qlist.en.js":"88f824a42b1a","js/events.en.js":"893fb137ec42","js/keyboard-shortcuts.en.js":"a4d2faa379ef","js/external-editor.en.js":"71095ef40e9d","js/adops.en.js":"9a6a7812a212","js/external-editor.en.js":"71095ef40e9d","js/snippet-javascript.en.js":"9d345bbe4762","js/snippet-javascript-codemirror.en.js":"1903f319b3e5"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    <noscript id="noscript-css"><style type="text/css">body,.so-header{margin-top:1.9em}</style></noscript>
+<script async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/full-anon.js"></script><script async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/snippet-javascript.js"></script><script async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/post-validation.js"></script><script async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/prettify-full.js"></script><script async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/external-editor.js"></script><script type="text/javascript" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/adFeedback.js"></script><link rel="stylesheet" href="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/adFeedback.css"><link rel="stylesheet" href="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/jobs-multi-badges.css" type="text/css"></head>
+<body class="question-page new-topbar">
+            <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+<header class="so-header js-so-header _fixed _scrolling">
+    <div class="-container">
+        <div class="-main">            
+            <a href="https://stackoverflow.com/" class="-logo js-gps-track " data-gps-track="top_nav.click({is_current:false, location:2, destination:8})">
+
+                <span class="-img">Stack Overflow</span>
+            </a>
+
+            <nav class="navigation" role="navigation" aria-label="site navigation">
+                <ol class="-list">
+                        <li class="-item _current">
+        <a id="nav-questions" href="https://stackoverflow.com/questions" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:true, location:2, destination:1})">Questions</a>
+    </li>
+
+    <li class="-item">
+        <a id="nav-jobs" href="https://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:6})">Jobs</a>
+    </li>
+                        <li class="-item">
+        <a id="nav-docs" href="https://stackoverflow.com/documentation" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:7})">Documentation <small class="beta-badge">beta</small></a>
+    </li>
+                        <li class="-item">
+        <a id="nav-tags" href="https://stackoverflow.com/tags" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:2})">Tags</a>
+    </li>
+
+                        <li class="-item">
+        <a id="nav-users" href="https://stackoverflow.com/users" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:3})">Users</a>
+    </li>
+
+                </ol>
+            </nav>
+
+                <form id="search" action="/search" method="get" class="searchbar" autocomplete="off" role="search">
+                    <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"></path></svg>
+                    <input name="q" placeholder="Search..." tabindex="1" autocomplete="off" maxlength="240" class="f-input js-search-field" type="text">
+                    <button type="submit" class="btn js-search-submit">
+                        <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"></path></svg>
+                    </button>
+                </form>
+
+        </div>
+        
+
+
+    
+
+<div class="-actions">
+    <nav class="secondary-nav">
+        <div class="-dialog-container js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="https://stackoverflow.com/">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li>
+                            <div class="related-links">
+            <a href="https://stackoverflow.com/help" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:14 })">help</a>
+                    <a href="https://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+    <a href="https://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                    </li>
+                    <li class="related-site">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                        
+    <a href="https://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="site.switch({ target_site:552, item_type:3 }),site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+your communities            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;amp;utm_source=stackoverflow.com&amp;amp;utm_medium=dev-story&amp;amp;utm_campaign=signup-redirect" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f4574010%2fhow-to-create-trigger-to-keep-track-of-last-changed-data" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="https://stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="https://stackoverflow.blog/" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+                <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="https://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="https://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+
+        </div>
+        <ol class="-list">
+
+
+    <li class="-item"><a href="#" class="-link js-help-button" title="Help Center and other resources">
+        <svg role="icon" class="svg-icon iconHelp" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 1 0 0 16.001A8 8 0 0 0 9 1zm.812 12.126c-.02.716-.55 1.157-1.238 1.137-.659-.02-1.177-.49-1.157-1.209.02-.715.566-1.17 1.225-1.15.691.021 1.194.507 1.17 1.222zm1.956-5.114c-.168.237-.546.542-1.02.912l-.527.361c-.257.197-.417.43-.502.695-.044.141-.076.507-.084.752-.004.048-.032.156-.181.156H7.883c-.165 0-.185-.096-.18-.144.023-.667.12-1.218.397-1.66.374-.594 1.426-1.221 1.426-1.221.161-.12.286-.25.382-.39.177-.24.321-.51.321-.8 0-.333-.08-.65-.293-.915-.249-.31-.518-.458-1.036-.458-.51 0-.808.257-1.021.594-.213.338-.177.735-.177 1.097H5.746c0-1.366.357-2.238 1.112-2.752.51-.35 1.162-.502 1.921-.502.996 0 1.788.184 2.487.715.647.49.988 1.181.988 2.113 0 .575-.2 1.057-.486 1.447z"></path></svg>
+    </a></li>
+                <li class="-item">
+        <a href="https://stackexchange.com/" class="-link js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 168 Stack Exchange sites">
+            <svg role="icon" class="svg-icon iconStackExchange" width="18" height="18" viewBox="0 0 18 18"><path d="M1 13a2 2 0 0 0 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2zM15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2zM1 6h16v4H1V6z"></path></svg>
+        </a>
+    </li>
+
+
+        </ol>
+    </nav>
+        <div class="-ctas">
+                <a href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f4574010%2fhow-to-create-trigger-to-keep-track-of-last-changed-data" class="login-link btn-clear" rel="nofollow">Log In</a>
+                    <a href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;utm_source=stackoverflow.com&amp;utm_medium=dev-story&amp;utm_campaign=signup-redirect" class="login-link btn" rel="nofollow">Sign Up</a>
+
+        </div>
+</div>
+    </div>
+</header>
+
+    <script>
+        StackExchange.ready(function () { StackExchange.topbar.init(); });
+            StackExchange.scrollPadding.setPaddingTop(60, 10);     </script>
+
+    <div class="container">
+        
+
+
+        <div id="content" class="snippet-hidden">
+
+
+
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+
+<div id="herobox" class="alternate">
+    <div class="test"></div>
+        <div id="close">
+            <a title="click to minimize"><span>x</span> Dismiss</a>
+        </div>
+    <div class="content">
+        <b>Join the Stack Overflow Community</b>
+        <div class="separator"></div>
+        <div class="blurb">
+            Stack Overflow is a community of 7.2 million programmers, just like you, helping each other.
+                <br>
+Join them; it only takes a minute:                <br>
+        </div>
+        <a href="https://stackoverflow.com/users/signup?ssrc=hero&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;amp;utm_source=stackoverflow.com&amp;amp;utm_medium=dev-story&amp;amp;utm_campaign=signup-redirect" id="tell-me-more" class="button">Sign up</a>
+    </div>
+</div>
+<script>
+    StackExchange.ready(function () {
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;;
+        }
+        
+        $('#tell-me-more').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+            });
+        });
+        
+        $('#herobox #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+            });
+            
+            $.cookie("hero", "mini", { path: "/", expires: 365 });
+            $.ajax({
+                url: "/hero-mini",
+                success: function (data) {
+                    $("#herobox").fadeOut("fast", function () {
+                        $("#herobox").replaceWith(data);
+                        $("#herobox-mini").fadeIn("fast");
+                    });
+                }
+            });
+            return false;
+        });
+    });
+
+</script>			<div id="question-header">
+                <h1 itemprop="name"><a href="https://stackoverflow.com/questions/4574010/how-to-create-trigger-to-keep-track-of-last-changed-data" class="question-hyperlink">How to Create Trigger to Keep Track of Last Changed Data</a></h1>
+
+            
+<div class="aside-cta" role="navigation" aria-label="ask new question">
+    <a href="https://stackoverflow.com/questions/ask" class="btn-outlined">Ask Question</a>
+</div>
+		</div>
+			<div id="mainbar" role="main" aria-label="question and answers">
+
+			
+
+<div class="question" data-questionid="4574010" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1385207170",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1385207170"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="4574010" type="hidden">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#">favorite</a>
+        <div class="favoritecount"><b>3</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<pre class="lang-sql prettyprint prettyprinted" style=""><code><span class="kwd">CREATE</span><span class="pln"> </span><span class="kwd">TABLE</span><span class="pln"> Member
+</span><span class="pun">(</span><span class="pln">
+    memberID </span><span class="pun">-</span><span class="pln"> PK
+    memberName
+    dateRegistered </span><span class="pun">-</span><span class="pln"> one time process
+</span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">CREATE</span><span class="pln"> </span><span class="kwd">TABLE</span><span class="pln"> MemberLastChanged
+</span><span class="pun">(</span><span class="pln">
+   memberID 
+   memberName
+   dateEntered
+</span><span class="pun">);</span></code></pre>
+
+<p>If by any chance a user changes his member name, i need to keep track of the currently changed memberName in a history table.</p>
+
+<p>For example, current info is:</p>
+
+<blockquote>
+  <p>memberID:   5534 <br>memberName: james</p>
+</blockquote>
+
+<p>User changes it to:</p>
+
+<blockquote>
+  <p>memberID:   5534 <br> memberName:
+  mark</p>
+</blockquote>
+
+<p>By now, "Member" will hold current values:</p>
+
+<p>5534 and mark</p>
+
+<p>AND</p>
+
+<p>"MemberLastChanged" will hold:</p>
+
+<p>5534 and james</p>
+
+<hr>
+
+<p><strong>How can i achieve this in t-sql using trigger?</strong></p>
+    </div>
+    <div class="post-taglist">
+        <a href="https://stackoverflow.com/questions/tagged/sql" class="post-tag js-gps-track" title="show questions tagged 'sql'" rel="tag">sql</a> <a href="https://stackoverflow.com/questions/tagged/sql-server" class="post-tag js-gps-track" title="show questions tagged 'sql-server'" rel="tag">sql-server</a> <a href="https://stackoverflow.com/questions/tagged/sql-server-2005" class="post-tag js-gps-track" title="show questions tagged 'sql-server-2005'" rel="tag">sql-server-2005</a> <a href="https://stackoverflow.com/questions/tagged/tsql" class="post-tag js-gps-track" title="show questions tagged 'tsql'" rel="tag">tsql</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/q/4574010" title="short permalink to this question" class="short-link" id="link-post-4574010">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/4574010/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2011-01-01 12:14:22Z" class="relativetime">Jan 1 '11 at 12:14</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/311509/user311509"><div class="gravatar-wrapper-32"><img src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/7e7ab71172c94a3f5981f5a85aa8efea.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/311509/user311509">user311509</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,296</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="33 silver badges"><span class="badge2"></span><span class="badgecount">33</span></span><span title="60 bronze badges"><span class="badge3"></span><span class="badgecount">60</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4574010" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-25272970" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Possible duplicate of <a href="http://stackoverflow.com/questions/1962398/creating-audit-triggers-in-sql-server" title="creating audit triggers in sql server">stackoverflow.com/questions/1962398/…</a></span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/52277/michael-freidgeim" title="8,098 reputation" class="comment-user">Michael Freidgeim</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment25272970_4574010"><span title="2013-07-01 13:02:02Z" class="relativetime-clean">Jul 1 '13 at 13:02</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4574010" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								3 Answers
+                                <span style="display:none;" itemprop="answerCount">3</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="https://stackoverflow.com/questions/4574010/how-to-create-trigger-to-keep-track-of-last-changed-data?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="https://stackoverflow.com/questions/4574010/how-to-create-trigger-to-keep-track-of-last-changed-data?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="https://stackoverflow.com/questions/4574010/how-to-create-trigger-to-keep-track-of-last-changed-data?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="4574028"></a>
+<div id="answer-4574028" class="answer accepted-answer" data-answerid="4574028" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="4574028" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You create an <a href="http://msdn.microsoft.com/en-us/library/aa258254.aspx" rel="nofollow">UPDATE trigger</a> - triggers have access to two logical tables that have an identical structure to the table they are defined on:</p>
+
+<ul>
+<li>INSERTED, which is the new data to go into the table</li>
+<li>DELETED, which is the old data the is in the table</li>
+</ul>
+
+<p>See <a href="http://msdn.microsoft.com/en-us/library/ms191300.aspx" rel="nofollow">this</a> MDSN article on using these logical tables.</p>
+
+<p>With this data you can populate your history table.</p>
+
+<pre class="lang-sql prettyprint prettyprinted" style=""><code><span class="kwd">CREATE</span><span class="pln"> </span><span class="kwd">TRIGGER</span><span class="pln"> trg_Member_MemberUpdate
+</span><span class="kwd">ON</span><span class="pln"> dbo</span><span class="pun">.</span><span class="pln">Member AFTER </span><span class="kwd">UPDATE</span><span class="pln">
+</span><span class="kwd">AS</span><span class="pln">
+    </span><span class="kwd">INSERT</span><span class="pln"> </span><span class="kwd">INTO</span><span class="pln"> dbo</span><span class="pun">.</span><span class="pln">MemberLastChanged</span><span class="pun">(</span><span class="pln">memberID</span><span class="pun">,</span><span class="pln"> memberName</span><span class="pun">)</span><span class="pln">
+    </span><span class="kwd">SELECT</span><span class="pln"> d</span><span class="pun">.</span><span class="pln">MemberID</span><span class="pun">,</span><span class="pln"> d</span><span class="pun">.</span><span class="pln">MemberName
+    </span><span class="kwd">FROM</span><span class="pln"> DELETED d</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/4574028" title="short permalink to this answer" class="short-link" id="link-post-4574028">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/4574028/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/4574028/revisions" title="show all edits to this post">edited <span title="2011-01-01 19:43:36Z" class="relativetime">Jan 1 '11 at 19:43</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-01-01 12:21:55Z" class="relativetime">Jan 1 '11 at 12:21</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/1583/oded"><div class="gravatar-wrapper-32"><img src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/Au4eT.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/1583/oded">Oded</a><span class="mod-flair" title="moderator">♦</span>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 362,156" dir="ltr">362k</span><span title="57 gold badges"><span class="badge1"></span><span class="badgecount">57</span></span><span title="640 silver badges"><span class="badge2"></span><span class="badgecount">640</span></span><span title="831 bronze badges"><span class="badge3"></span><span class="badgecount">831</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4574028" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-5021978" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I just took off "FOR", the 
+code works perfectly fine. I picked yours because there are no 
+conditionals which i believe would faster in heavy load performance (if 
+any) ... If i'm wrong regarding the performance, please inform me. 
+Cheers</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/311509/user311509" title="1,296 reputation" class="comment-user owner">user311509</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment5021978_4574028"><span title="2011-01-01 19:41:44Z" class="relativetime-clean">Jan 1 '11 at 19:41</span></a></span>
+                        <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-5026337" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@user311509: if you have many
+ dummy updates and the client doesn't trap this you'll have a massive 
+history table with useless data. Interesting you're optimising <i>already</i> before you have a problem...</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/27535/gbn" title="289,741 reputation" class="comment-user">gbn</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment5026337_4574028"><span title="2011-01-02 12:57:02Z" class="relativetime-clean">Jan 2 '11 at 12:57</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4574028" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1841391924",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1841391924"><a href="https://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjo1ODI1MDEsImNoIjoxMTc4LCJjayI6e30sImNyIjoyOTQ4MzE3LCJkaSI6IjY4NmU3OTE1OTZjMzQ1ZTg4ODE5MWYyZmM3MGE4NGI4IiwiZG0iOjEsImZjIjo1MDIzNzEzLCJmbCI6NTIxMDk5MSwiaXAiOiIxNjQuMTAwLjE2Ny4xMzciLCJrdyI6InNxbCxzcWwtc2VydmVyLHNxbC1zZXJ2ZXItMjAwNSx0c3FsIiwibnciOjIyLCJwYyI6MCwiZWMiOjAsInByIjoxNTY4LCJydCI6MiwicmYiOiJodHRwczovL3d3dy5nb29nbGUuY28uaW4vIiwic2EiOiIzIiwic2IiOiJpLTA5MDE1Y2E1YzliYjI4MzJjIiwic3AiOjQ3MTYsInN0Ijo4Mjc3LCJ1ayI6InVlMS1mNDNjNjk1ZTkzNWQ0MzFhOTY2ZGJiOTZhMDI5MTVhMyIsInpuIjo0NCwidHMiOjE0OTY5MjIwODk5ODQsImJmIjp0cnVlLCJwbiI6ImFkemVyazE4NDEzOTE5MjQiLCJ1ciI6Imh0dHBzOi8vd3d3LnN0YWNrb3ZlcmZsb3cuY29tL2pvYnMvbGl2ZS13b3JrLWFueXdoZXJlLz91dG1fc291cmNlPXNvLW93bmVkJnV0bV9tZWRpdW09aG91c2UtYWQmdXRtX2NhbXBhaWduPWpvYi1lbmdhZ2Utd29yay1saXZlJnV0bV9jb250ZW50PWxlYWRlcmJvYXJkIn0&amp;s=RIOfc74_NkwVSD8EdpWWCEJlGzw" rel="nofollow" target="_blank" title=""><img src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/ca834b8e3e5b4ec08b5bff777ec14a34.png" title="" alt="" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 728px 90px;" height="0" width="0" border="0"></a><img style="position: absolute; display: none; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/i_002.gif" height="0" width="0" border="0"><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input value="12" name="downvoteReason" type="radio">Uninteresting</label></li><li><label><input value="13" name="downvoteReason" type="radio">Misleading</label></li><li><label><input value="14" name="downvoteReason" type="radio">Offensive</label></li><li><label><input value="15" name="downvoteReason" type="radio">Repetitive</label></li><li><label><input value="16" name="downvoteReason" type="radio">Other</label></li></ul><a href="#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div></div>
+  
+<a name="4574034"></a>
+<div id="answer-4574034" class="answer" data-answerid="4574034" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="4574034" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<pre class="lang-sql prettyprint prettyprinted" style=""><code><span class="kwd">CREATE</span><span class="pln"> </span><span class="kwd">TRIGGER</span><span class="pln"> TRG_Member_U </span><span class="kwd">ON</span><span class="pln"> Member </span><span class="kwd">FOR</span><span class="pln"> </span><span class="kwd">UPDATE</span><span class="pln">
+</span><span class="kwd">AS</span><span class="pln">
+</span><span class="kwd">SET</span><span class="pln"> NOCOUNT </span><span class="kwd">ON</span><span class="pln">
+
+</span><span class="kwd">INSERT</span><span class="pln"> MemberLastChanged </span><span class="pun">(</span><span class="pln">memberID</span><span class="pun">,</span><span class="pln"> memberName</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">SELECT</span><span class="pln">
+   D</span><span class="pun">.</span><span class="pln">memberID</span><span class="pun">,</span><span class="pln"> D</span><span class="pun">.</span><span class="pln">memberName
+</span><span class="kwd">FROM</span><span class="pln">
+   DELETED D </span><span class="kwd">JOIN</span><span class="pln"> INSERTED I </span><span class="kwd">ON</span><span class="pln"> D</span><span class="pun">.</span><span class="pln">memberID </span><span class="pun">=</span><span class="pln"> I</span><span class="pun">.</span><span class="pln">memberID
+</span><span class="kwd">WHERE</span><span class="pln">
+   D</span><span class="pun">.</span><span class="pln">memberName </span><span class="pun">&lt;&gt;</span><span class="pln"> I</span><span class="pun">.</span><span class="pln">memberName
+GO</span></code></pre>
+
+<p>Also, add a default of GETDATE to dateRegistered so it's recorded automatically.</p>
+
+<p>This also filters out dummy updates by comparing new and old values (INSERTED vs DELETED).</p>
+
+<p>INSERTED and DELETED are special tables available only in trigger.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/4574034" title="short permalink to this answer" class="short-link" id="link-post-4574034">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/4574034/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-01-01 12:23:03Z" class="relativetime">Jan 1 '11 at 12:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/27535/gbn"><div class="gravatar-wrapper-32"><img src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/4190f05bc2af559580aa220d0139e9f8.jpg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/27535/gbn">gbn</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 289,741" dir="ltr">290k</span><span title="45 gold badges"><span class="badge1"></span><span class="badgecount">45</span></span><span title="410 silver badges"><span class="badge2"></span><span class="badgecount">410</span></span><span title="510 bronze badges"><span class="badge3"></span><span class="badgecount">510</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4574034" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-5021981" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thank You!......</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/311509/user311509" title="1,296 reputation" class="comment-user owner">user311509</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment5021981_4574034"><span title="2011-01-01 19:42:02Z" class="relativetime-clean">Jan 1 '11 at 19:42</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4574034" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="4574030"></a>
+<div id="answer-4574030" class="answer" data-answerid="4574030" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="4574030" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You want to have an <code>AFTER UPDATE</code> trigger on your users table - something like:</p>
+
+<pre class="lang-sql prettyprint prettyprinted" style=""><code><span class="kwd">CREATE</span><span class="pln"> </span><span class="kwd">TRIGGER</span><span class="pln"> trg_MemberUpdated
+</span><span class="kwd">ON</span><span class="pln"> dbo</span><span class="pun">.</span><span class="pln">Member AFTER </span><span class="kwd">UPDATE</span><span class="pln"> 
+</span><span class="kwd">AS</span><span class="pln"> </span><span class="kwd">BEGIN</span><span class="pln">
+   </span><span class="kwd">IF</span><span class="pln"> </span><span class="kwd">UPDATE</span><span class="pun">(</span><span class="pln">memberName</span><span class="pun">)</span><span class="pln">
+      </span><span class="kwd">INSERT</span><span class="pln"> </span><span class="kwd">INTO</span><span class="pln"> 
+          dbo</span><span class="pun">.</span><span class="pln">MemberLastChanged</span><span class="pun">(</span><span class="pln">memberID</span><span class="pun">,</span><span class="pln"> memberName</span><span class="pun">,</span><span class="pln"> dateEntered</span><span class="pun">)</span><span class="pln">
+          </span><span class="kwd">SELECT</span><span class="pln">
+             d</span><span class="pun">.</span><span class="pln">MemberID</span><span class="pun">,</span><span class="pln"> d</span><span class="pun">.</span><span class="pln">MemberName</span><span class="pun">,</span><span class="pln"> GETDATE</span><span class="pun">()</span><span class="pln">
+          </span><span class="kwd">FROM</span><span class="pln"> 
+             Deleted d
+</span><span class="kwd">END</span></code></pre>
+
+<p>Basically, this trigger checks to see whether the <code>memberName</code> property was updated; if so, a row with the old values (which are available in the <code>Deleted</code> pseudo table inside the <code>UPDATE</code> trigger) is inserted into <code>MemberLastChanged</code></p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/4574030" title="short permalink to this answer" class="short-link" id="link-post-4574030">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/4574030/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-01-01 12:22:16Z" class="relativetime">Jan 1 '11 at 12:22</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/13302/marc-s"><div class="gravatar-wrapper-32"><img src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/b4779212f57ff2e9549ea90a4499c2d7.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/13302/marc-s">marc_s</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 489,465" dir="ltr">489k</span><span title="104 gold badges"><span class="badge1"></span><span class="badgecount">104</span></span><span title="954 silver badges"><span class="badge2"></span><span class="badgecount">954</span></span><span title="1116 bronze badges"><span class="badge3"></span><span class="badgecount">1116</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4574030" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-5021971" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks............</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/311509/user311509" title="1,296 reputation" class="comment-user owner">user311509</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment5021971_4574030"><span title="2011-01-01 19:40:40Z" class="relativetime-clean">Jan 1 '11 at 19:40</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4574030" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="/questions/4574010/answer/submit" method="post" class="post-form">
+						    <input id="post-id" value="4574010" type="hidden">
+                            <input id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" type="hidden">
+                            <input name="referrer" value="https://www.google.co.in/" type="hidden">
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                StackExchange.prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li id="wmd-bold-button" class="wmd-button" style="left: 0px;"><span style="background-position: 0px -20px;"></span></li><li id="wmd-italic-button" class="wmd-button" style="left: 25px;"><span style="background-position: -20px -20px;"></span></li><li id="wmd-spacer1" class="wmd-spacer" style="left: 50px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-link-button" class="wmd-button" style="left: 75px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-quote-button" class="wmd-button" style="left: 100px;"><span style="background-position: -60px -20px;"></span></li><li id="wmd-code-button" class="wmd-button" style="left: 125px;"><span style="background-position: -80px -20px;"></span></li><li id="wmd-image-button" class="wmd-button" style="left: 150px;"><span style="background-position: -100px -20px;"></span></li><li id="wmd-spacer2" class="wmd-spacer" style="left: 175px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-olist-button" class="wmd-button" style="left: 200px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-ulist-button" class="wmd-button" style="left: 225px;"><span style="background-position: -140px -20px;"></span></li><li id="wmd-heading-button" class="wmd-button" style="left: 250px;"><span style="background-position: -160px -20px;"></span></li><li id="wmd-hr-button" class="wmd-button" style="left: 275px;"><span style="background-position: -180px -20px;"></span></li><li id="wmd-spacer3" class="wmd-spacer" style="left: 300px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-undo-button" class="wmd-button" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-redo-button" class="wmd-button" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" value="5625f00a0be285052d4e3ab23df0cf8e" type="hidden">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="https://stackoverflow.com/users/login?ssrc=question_page&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f4574010%2fhow-to-create-trigger-to-keep-track-of-last-changed-data%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                                    
+                                var $window = $(window),
+                                    onScroll = function(e) {
+                                        var $elem = $('.new-login-left'),
+                                            docViewTop = $window.scrollTop(),
+                                            docViewBottom = docViewTop + $window.height(),
+                                            elemTop = $elem.offset().top,
+                                            elemBottom = elemTop + $elem.height();							
+                                        if ((docViewTop < elemTop) && (docViewBottom > elemBottom))  {
+                                            StackExchange.using('gps', function() { StackExchange.gps.track('embedded_signup_form.view', { location: 'question_page' }); });
+                                            $window.unbind('scroll', onScroll);
+                                        }
+                                    };
+                                $window.on('scroll', onScroll);
+                                    
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input name="manual-openid" class="manual-openid" type="hidden">
+                    <input name="use-facebook" class="use-facebook" value="false" type="hidden">
+                    <input name="use-google" class="use-google" value="false" type="hidden">
+                    <input class="submit-openid" value="Submit" style="display:none" type="button">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" size="30" maxlength="30" tabindex="105" type="text">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" size="30" maxlength="100" tabindex="106" placeholder="required, but never shown" type="email">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        
+StackExchange.openid.initPostLogin('.new-post-login', 
+'https%3a%2f%2fstackoverflow.com%2fquestions%2f4574010%2fhow-to-create-trigger-to-keep-track-of-last-changed-data%23new-answer',
+ 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" 
+type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" 
+size="30" maxlength="100" value="" tabindex="106" placeholder="required,
+ but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" value="Post Your Answer" tabindex="110" type="submit">
+									<a href="#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" name="privacy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" name="tos" target="_blank">terms of service</a>.</p>
+<input name="legalLinksShown" value="1" type="hidden">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="https://stackoverflow.com/questions/tagged/sql" class="post-tag" title="show questions tagged 'sql'" rel="tag">sql</a> <a href="https://stackoverflow.com/questions/tagged/sql-server" class="post-tag" title="show questions tagged 'sql-server'" rel="tag">sql-server</a> <a href="https://stackoverflow.com/questions/tagged/sql-server-2005" class="post-tag" title="show questions tagged 'sql-server-2005'" rel="tag">sql-server-2005</a> <a href="https://stackoverflow.com/questions/tagged/tsql" class="post-tag" title="show questions tagged 'tsql'" rel="tag">tsql</a>  or <a href="https://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes" role="complementary" aria-label="sidebar">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2011-01-01 12:14:22Z"><b>6 years, 5 months ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+                                    <b>14,848 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="https://stackoverflow.com/questions/4574010/how-to-create-trigger-to-keep-track-of-last-changed-data?lastactivity" class="lastactivity-link" title="2011-01-01 19:43:36Z">6 years, 5 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1231076459",[5,17,2221,1129,43]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1231076459"><div id="careersadsdoublehigh" style="display:none;"></div><img style="position: absolute; display: none; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/i.gif" height="0" width="0" border="0"><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input value="12" name="downvoteReason" type="radio">Uninteresting</label></li><li><label><input value="13" name="downvoteReason" type="radio">Misleading</label></li><li><label><input value="14" name="downvoteReason" type="radio">Offensive</label></li><li><label><input value="15" name="downvoteReason" type="radio">Repetitive</label></li><li><label><input value="16" name="downvoteReason" type="radio">Other</label></li></ul><a href="#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div></div>
+            <div id="hireme" class="orange tagged tex2jax_ignore clc-jobs-multi"><a class="top " href="https://stackoverflow.com/jobs" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=43I8ts8ved0VD9W9vH6eTEwsu6ZNZ1q13alwq_Jn02zGj363A44HMrAw9GxgYGiwZ2RkYJFmmrSYffo1jrnn-YHiKQd-XNxleXeqsr0001rNw_5rA8CCsdEbLROfiwIF9xxjP9LCeW6VAFj8nvZpS8vVlkDx35_Y-mdzfOjhA4ozHNgZtd6yUkjQTsqYZdJFRgYGlrUiDAyMLDaPGRmYWKp3MjIws7xbYfT0kb7PzjnXAQ&amp;cr=10439&amp;ct=1&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%3Fmed=clc&amp;sig=umlc5tmw0rIlHQ"><span>Looking for a job?</span></a><div class="middle"><ul class="jobs"><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="ColdFusion Developer at Ansira. Click to learn more." href="https://stackoverflow.com/jobs/139609/coldfusion-developer-ansira" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=43I8ts8ved0VD9W9vH6eTEwsu6ZNZ1q13alwq_Jn02zGj363A44HMrAw9GxgYGiwZ2RkYJFmmrSYffo1jrnn-YHiKQd-XNxleXeqsr0001rNw_5rA8CCsdEbLROfiwIF9xxjP9LCeW6VAFj8nvZpS8vVlkDx35_Y-mdzfOjhA4ozHNgZtd6yUkjQTsqYZdJFRgYGlrUiDAyMLDaPGRmYWKp3MjIws7xbYfT0kb7PzjnXAQ&amp;cr=255901&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F139609%2Fcoldfusion-developer-ansira%3Fmed=clc&amp;sig=EX7n0ZieTlOeCw"><div class="title">ColdFusion Developer</div><div><span class="company">Ansira</span><span class="dash">-</span><span class="location">No office location</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="clc-post-tag">coldfusion</span><div></div></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=43I8ts8ved0VD9W9vH6eTEwsu6ZNZ1q13alwq_Jn02zGj363A44HMrAw9GxgYGiwZ2RkYJFmmrSYffo1jrnn-YHiKQd-XNxleXeqsr0001rNw_5rA8CCsdEbLROfiwIF9xxjP9LCeW6VAFj8nvZpS8vVlkDx35_Y-mdzfOjhA4ozHNgZtd6yUkjQTsqYZdJFRgYGlrUiDAyMLDaPGRmYWKp3MjIws7xbYfT0kb7PzjnXAQ&amp;cr=255901&amp;ct=-1&amp;sig=0ixDRSd-WG8a-g" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="Software Engineering Manager - $100k at Crossover. Click to learn more." href="https://stackoverflow.com/jobs/104914/software-engineering-manager-100k-crossover" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=43I8ts8ved0VD9W9vH6eTEwsu6ZNZ1q13alwq_Jn02zGj363A44HMrAw9GxgYGiwZ2RkYJFmmrSYffo1jrnn-YHiKQd-XNxleXeqsr0001rNw_5rA8CCsdEbLROfiwIF9xxjP9LCeW6VAFj8nvZpS8vVlkDx35_Y-mdzfOjhA4ozHNgZtd6yUkjQTsqYZdJFRgYGlrUiDAyMLDaPGRmYWKp3MjIws7xbYfT0kb7PzjnXAQ&amp;cr=10285&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F104914%2Fsoftware-engineering-manager-100k-crossover%3Fmed=clc&amp;sig=CT1EDM63-dCWdw"><div class="title">Software Engineering Manager - $100k</div><div><span class="company">Crossover</span><span class="dash">-</span><span class="location">No office location</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="clc-post-tag">.net</span><span class="clc-post-tag">c#</span><div></div></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=43I8ts8ved0VD9W9vH6eTEwsu6ZNZ1q13alwq_Jn02zGj363A44HMrAw9GxgYGiwZ2RkYJFmmrSYffo1jrnn-YHiKQd-XNxleXeqsr0001rNw_5rA8CCsdEbLROfiwIF9xxjP9LCeW6VAFj8nvZpS8vVlkDx35_Y-mdzfOjhA4ozHNgZtd6yUkjQTsqYZdJFRgYGlrUiDAyMLDaPGRmYWKp3MjIws7xbYfT0kb7PzjnXAQ&amp;cr=10285&amp;ct=-1&amp;sig=bhMmNQWBaSUSTA" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="C# Software Development Engineer - REMOTE at Risk Placement Services, Inc.. Click to learn more." href="https://stackoverflow.com/jobs/145037/c-sharp-software-development-engineer-remote-risk-placement-services-inc" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=43I8ts8ved0VD9W9vH6eTEwsu6ZNZ1q13alwq_Jn02zGj363A44HMrAw9GxgYGiwZ2RkYJFmmrSYffo1jrnn-YHiKQd-XNxleXeqsr0001rNw_5rA8CCsdEbLROfiwIF9xxjP9LCeW6VAFj8nvZpS8vVlkDx35_Y-mdzfOjhA4ozHNgZtd6yUkjQTsqYZdJFRgYGlrUiDAyMLDaPGRmYWKp3MjIws7xbYfT0kb7PzjnXAQ&amp;cr=267598&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F145037%2Fc-sharp-software-development-engineer-remote-risk-placement-services-inc%3Fmed=clc&amp;sig=s0Ujgb7nlqr8dw"><div class="title">C# Software Development Engineer - REMOTE</div><div><span class="company">Risk Placement Services, Inc.</span><span class="dash">-</span><span class="location">No office location</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="clc-post-tag">c#</span><span class="clc-post-tag">microservices</span><div></div></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=43I8ts8ved0VD9W9vH6eTEwsu6ZNZ1q13alwq_Jn02zGj363A44HMrAw9GxgYGiwZ2RkYJFmmrSYffo1jrnn-YHiKQd-XNxleXeqsr0001rNw_5rA8CCsdEbLROfiwIF9xxjP9LCeW6VAFj8nvZpS8vVlkDx35_Y-mdzfOjhA4ozHNgZtd6yUkjQTsqYZdJFRgYGlrUiDAyMLDaPGRmYWKp3MjIws7xbYfT0kb7PzjnXAQ&amp;cr=267598&amp;ct=-1&amp;sig=qsE-odrnJ54kAQ" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="Senior Application Developer, Chennai at ThoughtWorks Inc.. Click to learn more." href="https://stackoverflow.com/jobs/132191/senior-application-developer-chennai-thoughtworks-inc" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=43I8ts8ved0VD9W9vH6eTEwsu6ZNZ1q13alwq_Jn02zGj363A44HMrAw9GxgYGiwZ2RkYJFmmrSYffo1jrnn-YHiKQd-XNxleXeqsr0001rNw_5rA8CCsdEbLROfiwIF9xxjP9LCeW6VAFj8nvZpS8vVlkDx35_Y-mdzfOjhA4ozHNgZtd6yUkjQTsqYZdJFRgYGlrUiDAyMLDaPGRmYWKp3MjIws7xbYfT0kb7PzjnXAQ&amp;cr=231024&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F132191%2Fsenior-application-developer-chennai-thoughtworks-inc%3Fmed=clc&amp;sig=Vvi-Qr9aUfP3xw"><div class="title">Senior Application Developer, Chennai</div><div><span class="company">ThoughtWorks Inc.</span><span class="dash">-</span><span class="location">Chennai, India</span></div><span class="clc-post-tag">java</span><span class="clc-post-tag">oop</span><div></div></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=43I8ts8ved0VD9W9vH6eTEwsu6ZNZ1q13alwq_Jn02zGj363A44HMrAw9GxgYGiwZ2RkYJFmmrSYffo1jrnn-YHiKQd-XNxleXeqsr0001rNw_5rA8CCsdEbLROfiwIF9xxjP9LCeW6VAFj8nvZpS8vVlkDx35_Y-mdzfOjhA4ozHNgZtd6yUkjQTsqYZdJFRgYGlrUiDAyMLDaPGRmYWKp3MjIws7xbYfT0kb7PzjnXAQ&amp;cr=231024&amp;ct=-1&amp;sig=KwEu_QZGnNcu6w" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li></ul></div><img src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/impression.gif" class="impression" style="display: none;"></div>
+        <script>
+window.clc_request = 
+'AoSaOUxjrtQIAAAAADrLRQACAAAAAgAAAAAlAAAAfHNxbHxzcWwtc2VydmVyfHNxbC1zZXJ2ZXItMjAwNXx0c3FsfAByd2h0WZsVgcRh';;(function(n){var
+ 
+u={log:window.console.log.bind(window.console,"[clc]"),error:window.console.error.bind(window.console,"[clc]")},f,e,t,r,i;try{if(typeof[].indexOf!="function")return;if(window.attachEvent&&!window.addEventListener)return;if(f=n.allowed,!f)return;if(e=new
+ RegExp(n.allowed),!e.test(location.hostname)){u.error("Invalid host: 
+"+location.hostname);return}if(t=window,t.clc=t.clc||{},t.clc.init=t.clc.init||[],t.clc.init.push(function(n){return
+ n.load()}),t.clc.options){for(r in 
+t.clc.options)n[r]=t.clc.options[r];t.clc.options=n}else 
+t.clc.options=n;i=document.createElement("script");i.async=!0;i.src=n.lib;document.body.appendChild(i)}catch(o){u.error("[clc]
+ Error in loader:",o)}}).call(null, 
+{"lib":"https://cdn.sstatic.net/clc/clc.min.js?v=e966546d8727","u":"https://clc.stackoverflow.com/markup.js","azw":true,"kt":2000,"tto":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"h":"clc.stackoverflow.com","autoload":true,"allowed":"^(((talent\\.)?stackoverflow)|(blog\\.codinghorror)|(serverfault|askubuntu)|([^\\.]+\\.stackexchange))\\.com$"});
+        </script>
+			<div class="module" id="chat-feature">
+
+    <h4><a href="http://chat.stackoverflow.com/" id="h-chat-link" title="129 users active in 61 rooms the last 60 minutes">129 People Chatting</a></h4>
+    <div class="related" id="ad502-rooms"><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="JavaScript"><a href="http://chat.stackoverflow.com/rooms/17">JavaScript</a></span></h3><span title="2017-06-08 08:08:26Z" class="ad502-last-message">3 hours ago - <a href="http://chat.stackoverflow.com/users/871050">Madara Uchiha</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/871050"><img title="Madara Uchiha: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/a7a50a9492be737b0c012a839338272a.png" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/624596"><img title="Linkgoron: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/7d6106ee52e837bcc9e1d44771aa2ec0.png" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/1348195"><img title="Benjamin Gruenbaum: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/f6dca2295546af21e1cde8e68f2d49bd.jpg" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/851498"><img title="Florian Margaine: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/awzJQ.jpg" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/1481716"><img title="noelyahan: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/picture.jpg" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/1839506"><img title="Caprica Six: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/Sej2t.jpg" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/2412895"><img title="KarelG: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/p3J02.jpg" height="23" width="23"></a></div></div><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="PHP"><a href="http://chat.stackoverflow.com/rooms/11">PHP</a></span></h3><span title="2017-06-08 08:09:05Z" class="ad502-last-message">3 hours ago - <a href="http://chat.stackoverflow.com/users/4781925">JayIsTooCommon</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/4781925"><img title="JayIsTooCommon: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/T9qYr.png" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/291626"><img title="pmmaga: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/801f53183403b42795b9d1c9d15ee833.jpg" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/5764893"><img title="Jeeves: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/aMuw2.jpg" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/2274710"><img title="Sean: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/8b4e4cbcc2999245d93b694347528a1b.jpg" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/889949"><img title="DaveRandom: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/8609c7056e725f9e8c03c594b831353e.jpg" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/3605516"><img title="Linus: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/picture_002.jpg" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/214577"><img title="Oldskool: 3 hours ago" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/IEKbS.png" height="23" width="23"></a></div></div></div>
+    <script>
+    // <!--
+        StackExchange.ready(
+        function () {
+            var options = {
+                chatUrl: 'http://chat.stackoverflow.com',
+                reloadUrl: '/api/recent-chat',
+                preloadData: 
+{"activeUsers":129,"activeRooms":61,"rooms":[{"name":"JavaScript","id":17,"lastPost":1496909306,"posts":4026491,"users":[{"name":"Madara
+ 
+Uchiha","id":871050,"emailhash":"a7a50a9492be737b0c012a839338272a","lastPost":1496909306},{"name":"Linkgoron","id":624596,"emailhash":"7d6106ee52e837bcc9e1d44771aa2ec0","lastPost":1496909294},{"name":"Benjamin
+ 
+Gruenbaum","id":1348195,"emailhash":"f6dca2295546af21e1cde8e68f2d49bd","lastPost":1496909249},{"name":"Florian
+ 
+Margaine","id":851498,"emailhash":"!https://i.stack.imgur.com/awzJQ.jpg?s=128\u0026g=1","lastPost":1496909175},{"name":"noelyahan","id":1481716,"emailhash":"!https://graph.facebook.com/100002967844733/picture?type=large","lastPost":1496909083},{"name":"Caprica
+ 
+Six","id":1839506,"emailhash":"!https://i.stack.imgur.com/Sej2t.jpg?s=128\u0026g=1","lastPost":1496909047},{"name":"KarelG","id":2412895,"emailhash":"!https://i.stack.imgur.com/p3J02.jpg?s=128\u0026g=1","lastPost":1496909046}],"messages":[{"date":1496909306,"user":"Madara
+ 
+Uchiha","userid":871050}],"singleImage":false,"tags":["ecmascript","ecmascript-6","hypescript","javascript","nodejs"]},{"name":"PHP","id":11,"lastPost":1496909345,"posts":2777904,"users":[{"name":"JayIsTooCommon","id":4781925,"emailhash":"!https://i.stack.imgur.com/T9qYr.png?s=128\u0026g=1","lastPost":1496909345},{"name":"pmmaga","id":291626,"emailhash":"801f53183403b42795b9d1c9d15ee833","lastPost":1496909332},{"name":"Jeeves","id":5764893,"emailhash":"!https://i.stack.imgur.com/aMuw2.jpg?s=128\u0026g=1","lastPost":1496909252},{"name":"Sean","id":2274710,"emailhash":"8b4e4cbcc2999245d93b694347528a1b","lastPost":1496909251},{"name":"DaveRandom","id":889949,"emailhash":"8609c7056e725f9e8c03c594b831353e","lastPost":1496908954},{"name":"Linus","id":3605516,"emailhash":"!https://graph.facebook.com/886075218103351/picture?type=large","lastPost":1496908862},{"name":"Oldskool","id":214577,"emailhash":"!https://i.stack.imgur.com/IEKbS.png?s=128\u0026g=1","lastPost":1496908854}],"messages":[{"date":1496909345,"user":"JayIsTooCommon","userid":4781925}],"singleImage":false,"tags":["php"]}]}
+ 
+            };
+
+            StackExchange.chatAd.init(options);
+        });
+    // -->
+    </script>
+
+</div>
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/1962398?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">25</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/1962398/creating-audit-triggers-in-sql-server?noredirect=1&amp;lq=1" class="question-hyperlink">Creating audit triggers in SQL Server</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/34132828?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/34132828/list-databases-modified-database-between-two-dates-in-sql-server-2008?noredirect=1&amp;lq=1" class="question-hyperlink">List databases modified database between two dates in SQL Server 2008</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/334671?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">1</div></a><a href="https://stackoverflow.com/questions/334671/create-a-ddl-trigger-in-every-database-on-a-2005-instance?rq=1" class="question-hyperlink">Create a DDL trigger in every database on a 2005 instance</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/369994?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">7</div></a><a href="https://stackoverflow.com/questions/369994/log-changes-made-to-all-fields-in-a-table-to-another-table-sql-server-2005?rq=1" class="question-hyperlink">Log changes made to all fields in a table to another table (SQL Server 2005)</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/1047832?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">3</div></a><a href="https://stackoverflow.com/questions/1047832/how-do-i-get-revolving-last-12-months-in-t-sql-2005?rq=1" class="question-hyperlink">How do I get revolving last 12 months in T-SQL 2005?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/1419606?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">4</div></a><a href="https://stackoverflow.com/questions/1419606/how-can-i-get-the-last-inserted-primary-key?rq=1" class="question-hyperlink">How can I get the last inserted primary key?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/2736934?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">1</div></a><a href="https://stackoverflow.com/questions/2736934/how-to-track-number-of-changes-occured-in-a-column-t-sql-sql-server?rq=1" class="question-hyperlink">How to track number of changes occured in a column? T-SQL - SQL Server</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/3854694?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">9</div></a><a href="https://stackoverflow.com/questions/3854694/how-to-use-create-login-sql-statement?rq=1" class="question-hyperlink">How to use CREATE LOGIN sql statement?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/8616319?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">3</div></a><a href="https://stackoverflow.com/questions/8616319/how-to-add-xml-data-type-in-a-group-by-clause?rq=1" class="question-hyperlink">How to add XML data type in a GROUP BY clause?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/9499378?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">3</div></a><a href="https://stackoverflow.com/questions/9499378/how-do-i-obtain-the-last-value-generated-in-a-primary-key-field-using-t-sql?rq=1" class="question-hyperlink">How do I obtain the last value generated in a primary key field using T-SQL</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/11041441?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">1</div></a><a href="https://stackoverflow.com/questions/11041441/how-to-aggregate-data-from-a-subquery-that-requires-a-filter?rq=1" class="question-hyperlink">How to Aggregate Data from a Subquery that Requires a Filter?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/31678790?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">-2</div></a><a href="https://stackoverflow.com/questions/31678790/how-to-use-nested-if-statements-in-sql-trigger?rq=1" class="question-hyperlink">How to use nested If statements in SQL trigger</a></div>
+                    </div>
+				</div>
+            
+
+<div id="hot-network-questions" class="module tex2jax_ignore">
+    <h4>
+        <a href="https://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="https://security.stackexchange.com/questions/161403/attacker-circumventing-2fa-how-to-defend" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Attacker circumventing 2FA. How to defend?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="https://academia.stackexchange.com/questions/90456/is-it-okay-for-a-professor-to-leave-the-classroom-only-5-min-past-the-class-star" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it okay for a professor to leave the classroom only 5 min past the class start if nobody has shown up?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/125053/golf-an-anagram-quine" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Golf an Anagram Quine
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="https://physics.stackexchange.com/questions/338089/how-or-when-do-gluons-change-the-color-of-a-quark" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How (or when) do gluons change the color of a quark?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="https://unix.stackexchange.com/questions/369936/linux-sed-finding-a-wildcard-string-with-no-spaces-in-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Linux sed - finding a wildcard string with no spaces in it
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-outdoors" title="The Great Outdoors Stack Exchange"></div><a href="https://outdoors.stackexchange.com/questions/16272/how-do-you-tie-in-to-the-centre-of-a-rope" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:395 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do you tie in to the centre of a rope?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-politics" title="Politics Stack Exchange"></div><a href="https://politics.stackexchange.com/questions/19591/why-is-the-death-sentence-considered-to-be-an-unacceptable-punishment-in-the-cou" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:475 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is the death sentence considered to be an 
+unacceptable punishment in the Council of Europe, while life 
+imprisonment is not?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="https://scifi.stackexchange.com/questions/161177/have-there-ever-been-25-or-more-stars-on-wonder-womans-panties" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Have there ever been 25 or more stars on Wonder Woman's panties?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-apple" title="Ask Different"></div><a href="https://apple.stackexchange.com/questions/286198/use-macbook-to-cancel-ambient-noise" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:118 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Use macbook to cancel ambient noise
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/83072/could-burning-debris-keep-burning-in-space" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Could burning debris keep burning in space?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/124362/how-high-can-you-count" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How high can you count?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="https://salesforce.stackexchange.com/questions/178016/convert-and-add-list-of-string-to-set-of-id" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Convert and add list of string to set of ID?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="https://aviation.stackexchange.com/questions/38642/why-are-fighter-pilots-seated-and-not-reclined" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are fighter pilots seated and not reclined?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="https://english.stackexchange.com/questions/392530/what-is-this-strange-sentence-by-walt-whitman" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is this strange sentence by Walt Whitman?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="https://electronics.stackexchange.com/questions/309508/is-it-practical-for-firmware-to-be-uniquely-identified-in-production" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it practical for firmware to be uniquely identified in production
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-hinduism" title="Hinduism Stack Exchange"></div><a href="https://hinduism.stackexchange.com/questions/18749/why-is-yajurveda-classified-as-krishna-and-shukla" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:567 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is Yajurveda classified as Krishna and Shukla?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="https://money.stackexchange.com/questions/80541/is-keeping-track-of-your-money-and-having-a-budget-the-same-thing" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is keeping track of your money and having a budget the same thing?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="https://tex.stackexchange.com/questions/373880/context-doublesided-starts-with-left-hand-page" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    ConTeXt doublesided starts with left-hand page
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/124997/csi-minecraft-items" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    CSI: Minecraft Items
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="https://rpg.stackexchange.com/questions/101145/what-is-the-correct-way-to-use-disengage-or-dash-as-a-bonus-action" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the correct way to use Disengage or Dash as a bonus action?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-cs" title="Computer Science Stack Exchange"></div><a href="https://cs.stackexchange.com/questions/76474/how-to-check-if-two-strings-are-permutations-of-each-other-using-o1-additional" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:419 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to check if two strings are permutations of each other using O(1) additional space?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="https://math.stackexchange.com/questions/2313839/how-should-i-be-avoiding-this-mistake-to-avoid-missing-solutions" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How should I be avoiding this mistake? (To avoid missing solutions)
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/124907/is-this-string-a-square" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is this string a square?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-law" title="Law Stack Exchange"></div><a href="https://law.stackexchange.com/questions/19407/getting-sued-by-clients-web-dev-contracting" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:617 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Getting sued by clients (web dev contracting)
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="https://stackoverflow.com/feeds/question/4574010" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/4574010/ivc/52c2');});
+</script>
+<noscript>
+    <div><img src="/posts/4574010/ivc/52c2" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-sql</div></div>
+
+
+        </div>
+    </div><script async="" src="sql%20-%20How%20to%20Create%20Trigger%20to%20Keep%20Track%20of%20Last%20Changed%20Data%20-%20Stack%20Overflow_files/clc.js"></script>
+    <div id="footer" class="categories" role="contentinfo">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:1 })" href="https://stackoverflow.com/company/about">about us</a>
+                        <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:2 })" href="https://stackoverflow.com/tour">tour</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:3 })" href="https://stackoverflow.com/help">help</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:4 })" href="https://stackoverflow.blog/?blb=1">blog</a>
+                        <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:5 })" href="https://chat.stackoverflow.com/">chat</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:6 })" href="https://data.stackexchange.com/">data</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:7 })" href="https://stackexchange.com/legal">legal</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:8 })" href="https://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:9 })" href="https://stackoverflow.com/company/work-here">work here</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:10 })" href="https://www.stackoverflowbusiness.com/advertise">advertising info</a>
+                        <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:11 })" href="https://stackoverflow.com/jobs/directory/developer-jobs">developer jobs directory</a>
+
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:12 })" onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:13 })" href="https://stackoverflow.com/contact">contact us</a></b>
+                        <b><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:14 })" href="https://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="https://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="https://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="https://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="https://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="https://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="https://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="https://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="https://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                        <li><a href="https://softwareengineering.stackexchange.com/" title="professionals, academics, and students working within the systems development life cycle">Software Engineering</a></li>
+                        <li><a href="https://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="https://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="https://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="https://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="https://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="https://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="https://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                        <li><a href="https://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="https://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="https://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="https://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="https://mathematica.stackexchange.com/" title="users of Wolfram Mathematica">Mathematica</a></li>
+                        <li><a href="https://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="https://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                        <li><a href="https://crypto.stackexchange.com/" title="software developers, mathematicians and others interested in cryptography">Cryptography</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="https://codereview.stackexchange.com/" title="peer programmer code reviews">Code Review</a></li>
+                        <li><a href="https://magento.stackexchange.com/" title="users of the Magento e-Commerce platform">Magento</a></li>
+                        <li><a href="https://dsp.stackexchange.com/" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
+                        <li><a href="https://raspberrypi.stackexchange.com/" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
+                        <li><a href="https://codegolf.stackexchange.com/" title="programming puzzle enthusiasts and code golfers">Programming Puzzles &amp; Code Golf</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#technology" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="https://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="https://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="https://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="https://music.stackexchange.com/" title="musicians, students, and enthusiasts">Music: Practice &amp; Theory</a></li>
+                        <li><a href="https://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="https://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="https://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="https://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#lifearts" class="more">
+                                more (8)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="https://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="https://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="https://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="https://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="https://ell.stackexchange.com/" title="speakers of other languages learning English">English Language Learners</a></li>
+                        <li><a href="https://japanese.stackexchange.com/" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language">Japanese Language</a></li>
+                        <li><a href="https://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="https://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="https://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                        <li><a href="https://anime.stackexchange.com/" title="anime and manga fans">Anime &amp; Manga</a></li>
+                        <li><a href="https://mechanics.stackexchange.com/" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles">Motor Vehicle Maintenance &amp; Repair</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#culturerecreation" class="more">
+                                more (17)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="https://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="https://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="https://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="https://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="https://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="https://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                        <li><a href="https://cs.stackexchange.com/" title="students, researchers and practitioners of computer science">Computer Science</a></li>
+                        <li><a href="https://philosophy.stackexchange.com/" title="those interested in the study of the fundamental nature of knowledge, reality, and existence">Philosophy</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#science" class="more">
+                                more (3)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="https://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="https://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="https://www.stackoverflowbusiness.com/talent">Stack Overflow Talent</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2017 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="https://stackoverflow.blog/2009/06/25/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2017.6.8.26169
+            </div>
+                </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled
+            <img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno">
+        </div>
+    </noscript>
+<script>var 
+z=document.createElement("script");z.type="text/javascript",z.async=!0,z.src="https://static.adzerk.net/ados.js";var
+ 
+s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z,s);</script>
+<script>
+var ados = ados || {};
+ados.run = ados.run || [];
+
+
+ados.run.push(function () {
+    setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+    ados_setKeywords('sql,sql-server,sql-server-2005,tsql');; ados_load();
+});   
+
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || 
+function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new
+ Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = 
+g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 
+'https://www.google-analytics.com/analytics.js', 'ga');
+                ga('create', 'UA-5620270-1');
+                ga('create', 'UA-5620270-59', {name: 'pageData', 
+sampleRate: 5 });
+                ga('set', 'dimension2', 
+'|sql|sql-server|sql-server-2005|tsql|');
+                ga('pageData.set', 'dimension2', 
+'|sql|sql-server|sql-server-2005|tsql|');
+                ga('send', 'pageview');
+                ga('pageData.send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + 
+'.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + 
+'.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = 
+newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i)
+ || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') 
+service =  2;
+                                    else if (service === 'Place') 
+service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', 
+function() {
+                                        
+StackExchange.gps.track('google_maps_places_api.call', { service: 
+service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+</body></html>

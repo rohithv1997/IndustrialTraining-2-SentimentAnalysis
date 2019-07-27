@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://www.edureka.co/blog/spark-tutorial/ -->
+<html lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" class=" "><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="pingback" href="https://www.edureka.co/blog/xmlrpc.php">
+        
+<!-- This site is optimized with the Yoast SEO plugin v4.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Spark Tutorial | A Beginner's Guide to Apache Spark | Edureka</title>
+<meta name="description" content="This Spark Tutorial blog will introduce you to Apache Spark, its features and components. It includes a Spark MLlib use case on Earthquake Detection.">
+<meta name="robots" content="noodp">
+<meta name="keywords" content="spark tutorial, what is apache spark, apache spark training, learn apache spark, apache spark, apache spark blog, spark sql, spark streaming, spark graphx, spark mllib, apache spark edureka, edureka, spark certification, spark job trends">
+<link rel="canonical" href="https://www.edureka.co/blog/spark-tutorial/">
+<link rel="publisher" href="https://plus.google.com/+edurekaIN">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark Tutorial | A Beginner&#39;s Guide to Apache Spark | Edureka">
+<meta property="og:description" content="This Spark Tutorial blog will introduce you to Apache Spark, its features and components. It includes a Spark MLlib use case on Earthquake Detection.">
+<meta property="og:url" content="https://www.edureka.co/blog/spark-tutorial/">
+<meta property="og:site_name" content="Edureka Blog">
+<meta property="article:publisher" content="https://www.facebook.com/edurekaIN/">
+<meta property="article:author" content="www.facebook.com/sandeep.dayananda">
+<meta property="article:section" content="Apache Spark &amp; Scala">
+<meta property="article:published_time" content="2017-05-04T15:21:56+00:00">
+<meta property="article:modified_time" content="2017-06-12T10:48:03+00:00">
+<meta property="og:updated_time" content="2017-06-12T10:48:03+00:00">
+<meta property="fb:app_id" content="334689249900154">
+<meta property="og:image" content="https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Spark-Tutorial-Edureka.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="This Spark Tutorial blog will introduce you to Apache Spark, its features and components. It includes a Spark MLlib use case on Earthquake Detection.">
+<meta name="twitter:title" content="Spark Tutorial | A Beginner&#39;s Guide to Apache Spark | Edureka">
+<meta name="twitter:site" content="@edurekaIN">
+<meta name="twitter:image" content="https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Spark-Tutorial-Edureka.png">
+<meta name="twitter:creator" content="@edurekaIN">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://cdn.edureka.co/">
+<link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Edureka Blog » Spark Tutorial: Real Time Cluster Computing Framework Comments Feed" href="https://www.edureka.co/blog/spark-tutorial/feed/">
+		<script async="" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/analytics.js.download"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.edureka.co\/blog\/wp-includes\/js\/wp-emoji-release.min.js"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="download-button-shortcode-css-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/downloadbutton.css" type="text/css" media="all">
+<link rel="stylesheet" id="fancyquote-css-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/fancyquote.css" type="text/css" media="all">
+<link rel="stylesheet" id="sn-fontAwesome-css-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="sn-animate-css-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/animate.css" type="text/css" media="all">
+<link rel="stylesheet" id="dg-grid-css-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/dg-grid.css" type="text/css" media="all">
+<link rel="stylesheet" id="fvp-frontend-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/frontend.css" type="text/css" media="all">
+<link rel="stylesheet" id="mbpro-font-awesome-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/font-awesome.min(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-font-awesome-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/font-awesome.min(2).css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-0121-font-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/0121-font.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-bootstrap-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-blogmain-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/blogmain.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-nprogress-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/nprogress.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-blogdetail_newfont-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Newfonts-ico.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-customscrollbar-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/CustomScrollbar.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-owl.carousel-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/owl.carousel.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-blogdetailnew-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/blogdetailnew.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-0180-global-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/0180-global.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-bootstrap-formhelpers-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/bootstrap-formhelpers.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-0181-formValidation-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/0181-formValidation.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-0139-common-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/0139-common.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-dashboard-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/dashboard.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-header-2-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/header-2.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-signin-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/new-signin-signup.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-mfb-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/mfb.css" type="text/css" media="all">
+<link rel="stylesheet" id="edu-hiran-main_css-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp_dlmp_styles-css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/styles.css" type="text/css" media="all">
+<link rel="https://api.w.org/" href="https://www.edureka.co/blog/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.edureka.co/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://cdn.edureka.co/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://www.edureka.co/blog/?p=44568">
+<link rel="alternate" type="application/json+oembed" href="https://www.edureka.co/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.edureka.co%2Fblog%2Fspark-tutorial%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.edureka.co/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.edureka.co%2Fblog%2Fspark-tutorial%2F&amp;format=xml">
+	<style type="text/css">
+	.download-info .download-button {
+		background-image: url(https://cdn.edureka.co/blog/wp-content/plugins/download-monitor/page-addon/downloadbutton.gif);
+	}
+	.download-info .more-button {
+		background-image: url(https://cdn.edureka.co/blog/wp-content/plugins/download-monitor/page-addon/morebutton.gif);
+	}
+	</style>
+<style type="text/css">
+#author-bio-box {
+	float:left;
+	width: 99%;
+	background: #ffffff;
+	border: 1px solid #e8e8e8;
+	box-shadow: 5px 5px 2px #ddd;
+	padding: 5px;
+        margin-bottom: 10px;
+}
+#author-bio-box img {
+	float: left;
+	margin: 4px 10px 2px 4px;
+}
+#author-bio-box .author-name {
+	font-weight: bold;
+	margin-left: 2px;
+	font-size: 14px;
+}
+#author-bio-box p {
+	font-size: 13px;
+	line-height: 20px;
+        margin-left: 95px;
+        margin-top: 5px;
+}
+#author-bio-box thead th {
+	border: 0;
+}
+#author-bio-box tbody {
+	border: 0;
+}
+.bio-spacer { min-height:44px; padding: 1px; display: block; clear: both; border:1px;}
+.bio-socials {
+	border-top:1px solid #e8e8e8;
+	border-bottom:none;
+	border-left:none;
+	border-right:none;
+	width: 100%;
+	height: 32px;
+	clear: both;
+}
+</style><meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress.">
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="https://cdn.edureka.co/blog/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><link rel="stylesheet" type="text/css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/shThemeDefault.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<noscript>&lt;style type="text/css"&gt; .wpb_animate_when_almost_visible { opacity: 1; }&lt;/style&gt;</noscript>        <script>
+            var webURL = 'https://www.edureka.co/';
+            var imgURL = 'https://cdn.edureka.co/imgver.1465813195/img/';
+            var kmkey = 'c685629a1766aa24ed42e4bc8476e8789cd97477';
+            var GaTID = 'UA-33865789-1';
+            var GaUATID = 'UA-33865789-2';
+            var iscustomerGA = 'false';
+            var repcustomerGA = 'false';
+            var baildown = true;
+            var homepageloadbanner = true;
+            var prev_offer_code = '';
+
+        </script>
+        <!-- Google Analytics -->
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-33865789-2', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <!-- End Google Analytics -->
+        <!-- Google Code for Remarketing Tag -->
+        <!--------------------------------------------------
+        Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+        --------------------------------------------------->
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var google_conversion_id = 977137586;
+            var google_custom_params = window.google_tag_params;
+            var google_remarketing_only = true;
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/conversion.js.download"></script><script type="text/javascript" async="" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/embed.js.download"></script><script async="" type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/count.js.download"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(http://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style><link rel="stylesheet" type="text/css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/css"><link rel="stylesheet" type="text/css" href="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/css(1)"><link rel="preload" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.c9fb5886900e696c8873ec5b4648f872.css"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.25f477667301252e7f88cc86f425074e.js"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.2d5add5824bdd553cbcfaa87bce7038b.js"><link rel="preload" as="script" href="https://disqus.com/next/config.js"><script src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/count-data.js.download"></script></head><body class="post-template-default single single-post postid-44568 single-format-standard wpb-js-composer js-comp-ver-5.1.1 vc_responsive" id="margin-top-value"><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/saved_resource.html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+        <noscript>
+    &lt;div style="display:inline;"&gt;
+        &lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/977137586/?value=0&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+    &lt;/div&gt;
+    </noscript>
+
+
+
+    <div id="fb-root" class=" fb_reset"><script async="" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/all.js.download"></script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/XBwzv5Yrm_1.html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+    <script>
+
+            window.fbAsyncInit = function () {
+                FB.init({appId: '334689249900154', status: true, cookie: true,
+                    xfbml: true});
+            };
+            (function () {
+                var e = document.createElement('script');
+                e.async = true;
+                e.src = document.location.protocol +
+                        '//connect.facebook.net/en_US/all.js';
+                document.getElementById('fb-root').appendChild(e);
+            }());
+    </script>
+
+    <header id="header-II">
+        <section>
+            <nav style="" role="navigation" class="navbar navbar-inverse navbar-fixed-top navbar-homepage">
+                <div class="container menubar-visibility edureka-blog-header">
+                    <div class="navbar-header">
+                        <a href="https://www.edureka.co/?utm_source=blog&amp;utm_medium=blog-edureka-logo" class="navbar-brand"> <img alt="edureka!" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/logo.png"> </a> 			
+                    </div>
+                    <!-- ddl starts--><form action="https://www.edureka.co/blog" class="main-search"><ul class="list-unstyled course-search-box-nav">
+                        <input type="hidden" class="searchinputbox" id="categoryinputbox" value="">
+                        <input type="hidden" class="searchinputbox" id="authorinputbox" value="">
+                        <li class="search-nav pull-left"><div class="dropdown  categories-filter-dropdown">
+    <a class="select_down dropdown-toggle search-drop menu-common catbtnblog catbtnblogmob btn" type="button" id="menu1" data-toggle="dropdown">
+        <i class="fa fa-bars"></i> Select Category
+    </a>
+    <ul class="dropdown-menu list-inline search-header-navigation dropdown-menu-scrollbar mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar" role="menu" aria-labelledby="menu1" style="overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" tabindex="0"><div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+        <li role="presentation" style="display: none;"><a role="menuitem" tabindex="0" href="https://www.edureka.co/blog/spark-tutorial/#" data-slug="" class="category-selector">Select Category</a>
+                </li><li role="presentation" style="display: none;"><a role="menuitem" tabindex="1" href="https://www.edureka.co/blog/category/big-data-analytics" data-slug="big-data-analytics" class="category-selector">Big Data Analytics</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="2" href="https://www.edureka.co/blog/category/big-data-nosql" data-slug="big-data-nosql" class="category-selector">Big Data NoSQL</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="3" href="https://www.edureka.co/blog/category/business-intelligence" data-slug="business-intelligence" class="category-selector">Business Intelligence</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="4" href="https://www.edureka.co/blog/category/cloud-computing" data-slug="cloud-computing" class="category-selector">Cloud Computing</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="5" href="https://www.edureka.co/blog/category/finance" data-slug="finance" class="category-selector">Finance</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="6" href="https://www.edureka.co/blog/category/frameworks" data-slug="frameworks" class="category-selector">Frameworks</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="7" href="https://www.edureka.co/blog/category/ibm-bluemix" data-slug="ibm-bluemix" class="category-selector">IBM Bluemix</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="8" href="https://www.edureka.co/blog/category/marketing" data-slug="marketing" class="category-selector">Marketing</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="9" href="https://www.edureka.co/blog/category/mobile-development" data-slug="mobile-development" class="category-selector">Mobile Development</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="10" href="https://www.edureka.co/blog/category/operations" data-slug="operations" class="category-selector">Operations</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="11" href="https://www.edureka.co/blog/category/programming" data-slug="programming" class="category-selector">Programming</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="12" href="https://www.edureka.co/blog/category/project-management" data-slug="project-management" class="category-selector">Project Management</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="13" href="https://www.edureka.co/blog/category/success-story" data-slug="success-story" class="category-selector">Success Story</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="14" href="https://www.edureka.co/blog/category/systems-architecture" data-slug="systems-architecture" class="category-selector">Systems &amp; Architecture</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="15" href="https://www.edureka.co/blog/category/systems-engineering" data-slug="systems-engineering" class="category-selector">Systems Engineering</a>
+                </li><li role="presentation"><a role="menuitem" tabindex="16" href="https://www.edureka.co/blog/category/testing" data-slug="testing" class="category-selector">Testing</a>
+                </li>      
+    </div></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></ul>
+</div>
+<span id="desktop-searchbox"><div id="remote" class="typeahead-container"><div class="typeahead-field">
+                        <span class="typeahead-query">
+                            <input type="text" maxlength="150" autocomplete="off" placeholder="Search edureka blogs" value="" name="s" data-value="" class="search_inp collapse searchinputbox">
+                        </span><span class="typeahead-button"><i class="fa fa-search search_ico submit-ico-button search-button-top"></i>
+                        <i style="display:none;" class="fa fa-circle-o-notch fa-spin search_ico autosearchload_top"></i>
+                        </span></div></div></span></li></ul></form><form action="https://www.edureka.co/blog" class="form-element-mobile">
+                    <div class="visible-sm visible-xs mobsearch" id="mobile-searchbox">
+                        <a data-toggle="collapse" id="mobile-search-icon" class="mobile-search-icon" href="https://www.edureka.co/blog/spark-tutorial/#mobsearch" aria-expanded="false" aria-controls="mobsearch">
+                            <i class="fa fa-search search_ico visible-sm visible-xs"></i>
+                        </a><div class="collapse search-course" id="mobsearch" aria-expanded="false"><div>
+                    <div id="remote" class="typeahead-container result backdrop hint">
+                        <div class="typeahead-field"><span class="typeahead-query">
+                            <input maxlength="150" autocomplete="off" class="search_inp search_inp_mob" placeholder="Search edureka blogs" name="s" type="text" value="" data-value=""></span>
+                        <span class="typeahead-button">
+                        <i class="fa fa-search search_ico submit-ico-button search-button-top"></i>
+                        <i style="display:none;" class="fa fa-circle-o-notch fa-spin search_ico autosearchload_top"></i>
+                        </span></div></div></div></div></div></form><div class="loggedin-usernav-wrapper hide"><div aria-expanded="false" id="navbar" class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav home-login hidden-sm hidden-xs">
+                <li>
+                    <div class="dropdown menu-dropdown dropdownafterlogin">
+                        <a href="javascript:void(0);" class="dropdown-toggle withripple" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="false"> BROWSE COURSES <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+                            <li><a href="https://www.edureka.co/mycourses?utm_source=blog&amp;utm_medium=courses&amp;utm_term=my-courses">My Courses</a></li>
+                            <li class="ga-allcourses"><a href="https://www.edureka.co/all-courses?utm_source=blog&amp;utm_medium=courses&amp;utm_term=all-courses">All Courses</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="logged-in-customer hide"></li>
+                <li class="">
+                    <div class="dropdown user-dropdown">
+                        <a id="signin-logout" class="signin" href="https://www.edureka.co/blog/wp-login.php?action=logout&amp;_wpnonce=2a45f1f96e">Logout</a> 
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ul class="nav navbar-nav navbar-right profile pull-right">
+            <li class="dropdown userdrop hidden-lg hidden-md profile-pic-header">
+                <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">
+                    <img alt="" class="img30 user-image-icon" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/defaultpp2.png">     
+                </a>
+                <ul class="dropdown-menu user-menu profile-xs">
+                    <li><a href="https://www.edureka.co/mycourses?utm_source=blog&amp;utm_medium=courses&amp;utm_term=all-courses">My Courses</a></li>
+                    <li class="logged-in-customer hide"></li><li class="ga-allcourses"><a href="https://www.edureka.co/all-courses?utm_source=blog&amp;utm_medium=courses&amp;utm_term=all-courses">All Courses</a></li>
+                    <li> <a href="https://www.edureka.co/blog/wp-login.php?action=logout&amp;_wpnonce=2a45f1f96e" id="signin-logoutresp">Log Out</a> </li>
+                </ul>
+            </li>
+        </ul></div><div class="loggedout-usernav-wrapper"><a class="signin md-trigger" href="javascript:void(0)" data-modal="signin-modal" data-toggle="modal">Sign In</a><style>
+    .highlighterror input[type=text],
+    .highlighterror input[type=email],
+    .highlighterror input[type=password],
+    .highlighterror {
+        border-color: #ed1f24 !important;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+    }
+</style>
+<!--googleon: all-->
+<div class="md-modal md-effect-1 newsigninsignup" id="signin-modal">
+    <div class="md-content">
+        <span id="signin_signup_cancel" class="md-close onclicktab pull-right">X</span>
+
+        <ul class="nav nav-tabs">
+            <li class="Signinspace active"><a class="onclicktab" data-toggle="tab" href="https://www.edureka.co/blog/spark-tutorial/#LogIn"><span>Log In</span></a></li>
+            <li class="SignUpspace "><a class="onclicktab" data-toggle="tab" href="https://www.edureka.co/blog/spark-tutorial/#SignUp"><span>Sign Up</span></a></li>
+
+        </ul>
+        <div class="tab-content">
+            <div id="LogIn" class="tab-pane fade in active">
+                <div class="col-md-12 col-xs-12 signinformnew newsignclik">
+                    <form id="signinForm" novalidate="novalidate" class="fv-form fv-form-bootstrap"><button type="submit" class="fv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+                        <!--                        <form id="signinForm">-->
+                        <div class="alertnew" role="alert">
+                            <span id="signin_error_message" class="signin_formerror redalertnew" style="display: none;"><i class="fa fa-check-circle"></i>  Please enter a valid emailid</span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input id="inputName" type="email" class="form-control inputstyle emailnew inputNamesignup signinvalid" required="" autocomplete="off" placeholder="Email" name="data[User][email]" value="" onkeyup="checkdisable();" data-bv-field="data[User][email]"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][email]" style="display: none;"></i>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">Email is required</small><small class="help-block" data-bv-validator="regexp" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">The value is not a valid email address</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a valid email address</small></div>
+                        <div class="form-group has-feedback">
+                            <input type="password" id="pwd" class="form-control inputstyle passwordnew masked" required="" autocomplete="off" placeholder="Password" name="data[User][password]" value="" data-bv-field="data[User][password]"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][password]" style="display: none;"></i>
+                            <div class="verficacheckeye" id="eye">
+                                show
+                            </div>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][password]" data-bv-result="NOT_VALIDATED" style="display: none;">Password is required</small><small class="help-block" data-bv-validator="stringLength" data-bv-for="data[User][password]" data-bv-result="NOT_VALIDATED" style="display: none;">Password should be atleast 8 character</small></div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding text-left spaceafterbutton" style="margin-top: 9px;"><a id="Forgotnew" href="javascript:void(0)" class="btn btn-link pull-left forgetpass">Forgot Password?</a>
+
+                            <button type="submit" class="bluebtn pull-right defdisablesignin ga-signin disabled" id="signin-blog">Start Learning</button>
+                        </div>
+                    </form>
+                    <!--<div class="mobilealertnew green clearfix">
+                      <span class="greenalertnew visible-xs"><i class="fa fa-check-circle"></i>  Verification Code sent to er.creator@gmail.com</span>
+                    </div>-->
+                </div>
+
+                <div class="col-md-12 col-xs-12 signinformnew forgetpassnew">
+                    <form id="resetcode">
+                        <div id="successmssg" class="alertnew" role="alert">
+                            <span id="messages" class="greenalertnew hidden-xs"><i class="fa fa-check-circle"></i>  </span>
+                        </div>
+                        <div class="form-group">
+                            <input id="prefilledemail" type="email" disabled="disable" class="form-control inputstyle emailnew inputDisabled" required="" autocomplete="off" placeholder="Email">
+                            <input id="emailfield" type="hidden" class="form-control inputstyle" name="data[User][email]">
+
+                            <!--<div class="verficacheck"><a href="" id="editemail">change ?</a></div>-->
+                        </div>
+                        <div class="form-group">
+                            <input id="otpfield" type="text" class="form-control inputstyle emailnew verifycheck" required="" autocomplete="off" placeholder="Verification code" name="data[User][otpCode]">
+                            <input id="verificationfield" type="hidden" class="form-control inputstyle emailnew" required="" name="data[User][verification_code]">
+                            <div class="verficacheck verifycheck"><div id="resendcode" href="javascript:void(0);" style="cursor: pointer;">resend ?</div></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="pwd2" class="form-control inputstyle passwordnew masked" required="" autocomplete="off" min="8" placeholder="New Password" name="data[User][password]">
+                            <div class="verficacheckeye" id="eye2">
+                                show
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding text-left spaceafterbutton" style="margin-top: 9px;"><!--<a id="Backnew" href="#" class="btn btn-link pull-left forgetpass">Back</a>-->
+
+                            <button id="passresetbutton" type="submit" class="bluebtn pull-right">reset password</button>
+                        </div>
+                    </form>
+                    <div class="notestarreg verifycheck">
+                        * Can't find the email? Check your Spam folder or Promotions tab for an email from no-reply@edureka.co. Send us an email at <a href="mailto:support@edureka.co">support@edureka.co</a> or call us at +91 88808 62004
+                    </div>
+                </div>
+            </div>
+            <div id="SignUp" class="tab-pane fade  ">
+
+                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 text-center signinformnew signupformnew">
+
+                    <form id="signupForm" novalidate="novalidate" class="fv-form fv-form-bootstrap"><button type="submit" class="fv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+                        <div class="alertnew" role="alert">
+                            <span id="signup_error_message" class="signup_formerror redalertnew hidden-xs " style="display: none;"><i class="fa fa-exclamation-triangle"></i>  Please provide a valid input</span>
+                        </div>
+
+                        <div class="form-group has-feedback">
+                            <input value="/blog/" name="data[User][pageurl]" id="pageurl_signup" type="hidden">
+                            <div class="form-control-wrapper"><input id="signupname" class="form-control inputstyle empty" placeholder="Name*" required="" autocomplete="off" name="data[User][name]" type="text" data-bv-field="data[User][name]"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][name]" style="display: none;"></i></div>
+                            
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][name]" data-bv-result="NOT_VALIDATED" style="display: none;">Name is required.</small><small class="help-block" data-bv-validator="regexp" data-bv-for="data[User][name]" data-bv-result="NOT_VALIDATED" style="display: none;">Name is required.</small></div>
+
+                        <div class="form-group has-feedback">
+                            <div class="form-control-wrapper"><input id="signupemail" class="form-control inputstyle  empty" placeholder="Email*" required="" autocomplete="off" name="data[User][email]" type="email" data-bv-field="data[User][email]"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][email]" style="display: none;"></i></div>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">Email is required</small><small class="help-block" data-bv-validator="regexp" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">The value is not a valid email address</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="data[User][email]" data-bv-result="NOT_VALIDATED" style="display: none;">Please enter a valid email address</small></div>
+                        <input style="display:none;" name="hiddenname" type="text">
+                        <input style="display:none;" name="hiddenpassword" type="password">
+                        <div class="form-group has-feedback">
+                            <div class="form-control-wrapper"><input data-bv-field="data[User][mobile]" id="mobnum" class="form-control inputstyle empty" placeholder="Mobile Number*" required="" name="data[User][mobile]" type="text"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][mobile]" style="display: none;"></i></div>
+
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][mobile]" data-bv-result="NOT_VALIDATED" style="display: none;">Mobile Number is required</small><small class="help-block" data-bv-validator="regexp" data-bv-for="data[User][mobile]" data-bv-result="NOT_VALIDATED" style="display: none;">The value is not a valid mobile number</small></div>
+                        <div class="form-group has-feedback">
+
+                            <div class="form-control-wrapper">
+                                <input id="pwd3" class="form-control inputstyle passwordnew masked empty" required="" autocomplete="off" placeholder="Password more than 8 characters*" name="data[User][password]" type="password" data-bv-field="data[User][password]"><i class="form-control-feedback fv-icon-no-label" data-bv-icon-for="data[User][password]" style="display: none;"></i></div>
+                            <div class="verficacheckeye" id="eye3">show</div>
+                        <small class="help-block" data-bv-validator="notEmpty" data-bv-for="data[User][password]" data-bv-result="NOT_VALIDATED" style="display: none;">Password is required</small><small class="help-block" data-bv-validator="stringLength" data-bv-for="data[User][password]" data-bv-result="NOT_VALIDATED" style="display: none;">Password should be atleast 8 character</small></div>
+                                                <p class="signupinfotext">
+                            By Signing up you agree to our <span><a class=" withripple" href="https://www.edureka.co/terms-and-conditions" target="_blank">T&amp;C</a></span> and <span>
+                                <a class=" withripple" href="https://www.edureka.co/privacy-policy" target="_blank">Privacy Policy</a></span>
+                        </p>
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 no-padding spaceafterbutton">
+                            <button type="submit" class="bluebtn pull-right defdisablesignup ga-signup disabled">Create an account</button>
+                        </div>
+
+                    </form>
+                    <!--<div class="mobilealertnew red clearfix">
+                      <span class="redalertnew visible-xs"><i class="fa fa-exclamation-triangle"></i>  Please provide a valid input</span>
+                    </div>-->
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="mobileredclass" class="mobilealertnew red clearfix" style="display:none;">
+        <span id="mobileredmsg" class="redalertnew visible-xs"><i class="fa fa-exclamation-triangle"></i>  Please provide a valid input    </span>
+    </div>
+    <div id="mobilegreenclass" class="mobilealertnew green clearfix" style="display:none;">
+        <span id="mobilegreenmsg" class="greenalertnew visible-xs"><i class="fa fa-check-circle"></i> </span>
+    </div>
+</div>
+<div class="md-overlay"></div>
+<section>
+    <!-- Modal -->
+    <div class="modal fade bs-example-modal-sm" id="capturemobile-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+
+                <div class="modal-header signup-header">
+                    <h4 class="modal-title color-white">
+                        <span class="pull-left">
+                            WELCOME <label id="capturemobile_user_name"></label>
+                        </span>
+                        <span class="pull-right">                           
+                        </span>
+                    </h4>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 linkedin-content">
+                            <h5 class="line-height23">It seems we don't have your phone number. Please share as it helps us to provide better customer service. Thank you!</h5>
+                            <form id="captureMobileForm" action="https://www.edureka.co/blog/spark-tutorial/" method="post">
+                                <input type="hidden" name="data[User][email]" id="email_capturemobile">
+                                <input type="hidden" name="data[User][password]" id="password_capturemobile">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Mobile Number" required="" name="data[User][mobile]">
+                                </div>
+                                <!--                                <button type="button"  class="btn btn-primary btn-lg btn-block signin-login-btn continue-btn">Continue</button>-->
+                                <button type="button" id="btnCaptureMobile" class="btn btn-primary btn-lg btn-block signin-login-btn continue-btn" style="">Continue</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--googleon: all--><div class="navbar-collapse collapse navbar-right" id="navbar" aria-expanded="false">
+            <ul class="nav navbar-nav home-login hidden-sm hidden-xs"><!--
+                <li><a href="/instructors/add">For Instructors</a></li> -->
+                <li><a href="https://www.edureka.co/all-courses?utm_source=blog&amp;utm_medium=courses&amp;utm_term=all-courses">All Course</a></li>
+            </ul>
+        </div></div>                </div>
+            </nav>
+        </section>
+    </header>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+                <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12 left-menu"> 
+    <div class="row left-menu-row">
+<div class="side-menu"><nav class="navbar navbar-default" role="navigation">
+<div class="side-menu-container side-menu-blog"><button type="button" class="navbar-toggle navbar-tog-open-close side-body"><span class="fa fa-bars"></span></button><div class="side-nav-title"><h2>Spark Tutorial Series</h2></div><ul class="nav navbar-nav cus-nav-scroll dropdown-menu-scrollbar mCustomScrollbar _mCS_2 mCS-autoHide mCS_no_scrollbar" style="position: relative; overflow: visible;"><div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" tabindex="0"><div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+<li class="first-level active"><a href="https://www.edureka.co/blog/spark-tutorial/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial" class="active-link" data-currpage="spark-tutorial">Spark Tutorial: Real Time Cluster Computing Framework</a>
+</li>
+<li class="first-level "><a href="https://www.edureka.co/blog/spark-streaming/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial" data-currpage="spark-tutorial">Spark Streaming Tutorial – Sentiment Analysis Using Apache Spark</a>
+</li>
+<li class="first-level "><a href="https://www.edureka.co/blog/spark-mllib/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial" data-currpage="spark-tutorial">Spark MLlib – Machine Learning Library Of Apache Spark</a>
+</li>
+<li class="first-level "><a href="https://www.edureka.co/blog/spark-sql-tutorial/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial" data-currpage="spark-tutorial">Spark SQL Tutorial – Understanding Spark SQL With Examples</a>
+</li>
+<li class="first-level "><a href="https://www.edureka.co/blog/spark-graphx/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial" data-currpage="spark-tutorial">Spark GraphX Tutorial – Graph Analytics In Apache Spark</a>
+</li>
+<li class="first-level "><a href="https://www.edureka.co/blog/interview-questions/top-apache-spark-interview-questions-2016/?utm_source=blog&amp;utm_medium=left-menu&amp;utm_campaign=spark-tutorial" data-currpage="spark-tutorial">Top Apache Spark Interview Questions You Should Prepare For In 2017</a>
+</li>
+</div></div><div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_2_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; height: 0px; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></ul></div></nav></div></div>
+</div>
+<!-- Right Panel ends -->
+                        <div class="col-lg-8 col-md-7 col-xs-12 col-sm-12 blogmobfull">
+                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 bread-herohead">
+    <div class="herohead">
+        <div class="">
+            <div class="row">
+                                <div class="">
+                    <h6 class="breadcrumb-section hidden-xs ">
+                        <a class="text-bold text-normal underline-remove brdcrumclrinac" href="https://www.edureka.co/blog">Home</a>
+                        <!--                        &nbsp;&nbsp;<i class="fa fa-chevron-right chevronblog chevron-level-0"></i>&nbsp;&nbsp;
+                        <a class="text-bold text-normal underline-remove brdcrumclrac reset-filters post-type-level" href="/blog">Blogs&nbsp;&nbsp;</a>-->
+                        <i class="fa fa-chevron-right chevronblog chevron-level-1 ">&nbsp;&nbsp;</i>
+                        <a class="text-bold text-normal underline-remove brdcrumclrac post-type-breadcrum reset-filters " href="https://www.edureka.co/blog">Blogs</a>
+                        &nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right chevronblog  cat-level-breadcrum"></i>&nbsp;&nbsp;
+                        <span class="text-bold text-normal underline-remove brdcrumclrac cat-level-breadcrum cat-level-breadcrum-title ">Big Data Analytics</span>&nbsp;
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>      
+<!-- Top Navigation to be sent in blog phase 2 starts-->
+
+<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mainnavigator">
+    <article class="navigatedetail col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+        <span class="blogall"><a href="https://www.edureka.co/blog//all"><i class="icon-Home_icon"></i></a></span>
+        <span class="bloghome"><a href="https://www.edureka.co/blog/">Blogs</a></span>
+        <span class="videohome"><a href="https://www.edureka.co/blog/videos">Videos</a></span>
+        <span class="interviewhome"><a href="https://www.edureka.co/blog/interview-questions">Interview Questions</a></span>
+    </article>
+</section>
+<!--Top Navigation to be sent in blog phase 2-->
+                            <section class="mainsecblog">
+                                <section class="blogmaincontainer">
+                                    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding topsection">
+    <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12 blogmainheading">
+        <h1 class="blogheading">
+            Spark Tutorial: Real Time Cluster Computing Framework        </h1>
+        <span class="recommendedsec clearfix"><p>
+                                                    <i class="fa fa-bookmark newbookmark"></i> Recommended by  82 users                            </p>
+        </span>
+        <div class="top-sec-infodetail">
+            <span class="authorblog"><a href="https://www.edureka.co/blog/author/sandeepdedureka-co/" title="Posts by Sandeep Dayananda" rel="author">Sandeep Dayananda</a></span>
+            <span class="dateblog">May 4, 2017</span> 
+             
+<div class="maxcollection maxcollection-1" data-collection="1"><span class="mb-collection-item item-24" data-doc-id="24" data-popup="{&quot;width&quot;:400,&quot;height&quot;:300}"><a class="maxbutton-24 maxbutton maxbutton-circle-social-share-facebook" href="https://www.facebook.com/sharer.php?u=https://www.edureka.co/blog/spark-tutorial/"><span class="mb-icon"><i class="fa fa-facebook"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-25" data-doc-id="25" data-popup="{&quot;width&quot;:550,&quot;height&quot;:420}"><a class="maxbutton-25 maxbutton maxbutton-circle-social-share-twitter" href="https://twitter.com/intent/tweet?url=https://www.edureka.co/blog/spark-tutorial/"><span class="mb-icon"><i class="fa fa-twitter"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-26" data-doc-id="26" data-popup="{&quot;width&quot;:700,&quot;height&quot;:500}"><a class="maxbutton-26 maxbutton maxbutton-circle-social-share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.edureka.co/blog/spark-tutorial/"><span class="mb-icon"><i class="fa fa-linkedin"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-27" data-doc-id="27" data-popup="{&quot;width&quot;:600,&quot;height&quot;:600}"><a class="maxbutton-27 maxbutton maxbutton-circle-social-share-google-plus" href="https://plus.google.com/share?url=https://www.edureka.co/blog/spark-tutorial/"><span class="mb-icon"><i class="fa fa-google-plus"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span></div>        </div>
+    </article>
+    <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12 topimage">
+        <img class="blogimg" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Heroimage 1.jpg" alt="Spark Tutorial: Real Time Cluster Computing Framework" title="Spark Tutorial: Real Time Cluster Computing Framework">    </article>
+</section>                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12 no-padding hidden-sm hidden-xs share-leftnav">
+                                            <div class="nav-stacked-social affix" data-spy="affix" data-offset-top="350" data-offset-bottom="400">
+                                                <div class="maxcollection maxcollection-1" data-collection="1"><span class="mb-collection-item item-24" data-doc-id="24_1" data-popup="{&quot;width&quot;:400,&quot;height&quot;:300}"><a class="maxbutton-24 maxbutton maxbutton-circle-social-share-facebook" href="https://www.facebook.com/sharer.php?u=https://www.edureka.co/blog/spark-tutorial/"><span class="mb-icon"><i class="fa fa-facebook"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-25" data-doc-id="25_1" data-popup="{&quot;width&quot;:550,&quot;height&quot;:420}"><a class="maxbutton-25 maxbutton maxbutton-circle-social-share-twitter" href="https://twitter.com/intent/tweet?url=https://www.edureka.co/blog/spark-tutorial/"><span class="mb-icon"><i class="fa fa-twitter"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-26" data-doc-id="26_1" data-popup="{&quot;width&quot;:700,&quot;height&quot;:500}"><a class="maxbutton-26 maxbutton maxbutton-circle-social-share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.edureka.co/blog/spark-tutorial/"><span class="mb-icon"><i class="fa fa-linkedin"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-27" data-doc-id="27_1" data-popup="{&quot;width&quot;:600,&quot;height&quot;:600}"><a class="maxbutton-27 maxbutton maxbutton-circle-social-share-google-plus" href="https://plus.google.com/share?url=https://www.edureka.co/blog/spark-tutorial/"><span class="mb-icon"><i class="fa fa-google-plus"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span></div>                                            </div>
+                                        </div>
+                                        <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 no-padding">
+                                            <section class="col-md-12 col-lg-12 col-sm-12 col-xs-12 blogdetailsec">
+    <article class="col-md-9 col-lg-9 col-sm-9 col-xs-12 blogdescription"> 
+        <span class="AddtoBookmark"><a href="https://www.edureka.co/blog/spark-tutorial/" data-title="Spark Tutorial: Real Time Cluster Computing Framework">
+                <i class="icon-Add_to_bookmark"></i>
+                <span class="Bookmark-text"><span>Add to</span> Bookmark</span></a>
+        </span>
+
+            <div class="modal thispost-mail fade" id="emailpostpop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content centered">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span></button>
+                    <div class="Mailpost">
+                        <span class="icon"><i class="icon-Mail_this_post"></i></span>
+                        <span class="Mailthispost">Email this post</span>
+                        <form class="email-me-the-post" method="post" novalidate="novalidate">
+                            <div class="input-name  ">
+                                <input type="hidden" name="contentId" value="44568">
+                                <input type="text" name="name" class="required" required="" placeholder="Enter Your Name" autocomplete="false">
+                                <div class="error-name">
+                                    Please enter a valid input.
+                                </div>
+                            </div>
+                            <div class="input-email ">
+                                <input type="text" class="email required" required="" name="emails" placeholder="Enter Email ID’s ( Separated by commas )" autocomplete="false">
+                                <div class="error-email">
+                                    Please enter a valid email id or comma separated email id's.
+                                </div>
+                            </div>
+                            <button type="submit" class="Submit-mailpost">Submit</button>
+                        </form>
+                    </div>
+                    <div class="Mailpost-thankyou">
+                        <i class="icon-success"></i>
+                        <span class="Mailthispost">The post has been successfully mailed.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="EmailthisPost" data-toggle="modal" data-target="#emailpostpop">
+            <i class="icon-Mail_this_post"></i>
+            <span class="EmailthisPost-text">Email <span>this Post</span></span>
+        </span> 
+        <span class="viewsblogsec">
+            <span class="viewscount details-page-views-count"><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 1.7K</span>
+        </span>
+        <span class="commentsblogsec">
+            <a href="https://www.edureka.co/blog/spark-tutorial/#comments-wrapper" class="commentcount">
+                <span><i class="icon-comments"></i></span>
+            </a>&nbsp;&nbsp;
+            <a class="disqus-comment-count" data-disqus-url="https://www.edureka.co/blog/spark-tutorial/" href="https://www.edureka.co/blog/spark-tutorial/#disqus_thread">2 </a>
+        </span>
+    </article>
+            <article class="col-md-3 col-lg-3 col-sm-3 col-xs-12 related-blog hidden-sm hidden-xs">
+            <ul class="pager">
+                <li><a href="https://www.edureka.co/blog/spark-tutorial/#" class="show-prev-in-series"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.edureka.co/blog/spark-tutorial/#" class="show-next-in-series"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            </ul>
+        </article>
+            <!-- <article class = "col-md-3 col-lg-3 col-sm-3 col-xs-12 downloadpdfblog">
+         <span class = "downloadpdf"></span>
+ </article> -->
+</section>                                            <section class="col-md-12 col-lg-12 col-sm-12 col-xs-12 blogcontentsec">
+                                                <article class="maincontentblog">
+                                                    <p class="contentblogdetail">
+                                                        </p><p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Apache Spark is an <em>open-source cluster computing framework</em> for <em>real-time processing</em>. It is&nbsp;of the most successful projects in the Apache Software Foundation. Spark has clearly evolved as the market leader for Big Data processing.&nbsp;Today, Spark is being adopted by major players like Amazon, eBay, and Yahoo! Many organizations run Spark on clusters with thousands of nodes. </span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">We are excited to begin this exciting journey through this <em>Spark Tutorial</em>&nbsp;blog. This blog is the first blog in the upcoming Apache Spark blog series which will include Spark Streaming, Spark Interview Questions, Spark MLlib and others.</span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">When it comes to Real Time Data Analytics, Spark stands as the go-to tool across all other solutions. Through this blog, I will introduce you to this new exciting domain of Apache Spark and we will go through a complete use case,&nbsp;<em>Earthquake Detection</em>&nbsp;using Spark.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The following are the topics covered in this Spark Tutorial blog:</span></p>
+<ol>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-tutorial/#Real_Time_Analytics">Real Time Analytics</a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-tutorial/#Why_Spark_When_Hadoop_Exists">Why Spark when Hadoop is already there?</a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-tutorial/#What_Is_Apache_Spark">What is Apache Spark?</a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-tutorial/#Spark_Features">Spark Features</a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-tutorial/#Getting_Started_With_Spark">Getting Started with Spark</a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-tutorial/#Using_Spark_With_Hadoop">Using Spark with Hadoop</a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-tutorial/#Spark_Components">Spark Components</a><a name="Real_Time_Analytics"></a></span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><a href="https://www.edureka.co/blog/spark-tutorial/#Use_Case_Earthquake_Detection">Use Case: Earthquake&nbsp;Detection using Spark</a></span></li>
+</ol>
+<h2><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;">Spark Tutorial: Real Time Analytics</span></strong></h2>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Before we begin, let us have a look at the amount of data generated every minute by social media leaders.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><img class="alignright size-full wp-image-44872" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Data-Generated-Spark-Tutorial-Edureka.png" alt="Data Generated - Spark Tutorial - Edureka" width="2048" height="725" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Data-Generated-Spark-Tutorial-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Data-Generated-Spark-Tutorial-Edureka-150x53.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Data-Generated-Spark-Tutorial-Edureka-300x106.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Data-Generated-Spark-Tutorial-Edureka-768x272.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Data-Generated-Spark-Tutorial-Edureka-528x187.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Data-Generated-Spark-Tutorial-Edureka-508x180.png 508w" sizes="(max-width: 2048px) 100vw, 2048px"></span></p>
+<p style="text-align: center;"><span style="font-size: 12px; font-family: verdana, geneva, sans-serif;"><strong>Figure:</strong> <em>Amount of data generated every minute</em></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">As we can see, there is a colossal amount of data that the internet world necessitates&nbsp;to process in seconds. We will go through all the stages of handling big data in enterprises and discover the need for</span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">&nbsp;a <em>Real Time Processing Framework</em> called <em>Apache Spark</em>.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">To begin with, let me introduce you to few domains&nbsp;using real-time analytics big time in today’s world.&nbsp;</span></p>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><img class="aligncenter size-full wp-image-44630" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Real-Time-Analytics-Spark-Tutorial-Edureka.png" alt="Real Time Analytics - Spark Tutorial - Edureka" width="2048" height="1002" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Real-Time-Analytics-Spark-Tutorial-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Real-Time-Analytics-Spark-Tutorial-Edureka-150x73.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Real-Time-Analytics-Spark-Tutorial-Edureka-300x147.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Real-Time-Analytics-Spark-Tutorial-Edureka-768x376.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Real-Time-Analytics-Spark-Tutorial-Edureka-528x258.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Real-Time-Analytics-Spark-Tutorial-Edureka-368x180.png 368w" sizes="(max-width: 2048px) 100vw, 2048px"></span></p>
+<p style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 12px;"><strong>Figure:</strong>&nbsp;<em>Spark Tutorial –</em>&nbsp;<em>Examples of Real Time Analytics</em></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">We can see&nbsp;that Real Time Processing of Big Data is ingrained in every aspect of our lives. From fraud detection in banking to live surveillance systems in government, automated machines in healthcare to live prediction systems in the stock market, everything around us revolves around processing big data in near real time.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Let us look at some of these use cases of Real Time Analytics:</span></p>
+<ol>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Healthcare</strong>: Healthcare domain uses Real Time analysis to continuously check the medical status of critical patients. Hospitals on the look out for blood and organ transplants need to stay in a real-time contact with each other during emergencies. Getting medical attention on time is a matter of life and death for patients.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Government</strong>: Government agencies perform Real Time Analysis mostly in the field of national security. Countries need to continuously keep a track of all the military and police agencies for updates regarding threats to security.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Telecommunications</strong>: Companies revolving around services in the form of calls, video chats and streaming use real-time analysis to reduce customer churn and stay ahead of the competition. They also extract measurements of jitter and delay in mobile networks to improve customer experiences.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Banking</strong>: Banking transacts with almost all of the world’s money. It becomes very important to ensure fault tolerant transactions across the whole system. Fraud detection is made possible through real-time analytics in banking.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Stock Market</strong>: Stockbrokers use real-time analytics to predict the&nbsp;movement of stock portfolios. Companies re-think their business model after using real-time analytics to analyze the market demand for their brand.</span></li>
+</ol>
+<p><a name="Why_Spark_When_Hadoop_Exists"></a></p>
+<p style="text-align: center;"><a class="maxbutton-16 maxbutton maxbutton-enroll-yellow-big" target="_blank" href="https://www.edureka.co/apache-spark-scala-training?utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-tutorial"><span class="mb-text">GET STARTED WITH SPARK</span></a></p>
+<h2><strong><span style="font-size: 16px; font-family: verdana, geneva, sans-serif;">Spark Tutorial: Why Spark when Hadoop is already there?</span></strong></h2>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The first of the many questions everyone asks when it comes to Spark is, “<em><strong>Why Spark when we have Hadoop already?</strong></em>“.&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">To answer this, we have to look at the concept of batch&nbsp;and real-time processing. <em>Hadoop</em> is based on the concept of <em>batch processing</em> where the processing happens of blocks of data that have already been stored over a period of time. At the time, Hadoop broke all the expectations with the revolutionary MapReduce framework in 2005. Hadoop MapReduce is the&nbsp;best framework for processing data in batches. </span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">This went on until 2014, till Spark overtook Hadoop. The USP for Spark was that it could<em> process data</em> in <em>real time</em> and was about 100 times faster than Hadoop MapReduce&nbsp;in batch processing large data sets.</span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">The following figure gives a detailed explanation of the differences between processing in Spark and Hadoop.</span></p>
+<p style="text-align: center;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;"><img class="aligncenter size-full wp-image-44767" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-vs-Hadoop-Spark-Tutorial-Edureka-2.png" alt="Spark vs Hadoop - Spark Tutorial - Edureka" width="1135" height="1043" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-vs-Hadoop-Spark-Tutorial-Edureka-2.png 1135w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-vs-Hadoop-Spark-Tutorial-Edureka-2-150x138.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-vs-Hadoop-Spark-Tutorial-Edureka-2-300x276.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-vs-Hadoop-Spark-Tutorial-Edureka-2-768x706.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-vs-Hadoop-Spark-Tutorial-Edureka-2-326x300.png 326w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-vs-Hadoop-Spark-Tutorial-Edureka-2-196x180.png 196w" sizes="(max-width: 1135px) 100vw, 1135px"></span></strong><span style="font-size: 12px;"><strong><span style="font-family: verdana, geneva, sans-serif;">Figure: </span></strong><em><span style="font-family: verdana, geneva, sans-serif;">Spark Tutorial – Differences between Hadoop and Spark</span></em></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Here, we can draw out one of the key differentiators between Hadoop and Spark. Hadoop is based on batch processing of big data. This means that the data is stored over a period of time&nbsp;and is then processed using Hadoop.&nbsp;</span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Whereas in Spark, processing can take place in real-time. This real-time processing power in Spark helps us to solve the use cases of Real Time Analytics we saw in the previous section. Alongside this, Spark is also able to do batch processing 100 times faster than that of Hadoop MapReduce (Processing framework in Apache Hadoop). <em>Therefore, Apache Spark <a name="What_Is_Apache_Spark"></a>is the go-to tool for big data processing in the industry.</em></span></p>
+<h2 style="text-align: left;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;">Spark Tutorial: What is Apache Spark?</span></strong></h2>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Apache Spark is an <em>open-source cluster computing framework</em> for <em>real-time processing.&nbsp;</em>It has a thriving open-source community and is the most active Apache project at the moment. Spark provides an interface for programming entire clusters with implicit data parallelism and fault-tolerance.&nbsp;</span></p>
+<p style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><img class="aligncenter size-full wp-image-46039" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Apache-Spark-Spark-Interview-Questions-Edureka-1.png" alt="Apache Spark - Spark Interview Questions - Edureka" width="1218" height="305" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Apache-Spark-Spark-Interview-Questions-Edureka-1.png 1218w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Apache-Spark-Spark-Interview-Questions-Edureka-1-150x38.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Apache-Spark-Spark-Interview-Questions-Edureka-1-300x75.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Apache-Spark-Spark-Interview-Questions-Edureka-1-768x192.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Apache-Spark-Spark-Interview-Questions-Edureka-1-528x132.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Apache-Spark-Spark-Interview-Questions-Edureka-1-590x148.png 590w" sizes="(max-width: 1218px) 100vw, 1218px"></span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-size: 12px;"><strong>Figure:</strong> </span></span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-size: 12px;"><em>Spark Tutorial – Real Time Processing in Apache Spark</em></span></span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px; color: #ff0000;"><span style="font-size: 12px;">&nbsp;</span></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">It was built on top of Hadoop MapReduce and <a name="Spark_Features"></a>it extends the MapReduce model to efficiently use more types of computations.</span></p>
+<h2><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;">Spark Tutorial: Features of Apache Spark</span></strong></h2>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark has the following features:&nbsp;</span></p>
+<p style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 12px;"><strong><img class="aligncenter size-full wp-image-44637" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-Features-Spark-Tutorial-Edureka-2.png" alt="Spark Features - Spark Tutorial - Edureka" width="2048" height="999" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-2.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-2-150x73.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-2-300x146.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-2-768x375.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-2-528x258.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-2-369x180.png 369w" sizes="(max-width: 2048px) 100vw, 2048px">Figure:</strong> <em>Spark Tutorial – Spark Features</em></span></p>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Let us look at the features in detail:</span></p>
+<table width="100%">
+<tbody>
+<tr style="height: 170px;">
+<td style="width: 1008px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Polyglot</strong>:</span><p></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark&nbsp;provides high-level APIs in Java, Scala, Python and R. Spark code can be written in any of these four languages. It provides a shell in Scala and Python. The Scala shell can be accessed through <strong>./bin/spark-shell</strong> and Python shell through <strong>./bin/pyspark</strong> from the installed directory.</span></p>
+</td>
+<td style="width: 476px;"><img class="aligncenter size-full wp-image-44895" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-Features-Spark-Tutorial-Edureka-3.png" alt="Spark Features - Spark Tutorial - Edureka" width="853" height="482" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-3.png 853w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-3-150x85.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-3-300x170.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-3-768x434.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-3-528x298.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-Spark-Tutorial-Edureka-3-319x180.png 319w" sizes="(max-width: 853px) 100vw, 853px"></td>
+</tr>
+</tbody>
+</table>
+<table width="100%">
+<tbody>
+<tr style="height: 170px;">
+<td style="width: 31.7122%; height: 199.922px;">
+<h2><strong><span style="font-size: 16px; font-family: verdana, geneva, sans-serif;"><img class="wp-image-44772 aligncenter" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-Features-1-Spark-Tutorial-Edureka.png" alt="Spark Features 1 - Spark Tutorial - Edureka" width="450" height="224" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-1-Spark-Tutorial-Edureka.png 924w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-1-Spark-Tutorial-Edureka-150x75.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-1-Spark-Tutorial-Edureka-300x149.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-1-Spark-Tutorial-Edureka-768x382.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-1-Spark-Tutorial-Edureka-528x262.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-1-Spark-Tutorial-Edureka-362x180.png 362w" sizes="(max-width: 450px) 100vw, 450px"></span></strong></h2>
+</td>
+<td style="width: 67.3551%; height: 199.922px;">
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Speed</strong>:</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark runs up to 100 times faster than Hadoop MapReduce for large-scale data processing. Spark is able to achieve this speed through controlled partitioning. It manages data using partitions that help parallelize distributed data processing with minimal network traffic.<br>
+</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%">
+<tbody>
+<tr style="height: 170px;">
+<td style="width: 67.2885%;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Multiple Formats</strong>:</span><p></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark supports multiple data sources such as Parquet, JSON, Hive and Cassandra apart from the usual formats such as text files, CSV and RDBMS tables. The Data Source&nbsp;API provides a pluggable mechanism for accessing structured data though Spark SQL. Data sources can be more than just simple pipes that convert data and pull it into Spark.</span></p>
+</td>
+<td style="width: 31.7788%;"><strong><img class="wp-image-44816 aligncenter" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-Features-2-Spark-Tutorial-Edureka-2.png" alt="Spark Features 2 - Spark Tutorial - Edureka" width="450" height="254" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-2-Spark-Tutorial-Edureka-2.png 853w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-2-Spark-Tutorial-Edureka-2-150x85.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-2-Spark-Tutorial-Edureka-2-300x170.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-2-Spark-Tutorial-Edureka-2-768x434.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-2-Spark-Tutorial-Edureka-2-528x298.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-2-Spark-Tutorial-Edureka-2-319x180.png 319w" sizes="(max-width: 450px) 100vw, 450px"></strong></td>
+</tr>
+</tbody>
+</table>
+<table width="100%">
+<tbody>
+<tr style="height: 170px;">
+<td style="width: 31.7295%;"><img class="wp-image-44787 aligncenter" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-Features-3-Spark-Tutorial-Edureka.png" alt="Spark Features 3 - Spark Tutorial - Edureka" width="449" height="240" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-3-Spark-Tutorial-Edureka.png 860w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-3-Spark-Tutorial-Edureka-150x80.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-3-Spark-Tutorial-Edureka-300x161.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-3-Spark-Tutorial-Edureka-768x412.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-3-Spark-Tutorial-Edureka-528x283.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-3-Spark-Tutorial-Edureka-336x180.png 336w" sizes="(max-width: 449px) 100vw, 449px"></td>
+<td style="width: 66.2705%;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Lazy Evaluation</strong>:</span><p></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Apache Spark delays its evaluation till it is absolutely necessary. This is one of the key factors contributing to its speed.&nbsp;For transformations, Spark adds them to a DAG (Directed Acyclic Graph) of computation and only when the&nbsp;driver requests some data, does this DAG actually gets executed.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="height: 11px;" width="100%">
+<tbody>
+<tr style="height: 170px;">
+<td style="width: 66.467%;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Real Time Computation</strong>:</span><p></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark’s computation is real-time and has low&nbsp;latency because of its in-memory computation.&nbsp;Spark is designed for massive scalability and the Spark team has documented users of the system running production clusters with thousands of nodes&nbsp;and supports several computational models.</span></p>
+</td>
+<td style="width: 30.533%;">&nbsp;<img class="wp-image-44798 aligncenter" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-Features-4-Spark-Tutorial-Edureka-1.png" alt="Spark Features 4 - Spark Tutorial - Edureka" width="450" height="255" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-4-Spark-Tutorial-Edureka-1.png 853w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-4-Spark-Tutorial-Edureka-1-150x85.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-4-Spark-Tutorial-Edureka-1-300x170.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-4-Spark-Tutorial-Edureka-1-768x435.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-4-Spark-Tutorial-Edureka-1-528x300.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-4-Spark-Tutorial-Edureka-1-318x180.png 318w" sizes="(max-width: 450px) 100vw, 450px"></td>
+</tr>
+</tbody>
+</table>
+<table style="height: 78px;" width="100%">
+<tbody>
+<tr style="height: 170px;">
+<td style="width: 32.0453%;"><img class="wp-image-44799 aligncenter" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-Features-5-Spark-Tutorial-Edureka-1.png" alt="Spark Features 5 - Spark Tutorial - Edureka" width="450" height="255" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-5-Spark-Tutorial-Edureka-1.png 853w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-5-Spark-Tutorial-Edureka-1-150x85.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-5-Spark-Tutorial-Edureka-1-300x170.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-5-Spark-Tutorial-Edureka-1-768x435.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-5-Spark-Tutorial-Edureka-1-528x300.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-5-Spark-Tutorial-Edureka-1-318x180.png 318w" sizes="(max-width: 450px) 100vw, 450px"></td>
+<td style="width: 67.022%;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Hadoop Integration</strong>:</span><p></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Apache Spark provides smooth compatibility with Hadoop. This is a<span style="color: #ff0000;">&nbsp;</span>boon for all the Big Data engineers who started their careers with Hadoop. Spark is a potential replacement for the MapReduce functions of Hadoop, while Spark has the ability to run on top of an existing Hadoop cluster&nbsp;using YARN for resource scheduling.&nbsp;</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="height: 83px;" width="100%">
+<tbody>
+<tr style="height: 170px;">
+<td style="width: 67.537%;">
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Machine Learning</strong>:</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark’s MLlib is the machine learning component which is handy when it comes to big data processing<span style="color: #ff0000;">.</span> It eradicates the need to use multiple tools, one for processing and one for machine learning.&nbsp;Spark provides data engineers and data scientists with a powerful, unified engine that is both fast and easy to use.</span></p>
+</td>
+<td style="width: 30.463%;"><img class="wp-image-44801 aligncenter" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-Features-6-Spark-Tutorial-Edureka-3.png" alt="Spark Features 6 - Spark Tutorial - Edureka" width="449" height="254" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-6-Spark-Tutorial-Edureka-3.png 853w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-6-Spark-Tutorial-Edureka-3-150x85.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-6-Spark-Tutorial-Edureka-3-300x170.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-6-Spark-Tutorial-Edureka-3-768x434.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-6-Spark-Tutorial-Edureka-3-528x298.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Features-6-Spark-Tutorial-Edureka-3-319x180.png 319w" sizes="(max-width: 449px) 100vw, 449px"></td>
+</tr>
+</tbody>
+</table>
+<p><strong><a name="Getting_Started_With_Spark"></a><span style="font-size: 16px; font-family: verdana, geneva, sans-serif;">Spark Tutorial: Getting Started With Spark</span></strong></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The first step in getting started with Spark is installation. Let us install Apache Spark 2.1.0 on our Linux systems (I am using Ubuntu).</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Installation:</strong></span></p>
+<ol>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The prerequisites for installing Spark is having Java and Scala installed.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Download Java in case</span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">&nbsp;it is not installed using below commands.</span>
+<div><div id="highlighter_40745" class="syntaxhighlighter  scala"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="scala plain">sudo apt-get install python-software-properties</code></div><div class="line number2 index1 alt1"><code class="scala plain">sudo apt-add-repository ppa</code><code class="scala keyword">:</code><code class="scala plain">webupd</code><code class="scala value">8</code><code class="scala plain">team/java</code></div><div class="line number3 index2 alt2"><code class="scala plain">sudo apt-get update</code></div><div class="line number4 index3 alt1"><code class="scala plain">sudo apt-get install oracle-java</code><code class="scala value">8</code><code class="scala plain">-installer</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Download the latest Scala version from <a href="http://www.scala-lang.org/" target="_blank" rel="noopener noreferrer">Scala Lang Official</a>&nbsp;page.&nbsp;</span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Once installed, set the scala path in <code>~/.bashrc </code><span style="font-family: verdana, geneva, sans-serif;">file as shown below.</span></span>
+<div><div id="highlighter_611685" class="syntaxhighlighter  scala"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="scala plain">export SCALA</code><code class="scala keyword">_</code><code class="scala plain">HOME</code><code class="scala keyword">=</code><code class="scala plain">Path</code><code class="scala keyword">_</code><code class="scala plain">Where</code><code class="scala keyword">_</code><code class="scala plain">Scala</code><code class="scala keyword">_</code><code class="scala plain">File</code><code class="scala keyword">_</code><code class="scala plain">Is</code><code class="scala keyword">_</code><code class="scala plain">Located</code></div><div class="line number2 index1 alt1"><code class="scala plain">export PATH</code><code class="scala keyword">=</code><code class="scala plain">$SCALA</code><code class="scala keyword">_</code><code class="scala plain">HOME/bin</code><code class="scala keyword">:</code><code class="scala plain">PATH</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Download Spark 2.1.0&nbsp;from the <a href="http://spark.apache.org/downloads.html" target="_blank" rel="noopener noreferrer">Apache Spark Downloads</a> page. You can also choose to download a previous version.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Extract Spark tar using below command.</span>
+<div><div id="highlighter_324614" class="syntaxhighlighter  scala"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="scala plain">tar -xvf spark-</code><code class="scala value">2.1</code><code class="scala plain">.</code><code class="scala value">0</code><code class="scala plain">-bin-hadoop</code><code class="scala value">2.7</code><code class="scala plain">.tgz</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Set the Spark_Path in&nbsp;<code>~/.bashrc </code>file.</span>
+<div><div id="highlighter_896015" class="syntaxhighlighter  scala"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="scala plain">export SPARK</code><code class="scala keyword">_</code><code class="scala plain">HOME</code><code class="scala keyword">=</code><code class="scala plain">Path</code><code class="scala keyword">_</code><code class="scala plain">Where</code><code class="scala keyword">_</code><code class="scala plain">Spark</code><code class="scala keyword">_</code><code class="scala plain">Is</code><code class="scala keyword">_</code><code class="scala plain">Installed</code></div><div class="line number2 index1 alt1"><code class="scala plain">export PATH</code><code class="scala keyword">=</code><code class="scala plain">$PATH</code><code class="scala keyword">:</code><code class="scala plain">$SPARK</code><code class="scala keyword">_</code><code class="scala plain">HOME/bin</code></div></div></td></tr></tbody></table></div></div>
+</li>
+</ol>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Before we move further, let us start up Apache Spark on our systems and get used to the main concepts of Spark like Spark Session, Data Sources, RDDs, DataFrames and other libraries.</span></p>
+<p style="text-align: justify;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark Shell:&nbsp;</span></strong></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark’s shell provides a simple way to learn the API, as well as a powerful tool to analyze data interactively.</span></p>
+<p style="text-align: justify;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark Session:&nbsp;</span></strong></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">In earlier versions of Spark, Spark Context was the entry point for Spark. For every other API, we needed to use different contexts. For streaming, we needed StreamingContext, for SQL sqlContext and for hive HiveContext.&nbsp;To solve this issue, SparkSession came into the picture. It&nbsp;</span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">is essentially a combination of SQLContext, HiveContext and future StreamingContext.</span></p>
+<p style="text-align: justify;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Data Sources:</span></strong></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The Data Source API provides a pluggable mechanism for accessing structured data though Spark SQL. Data Source API is used to read and store structured and semi-structured data into Spark SQL.&nbsp;Data sources can be more than just simple pipes that convert data and pull it into Spark.</span></p>
+<p style="text-align: justify;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">RDD:</span></strong></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Resilient Distributed Dataset (RDD) is a fundamental data structure of Spark. It is an immutable distributed collection of objects. Each dataset in RDD is divided into logical partitions, which may be computed on different nodes of the cluster. RDDs can contain any type of Python, Java, or Scala objects, including user-defined classes.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Dataset:&nbsp;</strong></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">A Dataset is a distributed collection of data. A Dataset can be constructed from JVM objects and then manipulated using functional transformations (map, flatMap, filter, etc.). The Dataset API is available in Scala and Java. </span></p>
+<p style="text-align: justify;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">DataFrames:&nbsp;</span></strong></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">A DataFrame is a </span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><em>Dataset</em> organized into named columns. It is conceptually equivalent to a table in a relational database or a data frame in R/Python, but with richer optimizations under the hood. DataFrames can be constructed from a wide array of sources such as: structured data files, tables in Hive, external <a name="Using_Spark_With_Hadoop"></a>databases or existing RDDs.</span></p>
+<h2><strong><span style="font-size: 16px; font-family: verdana, geneva, sans-serif;">Spark Tutorial: Using Spark with Hadoop</span></strong></h2>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The best part of Spark is its compatibility with Hadoop. As a result, this makes for a very powerful combination of technologies. Here, we will be looking at how Spark can benefit from the best of Hadoop.</span></p>
+<p style="text-align: center;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;"><img class="aligncenter size-full wp-image-44659" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-And-Hadoop-Spark-Tutorial-Edureka.png" alt="Spark And Hadoop - Spark Tutorial - Edureka" width="2048" height="999" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-And-Hadoop-Spark-Tutorial-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-And-Hadoop-Spark-Tutorial-Edureka-150x73.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-And-Hadoop-Spark-Tutorial-Edureka-300x146.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-And-Hadoop-Spark-Tutorial-Edureka-768x375.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-And-Hadoop-Spark-Tutorial-Edureka-528x258.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-And-Hadoop-Spark-Tutorial-Edureka-369x180.png 369w" sizes="(max-width: 2048px) 100vw, 2048px"><span style="font-size: 12px;">Figure: </span></span></strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;"><span style="font-size: 12px;"><em>Spark Tutorial – Spark Features</em></span></span></p>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Hadoop components can be used alongside Spark in the following ways:</span></p>
+<ol>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>HDFS</strong>:&nbsp;</span>Spark can run on top of HDFS to leverage the distributed replicated storage.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>MapReduce</strong>: </span>Spark can be used along with MapReduce in the same Hadoop cluster or separately as a processing framework.</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>YARN</strong>: </span>Spark applications can be made to run on YARN (Hadoop NextGen).</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Batch &amp; Real Time Processing</strong>: </span>MapReduce and Spark are used together where MapReduce is used for batch processing and Spark for real-time processing.</span></li>
+</ol>
+<p><a name="Spark_Components"></a></p>
+<p style="text-align: center;"><a class="maxbutton-16 maxbutton maxbutton-enroll-yellow-big" target="_blank" href="https://www.edureka.co/apache-spark-scala-training?utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-tutorial"><span class="mb-text">LEARN SPARK FROM EXPERTS</span></a></p>
+<h2><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;">Spark Tutorial: Spark Components</span></strong></h2>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark components are what make&nbsp;Apache Spark fast and reliable. A lot of these Spark components were built to resolve the issues that cropped up while using Hadoop MapReduce.&nbsp;Apache Spark has the following components:</span></p>
+<ol>
+<li><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark Core</span></strong></li>
+<li><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark Streaming</span></strong></li>
+<li><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark SQL</span></strong></li>
+<li><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">GraphX</span></strong></li>
+<li><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">MLlib (Machine Learning)</span></strong></li>
+</ol>
+<h3><span style="font-size: 14px;"><strong><span style="font-family: verdana, geneva, sans-serif;">Spark Core</span></strong></span></h3>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><em>Spark Core</em> is the base engine for large-scale parallel and distributed data processing.&nbsp;The core is the distributed execution engine and the Java, Scala, and Python APIs offer a platform for distributed ETL application development. Further, additional libraries which are built atop the core allow diverse workloads for streaming, SQL, and machine learning.&nbsp;</span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">It is responsible for:</span></p>
+<ol>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Memory management and fault recovery</span></li>
+<li style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Scheduling, distributing and monitoring jobs on a cluster</span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Interacting with storage systems</span></li>
+</ol>
+<h3><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark Streaming</span></strong></h3>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><em>Spark Streaming</em> is the component of Spark which is used to process real-time streaming data. Thus, it is a useful addition to the core Spark API. It&nbsp;enables high-throughput and fault-tolerant stream processing of live data streams. The fundamental stream unit is DStream which is basically a series of RDDs (Resilient Distributed Datasets) to process the real-time data.</span></p>
+<p style="text-align: center;"><img class="aligncenter size-full wp-image-44782" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-Streaming-Spark-Tutorial-Edureka-3.png" alt="Spark Streaming - Spark Tutorial - Edureka" width="2048" height="596" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Tutorial-Edureka-3.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Tutorial-Edureka-3-150x44.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Tutorial-Edureka-3-300x87.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Tutorial-Edureka-3-768x224.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Tutorial-Edureka-3-528x154.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-Streaming-Spark-Tutorial-Edureka-3-590x172.png 590w" sizes="(max-width: 2048px) 100vw, 2048px"><strong><span style="font-size: 12px; font-family: verdana, geneva, sans-serif;">Figure:&nbsp;</span></strong><em><span style="font-size: 12px; font-family: verdana, geneva, sans-serif;">Spark Tutorial – Spark Streaming</span></em></p>
+<h3><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark SQL</span></strong></h3>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><em>Spark SQL</em>&nbsp;is a new module in Spark which integrates relational processing with Spark’s functional programming API. It supports&nbsp;querying data either via SQL or via the Hive Query Language.&nbsp;For those of you familiar with RDBMS, Spark SQL will be an easy transition from your earlier tools where you can extend the boundaries of traditional relational data processing.&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Spark SQL&nbsp;integrates relational processing with Spark’s functional programming. Further, it provides support for various data sources and makes it possible to weave SQL queries with code transformations thus resulting in a very powerful tool.</span></p>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The following are the four libraries of Spark SQL.</span></p>
+<ol>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Data Source API</span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">DataFrame API</span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Interpreter &amp; Optimizer</span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">SQL Service</span></li>
+</ol>
+<h3><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><img class="aligncenter size-full wp-image-44678" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-SQL-Spark-Tutorial-Edureka.png" alt="Spark SQL - Spark Tutorial - Edureka" width="2048" height="887" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-SQL-Spark-Tutorial-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-SQL-Spark-Tutorial-Edureka-150x65.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-SQL-Spark-Tutorial-Edureka-300x130.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-SQL-Spark-Tutorial-Edureka-768x333.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-SQL-Spark-Tutorial-Edureka-528x229.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Spark-SQL-Spark-Tutorial-Edureka-415x180.png 415w" sizes="(max-width: 2048px) 100vw, 2048px"></span></strong></h3>
+<p style="text-align: justify;"><em><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">A complete tutorial on Spark SQL can be found in the given blog: <span style="text-decoration: underline;"><a href="https://www.edureka.co/blog/spark-sql-tutorial/?utm_source=blog&amp;amp;amp;amp;amp;amp;utm_medium=related-posts&amp;amp;amp;amp;amp;amp;utm_campaign=spark-tutorial" target="_blank" rel="noopener noreferrer">Spark SQL Tutorial Blog</a></span></span></em></p>
+<h3><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">GraphX</span></strong></h3>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><em>GraphX</em> is the Spark API for graphs and graph-parallel computation. Thus, it extends the Spark RDD with a Resilient Distributed Property Graph.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The property graph is a directed multigraph which can have multiple edges in parallel. Every edge and vertex have user defined properties associated with it. Here, the parallel edges allow multiple relationships between the same vertices.&nbsp;At a high-level, GraphX extends the Spark RDD abstraction by introducing the Resilient Distributed Property Graph: a directed multigraph with properties attached to each vertex and edge. </span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">To support graph computation, GraphX exposes a set of fundamental operators (e.g., subgraph, joinVertices, and mapReduceTriplets) as well as an optimized variant of the Pregel API. In addition, GraphX includes a growing collection of graph algorithms and builders to simplify graph analytics tasks.</span></p>
+<h3><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">MlLib (Machine Learning)</span></strong></h3>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><em>MLlib</em> stands for Machine Learning Library. Spark MLlib is used to perform machine learning in Apache Spark.&nbsp;</span></p>
+<h2><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;"><img class="aligncenter size-full wp-image-44681" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Machine-Learning-Spark-Tutorial-Edureka.png" alt="Machine Learning - Spark Tutorial - Edureka" width="2905" height="1131" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Machine-Learning-Spark-Tutorial-Edureka.png 2905w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Machine-Learning-Spark-Tutorial-Edureka-150x58.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Machine-Learning-Spark-Tutorial-Edureka-300x117.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Machine-Learning-Spark-Tutorial-Edureka-768x299.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Machine-Learning-Spark-Tutorial-Edureka-528x206.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/04/Machine-Learning-Spark-Tutorial-Edureka-462x180.png 462w" sizes="(max-width: 2905px) 100vw, 2905px"><a name="Use_Case_Earthquake_Detection"></a>Use Case: Earthquake Detection using Spark</span></strong></h2>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Now that we have understood the core concepts of Spark, let us solve a real-life problem using Apache Spark. This will help give us the confidence to work on any Spark projects in the future.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Problem Statement</strong>:&nbsp;<em>To design a Real Time Earthquake Detection Model to send life saving alerts, which should improve its machine learning to provide near real-time computation results.</em></span></p>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Use Case – Requirements</strong>:</span></p>
+<ol>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Process data in real-time</span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Handle input from multiple sources</span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Easy to use system</span></li>
+<li><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Bulk transmission of alerts</span></li>
+</ol>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">We will use Apache Spark which is the perfect tool for our requirements.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Use Case – Dataset</strong>:</span></p>
+<p style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><img class="aligncenter size-full wp-image-46700" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Earthquake-ROC-Dataset-Spark-Tutorial-Edureka.png" alt="Earthquake ROC Dataset - Spark Tutorial - Edureka" width="1284" height="594" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Dataset-Spark-Tutorial-Edureka.png 1284w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Dataset-Spark-Tutorial-Edureka-150x69.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Dataset-Spark-Tutorial-Edureka-300x139.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Dataset-Spark-Tutorial-Edureka-768x355.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Dataset-Spark-Tutorial-Edureka-528x244.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Dataset-Spark-Tutorial-Edureka-389x180.png 389w" sizes="(max-width: 1284px) 100vw, 1284px"><span style="font-size: 12px;"><strong>Figure:</strong>&nbsp;<em>Use Case – Earthquake&nbsp;Dataset </em></span></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Click here to download the complete dataset: <a href="https://goo.gl/Uj3FE5" target="_blank" rel="noopener noreferrer"><span style="text-decoration: underline;"><em>Earthquake Dataset – Spark Training – Edureka</em></span></a></span></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">Before moving ahead, there is one concept we have to learn that we will be using in our Earthquake Detection System and it is called Receiver Operating Characteristic (ROC). An ROC curve is a graphical plot that illustrates the performance of a binary classifier system as its discrimination threshold is varied. We will use the dataset to obtain an ROC value using Machine Learning in Apache Spark.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Use Case – Flow Diagram</strong></span>:</p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The following illustration clearly explains all the steps involved in our <em>Earthquake Detection System</em>.</span></p>
+<p style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong><img class="aligncenter size-full wp-image-46764" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Flow-Diagram-Spark-Tutorial-Edureka.png" alt="Flow Diagram - Spark Tutorial - Edureka" width="2048" height="879" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Flow-Diagram-Spark-Tutorial-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Flow-Diagram-Spark-Tutorial-Edureka-150x64.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Flow-Diagram-Spark-Tutorial-Edureka-300x129.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Flow-Diagram-Spark-Tutorial-Edureka-768x330.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Flow-Diagram-Spark-Tutorial-Edureka-528x227.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Flow-Diagram-Spark-Tutorial-Edureka-419x180.png 419w" sizes="(max-width: 2048px) 100vw, 2048px"></strong></span><span style="font-family: verdana, geneva, sans-serif; font-size: 12px;"><strong>Figure:</strong> <em>Use Case – Flow diagram of Earthquake Detection&nbsp;using Apache Spark</em></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Use Case – Spark Implementation</strong></span>:</p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Moving ahead, now let us implement our project using Eclipse IDE for Spark. </span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Find the Pseudo Code below:&nbsp;</span></p>
+<div><div id="highlighter_348461" class="syntaxhighlighter  scala"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="scala comments">//Importing the necessary classes</code></div><div class="line number2 index1 alt1"><code class="scala keyword">import</code> <code class="scala plain">org.apache.spark.</code><code class="scala keyword">_</code></div><div class="line number3 index2 alt2"><code class="scala plain">...</code></div><div class="line number4 index3 alt1"><code class="scala comments">//Creating an Object earthquake</code></div><div class="line number5 index4 alt2"><code class="scala keyword">object</code> <code class="scala plain">earthquake {</code></div><div class="line number6 index5 alt1"><code class="scala spaces">&nbsp;</code><code class="scala keyword">def</code> <code class="scala plain">main(args</code><code class="scala keyword">:</code> <code class="scala plain">Array[String]) {</code></div><div class="line number7 index6 alt2"><code class="scala spaces">&nbsp;</code>&nbsp;</div><div class="line number8 index7 alt1"><code class="scala comments">//Creating a Spark Configuration and Spark Context</code></div><div class="line number9 index8 alt2"><code class="scala keyword">val</code> <code class="scala plain">sparkConf </code><code class="scala keyword">=</code> <code class="scala keyword">new</code> <code class="scala plain">SparkConf().setAppName(</code><code class="scala string">"earthquake"</code><code class="scala plain">).setMaster(</code><code class="scala string">"local[2]"</code><code class="scala plain">)</code></div><div class="line number10 index9 alt1"><code class="scala keyword">val</code> <code class="scala plain">sc </code><code class="scala keyword">=</code> <code class="scala keyword">new</code> <code class="scala plain">SparkContext(sparkConf)</code></div><div class="line number11 index10 alt2"><code class="scala spaces">&nbsp;</code>&nbsp;</div><div class="line number12 index11 alt1"><code class="scala comments">//Loading the Earthquake ROC Dataset file as a LibSVM file</code></div><div class="line number13 index12 alt2"><code class="scala keyword">val</code> <code class="scala plain">data </code><code class="scala keyword">=</code> <code class="scala plain">MLUtils.loadLibSVMFile(sc, *Path to the Earthquake File* )</code></div><div class="line number14 index13 alt1"><code class="scala spaces">&nbsp;</code>&nbsp;</div><div class="line number15 index14 alt2"><code class="scala comments">//Training the data for Machine Learning</code></div><div class="line number16 index15 alt1"><code class="scala keyword">val</code> <code class="scala plain">splits </code><code class="scala keyword">=</code> <code class="scala plain">data.randomSplit( *Splitting </code><code class="scala value">60</code><code class="scala keyword">%</code> <code class="scala plain">to </code><code class="scala value">40</code><code class="scala keyword">%</code><code class="scala plain">* , seed </code><code class="scala keyword">=</code> <code class="scala value">11</code><code class="scala plain">L)</code></div><div class="line number17 index16 alt2"><code class="scala keyword">val</code> <code class="scala plain">training </code><code class="scala keyword">=</code> <code class="scala plain">splits(</code><code class="scala value">0</code><code class="scala plain">).cache()</code></div><div class="line number18 index17 alt1"><code class="scala keyword">val</code> <code class="scala plain">test </code><code class="scala keyword">=</code> <code class="scala plain">splits(</code><code class="scala value">1</code><code class="scala plain">)</code></div><div class="line number19 index18 alt2">&nbsp;</div><div class="line number20 index19 alt1"><code class="scala comments">//Creating a model of the trained data</code></div><div class="line number21 index20 alt2"><code class="scala keyword">val</code> <code class="scala plain">numIterations </code><code class="scala keyword">=</code> <code class="scala value">100</code></div><div class="line number22 index21 alt1"><code class="scala keyword">val</code> <code class="scala plain">model </code><code class="scala keyword">=</code> <code class="scala plain">*Creating SVM Model </code><code class="scala keyword">with</code> <code class="scala plain">SGD* (&nbsp; *Training Data* , *Number of Iterations* )</code></div><div class="line number23 index22 alt2"><code class="scala spaces">&nbsp;</code>&nbsp;</div><div class="line number24 index23 alt1"><code class="scala comments">//Using map transformation of model RDD</code></div><div class="line number25 index24 alt2"><code class="scala keyword">val</code> <code class="scala plain">scoreAndLabels </code><code class="scala keyword">=</code> <code class="scala plain">*Map the model to predict features* </code></div><div class="line number26 index25 alt1"><code class="scala spaces">&nbsp;</code>&nbsp;</div><div class="line number27 index26 alt2"><code class="scala comments">//Using Binary Classification Metrics on scoreAndLabels</code></div><div class="line number28 index27 alt1"><code class="scala keyword">val</code> <code class="scala plain">metrics </code><code class="scala keyword">=</code> <code class="scala plain">* Use Binary Classification Metrics on scoreAndLabels *(scoreAndLabels)</code></div><div class="line number29 index28 alt2"><code class="scala keyword">val</code> <code class="scala plain">auROC </code><code class="scala keyword">=</code> <code class="scala plain">metrics. *Get the area under the ROC Curve*()</code></div><div class="line number30 index29 alt1"><code class="scala spaces">&nbsp;</code>&nbsp;</div><div class="line number31 index30 alt2"><code class="scala comments">//Displaying the area under Receiver Operating Characteristic</code></div><div class="line number32 index31 alt1"><code class="scala plain">println(</code><code class="scala string">"Area under ROC = "</code> <code class="scala plain">+ auROC)</code></div><div class="line number33 index32 alt2"><code class="scala spaces">&nbsp;</code><code class="scala plain">}</code></div><div class="line number34 index33 alt1"><code class="scala plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p style="text-align: justify;"><em><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Click here to <a href="https://goo.gl/K3A7tF" target="_blank" rel="noopener noreferrer">get the&nbsp;full source code</a> of Earthquake Detection&nbsp;using Apache Spark.</span></em></p>
+<p style="text-align: justify;"><span style="font-size: 14px; font-family: verdana, geneva, sans-serif;">From our Spark program, we obtain the ROC value to be 0.088137. We will be transforming this value to get the area under the ROC curve.</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><strong>Use Case – Visualizing Results</strong>:</span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">We will plot the ROC curve and compare it with the specific earthquake points. Where ever the earthquake points exceed the ROC curve, such points are treated as major earthquakes. As per our algorithm to calculate the Area under the ROC curve, we can assume that these major earthquakes are above 6.0 magnitude on the Richter scale.</span></p>
+<p style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><img class="aligncenter size-full wp-image-46758" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Earthquake-ROC-Curve-Spark-Tutorial-Edureka.png" alt="Earthquake ROC Curve - Spark Tutorial - Edureka" width="2783" height="1039" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Curve-Spark-Tutorial-Edureka.png 2783w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Curve-Spark-Tutorial-Edureka-150x56.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Curve-Spark-Tutorial-Edureka-300x112.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Curve-Spark-Tutorial-Edureka-768x287.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Curve-Spark-Tutorial-Edureka-528x197.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Earthquake-ROC-Curve-Spark-Tutorial-Edureka-482x180.png 482w" sizes="(max-width: 2783px) 100vw, 2783px"></span><span style="font-family: verdana, geneva, sans-serif; font-size: 12px;"><strong>Figure:</strong> <em>Earthquake ROC Curve</em></span></p>
+<p><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">The above image shows the Earthquake line in orange. The area in blue is the ROC curve that we have obtained from our Spark program. Let us zoom into the curve to get a better picture.</span></p>
+<p style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><img class="aligncenter size-full wp-image-46761" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Visualizing-Earthquake-ROC-Results-Spark-Tutorial-Edureka.png" alt="Visualizing Earthquake ROC Results - Spark Tutorial - Edureka" width="2048" height="911" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Visualizing-Earthquake-ROC-Results-Spark-Tutorial-Edureka.png 2048w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Visualizing-Earthquake-ROC-Results-Spark-Tutorial-Edureka-150x67.png 150w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Visualizing-Earthquake-ROC-Results-Spark-Tutorial-Edureka-300x133.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Visualizing-Earthquake-ROC-Results-Spark-Tutorial-Edureka-768x342.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Visualizing-Earthquake-ROC-Results-Spark-Tutorial-Edureka-528x235.png 528w, https://cdn.edureka.co/blog/wp-content/uploads/2017/05/Visualizing-Earthquake-ROC-Results-Spark-Tutorial-Edureka-405x180.png 405w" sizes="(max-width: 2048px) 100vw, 2048px"></span><span style="font-family: verdana, geneva, sans-serif; font-size: 12px;"><strong>Figure:</strong> <em>Visualizing Earthquake Points</em></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">We have plotted the earthquake curve against the ROC curve. At points where the orange curve is above the blue region, we have predicted the earthquakes to be major, i.e., with magnitude greater than 6.0.&nbsp;Thus armed with this knowledge, we could use Spark SQL and query an existing Hive table to retrieve email addresses and send people personalized warning emails. Thus we have used technology once more to save human life from trouble and make everyone’s life better.</span></p>
+<p style="text-align: center;"><a class="maxbutton-11 maxbutton maxbutton-enroll-blue-big" target="_blank" href="https://goo.gl/K3A7tF?utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-tutorial-get-earthquake-detection-code"><span class="mb-text">GET EARTHQUAKE DETECTION CODE</span></a></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">Now, this concludes the&nbsp;Apache Spark blog. I hope you enjoyed reading it and found it informative. By now, you must have acquired a sound understanding of what Apache Spark&nbsp;is. The hands-on examples will give you the required confidence to work on any future projects you encounter in Apache Spark. Practice is the key to mastering any subject and I hope this blog has created enough interest in you to explore learning&nbsp;further on Apache Spark.</span></p>
+<p style="text-align: justify;"><em><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">We recommend the following <span class="qlink_container"><a class="external_link tooltip_parent" href="https://www.youtube.com/playlist?list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank" rel="nofollow noopener noreferrer">Apache Spark Training videos</a></span> from Edureka to begin with:</span></em></p>
+<div>
+<h2 style="text-align: center;"><strong><span style="font-family: verdana, geneva, sans-serif; font-size: 16px;">Apache Spark Tutorial | Apache Spark Training | Edureka</span></strong></h2>
+<div id="schema-videoobject" class="video-container"><iframe src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/9mELEARcxJo.html" width="580" height="350" frameborder="0" allowfullscreen="allowfullscreen" data-mce-fragment="1"></iframe></div>
+</div>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">This video series on Spark Tutorial provides a complete background into the components along with Real-Life use cases such as <a href="https://www.youtube.com/watch?v=uD_q4Rm4i2Q&amp;amp;amp;amp;amp;amp;list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank" rel="noopener noreferrer">Twitter Sentiment Analysis</a>, <a href="https://www.youtube.com/watch?v=zeDUx_Jf154&amp;amp;amp;amp;amp;amp;list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank" rel="noopener noreferrer">NBA Game Prediction Analysis</a>, <a href="https://www.youtube.com/watch?v=9mELEARcxJo&amp;amp;amp;amp;amp;amp;list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank" rel="noopener noreferrer">Earthquake Detection System</a>, <a href="https://www.youtube.com/watch?v=BQlgZaKvfac&amp;amp;amp;amp;amp;amp;list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank" rel="noopener noreferrer">Flight Data Analytics</a> and <a href="https://www.youtube.com/watch?v=qX1kYJ6h7j8&amp;amp;amp;amp;amp;amp;list=PL9ooVrP1hQOGyFc60sExNX1qBWJyV5IMb" target="_blank" rel="noopener noreferrer">Movie Recommendation Systems</a>.&nbsp;</span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">We&nbsp;have personally designed the use cases so as to provide an all round expertise to anyone running the cod</span><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">e</span><em><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;">.&nbsp;</span></em></p>
+<p style="text-align: center;"><a class="maxbutton-16 maxbutton maxbutton-enroll-yellow-big" target="_blank" href="https://www.edureka.co/apache-spark-scala-training?utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-tutorial"><span class="mb-text">GET SPARK CERTIFIED TODAY</span></a></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><i>Got a question for us? Please mention it in the comments section and we will get back to you at the earliest.</i></span></p>
+<p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"><i>If you wish to learn Spark and build a career in domain of Spark to perform large-scale Data Processing using RDD, Spark Streaming, SparkSQL, MLlib, GraphX and Scala with Real Life use-cases, check out our interactive, live-online&nbsp;</i><em><a href="https://goo.gl/kGA2sc" target="_blank" rel="noopener noreferrer">Apache Spark Certification Training</a> here,&nbsp;</em><i>that comes with 24*7 support to guide you throughout your learning period.</i></span></p>
+                                                    <p></p>
+                                                </article>
+                                                <article class="maincontentblog">
+                                                    <p class="contentblogdetail">
+                                                        </p><div id="author-bio-box"><img alt="" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/cdbfe9d2d198794e0996fab7d94e8758" srcset="https://secure.gravatar.com/avatar/cdbfe9d2d198794e0996fab7d94e8758?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80"><span class="author-name">About Sandeep Dayananda (<a href="https://www.edureka.co/blog/author/sandeepdedureka-co/">6 Posts</a>)</span><p>Sandeep Dayananda is a Research Analyst at Edureka. He has expertise in Big Data technologies like Hadoop &amp; Spark, DevOps and Business Intelligence tools. He is passionate in bringing out creative solutions to existing business problems.</p><div class="bio-socials"></div></div><br><div class="clear"></div>                                                    <p></p>
+                                                </article>
+                                                <div class="bot-shareoption">
+                                                    <span class="Shareon-bot">
+                                                        Share on
+                                                    </span>
+                                                    <div class="maxcollection maxcollection-1" data-collection="1"><span class="mb-collection-item item-24" data-doc-id="24_2" data-popup="{&quot;width&quot;:400,&quot;height&quot;:300}"><a class="maxbutton-24 maxbutton maxbutton-circle-social-share-facebook" href="https://www.facebook.com/sharer.php?u=https://www.edureka.co/blog/spark-tutorial/&amp;utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-tutorial-"><span class="mb-icon"><i class="fa fa-facebook"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-25" data-doc-id="25_2" data-popup="{&quot;width&quot;:550,&quot;height&quot;:420}"><a class="maxbutton-25 maxbutton maxbutton-circle-social-share-twitter" href="https://twitter.com/intent/tweet?url=https://www.edureka.co/blog/spark-tutorial/&amp;utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-tutorial-"><span class="mb-icon"><i class="fa fa-twitter"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-26" data-doc-id="26_2" data-popup="{&quot;width&quot;:700,&quot;height&quot;:500}"><a class="maxbutton-26 maxbutton maxbutton-circle-social-share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.edureka.co/blog/spark-tutorial/&amp;utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-tutorial-"><span class="mb-icon"><i class="fa fa-linkedin"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span><span class="mb-collection-item item-27" data-doc-id="27_2" data-popup="{&quot;width&quot;:600,&quot;height&quot;:600}"><a class="maxbutton-27 maxbutton maxbutton-circle-social-share-google-plus" href="https://plus.google.com/share?url=https://www.edureka.co/blog/spark-tutorial/&amp;utm_source=blog&amp;utm_medium=button&amp;utm_campaign=spark-tutorial-"><span class="mb-icon"><i class="fa fa-google-plus"></i></span><span class="mb-text"><span class="share_count"></span></span></a></span></div>                                                </div>
+                                                                                                    <article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 related-blog next-blog-leftnav">
+                                                        <ul class="pager">
+                                                            <li class="pull-left"><a href="https://www.edureka.co/blog/spark-tutorial/#" class="show-prev-in-series"><i class="fa fa-angle-left" aria-hidden="true"></i> PREVIOUS</a></li>
+                                                            <li class="pull-right"><a href="https://www.edureka.co/blog/spark-tutorial/#" class="show-next-in-series">NEXT <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                                        </ul>
+                                                    </article>
+                                                                                                    <section id="edu-related-blog-carousel-2" class="bottom-webinar-widget widget_edu-related-blog-carousel"><div class="heading-title"><h3 class="bottom-widget-title"><span>Related Posts</span></h3></div><article class="Continue-watch-carousel">
+                        <div class="owl-carousel carousel-watch-again-carousel carousel-custom owl-loaded owl-drag"><div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 646px;"><div class="owl-item active" style="width: 151.4px; margin-right: 10px;"><div class="item">
+                        <a class="related-blog-link" href="https://www.edureka.co/blog/apache-spark-vs-hadoop-mapreduce?utm_source=blog&amp;utm_medium=bottom-related-blog-blogs&amp;utm_campaign=spark-tutorial"><article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 box-video-single no-padding">
+                            <div class="video-image">
+                                <img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/b1.jpg" alt="video image">
+                                
+                            </div>
+                            <div class="video-info">
+                                <span>Apache Spark vs Hadoop MapReduce</span>
+                                <div><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 51.4K</div>
+                            </div>
+                        </article></a>
+                    </div></div><div class="owl-item active" style="width: 151.4px; margin-right: 10px;"><div class="item">
+                        <a class="related-blog-link" href="https://www.edureka.co/blog/why-you-should-learn-spark-after-mastering-hadoop?utm_source=blog&amp;utm_medium=bottom-related-blog-blogs&amp;utm_campaign=spark-tutorial"><article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 box-video-single no-padding">
+                            <div class="video-image">
+                                <img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Hadoop-with-Spark.jpg" alt="video image">
+                                
+                            </div>
+                            <div class="video-info">
+                                <span>Mastered Hadoop? Time to get started with Apache Spark</span>
+                                <div><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 701</div>
+                            </div>
+                        </article></a>
+                    </div></div><div class="owl-item active" style="width: 151.4px; margin-right: 10px;"><div class="item">
+                        <a class="related-blog-link" href="https://www.edureka.co/blog/spark-sql-tutorial/?utm_source=blog&amp;utm_medium=bottom-related-blog-blogs&amp;utm_campaign=spark-tutorial"><article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 box-video-single no-padding">
+                            <div class="video-image">
+                                <img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-SQL-Edureka.png" alt="video image">
+                                
+                            </div>
+                            <div class="video-info">
+                                <span>Spark SQL Tutorial – Understanding Spark SQL With Examples</span>
+                                <div><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 4.5K</div>
+                            </div>
+                        </article></a>
+                    </div></div><div class="owl-item active" style="width: 151.4px; margin-right: 10px;"><div class="item">
+                        <a class="related-blog-link" href="https://www.edureka.co/blog/demystifying-partitioning-in-spark?utm_source=blog&amp;utm_medium=bottom-related-blog-blogs&amp;utm_campaign=spark-tutorial"><article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 box-video-single no-padding">
+                            <div class="video-image">
+                                <img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Demystifying-partitioning-in-spark.png" alt="video image">
+                                
+                            </div>
+                            <div class="video-info">
+                                <span>Demystifying Partitioning in Spark</span>
+                                <div><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 26K</div>
+                            </div>
+                        </article></a>
+                    </div></div></div></div><div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots disabled"><div class="owl-dot active"><span></span></div></div></div>
+                    </article></section><section id="edu-related-blog-carousel-3" class="bottom-webinar-widget widget_edu-related-blog-carousel"><div class="heading-title"><h3 class="bottom-widget-title"><span>Related Videos</span></h3></div><article class="Continue-watch-carousel">
+                        <div class="owl-carousel carousel-watch-again-carousel carousel-custom owl-loaded owl-drag"><div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 162px;"><div class="owl-item active" style="width: 151.4px; margin-right: 10px;"><div class="item">
+                        <a class="related-blog-link" href="https://www.edureka.co/blog/videos/5-things-one-must-know-about-spark/?utm_source=blog&amp;utm_medium=bottom-related-blog-blogs&amp;utm_campaign=spark-tutorial"><article class="col-md-12 col-lg-12 col-sm-12 col-xs-12 box-video-single no-padding">
+                            <div class="video-image">
+                                <img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/5-things-one-must-know-about-spark.jpg" alt="video image">
+                                <div class="video-play-time"><i class="icon-Video_icon"></i> 80:40</div>
+                            </div>
+                            <div class="video-info">
+                                <span>5 Things One Must Know About Spark</span>
+                                <div><span class="hidden-xs"><i class="icon-View"></i></span><span class="visible-xs-inline-block"><i class="icon-View"></i></span> 3.5K</div>
+                            </div>
+                        </article></a>
+                    </div></div></div></div><div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots disabled"><div class="owl-dot active"><span></span></div></div></div>
+                    </article></section>
+                                                <!--Comments Area Single post-->
+                                                <section class="padcomments">
+    <span class="comments"> Comments <div class="arrow-down"></div></span>
+    <span class="pull-right comment"> 1 Comment </span>
+</section>
+<section class="commsec" id="comments-wrapper">
+    
+<div id="disqus_thread"><iframe id="dsq-app1" name="dsq-app1" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/saved_resource(2).html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 1015px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+
+</section>	
+                                            </section>
+                                        </div>
+                                    </div>
+                                </section>
+                            </section>	
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-xs-12 col-sm-12 no-padding blog-sidepanel"> 
+    <section class="col-lg-12 col-md-12 col-xs-12 col-sm-12 maincontainer detailpagesidebar" data-post_type="post" data-post_name="spark-tutorial">
+             <section id="edu-related-blogs-2" class="right-side-widget custom-edu-widgets widget_edu-related-blogs"><h3 class="widget-title"><span>Related Blogs</span></h3><ul class="edu-hiran custom-widget-listing related-blogs"><li><article class="custom-related-post"><a href="https://www.edureka.co/blog/videos/5-things-one-must-know-about-spark/?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-tutorial" class="custom-rel-thumb"><div class="video-thumbnail"><img width="89" height="50" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/5-things-one-must-know-about-spark.jpg" class="attachment-550x50 size-550x50" alt="" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2015/10/5-things-one-must-know-about-spark.jpg 320w, https://cdn.edureka.co/blog/wp-content/uploads/2015/10/5-things-one-must-know-about-spark-300x169.jpg 300w" sizes="(max-width: 89px) 100vw, 89px"><i class="fa fa-youtube-play"></i></div></a><a href="https://www.edureka.co/blog/videos/5-things-one-must-know-about-spark/?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-tutorial" class="custom-rel-article"><span>5 Things One Must Know About Spark<span></span></span></a></article></li><li><article class="custom-related-post"><a href="https://www.edureka.co/blog/apache-spark-vs-hadoop-mapreduce?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-tutorial" class="custom-rel-thumb"><img width="86" height="50" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/b1.jpg" class="attachment-550x50 size-550x50 wp-post-image" alt="" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2015/12/b1.jpg 600w, https://cdn.edureka.co/blog/wp-content/uploads/2015/12/b1-300x175.jpg 300w, https://cdn.edureka.co/blog/wp-content/uploads/2015/12/b1-514x300.jpg 514w" sizes="(max-width: 86px) 100vw, 86px"></a><a href="https://www.edureka.co/blog/apache-spark-vs-hadoop-mapreduce?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-tutorial" class="custom-rel-article"><span>Apache Spark vs Hadoop MapReduce<span></span></span></a></article></li><li><article class="custom-related-post"><a href="https://www.edureka.co/blog/why-you-should-learn-spark-after-mastering-hadoop?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-tutorial" class="custom-rel-thumb"><img width="96" height="50" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Hadoop-with-Spark.jpg" class="attachment-550x50 size-550x50 wp-post-image" alt="" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2016/03/Hadoop-with-Spark.jpg 1200w, https://cdn.edureka.co/blog/wp-content/uploads/2016/03/Hadoop-with-Spark-300x157.jpg 300w, https://cdn.edureka.co/blog/wp-content/uploads/2016/03/Hadoop-with-Spark-528x276.jpg 528w" sizes="(max-width: 96px) 100vw, 96px"></a><a href="https://www.edureka.co/blog/why-you-should-learn-spark-after-mastering-hadoop?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-tutorial" class="custom-rel-article"><span>Mastered Hadoop? Time to get started with Apache Spark<span></span></span></a></article></li><li><article class="custom-related-post"><a href="https://www.edureka.co/blog/spark-sql-tutorial/?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-tutorial" class="custom-rel-thumb"><img width="86" height="50" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/Spark-SQL-Edureka.png" class="attachment-550x50 size-550x50 wp-post-image" alt="Spark SQL - Spark SQL - Edureka" srcset="https://cdn.edureka.co/blog/wp-content/uploads/2016/12/Spark-SQL-Edureka.png 816w, https://cdn.edureka.co/blog/wp-content/uploads/2016/12/Spark-SQL-Edureka-300x175.png 300w, https://cdn.edureka.co/blog/wp-content/uploads/2016/12/Spark-SQL-Edureka-768x449.png 768w, https://cdn.edureka.co/blog/wp-content/uploads/2016/12/Spark-SQL-Edureka-513x300.png 513w, https://cdn.edureka.co/blog/wp-content/uploads/2016/12/Spark-SQL-Edureka-308x180.png 308w" sizes="(max-width: 86px) 100vw, 86px"></a><a href="https://www.edureka.co/blog/spark-sql-tutorial/?utm_source=blog&amp;utm_medium=right-related-blogs&amp;utm_campaign=spark-tutorial" class="custom-rel-article"><span>Spark SQL Tutorial – Understanding Spark SQL With Examples<span></span></span></a></article></li></ul></section><section id="edu-custom-subscribe-2" class="right-side-widget custom-edu-widgets widget_edu-custom-subscribe">        <section class="col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding Newsletter-sub">
+            
+                        <form id="subscribe-form" novalidate="" class="custom-subscribe-form-wrapper">
+                <div class="subscribesec">
+                                    <!--<div class="close-thissub"><i class="icon-cross"></i></div>	-->
+                    <div class="subscribesec-box">										
+                        <h4 class="clearfix subscribeblogtitle"><p><i class="icon-Mail_this_post"></i></p><span>Subscribe to get free Newsletter</span></h4>
+                        <section class="sectrendcom">
+                            <article class="relatedcontmain">
+                                <div class="input-group Subscribeinput">                              
+                                    <input name="subscription-mail" type="email" autocomplete="off" class="form-control " required="" placeholder="Enter Email"> 
+                                    <!-- Add classes successform and errorform to toggle the input form -->
+
+                                </div>
+                                <input type="hidden" id="is_user_loggedin" value="0">
+                                <label id="loader" style="margin-left:120px;display:none"><img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/loader.gif"></label>
+
+                                <p class="errormessage"> Please provide a valid Email Id </p>
+                            </article>                         
+                        </section>  
+                    </div>
+                    <div class="subscribesec-success">
+                        <i class="icon-success"></i>
+                        <p class="successmessage" style="display: none;"> Thank you, your subscription is successful</p> 
+                        <p class="alreadysubscribed" style="display: none;"> You have already subscribed.</p> 
+                    </div>
+                </div>
+                <button type="submit" id="subscribe-button" class="btn subscribebtn successbutton">
+                    <div class="sub-news-letter">SUBSCRIBE</div></button>
+            </form>
+            <div class="sub-browse-letter show-after-success hide">
+                <a class="" href="https://www.edureka.co/all-courses" target="_blank">BROWSE COURSES</a>
+            </div>
+        </section>
+        </section></section>
+</div>
+<!-- Right Panel ends -->
+</div></div></div>
+</section>
+
+<footer class="footer-new" id="footer_v2" style="position: static;">
+        <div class="container">
+        <div class="row">
+            <div class="padding-xs-only clearfix">
+                <div class="panel-group no-margin" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel">
+                        <div class="col-md-12 visible-xs accordion-head">
+
+                            <a data-parent="#accordion" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" href="javascript:void(0)">
+                                <h3 class="no-margin footer-new-hd-lineht"><img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/edureka-logo.png" alt="edureka logo" class="footer-new_logo"></h3>
+                                <p class=" margin-vr5 grey-txt marg-btm-0-xs">© 2014 Brain4ce Education Solutions Pvt. Ltd.</p>
+                                <i class="fa fa-angle-up"></i>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+
+                        </div>
+                        <div id="collapse1" class="div-collapse collapse clearfix">
+                            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12 item-padding">
+                                <h4>Edureka</h4>
+                                <ul class="list-unstyled footer-menu wid-50-left">
+                                    <li><a href="https://www.edureka.co/about-us">About us</a></li>
+                                    <li><a href="https://www.edureka.co/allmedia">News &amp; Media</a></li>
+                                    <li><a href="https://www.edureka.co/contact-us">Contact us</a></li>
+                                    <li><a href="https://www.edureka.co/careers">Careers</a></li>
+                                </ul>
+                                <ul class="list-unstyled footer-menu wid-50-left">
+                                    <li><a href="https://www.edureka.co/blog/all">Blog</a></li>
+                                    <li><a href="https://www.edureka.co/reviews">Reviews</a></li>
+                                    <li><a href="https://www.edureka.co/terms-and-conditions">Terms &amp; conditions</a></li>
+                                    <li><a href="https://www.edureka.co/privacy-policy">Privacy policy</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item-padding">
+                                <h4>Work with us </h4>
+                                <ul class="list-unstyled footer-menu">
+                                    <li><a href="https://www.edureka.co/instructors/add">Become  an Instructor</a></li>
+                                    <li><a href="https://www.edureka.co/hire-from-edureka">Hire from Edureka</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3  col-md-3 col-sm-3 col-xs-6 item-padding">
+                                <h4>Follow us on </h4>
+                                <ul class="list-unstyled footer-social-icon">
+                                    <li><a class="fb" target="_blank" href="https://www.facebook.com/edurekaIN"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="tw" target="_blank" href="https://twitter.com/edurekaIN"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="in" target="_blank" href="https://www.linkedin.com/company/edureka"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a class="ut" target="_blank" href="https://www.youtube.com/user/edurekaIN"><i class="fa fa-youtube-play"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 item-padding padding-lft-25 text-center-xs">
+                                <h4>Learn on the GO!</h4>
+                                <ul class="list-unstyled footer-menu-store">
+                                    <li><a target="_blank" href="https://itunes.apple.com/in/app/edureka/id1033145415?mt=8">
+                                            <img alt="appleplaystore" class="img-responsive" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/applestorebtn.png"></a></li>
+                                    <li><a target="_blank" href="https://play.google.com/store/apps/details?id=co.edureka.app">
+                                            <img alt="googleplaystore" class="img-responsive" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/googleplaybtn.png"></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding border-top-half">
+                                <div class="padding-vr20 clearfix">
+                                    <div class="col-lg-5 col-md-6 col-sm-5 col-xs-12 no-padding">
+                                        <h3 class="no-margin footer-new-hd-lineht"><a href="https://www.edureka.co/"><img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/edureka-logo.png" alt="edureka logo" class="footer-new_logo"></a></h3>
+                                        <p class=" margin-vr5 grey-txt">© 2014 Brain4ce Education Solutions Pvt. Ltd. All rights Reserved.</p>
+                                    </div>
+                                    <div class="col-lg-7 col-md-6 col-sm-7 col-xs-12 no-padding txt-marg-top text-xs-left">
+                                        <p class="grey-txt">"PMP®","PMI®", "PMI-ACP®" and "PMBOK®" are registered marks of the Project Management Institute, Inc. <br>
+                                            MongoDB®, Mongo and the leaf logo are the registered trademarks of MongoDB, Inc.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</footer>
+<div class="footerbar">
+    <div class="container clearfix">
+        <div class="row">
+            <a href="javascript:void(0);" class="call-us">
+                <span><img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/phone-icon.png" alt="phoneicon"></span>
+                Call us on 
+                <span>1-800-275-9730 <i>(Toll Free)</i></span>
+                <span>+91 88808 62004</span>
+            </a>
+            <div class="dropdown pull-left hidden-xs">
+                <div class="bfh-selectbox country-style-footer triangle country-pop-small bfh-countries" data-country="IN" data-flags="true" data-filter="true">
+                    <input type="hidden" value="">
+                    <a class="bfh-selectbox-toggle res-popup" role="button" data-toggle="bfh-selectbox" href="https://www.edureka.co/blog/spark-tutorial/#">
+                        <span class="bfh-selectbox-option input-medium" data-option="">
+                        </span>
+
+
+                    </a>
+                    <div class="bfh-selectbox-options">
+                        <input type="text" class="bfh-selectbox-filter">
+                        <div role="listbox">
+                            <ul role="option" class="dropdown-menu-scrollbar mCustomScrollbar _mCS_3 mCS-autoHide mCS_no_scrollbar" style="position: relative; overflow: visible;"><div id="mCSB_3" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" tabindex="0" style="max-height: 200px;"><div id="mCSB_3_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+                            </div></div><div id="mCSB_3_scrollbar_vertical" class="mCSB_scrollTools mCSB_3_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_3_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></ul>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="call-us-xs">
+            <h3>24 X 7 Customer Support
+                <a class="close-call" href="javascript:void(0);">X</a>
+            </h3>
+            <ul class="list-unstyled">
+                <li><img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/us-flag.png" alt="us flag"> 1-800-275-9730   (Toll Free)     </li>
+                <li><img src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/ind-flag.png" alt="india flag"> +91 88808 62004</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+            <script type="text/javascript">
+                jQuery(function($) {
+                    function equalHeight(group) {
+                        tallest = 0;
+                        group.each(function() {
+                            thisHeight = $(this).height();
+                            if(thisHeight > tallest) {
+                                tallest = thisHeight;
+                            }
+                        });
+                        group.height(tallest);
+                    }
+
+                    equalHeight($(".dg-grid-shortcode .dg_grid-shortcode-col"));
+
+                    $(window).resize(function() {
+                        equalHeight($(".dg-grid-shortcode .dg_grid-shortcode-col"));
+                    });
+                });
+            </script>
+            <script type="text/javascript"> 
+				var fonts_loaded =[];
+			</script><!--email_off--><style type="text/css">.maxbutton-24.maxbutton.maxbutton-circle-social-share-facebook{position:relative;text-decoration:none;display:inline-block;border-color:#000;box-shadow-color:#333;width:50px;height:50px;border-top-left-radius:80px;border-top-right-radius:80px;border-bottom-left-radius:80px;border-bottom-right-radius:80px;border-style:solid;border-width:0px;background:rgba(77, 103, 164, 1);-pie-background:linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(77, 103, 164, 1)), color-stop(1, rgba(77, 103, 164, 1)));background:-moz-linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:-o-linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1))}.maxbutton-24.maxbutton:hover.maxbutton-circle-social-share-facebook{border-color:#000;box-shadow-color:#333;background:rgba(77, 103, 164, 1);-pie-background:linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(77, 103, 164, 1)), color-stop(1, rgba(77, 103, 164, 1)));background:-moz-linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:-o-linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1));background:linear-gradient(rgba(77, 103, 164, 1) 45%, rgba(77, 103, 164, 1))}.maxbutton-24.maxbutton.maxbutton-circle-social-share-facebook .mb-icon{text-align:center;padding-top:8px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:0px;display:block;background-color:unset}.maxbutton-24.maxbutton.maxbutton-circle-social-share-facebook .mb-icon .fa.fa-facebook{color:#fff;font-size:21px}.maxbutton-24.maxbutton:hover.maxbutton-circle-social-share-facebook .mb-icon .fa.fa-facebook{color:#fff}.maxbutton-24.maxbutton.maxbutton-circle-social-share-facebook .mb-text{color:#fff;font-family:PT Sans Narrow;font-size:12px;text-align:center;font-style:normal;font-weight:normal;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-24.maxbutton:hover.maxbutton-circle-social-share-facebook .mb-text{color:#fff}
+.maxbutton-25.maxbutton.maxbutton-circle-social-share-twitter{position:relative;text-decoration:none;display:inline-block;border-color:#000;box-shadow-color:#333;width:50px;height:50px;border-top-left-radius:80px;border-top-right-radius:80px;border-bottom-left-radius:80px;border-bottom-right-radius:80px;border-style:solid;border-width:0px;background:rgba(38, 167, 223, 1);-pie-background:linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(38, 167, 223, 1)), color-stop(1, rgba(38, 167, 223, 1)));background:-moz-linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:-o-linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1))}.maxbutton-25.maxbutton:hover.maxbutton-circle-social-share-twitter{border-color:#000;box-shadow-color:#333;background:rgba(38, 167, 223, 1);-pie-background:linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(38, 167, 223, 1)), color-stop(1, rgba(38, 167, 223, 1)));background:-moz-linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:-o-linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1));background:linear-gradient(rgba(38, 167, 223, 1) 45%, rgba(38, 167, 223, 1))}.maxbutton-25.maxbutton.maxbutton-circle-social-share-twitter .mb-icon{text-align:center;padding-top:7px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:0px;display:block;background-color:unset}.maxbutton-25.maxbutton.maxbutton-circle-social-share-twitter .mb-icon .fa.fa-twitter{color:#fff;font-size:22px}.maxbutton-25.maxbutton:hover.maxbutton-circle-social-share-twitter .mb-icon .fa.fa-twitter{color:#fff}.maxbutton-25.maxbutton.maxbutton-circle-social-share-twitter .mb-text{color:#fff;font-family:PT Sans Narrow;font-size:12px;text-align:center;font-style:normal;font-weight:normal;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-25.maxbutton:hover.maxbutton-circle-social-share-twitter .mb-text{color:#fff}
+.maxbutton-26.maxbutton.maxbutton-circle-social-share-linkedin{position:relative;text-decoration:none;display:inline-block;border-color:#000;box-shadow-color:#333;width:50px;height:50px;border-top-left-radius:80px;border-top-right-radius:80px;border-bottom-left-radius:80px;border-bottom-right-radius:80px;border-style:solid;border-width:0px;background:rgba(1, 120, 181, 1);-pie-background:linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(1, 120, 181, 1)), color-stop(1, rgba(1, 120, 181, 1)));background:-moz-linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:-o-linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1))}.maxbutton-26.maxbutton:hover.maxbutton-circle-social-share-linkedin{border-color:#000;box-shadow-color:#333;background:rgba(1, 120, 181, 1);-pie-background:linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(1, 120, 181, 1)), color-stop(1, rgba(1, 120, 181, 1)));background:-moz-linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:-o-linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1));background:linear-gradient(rgba(1, 120, 181, 1) 45%, rgba(1, 120, 181, 1))}.maxbutton-26.maxbutton.maxbutton-circle-social-share-linkedin .mb-icon{text-align:center;padding-top:7px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:0px;display:block;background-color:unset}.maxbutton-26.maxbutton.maxbutton-circle-social-share-linkedin .mb-icon .fa.fa-linkedin{color:#fff;font-size:22px}.maxbutton-26.maxbutton:hover.maxbutton-circle-social-share-linkedin .mb-icon .fa.fa-linkedin{color:#fff}.maxbutton-26.maxbutton.maxbutton-circle-social-share-linkedin .mb-text{color:#fff;font-family:PT Sans Narrow;font-size:12px;text-align:center;font-style:normal;font-weight:normal;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-26.maxbutton:hover.maxbutton-circle-social-share-linkedin .mb-text{color:#fff}
+.maxbutton-27.maxbutton.maxbutton-circle-social-share-google-plus{position:relative;text-decoration:none;display:inline-block;border-color:#000;box-shadow-color:#333;width:50px;height:50px;border-top-left-radius:80px;border-top-right-radius:80px;border-bottom-left-radius:80px;border-bottom-right-radius:80px;border-style:solid;border-width:0px;background:rgba(216, 74, 54, 1);-pie-background:linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(216, 74, 54, 1)), color-stop(1, rgba(216, 74, 54, 1)));background:-moz-linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:-o-linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1))}.maxbutton-27.maxbutton:hover.maxbutton-circle-social-share-google-plus{border-color:#000;box-shadow-color:#333;background:rgba(216, 74, 54, 1);-pie-background:linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(216, 74, 54, 1)), color-stop(1, rgba(216, 74, 54, 1)));background:-moz-linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:-o-linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1));background:linear-gradient(rgba(216, 74, 54, 1) 45%, rgba(216, 74, 54, 1))}.maxbutton-27.maxbutton.maxbutton-circle-social-share-google-plus .mb-icon{text-align:center;padding-top:7px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:0px;display:block;background-color:unset}.maxbutton-27.maxbutton.maxbutton-circle-social-share-google-plus .mb-icon .fa.fa-google-plus{color:#fff;font-size:22px}.maxbutton-27.maxbutton:hover.maxbutton-circle-social-share-google-plus .mb-icon .fa.fa-google-plus{color:#fff}.maxbutton-27.maxbutton.maxbutton-circle-social-share-google-plus .mb-text{color:#fff;font-family:PT Sans Narrow;font-size:12px;text-align:center;font-style:normal;font-weight:normal;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-27.maxbutton:hover.maxbutton-circle-social-share-google-plus .mb-text{color:#fff}
+.maxcollection.maxcollection-1{display:inline-block;z-index:9999;margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px}.maxcollection.maxcollection-1 .mb-collection-item.item-24{margin-right:0px;margin-bottom:0px;float:left;display:inline-block}.maxcollection.maxcollection-1 .mb-collection-item.item-25{margin-right:0px;margin-bottom:0px;float:left;display:inline-block}.maxcollection.maxcollection-1 .mb-collection-item.item-26{margin-right:0px;margin-bottom:0px;float:left;display:inline-block}.maxcollection.maxcollection-1 .mb-collection-item.item-27{margin-right:0px;margin-bottom:0px;float:left;display:inline-block}
+.maxbutton-16.maxbutton.maxbutton-enroll-yellow-big{position:relative;text-decoration:none;display:inline-block;border-color:#e7a207;box-shadow-color:#e7a207;width:280px;height:35px;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:0px;border-style:solid;border-width:0px;background:rgba(231, 162, 7, 1);-pie-background:linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(231, 162, 7, 1)), color-stop(1, rgba(231, 162, 7, 1)));background:-moz-linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:-o-linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1))}.maxbutton-16.maxbutton:hover.maxbutton-enroll-yellow-big{border-color:#e7a207;box-shadow-color:#e7a207;background:rgba(231, 162, 7, 1);-pie-background:linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(231, 162, 7, 1)), color-stop(1, rgba(231, 162, 7, 1)));background:-moz-linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:-o-linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1));background:linear-gradient(rgba(231, 162, 7, 1) 45%, rgba(231, 162, 7, 1))}.maxbutton-16.maxbutton.maxbutton-enroll-yellow-big .mb-text{color:#fff;font-size:13px;text-align:center;font-style:normal;font-weight:bold;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-16.maxbutton:hover.maxbutton-enroll-yellow-big .mb-text{color:#fff}
+.maxbutton-11.maxbutton.maxbutton-enroll-blue-big{position:relative;text-decoration:none;display:inline-block;border-color:#3778b0;box-shadow-color:#333;width:280px;height:35px;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:0px;border-style:solid;border-width:0px;background:rgba(55, 120, 176, 1);-pie-background:linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(55, 120, 176, 1)), color-stop(1, rgba(55, 120, 176, 1)));background:-moz-linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:-o-linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1))}.maxbutton-11.maxbutton:hover.maxbutton-enroll-blue-big{border-color:#3778b0;box-shadow-color:#333;background:rgba(55, 120, 176, 1);-pie-background:linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:-webkit-gradient(linear, left top, left bottom, color-stop(45%, rgba(55, 120, 176, 1)), color-stop(1, rgba(55, 120, 176, 1)));background:-moz-linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:-o-linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1));background:linear-gradient(rgba(55, 120, 176, 1) 45%, rgba(55, 120, 176, 1))}.maxbutton-11.maxbutton.maxbutton-enroll-blue-big .mb-text{color:#fff;font-size:13px;text-align:center;font-style:normal;font-weight:bold;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;line-height:1em;box-sizing:border-box;display:block;background-color:unset;position:relative}.maxbutton-11.maxbutton:hover.maxbutton-enroll-blue-big .mb-text{color:#fff}
+</style><!--/email_off-->
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/shCore.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/shBrushScala.js.download"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://cdn.edureka.co/blog/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "https://cdn.edureka.co/blog/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/jquery.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var postasmail = {"afp_nonce":"0512dd187f","afp_ajax_url":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/fancyquote.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var videolib = {"afp_nonce":"0512dd187f","afp_ajax_url":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/video-library.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/jquery.fitvids.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var fvpdata = {"ajaxurl":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php","nonce":"7b942922c3","fitvids":"1","dynamic":"","overlay":"","opacity":"0.75","color":"b","width":"640"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/frontend.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var mb_ajax = {"ajaxurl":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/front.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/maxbuttons_fonts.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/maxbuttons-pro-front.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/bootstrap.min.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/masonry.pkgd.min.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/imagesloaded.pkgd.min.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/jquery.bootpag.min.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/nprogress.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/CustomScrollbar.min.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/owl.carousel.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/0187-formValidation.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/0188-bootstrap.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/blog.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/modalEffects.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/modalEffects-related.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/mfb.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/signup.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var php_array = {"admin_ajax":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php"};
+var wnm_custom = {"template_url":"\/blog\/wp-content\/themes\/edu-hiran"};
+var myAjax = {"ajaxurl":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php"};
+var afp_vars = {"afp_nonce":"0512dd187f","afp_ajax_url":"https:\/\/www.edureka.co\/blog\/wp-admin\/admin-ajax.php","postID":"44568","single":"1"};
+var post_vars = {"postID":"44568","postType":"post"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/ajax-pagination.js.download"></script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/wp-embed.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"platform":"wordpress@4.7.5","language":""},"disqusIdentifier":"44568 https:\/\/www.edureka.co\/blog\/?p=44568","disqusShortname":"edurekablog","disqusTitle":"Spark Tutorial: Real Time Cluster Computing Framework","disqusUrl":"https:\/\/www.edureka.co\/blog\/spark-tutorial\/","options":{"manualSync":"1"},"postId":"44568"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/disqus.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"edurekablog"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/count.js(1).download"></script>
+
+
+
+
+<!-- mfunc setPostViews(get_the_ID()); --><!-- /mfunc -->
+<!-- Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+Object Caching 1862/2017 objects using disk
+Page Caching using disk
+Content Delivery Network via Amazon Web Services: CloudFront: cdn.edureka.co
+Database Caching 25/97 queries in 0.030 seconds using disk
+
+ Served from: www.edureka.co @ 2017-06-25 10:45:00 by W3 Total Cache --><img alt="preload image" style="display: none;"><img alt="preload image" style="display: none;"><iframe style="display: none;" src="./Spark Tutorial _ A Beginner&#39;s Guide to Apache Spark _ Edureka_files/saved_resource(3).html"></iframe></body></html>
